@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Central Cat's — Grooming & Petshop (Bumi Indah & Rajeg)</title>
+  <meta name="description" content="Central Cat's Grooming & Petshop — 2 cabang di Tangerang (Bumi Indah & Rajeg Gardenia). Reservasi grooming online, layanan grooming lengkap, treatment anti-kutu, de-shedding, dan petshop." />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Central Cat's — Grooming & Petshop" />
+  <meta property="og:description" content="Perawatan kucing profesional di Tangerang. Reservasi online untuk kedua cabang: Bumi Indah & Rajeg Gardenia." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root{--accent:#2d9cdb;--accent-2:#4caf50;--muted:#666;--container:1100px}
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0;color:#222;line-height:1.4}
+    a{color:var(--accent);text-decoration:none}
+    .wrap{max-width:var(--container);margin:0 auto;padding:28px}
+
+    /* Header / Hero */
+    header{display:flex;gap:20px;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:16px;align-items:center}
+    .logo{width:72px;height:72px;border-radius:12px;overflow:hidden;background:#f5f7fb;display:flex;align-items:center;justify-content:center;font-weight:700}
+    h1{font-size:28px;margin:0}
+    p.lead{margin:8px 0;color:var(--muted)}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin:24px 0}
+    .card{background:#fff;border-radius:10px;padding:18px;box-shadow:0 6px 18px rgba(10,20,40,0.06)}
+
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-green{background:var(--accent-2);color:#fff}
+    .btn-outline{background:transparent;border:1px solid #e6e9ef;color:var(--muted)}
+
+    /* Services */
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .service{padding:14px;border-radius:8px;background:linear-gradient(180deg,#fff,#fbfdff);min-height:110px}
+    .service h3{margin:0 0 8px 0}
+    .features{display:flex;gap:10px;flex-wrap:wrap}
+    .feature{background:#f3f7fb;padding:8px 10px;border-radius:8px;font-size:13px}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+    .gallery img{width:100%;height:110px;object-fit:cover;border-radius:8px}
+
+    /* Locations */
+    .locations{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+    .loc{padding:14px;border-radius:8px}
+    .loc h4{margin:0}
+    .meta{font-size:14px;color:var(--muted);margin:6px 0}
+    .map-embed{width:100%;height:200px;border-radius:8px;border:0}
+
+    footer{margin-top:34px;padding:18px 0;text-align:center;color:var(--muted);font-size:14px}
+
+    /* Responsive */
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      .grid-3{grid-template-columns:1fr}
+      .locations{grid-template-columns:1fr}
+    }
+  </style>
+
+  <!-- Structured data: two LocalBusiness entries -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "PetStore",
+        "@id": "https://centralcats.example/#bumiindah",
+        "name": "Central Cat's - Bumi Indah",
+        "image": "https://via.placeholder.com/800x600?text=Central+Cat's+Bumi+Indah",
+        "telephone": "+62-8XX-XXXX-XXXX (masukkan nomor Cabang Bumi Indah)",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Bumi Indah",
+          "addressLocality": "Tangerang",
+          "addressRegion": "Banten",
+          "postalCode": "151xx",
+          "addressCountry": "ID"
+        },
+        "geo": {"@type": "GeoCoordinates","latitude": -6.1551806,"longitude": 106.5497454},
+        "url": "https://centralcats.example/bumiindah",
+        "openingHoursSpecification": [{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"09:00","closes":"20:00"}]
+      },
+      {
+        "@type": "PetStore",
+        "@id": "https://centralcats.example/#rajeg",
+        "name": "Central Cat's - Rajeg Gardenia",
+        "image": "https://via.placeholder.com/800x600?text=Central+Cat's+Rajeg",
+        "telephone": "+62-8YY-YYYY-YYYY (masukkan nomor Cabang Rajeg)",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Rajeg Gardenia",
+          "addressLocality": "Tangerang",
+          "addressRegion": "Banten",
+          "postalCode": "157xx",
+          "addressCountry": "ID"
+        },
+        "geo": {"@type": "GeoCoordinates","latitude": -6.1120454,"longitude": 106.5245217},
+        "url": "https://centralcats.example/rajeg",
+        "openingHoursSpecification": [{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"09:00","closes":"20:00"}]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"><img src="https://via.placeholder.com/72x72?text=CC" alt="Central Cat's logo" style="width:48px;height:48px;object-fit:contain"></div>
+        <div>
+          <h1>Central Cat's</h1>
+          <p class="lead">Grooming & Petshop • <em>Yang Berkualitas Ada di Sini!</em></p>
+        </div>
+      </div>
+      <nav>
+        <a class="btn btn-outline" href="#services">Menu</a>
+        <a class="btn btn-outline" href="#locations">Lokasi</a>
+        <a class="btn btn-outline" href="#reservasi">Reservasi</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="card">
+          <h2>Perawatan kucing profesional, aman & nyaman</h2>
+          <p>Booking mudah, groomer berpengalaman, dan layanan lengkap untuk semua jenis kucing.</p>
+          <div class="actions" style="margin-top:12px">
+            <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSc1JyC-PvP0J13kGJ3--x-R8D_iJgvGHwBVEZvVSpM476MPNw/viewform" target="_blank" rel="noopener">Reservasi Grooming</a>
+            <a class="btn btn-green" href="https://wa.me/6282111827798?text=Saya%20ingin%20reservasi%20grooming%20(di%20Cabang%20Bumi%20Indah)" target="_blank" rel="noopener">Chat WA Bumi Indah</a>
+            <a class="btn btn-outline" href="https://wa.me/62822XXXXXXXX?text=Saya%20ingin%20reservasi%20grooming%20(di%20Cabang%20Rajeg)" target="_blank" rel="noopener">Chat WA Rajeg</a>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card" style="text-align:center">
+          <img src="hero.jpg" alt="Grooming" style="width:100%;height:220px;object-fit:cover;border-radius:8px;margin-bottom:12px">
+          <strong>Grooming Tanpa Antre</strong>
+          <p style="margin:8px 0;color:var(--muted)">Klik tombol reservasi untuk pilih cabang dan jadwal.</p>
+          <div style="display:flex;gap:8px;justify-content:center;margin-top:8px">
+            <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSc1JyC-PvP0J13kGJ3--x-R8D_iJgvGHwBVEZvVSpM476MPNw/viewform" target="_blank" rel="noopener">Reservasi Sekarang</a>
+            <a class="btn btn-outline" href="/" onclick="window.print();return false;">Cetak Price List</a>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="services">
+  <h2>Menu Grooming</h2>
+  <p style="color:var(--muted);margin-top:6px">Menu resmi Central Cat’s — ditampilkan sesuai price list.</p>
+  <p style="margin-top:12px;color:var(--muted)">Detail layanan tidak ditampilkan di halaman ini sesuai permintaan.</p>
+</section>
+
+    <section style="margin-top:18px">
+  <h2>Galeri Grooming</h2>
+  <p style="margin-top:6px;color:var(--muted)">Galeri otomatis dari Instagram Central Cat’s.</p>
+  <div style="margin-top:16px">
+    <!-- Instagram Embed -->
+    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/central.catgrooming" data-instgrm-version="14"></blockquote>
+    <script async src="https://www.instagram.com/embed.js"></script>
+  </div>
+</section>
+
+    <section id="locations" style="margin-top:18px">
+      <h2>Lokasi Cabang</h2>
+      <div class="locations">
+        <div class="loc card">
+          <h4>Central Cat's — Bumi Indah</h4>
+          <div class="meta">Bumi Indah, Tangerang</div>
+          <div class="meta">Jam: Senin–Minggu, 09:00–20:00</div>
+          <div style="margin-top:8px"><a class="btn btn-primary" href="https://www.google.com/maps/place/CENTRAL+CAT'S+GROOMING+(PETSHOP)/@-6.1551806,106.5497454,17z" target="_blank" rel="noopener">Buka di Google Maps</a></div>
+          <p style="margin-top:10px;color:var(--muted)">WhatsApp: <strong><a href="https://wa.me/6282111827798" target="_blank" rel="noopener">+62 821-1182-7798</a></strong></p>
+          <iframe class="map-embed" src="https://www.google.com/maps?q=-6.1551806,106.5497454&z=17&output=embed" aria-hidden="false" loading="lazy"></iframe>
+        </div>
+
+        <div class="loc card">
+          <h4>Central Cat's — Rajeg Gardenia</h4>
+          <div class="meta">Rajeg Gardenia, Tangerang</div>
+          <div class="meta">Jam: Senin–Minggu, 09:00–20:00</div>
+          <div style="margin-top:8px"><a class="btn btn-primary" href="https://www.google.com/maps/place/Petshop+Central+Cat's+(Rajeg+Gardenia)/@-6.1120454,106.5245217,17z" target="_blank" rel="noopener">Buka di Google Maps</a></div>
+          <p style="margin-top:10px;color:var(--muted)">WhatsApp: <strong><a href="https://wa.me/62822XXXXXXXX" target="_blank" rel="noopener">+62 822-XXXX-XXXX</a></strong></p>
+          <iframe class="map-embed" src="https://www.google.com/maps?q=-6.1120454,106.5245217&z=17&output=embed" aria-hidden="false" loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="reservasi" style="margin-top:18px">
+      <h2>Reservasi Grooming</h2>
+      <div class="card" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+        <div style="flex:1;min-width:220px">
+          <h3>Booking cepat tanpa antre</h3>
+          <p>Isi formulir reservasi, pilih cabang dan jam. Kami akan mengonfirmasi via WhatsApp.</p>
+          <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSc1JyC-PvP0J13kGJ3--x-R8D_iJgvGHwBVEZvVSpM476MPNw/viewform" target="_blank">Isi Formulir Reservasi</a>
+        </div>
+        <div style="min-width:180px;text-align:center">
+          <img src="https://via.placeholder.com/180x120?text=Calendar" alt="calendar" style="border-radius:8px">
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 Central Cat's — Grooming & Petshop • 2 Cabang: Bumi Indah & Rajeg Gardenia
+    </footer>
+
+  </div>
+
+  <!-- Optional small script: scroll to anchor smoothly -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        e.preventDefault();
+        const id=a.getAttribute('href');
+        document.querySelector(id).scrollIntoView({behavior:'smooth'});
+      })
+    })
+  </script>
+  <script>
+    // small helper: check instagram embed availability; if it fails, show fallback link
+    window.addEventListener('load', function(){
+      setTimeout(function(){
+        var ig = document.querySelector('blockquote.instagram-media');
+        if(ig && ig.children.length===0){
+          ig.innerHTML = '<p>Konten Instagram tidak tersedia. <a href="https://www.instagram.com/central.catgrooming" target="_blank" rel="noopener">Buka Instagram Central Cat\'s</a></p>';
+        }
+      },1200);
+    });
+  </script>
+</body>
+</html>
