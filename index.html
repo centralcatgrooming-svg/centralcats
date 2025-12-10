@@ -1,222 +1,159 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Central Cat's Grooming</title>
   <meta name="description" content="Layanan grooming kucing profesional & aman di Tangerang. Central Cat's — Yang Berkualitas Ada di Sini!">
   <meta name="robots" content="index,follow" />
-
-  <!-- Open Graph (SEO untuk WhatsApp / Facebook Preview) -->
   <meta property="og:title" content="Central Cat's — Grooming Kucing Profesional" />
   <meta property="og:description" content="Perawatan kucing aman, profesional, dan nyaman. Booking grooming online Central Cat's Tangerang." />
   <meta property="og:type" content="website" />
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f4f4f4;
-      color: #222;
-      line-height: 1.6;
+    :root{
+      --accent:#4b8fe2;
+      --wa:#25D366;
+      --muted:#666;
+      --container:1100px;
+      --bg:#f4f4f4;
     }
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0; color:#222; background:var(--bg); line-height:1.5}
+    a{color:var(--accent); text-decoration:none}
+    .container{width:92%; max-width:var(--container); margin:0 auto; padding:18px 0}
 
-    header {
-      background: white;
-      padding: 20px;
-      border-bottom: 1px solid #ddd;
-    }
+    /* Header centered logo + brand */
+    header{background:#fff; border-bottom:1px solid #eee; padding:18px 0}
+    .header-center{display:flex; align-items:center; justify-content:center; gap:14px}
+    .site-logo{width:64px;height:64px;object-fit:contain;border-radius:8px;display:inline-block}
+    .brand{text-align:center;line-height:1}
+    .brand h1{margin:0;font-size:28px;font-weight:700;color:#111}
+    .brand .tagline{margin-top:6px;color:var(--muted);font-size:14px}
 
-    .container {
-      width: 92%;
-      max-width: 900px;
-      margin: auto;
-    }
+    /* Hero */
+    .hero{background:#fff;padding:26px;border-radius:12px;margin-top:20px;display:flex;gap:20px;flex-wrap:wrap;align-items:center;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+    .hero img{width:260px;border-radius:12px;object-fit:cover}
+    .hero .text{flex:1;min-width:260px}
+    .btn{display:inline-block;padding:12px 22px;border-radius:10px;font-weight:700;margin-right:10px;margin-top:12px;text-decoration:none}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-green{background:var(--wa);color:#fff}
 
-    h1, h2, h3 {
-      color: #111;
-      margin-bottom: 10px;
-    }
+    /* Cards */
+    .card{background:#fff;padding:20px;border-radius:12px;margin-top:20px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+    h2{margin-top:0}
+    ul li{margin-bottom:8px}
 
-    /* HERO */
-    .hero {
-      background: white;
-      padding: 26px;
-      border-radius: 14px;
-      margin-top: 20px;
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      align-items: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    }
+    /* Footer */
+    footer{text-align:center;padding:20px;margin-top:40px;font-size:14px;color:#555;background:transparent}
 
-    .hero img {
-      width: 260px;
-      border-radius: 12px;
-    }
+    /* Floating WA */
+    .wa-float{position:fixed;bottom:22px;right:22px;background:var(--wa);color:#fff;padding:12px 14px;border-radius:50px;text-decoration:none;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,.18);z-index:999}
+    .wa-float:hover{text-decoration:none;transform:translateY(-2px)}
 
-    .hero .text {
-      flex: 1;
-      min-width: 260px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 22px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      margin-right: 10px;
-      margin-top: 12px;
-    }
-
-    .btn-primary {
-      background: #4b8fe2;
-      color: white;
-    }
-
-    .btn-green {
-      background: #25D366;
-      color: white;
-    }
-
-    /* CARD */
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 14px;
-      margin-top: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    }
-
-    ul li { margin-bottom: 8px; }
-
-    /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      font-size: 14px;
-      color: #555;
-    }
-
-    /* Floating WA Button */
-    .wa-float {
-      position: fixed;
-      bottom: 22px;
-      right: 22px;
-      background: #25D366;
-      color: white;
-      padding: 14px 18px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      z-index: 99;
+    /* Responsive */
+    @media (max-width:760px){
+      .hero img{width:200px}
+      .site-logo{width:48px;height:48px}
+      .brand h1{font-size:20px}
     }
   </style>
 </head>
-
 <body>
 
-<header>
-  <div class="container">
-    <h1>Central Cat's</h1>
-    <div>Yang Berkualitas Ada di Sini!</div>
-  </div>
-</header>
-
-<div class="container">
-
-  <!-- HERO -->
-  <section class="hero">
-    <img src="hero.jpg" alt="Grooming Kucing Central Cat's">
-    <div class="text">
-      <h2>Perawatan kucing profesional, aman & nyaman</h2>
-      <p>Booking mudah, groomer berpengalaman, dan layanan lengkap untuk semua jenis kucing.</p>
-
-      <a class="btn btn-primary"
-         href="https://docs.google.com/forms/d/e/1FAIpQLSc1JyC-PvP0J13kGJ3--x-R8D_iJgvGHwBVEZvVSpM476MPNw/viewform"
-         target="_blank">
-         Reservasi Grooming
-      </a>
-
-      <a class="btn btn-green"
-         href="https://wa.me/6282111827798?text=Halo%20Central%20Cat's,%20saya%20ingin%20bertanya%20tentang%20grooming."
-         target="_blank">
-         Chat WhatsApp
-      </a>
+  <!-- HEADER: logo + centered brand -->
+  <header>
+    <div class="container">
+      <div class="header-center">
+        <img class="site-logo" src="logo.png" alt="Central Cat's logo" />
+        <div class="brand">
+          <h1>Central Cat's</h1>
+          <div class="tagline">Yang Berkualitas Ada di Sini!</div>
+        </div>
+      </div>
     </div>
-  </section>
+  </header>
 
-  <!-- VISI MISI -->
-  <section class="card">
-    <h2>Visi</h2>
-    <p><em>Menjadi pilihan utama bagi pemilik hewan peliharaan dengan menyediakan produk dan layanan berkualitas yang mendukung kesejahteraan, kebahagiaan, dan kesehatan hewan peliharaan di seluruh Indonesia.</em></p>
+  <main class="container">
 
-    <h3>Misi</h3>
-    <ul>
-      <li><strong>Produk Berkualitas Tinggi:</strong> Menawarkan produk aman & terbaik untuk kesehatan hewan.</li>
-      <li><strong>Layanan Pelanggan Unggul:</strong> Pelayanan cepat, ramah, dan membantu setiap kebutuhan.</li>
-      <li><strong>Edukasi Pemilik Hewan:</strong> Memberikan informasi penting tentang kesehatan dan perawatan kucing.</li>
-      <li><strong>Fokus Kesejahteraan Hewan:</strong> Menjaga kesehatan & kenyamanan kucing dalam setiap layanan.</li>
-      <li><strong>Etika & Keberlanjutan:</strong> Praktik yang ramah lingkungan dan etis.</li>
-      <li><strong>Inovasi:</strong> Mengembangkan layanan yang relevan & modern.</li>
-    </ul>
+    <!-- HERO -->
+    <section class="hero" aria-label="Hero: Central Cat's Grooming">
+      <img src="hero.jpg" alt="Grooming Kucing Central Cat's" />
+      <div class="text">
+        <h2>Perawatan kucing profesional, aman & nyaman</h2>
+        <p>Booking mudah, groomer berpengalaman, dan layanan lengkap untuk semua jenis kucing.</p>
 
-    <h3>Nilai Kami</h3>
-    <ul>
-      <li><strong>Kualitas & Keamanan:</strong> Prioritas utama kami.</li>
-      <li><strong>Peduli & Empati:</strong> Perlakuan penuh kasih kepada setiap hewan.</li>
-      <li><strong>Transparansi:</strong> Kejujuran dalam setiap layanan & informasi.</li>
-      <li><strong>Inovasi Berkelanjutan:</strong> Selalu berkembang mengikuti kebutuhan pelanggan.</li>
-    </ul>
-  </section>
+        <a class="btn btn-primary"
+           href="https://docs.google.com/forms/d/e/1FAIpQLSc1JyC-PvP0J13kGJ3--x-R8D_iJgvGHwBVEZvVSpM476MPNw/viewform"
+           target="_blank" rel="noopener">Reservasi Grooming</a>
 
-  <!-- MENU GROOMING -->
-  <section class="card">
-   <h2>Menu Grooming</h2>
+        <a class="btn btn-green"
+           href="https://wa.me/6282111827798?text=Halo%20Central%20Cat's,%20saya%20ingin%20bertanya%20tentang%20grooming."
+           target="_blank" rel="noopener">Chat WhatsApp</a>
+      </div>
+    </section>
 
-<p>
-    Layanan grooming di Central Cat’s disediakan secara profesional dan dilakukan oleh groomer berpengalaman.
-    Seluruh jenis layanan mengikuti <strong>price list resmi Central Cat’s</strong>.
-</p>
+    <!-- VISI MISI -->
+    <section class="card" id="about" aria-labelledby="visi-misi">
+      <h2 id="visi-misi">Visi</h2>
+      <p><em>Menjadi pilihan utama bagi pemilik hewan peliharaan dengan menyediakan produk dan layanan berkualitas yang mendukung kesejahteraan, kebahagiaan, dan kesehatan hewan peliharaan di seluruh Indonesia.</em></p>
 
-<p>
-    Detail paket dan harga lengkap dapat dilihat pada brosur resmi atau dengan menghubungi Customer Service.
-</p>
+      <h3>Misi</h3>
+      <ul>
+        <li><strong>Produk Berkualitas Tinggi:</strong> Menawarkan produk aman & terbaik untuk kesehatan hewan.</li>
+        <li><strong>Layanan Pelanggan Unggul:</strong> Pelayanan cepat, ramah, dan membantu setiap kebutuhan.</li>
+        <li><strong>Edukasi Pemilik Hewan:</strong> Memberikan informasi penting tentang kesehatan dan perawatan kucing.</li>
+        <li><strong>Fokus Kesejahteraan Hewan:</strong> Menjaga kesehatan & kenyamanan kucing dalam setiap layanan.</li>
+        <li><strong>Etika & Keberlanjutan:</strong> Praktik yang ramah lingkungan dan etis.</li>
+        <li><strong>Inovasi:</strong> Mengembangkan layanan yang relevan & modern.</li>
+      </ul>
 
-<p>
-    Kami memastikan setiap kucing ditangani dengan aman, nyaman, dan sesuai kebutuhan grooming-nya.
-</p>
+      <h3>Nilai Kami</h3>
+      <ul>
+        <li><strong>Kualitas & Keamanan:</strong> Prioritas utama kami.</li>
+        <li><strong>Peduli & Empati:</strong> Perlakuan penuh kasih kepada setiap hewan.</li>
+        <li><strong>Transparansi:</strong> Kejujuran dalam setiap layanan & informasi.</li>
+        <li><strong>Inovasi Berkelanjutan:</strong> Selalu berkembang mengikuti kebutuhan pelanggan.</li>
+      </ul>
+    </section>
 
-  </section>
+    <!-- MENU GROOMING (revisi) -->
+    <section class="card" id="services" aria-labelledby="menu-grooming">
+      <h2 id="menu-grooming">Menu Grooming</h2>
 
-  <!-- INSTAGRAM GALLERY -->
-  <section class="card">
-    <h2>Galeri Grooming</h2>
-    <p>Lihat hasil grooming kucing di Instagram resmi kami.</p>
+      <p>
+        Layanan grooming di Central Cat’s disediakan secara profesional dan dilakukan oleh groomer berpengalaman.
+        Seluruh jenis layanan mengikuti <strong>price list resmi Central Cat’s</strong>.
+      </p>
 
-    <iframe src="https://www.instagram.com/central.catgrooming/embed"
-            width="100%" height="500"
-            frameborder="0"></iframe>
-  </section>
+      <p>
+        Detail paket dan harga lengkap dapat dilihat pada brosur resmi atau dengan menghubungi Customer Service.
+      </p>
 
-</div>
+      <p>
+        Kami memastikan setiap kucing ditangani dengan aman, nyaman, dan sesuai kebutuhan grooming-nya.
+      </p>
+    </section>
 
-<footer>
-  Customer Service Central Cat's • WhatsApp: <strong>0821-1182-7798</strong><br>
-  © 2025 Central Cat's
-</footer>
+    <!-- GALERI INSTAGRAM -->
+    <section class="card" aria-labelledby="galeri">
+      <h2 id="galeri">Galeri Grooming</h2>
+      <p>Lihat hasil grooming kucing di Instagram resmi kami.</p>
 
-<!-- Floating WA -->
-<a class="wa-float"
-   href="https://wa.me/6282111827798?text=Halo%20Central%20Cat's,%20saya%20ingin%20bertanya."
-   target="_blank">
-   WA
-</a>
+      <iframe src="https://www.instagram.com/central.catgrooming/embed" width="100%" height="480" frameborder="0" title="Central Cat's Instagram"></iframe>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      Customer Service Central Cat's • WhatsApp: <strong>0821-1182-7798</strong><br>
+      © 2025 Central Cat's Grooming
+    </div>
+  </footer>
+
+  <!-- Floating WA button -->
+  <a class="wa-float" href="https://wa.me/6282111827798?text=Halo%20Central%20Cat's,%20saya%20ingin%20bertanya." target="_blank" rel="noopener" aria-label="Chat WhatsApp">WA</a>
 
 </body>
 </html>
-Replace index.html with final version
