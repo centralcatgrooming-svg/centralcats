@@ -33,12 +33,16 @@ h3{font-size:18px;margin:0 0 6px}
 .btn--primary{background:var(--accent);color:#fff}
 .btn--cta{background:#25D366;color:#fff}
 
+/* LAYOUT TWEAKS */
+.inner-card{background:linear-gradient(180deg,#fff,#fff);padding:18px;border-radius:16px;box-shadow:0 8px 30px rgba(12,12,12,0.06)}
+.container-center{max-width:var(--container);margin:0 auto;padding:0 20px}
+
 /* HERO */
 .hero{display:flex;gap:32px;align-items:center;padding:48px 0}
 .hero-left{flex:1}
-.hero-right{flex:0 0 420px;display:flex;align-items:center;justify-content:center}
-.hero-card{background:linear-gradient(180deg, #fff,#fff);padding:18px;border-radius:16px;box-shadow:0 8px 30px rgba(12,12,12,0.06);width:100%;max-width:440px}
-.hero img{width:100%;display:block;border-radius:12px}
+.hero-right{flex:0 0 360px;display:flex;align-items:center;justify-content:center}
+.hero-card{border-radius:12px}
+.hero img{width:100%;display:block;border-radius:12px;max-width:360px;}
 
 /* ABOUT */
 .about{display:flex;gap:28px;align-items:center;padding:36px 0}
@@ -54,8 +58,8 @@ h3{font-size:18px;margin:0 0 6px}
 
 /* GALLERY */
 .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.gallery-item{overflow:hidden;border-radius:12px;position:relative}
-.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+.gallery-item{overflow:hidden;border-radius:12px;position:relative;background:#f8f8f8}
+.gallery-item img{width:100%;height:260px;object-fit:cover;display:block;transition:transform .35s ease}
 .gallery-item:hover img{transform:scale(1.04)}
 
 /* TESTIMONIAL */
@@ -83,9 +87,6 @@ h3{font-size:18px;margin:0 0 6px}
 .site-footer{background:#fff;padding:30px 0;border-top:1px solid #f4f4f4}
 .footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:var(--container);margin:0 auto;padding:0 20px}
 
-/* UTILS */
-.kicker{display:inline-block;background:#fff0f2;color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:700;margin-bottom:10px}
-
 /* RESPONSIVE */
 @media(max-width:980px){
   .hero{flex-direction:column-reverse;text-align:center}
@@ -102,6 +103,7 @@ h3{font-size:18px;margin:0 0 6px}
 @media(max-width:520px){
   h1{font-size:24px}
   .gallery-grid{grid-template-columns:1fr}
+  .gallery-item img{height:220px}
 }
 </style>
 </head>
@@ -125,7 +127,7 @@ h3{font-size:18px;margin:0 0 6px}
 <!-- HERO -->
 <section class="hero section section--padded">
   <div class="container hero-left">
-    <div class="hero-card">
+    <div class="inner-card hero-card">
       <h1>Central Cat’s — Grooming & Petshop Tangerang</h1>
       <p class="muted">Petshop lengkap + grooming profesional dengan standar kebersihan tinggi. Kami menerima kucing agresif, penanganan jamur & kutu.</p>
       <div style="margin-top:14px;display:flex;gap:12px;flex-wrap:wrap">
@@ -136,7 +138,8 @@ h3{font-size:18px;margin:0 0 6px}
   </div>
 
   <div class="hero-right">
-    <img src="hero-maskot.png" alt="Maskot Central Cat's">
+    <!-- TRANSPARENT HERO MASKOT -->
+    <img src="hero-maskot_transparent.png" alt="Maskot Central Cat's">
   </div>
 </section>
 
@@ -147,7 +150,7 @@ h3{font-size:18px;margin:0 0 6px}
     <p class="muted" style="margin-top:8px">Central Cat’s adalah petshop lengkap yang menyediakan makanan, pasir, vitamin, aksesoris, dan layanan grooming profesional di Tangerang.</p>
   </div>
   <div style="max-width:320px">
-    <img src="maskot-about.png" alt="maskot about">
+    <img src="maskot-about_transparent.png" alt="maskot about">
   </div>
 </section>
 
@@ -175,7 +178,7 @@ h3{font-size:18px;margin:0 0 6px}
     </div>
 
     <div>
-      <img src="maskot-about.png" alt="maskot" style="width:100%;border-radius:12px">
+      <img src="maskot-about_transparent.png" alt="maskot" style="width:100%;border-radius:12px">
     </div>
   </div>
 </section>
@@ -195,7 +198,7 @@ h3{font-size:18px;margin:0 0 6px}
 <!-- GALLERY INTRO -->
 <section class="section" style="padding-top:18px;padding-bottom:18px">
   <div class="section-inner" style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
-    <img src="maskot-mandi.png" alt="maskot mandi" style="width:160px;border-radius:12px">
+    <img src="maskot-mandi_transparent.png" alt="maskot mandi" style="width:160px;border-radius:12px">
     <div>
       <h2>Lihat Hasil Grooming</h2>
       <p class="muted" style="margin-top:6px">Kumpulan before photos hasil grooming. (After photo akan ditambahkan kemudian.)</p>
@@ -209,12 +212,12 @@ h3{font-size:18px;margin:0 0 6px}
   <div class="section-inner">
     <h2 class="section-title">Gallery Grooming</h2>
     <div class="gallery-grid" style="margin-top:12px">
-      <div class="gallery-item"><img src="groom-white-before.png" alt=""></div>
-      <div class="gallery-item"><img src="groom-white-before.png" alt=""></div>
-      <div class="gallery-item"><img src="groom-orange-before.png" alt=""></div>
-      <div class="gallery-item"><img src="groom-orange-before.png" alt=""></div>
-      <div class="gallery-item"><img src="groom-cream-before.png" alt=""></div>
-      <div class="gallery-item"><img src="groom-cream-before.png" alt=""></div>
+      <div class="gallery-item"><img src="groom-white-before.png" alt="Groom white before"></div>
+      <div class="gallery-item"><img src="groom-orange-before.png" alt="Groom orange before"></div>
+      <div class="gallery-item"><img src="groom-cream-before.png" alt="Groom cream before"></div>
+      <div class="gallery-item"><img src="groom-white-before.png" alt="Groom white before small"></div>
+      <div class="gallery-item"><img src="groom-orange-before.png" alt="Groom orange before small"></div>
+      <div class="gallery-item"><img src="groom-cream-before.png" alt="Groom cream before small"></div>
     </div>
   </div>
 </section>
@@ -235,7 +238,7 @@ h3{font-size:18px;margin:0 0 6px}
 <section class="section">
   <div class="section-inner">
     <div class="video-flex">
-      <img src="maskot-megaphone.png" class="video-maskot" alt="">
+      <img src="maskot-megaphone_transparent.png" class="video-maskot" alt="">
       <div style="flex:1">
         <h2>Kulik Yuk!</h2>
         <p class="muted" style="margin-top:6px">Video terbaru dari Central Cat’s.</p>
@@ -309,7 +312,7 @@ h3{font-size:18px;margin:0 0 6px}
     </div>
     <div>
       <h4>Jam Operasional</h4>
-      <p class="muted" style="margin-top:8px">Toko: 08.00–21.00</p>
+      <p class="muted">Toko: 08.00–21.00</p>
       <p class="muted">Grooming: 08.00–17.00</p>
     </div>
   </div>
