@@ -11,91 +11,94 @@
   --accent:#C63E5B;
   --muted:#6b6b6b;
   --radius:12px;
-  --container:1100px;
-  --max-width:1200px;
+  --container:1000px;
+  --max-width:1100px;
   --shadow-strong: 0 18px 40px rgba(2,12,20,0.10);
   --shadow-soft: 0 8px 24px rgba(2,12,20,0.06);
+  --readability: 1.45;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
-body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:#111;line-height:1.55;-webkit-font-smoothing:antialiased}
-.container{max-width:var(--max-width);margin:0 auto;padding:0 22px}
-.section{padding:48px 0}
-.section--tight{padding:28px 0}
+body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:#111;line-height:var(--readability);-webkit-font-smoothing:antialiased}
+.container{max-width:var(--max-width);margin:0 auto;padding:0 20px}
+.section{padding:44px 0}
+.section--tight{padding:24px 0}
 .section .inner{max-width:var(--container);margin:0 auto}
 
 /* TYPO */
-h1{font-size:34px;line-height:1.12;margin:0 0 8px;font-weight:800}
-h2{font-size:22px;margin:0 0 10px}
+h1{font-size:30px;line-height:1.08;margin:0 0 8px;font-weight:800}
+h2{font-size:20px;margin:0 0 10px}
+p{font-size:15px;color:var(--muted);margin:0}
 .muted{color:var(--muted);font-size:15px}
 
 /* BUTTON */
-.btn{display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700}
+.btn{display:inline-block;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700}
 .btn--primary{background:var(--accent);color:#fff;box-shadow:0 6px 18px rgba(198,62,91,0.14)}
 .btn--ghost{background:transparent;color:var(--accent);border:0}
 
 /* HEADER */
-.header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.header{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
 .brand{display:flex;align-items:center;gap:12px}
-.brand img{width:44px;height:44px;border-radius:8px}
+.brand img{width:40px;height:40px;border-radius:8px}
 .nav{display:flex;gap:14px;align-items:center}
 
 /* HERO */
-.hero{display:flex;gap:28px;align-items:center;padding:36px 0;justify-content:space-between}
-.hero-left{flex:1;max-width:760px}
-.hero-card{background:linear-gradient(180deg,#fff,#fff);padding:22px;border-radius:14px;box-shadow:var(--shadow-soft)}
+.hero{display:flex;gap:24px;align-items:center;padding:28px 0;justify-content:space-between}
+.hero-left{flex:1;max-width:720px}
+.hero-card{background:linear-gradient(180deg,#fff,#fff);padding:20px;border-radius:14px;box-shadow:var(--shadow-soft)}
 .hero p{margin:10px 0 0;color:var(--muted)}
-.hero-cta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
-.hero-right{flex:0 0 320px;max-width:320px;display:flex;align-items:flex-end;justify-content:center}
-.hero-right img{width:100%;height:auto;max-height:420px;display:block;object-fit:contain;filter:drop-shadow(0 18px 32px rgba(0,0,0,0.12));transform:translateY(0);transition:transform .45s ease}
+.hero-cta{margin-top:16px;display:flex;gap:12px;flex-wrap:wrap}
+.hero-right{flex:0 0 240px;max-width:240px;display:flex;align-items:flex-end;justify-content:center}
+.hero-right img{width:100%;height:auto;max-height:360px;display:block;object-fit:contain;filter:drop-shadow(0 12px 20px rgba(0,0,0,0.12));transition:transform .35s ease}
 
 /* ABOUT */
-.about{display:flex;gap:28px;align-items:center;padding:28px 0}
+.about{display:flex;gap:20px;align-items:center;padding:18px 0}
 .about-left{flex:1}
-.about-right{width:320px}
+.about-right{width:220px}
 .about-right img{width:100%;border-radius:12px;box-shadow:var(--shadow-soft)}
 
 /* VISI MISI */
-.grid-2{display:grid;grid-template-columns:1fr 320px;gap:28px;align-items:start}
-.card{background:var(--panel);padding:16px;border-radius:12px;box-shadow:var(--shadow-soft)}
+.grid-2{display:grid;grid-template-columns:1fr 300px;gap:20px;align-items:start}
+.card{background:var(--panel);padding:14px;border-radius:12px;box-shadow:var(--shadow-soft)}
 
 /* SERVICES */
-.services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:14px}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
 
 /* GALLERY */
 .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .gallery-item{overflow:hidden;border-radius:12px;background:#fafafa}
-.gallery-item img{width:100%;height:260px;object-fit:cover;display:block;transition:transform .35s ease}
-.gallery-item:hover img{transform:scale(1.03)}
+.gallery-item img{width:100%;height:240px;object-fit:cover;display:block;transition:transform .28s ease}
+.gallery-item:hover img{transform:scale(1.02)}
 
 /* TESTIMONIAL */
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 
 /* VIDEO */
-.video-row{display:flex;gap:20px;align-items:center}
-.video-maskot{width:220px}
-.video-embed iframe{width:100%;height:340px;border-radius:12px;border:0;box-shadow:var(--shadow-soft)}
+.video-row{display:flex;gap:16px;align-items:center}
+.video-maskot{width:180px}
+.video-embed iframe{width:100%;height:300px;border-radius:12px;border:0;box-shadow:var(--shadow-soft)}
 
 /* PRICING */
-.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:12px}
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
 
 /* CTA */
-.cta-wa{background:#fff5f7;padding:18px;border-radius:12px;border:1px solid #fdecef;box-shadow:var(--shadow-soft)}
+.cta-wa{background:#fff5f7;padding:14px;border-radius:12px;border:1px solid #fdecef;box-shadow:var(--shadow-soft)}
 
 /* FOOTER */
-.site-footer{background:#fff;padding:28px 0;border-top:1px solid #f3f3f3}
-.footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:var(--container);margin:0 auto;padding:0 22px}
+.site-footer{background:#fff;padding:24px 0;border-top:1px solid #f3f3f3}
+.footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:var(--container);margin:0 auto;padding:0 20px}
 
 /* UTIL */
 .kicker{display:inline-block;background:#fff0f2;color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:700;margin-bottom:10px}
 
 /* RESPONSIVE */
-@media(max-width:1100px){
-  .hero-right{max-width:300px;flex:0 0 300px}
-  .hero-right img{max-height:380px}
+@media(max-width:1000px){
+  .hero-right{max-width:200px;flex:0 0 200px}
+  .hero-right img{max-height:300px}
+  .about-right{width:180px}
 }
-@media(max-width:980px){
-  .hero{flex-direction:column-reverse;align-items:center;text-align:center;gap:16px}
+@media(max-width:880px){
+  .hero{flex-direction:column-reverse;align-items:center;text-align:center;gap:12px}
   .hero-right{display:none}
   .about{flex-direction:column}
   .grid-2{grid-template-columns:1fr}
@@ -106,8 +109,8 @@ h2{font-size:22px;margin:0 0 10px}
   .video-row{flex-direction:column}
 }
 @media(max-width:520px){
-  h1{font-size:22px}
-  .gallery-item img{height:200px}
+  h1{font-size:20px}
+  .gallery-item img{height:180px}
 }
 </style>
 </head>
@@ -130,7 +133,7 @@ h2{font-size:22px;margin:0 0 10px}
   <div class="hero-left">
     <div class="hero-card">
       <h1>Central Cat’s — Grooming & Petshop Tangerang</h1>
-      <p class="muted">Petshop lengkap + grooming profesional dengan standar kebersihan tinggi. Kami menerima kucing agresif, penanganan jamur & kutu.</p>
+      <p>Petshop lengkap & grooming profesional dengan standar kebersihan tinggi. <strong>Kami siap bantu kebutuhan anabul Anda — grooming, pengobatan jamur/kutu, dan antar-jemput.</strong></p>
       <div class="hero-cta">
         <a class="btn btn--primary" href="https://wa.me/6282111827798">Booking Sekarang</a>
         <a class="btn btn--ghost" href="#pricing">Lihat Paket</a>
@@ -138,7 +141,7 @@ h2{font-size:22px;margin:0 0 10px}
     </div>
   </div>
 
-  <div class="hero-right">
+  <div class="hero-right" aria-hidden="true">
     <img src="hero-maskot_transparent.png" alt="maskot hero">
   </div>
 </section>
@@ -148,22 +151,22 @@ h2{font-size:22px;margin:0 0 10px}
     <div class="about">
       <div class="about-left">
         <h2>Apa Itu Central Cat’s?</h2>
-        <p class="muted">Central Cat’s adalah petshop lengkap yang menyediakan makanan, pasir, vitamin, aksesoris, dan layanan grooming profesional di Tangerang.</p>
+        <p class="muted">Central Cat’s adalah petshop lengkap yang menyediakan makanan, pasir, vitamin, aksesoris, dan layanan grooming profesional di Tangerang. Layanan grooming kami ramah, higienis, dan bisa menerima kucing pemilik yang sulit ditangani.</p>
       </div>
       <div class="about-right">
         <img src="maskot-about_transparent.png" alt="maskot about">
       </div>
     </div>
 
-    <div style="height:18px"></div>
+    <div style="height:14px"></div>
 
     <div class="grid-2">
       <div>
         <div class="card">
           <h3>Visi</h3>
-          <p class="muted">Menjadi pilihan utama bagi pemilik hewan peliharaan dengan menyediakan produk dan layanan berkualitas.</p>
+          <p class="muted">Menjadi pilihan utama bagi pemilik hewan peliharaan di Tangerang dengan produk dan layanan berkualitas.</p>
         </div>
-        <div style="height:14px"></div>
+        <div style="height:12px"></div>
         <div class="card">
           <h3>Misi</h3>
           <ul class="muted">
@@ -171,7 +174,7 @@ h2{font-size:22px;margin:0 0 10px}
             <li>Memberikan layanan pelanggan unggul.</li>
             <li>Edukasi pemilik hewan peliharaan.</li>
             <li>Komitmen pada keberlanjutan.</li>
-            <li>Inovasi berkelanjutan.</li>
+            <li>Inovasi layanan grooming.</li>
           </ul>
         </div>
       </div>
@@ -195,12 +198,12 @@ h2{font-size:22px;margin:0 0 10px}
 </section>
 
 <section class="container section section--tight">
-  <div class="inner" style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
-    <img src="maskot-mandi_transparent.png" alt="maskot mandi" style="width:160px;border-radius:12px;box-shadow:var(--shadow-soft)">
+  <div class="inner" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+    <img src="maskot-mandi_transparent.png" alt="maskot mandi" style="width:140px;border-radius:12px;box-shadow:var(--shadow-soft)">
     <div>
       <h2>Lihat Hasil Grooming</h2>
       <p class="muted">Kumpulan before photos hasil grooming. (After photo akan ditambahkan kemudian.)</p>
-      <div style="margin-top:10px"><a class="btn btn--primary" href="#gallery">See Gallery</a></div>
+      <div style="margin-top:8px"><a class="btn btn--primary" href="#gallery">See Gallery</a></div>
     </div>
   </div>
 </section>
@@ -236,10 +239,10 @@ h2{font-size:22px;margin:0 0 10px}
     <div style="flex:1">
       <h2>Kulik Yuk!</h2>
       <p class="muted">Video terbaru dari Central Cat’s.</p>
-      <div class="video-embed" style="margin-top:10px">
+      <div class="video-embed" style="margin-top:8px">
         <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=central_cats" frameborder="0" allowfullscreen></iframe>
       </div>
-      <div style="margin-top:10px"><a class="btn btn--primary" href="https://www.youtube.com/@central_cats" target="_blank">Kunjungi Channel ▶️</a></div>
+      <div style="margin-top:8px"><a class="btn btn--primary" href="https://www.youtube.com/@central_cats" target="_blank">Kunjungi Channel ▶️</a></div>
     </div>
   </div>
 </section>
@@ -254,7 +257,7 @@ h2{font-size:22px;margin:0 0 10px}
       <div class="card"><h4>Grooming Jamur</h4><p class="muted">Shampoo jamur + cleansing.</p></div>
       <div class="card"><h4>Treatment Kutu</h4><p class="muted">Protokol 3 hari.</p></div>
     </div>
-    <div style="text-align:center;margin-top:14px"><a class="btn btn--primary" href="https://wa.me/6282111827798">Tanyakan Detail Harga</a></div>
+    <div style="text-align:center;margin-top:12px"><a class="btn btn--primary" href="https://wa.me/6282111827798">Tanyakan Detail Harga</a></div>
   </div>
 </section>
 
