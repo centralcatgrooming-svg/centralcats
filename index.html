@@ -251,16 +251,72 @@ footer{
 
 <footer>
   <div class="container footer">
-    <div>
+
+    <div class="footer-col">
       <strong>Central Cat’s</strong><br>
-      <small style="color:var(--muted)">Grooming & Petshop Khusus Kucing</small>
+      <small>Grooming & Petshop Khusus Kucing</small>
     </div>
-    <div>
-      <strong>0821-1182-7798</strong><br>
-      <small style="color:var(--muted)">WhatsApp Konsultasi</small>
+
+    <div class="footer-col">
+      <strong>Jam Operasional</strong><br>
+      <small>
+        🛍️ Toko: 08.00 – 21.00<br>
+        ✂️ Grooming: 08.00 – 17.00<br>
+        ⏰ Batas reservasi: 16.00
+      </small>
     </div>
+
+    <div class="footer-col">
+      <strong>Kontak</strong><br>
+      <small>
+        <a href="https://wa.me/6282111827798">WhatsApp</a><br>
+        <a href="https://www.instagram.com/central.catgrooming" target="_blank">Instagram</a>
+      </small>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <small>© 2020–2026 Central Cat’s. All rights reserved.</small>
   </div>
 </footer>
+.footer{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+
+.footer-col small{
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.footer-col a{
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:500;
+}
+
+.footer-col a:hover{
+  color:var(--primary);
+}
+
+.footer-bottom{
+  margin-top:32px;
+  padding-top:16px;
+  border-top:1px solid #eee;
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* Responsive footer */
+@media(max-width:900px){
+  .footer{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+}
 
 </body>
 </html>
