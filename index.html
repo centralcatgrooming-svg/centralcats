@@ -8,6 +8,46 @@
 <meta name="description" content="Central Cat's Grooming Tangerang — grooming kucing profesional, aman, higienis, dan petshop lengkap. Booking mudah via WhatsApp.">
 
 <style>
+/* =========================
+   ABOUT + GALERI LAYOUT FIX
+   ========================= */
+
+.about-layout{
+  display:grid;
+  grid-template-columns: 320px 1fr;
+  gap:32px;
+  align-items:flex-start;
+}
+
+/* MASKOT */
+.about-maskot img{
+  width:100%;
+  max-width:280px; /* bikin maskot lebih kecil */
+  height:auto;
+  display:block;
+  margin:auto;
+}
+
+/* KONTEN KANAN */
+.about-content{
+  width:100%;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .about-layout{
+    grid-template-columns:1fr;
+  }
+
+  .about-maskot{
+    order:-1;
+    text-align:center;
+  }
+
+  .about-maskot img{
+    max-width:220px;
+  }
+}
 /* === CSS ASLI TIDAK DIUBAH, HANYA COPY UTUH === */
 :root{
   --bg:#ffffff;
@@ -149,38 +189,43 @@ body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial;backgr
 
 <!-- ABOUT + GALLERY -->
 <section class="section" id="about">
-  <div class="split">
-    <div>
+  <div class="split about-layout">
+
+    <!-- MASKOT (KIRI) -->
+    <aside class="about-maskot">
+      <img src="assets%20maskot/maskot-about_transparent.png" alt="Maskot Central Cat’s">
+    </aside>
+
+    <!-- KONTEN (KANAN) -->
+    <div class="about-content">
       <div class="about-card">
         <h3>Tentang Central Cat’s</h3>
-        <p style="color:var(--muted)">
+        <p>
           Central Cat’s adalah petshop & grooming kucing di Tangerang yang fokus pada
           kenyamanan, keamanan, dan hasil grooming yang rapi.
         </p>
       </div>
 
       <h4 style="margin-top:22px">Galeri</h4>
+
       <div class="gallery-grid" id="gallery">
+        <div class="gallery-item">
+          <img src="assets%20toko/Petshop%20Kami.jpg">
+          <div class="caption">Petshop</div>
+        </div>
 
-  <div class="gallery-item">
-    <img src="assets%20toko/Petshop%20Kami.jpg" alt="Petshop">
-    <div class="caption">Petshop</div>
-  </div>
+        <div class="gallery-item">
+          <img src="assets%20grooming/groom-orange-before.png">
+          <div class="caption">Grooming</div>
+        </div>
 
-  <div class="gallery-item">
-    <img src="assets%20grooming/groom-orange-before.png" alt="Grooming">
-    <div class="caption">Grooming</div>
-  </div>
+        <div class="gallery-item">
+          <img src="assets%20toko/Produk%20Lengkap.jpg">
+          <div class="caption">Produk</div>
+        </div>
+      </div>
+    </div>
 
-  <div class="gallery-item">
-    <img src="assets%20toko/Produk%20Lengkap.jpg" alt="Produk">
-    <div class="caption">Produk</div>
-  </div>
-</div>
-</div>
-    <aside>
-      <img src="assets maskot/hero-maskot_transparent.png" alt="Maskot Central Cat's">
-    </aside>
   </div>
 </section>
 
