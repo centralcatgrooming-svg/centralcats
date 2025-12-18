@@ -1,126 +1,147 @@
 <!doctype html>
 <html lang="id">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Central Cat's Grooming Tangerang | Grooming Kucing & Petshop</title>
-
-<meta name="description" content="Central Cat's Grooming Tangerang — grooming kucing profesional, aman, higienis, dan petshop lengkap. Booking mudah via WhatsApp.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Central Cat’s Grooming Tangerang</title>
+<meta name="description" content="Central Cat’s Grooming & Petshop Kucing Tangerang. Aman, higienis, dan profesional.">
 
 <style>
-/* =========================
-   ABOUT + GALERI LAYOUT FIX
-   ========================= */
+:root{
+  --primary:#f04b6e;
+  --muted:#6b6b6b;
+  --wa:#25D366;
+  --max:1100px;
+  --card:0 8px 26px rgba(0,0,0,.06);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  background:#fff;
+  color:#111;
+  line-height:1.55
+}
+.container{max-width:var(--max);margin:auto;padding:0 20px}
+.section{padding:56px 0}
 
-.about-layout{
-  display:grid;
-  grid-template-columns: 320px 1fr;
-  gap:32px;
-  align-items:flex-start;
+/* HEADER */
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 0
+}
+.brand{display:flex;gap:12px;align-items:center}
+.brand img{width:46px;height:46px;border-radius:8px}
+.nav a{
+  margin-left:14px;
+  text-decoration:none;
+  color:#111;
+  font-weight:600
 }
 
-/* MASKOT */
+/* HERO */
+.hero{
+  display:grid;
+  grid-template-columns:1fr 260px;
+  gap:32px;
+  align-items:center
+}
+.hero h1{
+  font-size:38px;
+  line-height:1.1;
+  margin:0
+}
+.hero p{color:var(--muted)}
+.btn{
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:999px;
+  font-weight:700;
+  text-decoration:none
+}
+.btn-primary{background:var(--primary);color:#fff}
+
+/* ABOUT + GALERI */
+.about-wrap{
+  display:grid;
+  grid-template-columns:260px 1fr;
+  gap:32px;
+  align-items:flex-start
+}
 .about-maskot img{
   width:100%;
-  max-width:280px; /* bikin maskot lebih kecil */
-  height:auto;
-  display:block;
-  margin:auto;
+  max-width:220px;
+  display:block
+}
+.about-card{
+  background:#fff;
+  padding:20px;
+  border-radius:14px;
+  box-shadow:var(--card)
+}
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:18px
+}
+.gallery-item{
+  position:relative;
+  border-radius:12px;
+  overflow:hidden
+}
+.gallery-item img{
+  width:100%;
+  height:200px;
+  object-fit:cover
+}
+.caption{
+  position:absolute;
+  bottom:10px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(0,0,0,.65);
+  color:#fff;
+  padding:6px 14px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:600
 }
 
-/* KONTEN KANAN */
-.about-content{
-  width:100%;
+/* FOOTER */
+.footer{
+  background:#fafafa;
+  padding:32px 0;
+  margin-top:40px
+}
+.footer-wrap{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:16px
 }
 
 /* RESPONSIVE */
 @media(max-width:900px){
-  .about-layout{
+  .hero{
     grid-template-columns:1fr;
+    text-align:center
   }
-
+  .about-wrap{
+    grid-template-columns:1fr
+  }
   .about-maskot{
-    order:-1;
-    text-align:center;
+    text-align:center
   }
-
-  .about-maskot img{
-    max-width:220px;
+  .gallery{
+    grid-template-columns:1fr 1fr
   }
-}
-/* === CSS ASLI TIDAK DIUBAH, HANYA COPY UTUH === */
-:root{
-  --bg:#ffffff;
-  --primary:#f04b6e;
-  --muted:#6b6b6b;
-  --wa:#25D366;
-  --max-width:1100px;
-  --radius:14px;
-  --shadow: 0 14px 40px rgba(2,10,20,0.08);
-  --card-shadow: 0 8px 26px rgba(2,10,20,0.06);
-}
-*{box-sizing:border-box}
-body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial;background:var(--bg);color:#111;line-height:1.55}
-.container{max-width:var(--max-width);margin:0 auto;padding:0 20px}
-
-/* HEADER */
-.header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
-.brand{display:flex;gap:12px;align-items:center}
-.brand img{width:48px;height:48px;border-radius:8px;object-fit:cover}
-.nav{display:flex;gap:14px;align-items:center}
-
-/* HERO */
-.hero{display:flex;gap:32px;align-items:center;padding:36px 0}
-.hero-left{flex:1}
-.h-head{font-size:38px;line-height:1.1;margin:0 0 14px;font-weight:900}
-.h-sub{color:var(--muted);margin:0 0 22px;font-size:16px}
-.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-block;padding:12px 18px;border-radius:999px;text-decoration:none;font-weight:700}
-.btn-primary{background:var(--primary);color:#fff}
-.hero-right{width:260px}
-.maskot{width:100%;filter:drop-shadow(0 16px 36px rgba(0,0,0,0.12))}
-
-/* SECTION */
-.section{padding:42px 0}
-
-/* WHY */
-.features{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.feature{background:#fff;border-radius:12px;padding:18px;text-align:center;box-shadow:var(--card-shadow)}
-
-/* SPLIT */
-.split{display:grid;grid-template-columns:1fr 360px;gap:24px}
-.about-card{background:#fff;padding:18px;border-radius:12px;box-shadow:var(--card-shadow)}
-
-/* GALLERY */
-.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
-.gallery-item{position:relative;border-radius:12px;overflow:hidden}
-.gallery-item img{width:100%;height:200px;object-fit:cover}
-.caption{
-  position:absolute;bottom:12px;left:50%;transform:translateX(-50%);
-  background:rgba(0,0,0,0.65);color:#fff;padding:8px 18px;
-  border-radius:8px;font-weight:600;font-size:14px;
-}
-
-/* PACKET */
-.pack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.pack{background:#fff;padding:14px;border-radius:12px;box-shadow:var(--card-shadow)}
-
-/* TESTI */
-.testi{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.t-card{background:#fff;padding:16px;border-radius:10px;box-shadow:var(--card-shadow)}
-
-/* FOOTER */
-.footer{background:#fafafa;padding:28px 0;border-top:1px solid #eee}
-
-/* RESPONSIVE */
-@media(max-width:1020px){
-  .features,.pack-grid{grid-template-columns:repeat(2,1fr)}
-  .split{grid-template-columns:1fr}
-  .hero{flex-direction:column-reverse;text-align:center}
 }
 @media(max-width:520px){
-  .h-head{font-size:26px}
-  .features,.pack-grid,.testi{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr}
+  .hero h1{font-size:28px}
 }
 </style>
 </head>
@@ -129,75 +150,48 @@ body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial;backgr
 
 <header class="container header">
   <div class="brand">
-    <img <img src="assets logo/logo.png" alt="Central Cat's">
+    <img src="assets%20logo/logo.png" alt="Central Cat’s Logo">
     <div>
-      <div style="font-weight:900">Central Cat's</div>
-      <div style="font-size:12px;color:var(--muted)">Petshop & Grooming Kucing</div>
+      <strong>Central Cat’s</strong><br>
+      <small style="color:var(--muted)">Grooming & Petshop Kucing</small>
     </div>
   </div>
-
   <nav class="nav">
     <a href="#about">About</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#paket">Paket</a>
-    <a class="btn" href="https://wa.me/6282111827798"
-       style="background:var(--wa);color:#fff">Chat Admin</a>
+    <a href="#gallery">Galeri</a>
+    <a class="btn" style="background:var(--wa);color:#fff"
+       href="https://wa.me/6282111827798">
+      WhatsApp
+    </a>
   </nav>
 </header>
 
 <main class="container">
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-left">
-    <div style="display:inline-block;padding:6px 12px;border-radius:999px;background:#fff0f2;color:var(--primary);font-weight:800;margin-bottom:10px">
-      Grooming Kucing • Tangerang
-    </div>
-
-    <h1 class="h-head">
-      Grooming Kucing Profesional,<br>
-      <span style="color:var(--primary)">Aman & Tanpa Paksaan</span>
+<section class="section hero">
+  <div>
+    <h1>Grooming Kucing Profesional,<br>
+      <span style="color:var(--primary)">Aman & Lembut</span>
     </h1>
-
-    <p class="h-sub">
-      Central Cat’s melayani grooming kucing dengan standar higienis, penanganan lembut,
-      dan produk berkualitas. Cocok untuk kucing rumahan hingga agresif.
-    </p>
-
-    <div class="hero-ctas">
-      <a class="btn btn-primary" href="https://wa.me/6282111827798">Booking via WhatsApp</a>
-      <a class="btn" href="#paket" style="border:1px solid #eee">Lihat Paket</a>
-    </div>
+    <p>Perawatan higienis, penanganan sabar, cocok untuk kucing rumahan hingga agresif.</p>
+    <a class="btn btn-primary" href="https://wa.me/6282111827798">
+      Booking Sekarang
+    </a>
   </div>
-
-  <div class="hero-right">
-    <img class="maskot" src="assets/maskot/hero-maskot_transparent.png" alt="">
-  </div>
+  <img src="assets%20maskot/hero-maskot_transparent.png"
+       alt="Maskot Central Cat’s"
+       style="width:100%">
 </section>
 
-<!-- WHY -->
-<section class="section">
-  <h3 style="font-weight:900;margin-bottom:14px">Kenapa Central Cat’s?</h3>
-
-  <div class="features">
-    <div class="feature"><h4>One-stop Petshop</h4><p>Produk lengkap & terpercaya</p></div>
-    <div class="feature"><h4>Groomer Berpengalaman</h4><p>Khusus kucing & aman</p></div>
-    <div class="feature"><h4>Perawatan Khusus</h4><p>Jamur & kutu dengan protokol</p></div>
-    <div class="feature"><h4>Praktis</h4><p>Bisa antar-jemput</p></div>
-  </div>
-</section>
-
-<!-- ABOUT + GALLERY -->
 <section class="section" id="about">
-  <div class="split about-layout">
+  <div class="about-wrap">
 
-    <!-- MASKOT (KIRI) -->
-    <aside class="about-maskot">
-      <img src="assets%20maskot/maskot-about_transparent.png" alt="Maskot Central Cat’s">
-    </aside>
+    <div class="about-maskot">
+      <img src="assets%20maskot/maskot-about_transparent.png"
+           alt="Maskot Central Cat’s">
+    </div>
 
-    <!-- KONTEN (KANAN) -->
-    <div class="about-content">
+    <div>
       <div class="about-card">
         <h3>Tentang Central Cat’s</h3>
         <p>
@@ -206,21 +200,19 @@ body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial;backgr
         </p>
       </div>
 
-      <h4 style="margin-top:22px">Galeri</h4>
+      <h4 style="margin-top:26px">Galeri</h4>
 
-      <div class="gallery-grid" id="gallery">
+      <div class="gallery" id="gallery">
         <div class="gallery-item">
-          <img src="assets%20toko/Petshop%20Kami.jpg">
+          <img src="assets%20toko/Petshop%20Kami.jpg" alt="Petshop Central Cat’s">
           <div class="caption">Petshop</div>
         </div>
-
         <div class="gallery-item">
-          <img src="assets%20grooming/groom-orange-before.png">
+          <img src="assets%20grooming/groom-orange-before.png" alt="Grooming Kucing">
           <div class="caption">Grooming</div>
         </div>
-
         <div class="gallery-item">
-          <img src="assets%20toko/Produk%20Lengkap.jpg">
+          <img src="assets%20toko/Produk%20Lengkap.jpg" alt="Produk Petshop">
           <div class="caption">Produk</div>
         </div>
       </div>
@@ -229,44 +221,19 @@ body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial;backgr
   </div>
 </section>
 
-<!-- PAKET -->
-<section class="section" id="paket">
-  <h3 style="font-weight:900">Paket Grooming</h3>
-
-  <div class="pack-grid">
-    <div class="pack"><strong>Daily Grooming</strong><p>Perawatan rutin</p></div>
-    <div class="pack"><strong>Beauty Grooming</strong><p>Premium & styling</p></div>
-    <div class="pack"><strong>Grooming Jamur</strong><p>Shampoo khusus</p></div>
-    <div class="pack"><strong>Treatment Kutu</strong><p>Protokol aman</p></div>
-  </div>
-
-  <div style="text-align:center;margin-top:18px">
-    <a class="btn btn-primary" href="https://wa.me/6282111827798">Tanya Harga & Booking</a>
-  </div>
-</section>
-
-<!-- TESTI -->
-<section class="section">
-  <h3 style="font-weight:900">Testimoni Pelanggan</h3>
-
-  <div class="testi">
-    <div class="t-card">“Kucing agresif tapi di sini ditangani dengan sabar.” ⭐⭐⭐⭐⭐</div>
-    <div class="t-card">“Hasil grooming rapi & wangi.” ⭐⭐⭐⭐⭐</div>
-    <div class="t-card">“Admin cepat & ramah.” ⭐⭐⭐⭐⭐</div>
-  </div>
-</section>
-
 </main>
 
 <footer class="footer">
-  <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px">
+  <div class="container footer-wrap">
     <div>
-      <strong>Central Cat’s</strong>
-      <div style="font-size:13px;color:var(--muted)">Grooming & Petshop</div>
+      <strong>Central Cat’s</strong><br>
+      <small style="color:var(--muted)">
+        Melayani berbagai area – pilih cabang terdekat
+      </small>
     </div>
     <div>
       <strong>0821-1182-7798</strong><br>
-      <span style="font-size:13px;color:var(--muted)">Tangerang</span>
+      <small style="color:var(--muted)">WhatsApp Booking</small>
     </div>
   </div>
 </footer>
