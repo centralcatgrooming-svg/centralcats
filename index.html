@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Central Cat’s Grooming Tangerang</title>
-<meta name="description" content="Central Cat’s Grooming & Petshop khusus kucing di Tangerang. Aman, higienis, dan profesional.">
+
+<title>Central Cat’s Petshop & Grooming Kucing | Tangerang</title>
+<meta name="description" content="Central Cat’s adalah petshop lengkap untuk semua hewan peliharaan di Tangerang, dengan layanan grooming profesional khusus kucing yang aman, higienis, dan berpengalaman.">
 
 <style>
 :root{
@@ -47,6 +48,11 @@ header{border-bottom:1px solid #eee}
   height:44px;
   border-radius:10px;
 }
+.brand strong{line-height:1.2}
+.brand-tagline{
+  font-size:12px;
+  color:var(--muted);
+}
 .nav a{
   margin-left:16px;
   font-weight:600;
@@ -76,7 +82,7 @@ header{border-bottom:1px solid #eee}
 }
 .hero p{
   color:var(--muted);
-  max-width:520px;
+  max-width:560px;
 }
 .hero img{
   width:100%;
@@ -136,10 +142,26 @@ footer{
   padding:40px 0;
 }
 .footer{
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:16px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+.footer-col small{
+  color:var(--muted);
+  line-height:1.6;
+}
+.footer-col a{
+  color:var(--muted);
+  font-weight:500;
+}
+.footer-col a:hover{color:var(--primary)}
+.footer-bottom{
+  margin-top:32px;
+  padding-top:16px;
+  border-top:1px solid #eee;
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
 }
 
 /* RESPONSIVE */
@@ -156,68 +178,14 @@ footer{
   .gallery{
     grid-template-columns:1fr 1fr;
   }
-}
-@media(max-width:520px){
-  .hero h1{font-size:30px}
-  .gallery{grid-template-columns:1fr}
-}
-
-/* ===== FOOTER TAMBAHAN ===== */
-.footer{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:24px;
-}
-
-.footer-col small{
-  color:var(--muted);
-  line-height:1.6;
-}
-
-.footer-col a{
-  color:var(--muted);
-  text-decoration:none;
-  font-weight:500;
-}
-
-.footer-col a:hover{
-  color:var(--primary);
-}
-
-.footer-bottom{
-  margin-top:32px;
-  padding-top:16px;
-  border-top:1px solid #eee;
-  text-align:center;
-  color:var(--muted);
-  font-size:13px;
-}
-
-@media(max-width:900px){
   .footer{
     grid-template-columns:1fr;
     text-align:center;
   }
-  .brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
 }
-
-.brand div{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-
-.brand strong{
-  line-height:1.2;
-}
-.brand-tagline{
-  font-size:12px;
-  color:var(--muted);
-  display:block;
-  margin-top:2px;
+@media(max-width:520px){
+  .hero h1{font-size:30px}
+  .gallery{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -227,14 +195,14 @@ footer{
 <header>
   <div class="container header">
     <div class="brand">
-  <img src="assets%20logo/logo.png" alt="Central Cat’s">
-  <div>
-    <strong>Central Cat’s</strong><br>
-    <small class="brand-tagline">Yang berkualitas ada di sini</small>
-  </div>
-</div>
+      <img src="assets%20logo/logo.png" alt="Central Cat’s">
+      <div>
+        <strong>Central Cat’s</strong><br>
+        <small class="brand-tagline">Yang berkualitas ada di sini</small>
+      </div>
+    </div>
     <nav class="nav">
-      <a href="#about">About</a>
+      <a href="#about">Tentang</a>
       <a href="#gallery">Galeri</a>
       <a class="btn btn-primary"
          href="https://docs.google.com/forms/d/e/1FAIpQLSc1JyC-PvP0J13kGJ3--x-R8D_iJgvGHwBVEZvVSpM476MPNw/viewform"
@@ -250,12 +218,12 @@ footer{
 <section class="hero">
   <div>
     <h1>
-      Grooming Kucing Profesional<br>
+      Petshop Lengkap & Grooming Kucing Profesional<br>
       <span style="color:var(--primary)">Tenang, Aman, dan Higienis</span>
     </h1>
     <p>
-      Central Cat’s fokus pada perawatan kucing dengan pendekatan lembut,
-      alat steril, dan groomer berpengalaman.
+      Central Cat’s menyediakan petshop untuk berbagai kebutuhan hewan peliharaan,
+      dengan layanan grooming yang difokuskan khusus untuk kucing oleh groomer berpengalaman.
     </p>
 
     <a class="btn btn-primary"
@@ -269,16 +237,17 @@ footer{
     </div>
   </div>
 
-  <img src="assets%20maskot/hero-maskot_transparent.png" alt="Central Cat’s Grooming">
+  <img src="assets%20maskot/hero-maskot_transparent.png" alt="Grooming Kucing Central Cat’s">
 </section>
 
 <section id="about" class="about">
   <div class="container about-grid">
     <div class="about-card">
-      <h3>Tentang Central Cat’s</h3>
+      <h2>Tentang Central Cat’s</h2>
       <p>
-        Central Cat’s adalah petshop & grooming khusus kucing di Tangerang.
-        Kami mengutamakan kenyamanan anabul, hasil rapi, dan pelayanan jujur.
+        Central Cat’s adalah petshop yang melayani berbagai kebutuhan hewan peliharaan,
+        dengan layanan grooming yang difokuskan khusus untuk kucing.
+        Kami mengutamakan kenyamanan anabul, hasil rapi, serta pelayanan yang jujur dan bertanggung jawab.
       </p>
     </div>
 
@@ -288,22 +257,22 @@ footer{
 
 <section id="gallery">
   <div class="gallery-title">
-    <h3>Galeri</h3>
-    <p style="color:var(--muted)">Beberapa hasil grooming & aktivitas kami</p>
+    <h2>Galeri</h2>
+    <p style="color:var(--muted)">Beberapa hasil grooming dan aktivitas petshop kami</p>
   </div>
 
   <div class="gallery">
     <img src="assets%20toko/Petshop%20Kami.jpg" alt="Petshop Central Cat’s">
-    <img src="assets%20grooming/groom-orange-before.png" alt="Grooming Kucing">
-    <img src="assets%20toko/Produk%20Lengkap.jpg" alt="Produk Petshop">
+    <img src="assets%20grooming/groom-orange-before.png" alt="Grooming Kucing Central Cat’s">
+    <img src="assets%20toko/Produk%20Lengkap.jpg" alt="Produk Petshop Central Cat’s">
   </div>
 </section>
 
 <section class="branch-cta">
-  <h3>Melayani Berbagai Area</h3>
+  <h2>Melayani Berbagai Area</h2>
   <p>
-    Central Cat’s akan terus membuka cabang baru.
-    Pilih cabang terdekat untuk informasi lokasi dan booking.
+    Central Cat’s terus berkembang dengan membuka cabang di berbagai lokasi.
+    Silakan pilih cabang terdekat untuk informasi detail dan reservasi.
   </p>
   <a class="btn btn-primary" href="cabang.html">Lihat Cabang</a>
 </section>
@@ -315,7 +284,10 @@ footer{
 
     <div class="footer-col">
       <strong>Central Cat’s</strong><br>
-      <small>Grooming & Petshop Khusus Kucing</small>
+      <small>
+        Petshop untuk berbagai kebutuhan hewan peliharaan<br>
+        Grooming profesional khusus kucing
+      </small>
     </div>
 
     <div class="footer-col">
@@ -341,7 +313,6 @@ footer{
     <small>© 2020–2026 Central Cat’s. All rights reserved.</small>
   </div>
 </footer>
-
 
 </body>
 </html>
