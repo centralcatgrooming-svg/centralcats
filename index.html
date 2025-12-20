@@ -70,9 +70,10 @@ header{border-bottom:1px solid #eee}
   color:#fff;
 }
 
-/* ======================
-   HERO SECTION (FINAL)
-   ====================== */
+/* =========================
+   HERO SECTION — FINAL
+   ========================= */
+
 .hero{
   display:grid;
   grid-template-columns:1fr 420px;
@@ -80,6 +81,7 @@ header{border-bottom:1px solid #eee}
   align-items:center;
 }
 
+/* TEXT */
 .hero h1{
   font-size:40px;
   line-height:1.15;
@@ -92,22 +94,32 @@ header{border-bottom:1px solid #eee}
   margin:0 0 24px;
 }
 
+/* IMAGE */
 .hero img{
   width:100%;
   border-radius:var(--radius);
+  margin-left:-20px; /* optical balance desktop */
 }
 
-/* HERO RESPONSIVE */
+/* =========================
+   HERO RESPONSIVE
+   ========================= */
+
 @media(max-width:900px){
   .hero{
     grid-template-columns:1fr;
-    gap:32px;
+    gap:24px;
     text-align:center;
   }
 
   .hero p{
     margin-left:auto;
     margin-right:auto;
+  }
+
+  .hero img{
+    max-width:260px;
+    margin:0 auto;
   }
 }
 
