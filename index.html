@@ -117,8 +117,8 @@ header{border-bottom:1px solid #eee}
 }
 .gallery{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
+  grid-template-columns:1.2fr 1.6fr 1.2fr;
+  gap:24px;
 }
 .gallery img{
   width:100%;
@@ -126,15 +126,25 @@ header{border-bottom:1px solid #eee}
   object-fit: cover;
   border-radius:12px;
 }
-.gallery-item{
-  margin:0;
-}
 
 .gallery-item figcaption{
-  margin-top:8px;
-  font-size:14px;
+  margin-top:10px;
+  font-size:15px;
   color:var(--muted);
   text-align:center;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .gallery{
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+}
+@media(max-width:520px){
+  .gallery{
+    grid-template-columns:1fr;
+  }
 }
 
 /* CABANG CTA */
