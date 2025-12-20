@@ -242,6 +242,64 @@ header{border-bottom:1px solid #eee}
   line-height:1.4;
 }
 
+/* =========================
+   GROOMING SLIDER
+   ========================= */
+
+.gallery-slider .slider{
+  position:relative;
+  width:100%;
+  aspect-ratio:3 / 4;
+  overflow:hidden;
+  border-radius:16px;
+}
+
+.gallery-slider .slider img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition:opacity .4s ease;
+}
+
+.gallery-slider .slider img.active{
+  opacity:1;
+}
+
+.slider-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,.4);
+  color:#fff;
+  border:none;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  font-size:20px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.slider-btn.prev{left:10px}
+.slider-btn.next{right:10px}
+
+.slider-btn:hover{
+  background:rgba(0,0,0,.6);
+}
+
+@media(max-width:520px){
+  .slider-btn{
+    width:32px;
+    height:32px;
+    font-size:18px;
+  }
+}
+  
 /* RESPONSIVE */
 @media(max-width:900px){
  .hero{
@@ -397,11 +455,25 @@ dengan proses grooming yang aman dan pendekatan lembut khusus untuk kucing.
     <figcaption>Tampak depan petshop Central Cat’s</figcaption>
   </figure>
 
-  <figure class="gallery-item">
+  <figure class="gallery-item gallery-slider">
+
+  <div class="slider">
+    <img src="assets%20grooming/groom-cream-before.png"
+         alt="Hasil grooming kucing warna cream di Central Cat’s"
+         class="active">
+
     <img src="assets%20grooming/groom-orange-before.png"
-         alt="Before after grooming kucing di Central Cat’s Tangerang">
-    <figcaption>Hasil grooming kucing sebelum & sesudah</figcaption>
-  </figure>
+         alt="Hasil grooming kucing warna orange di Central Cat’s">
+
+    <img src="assets%20grooming/groom-white-before.png"
+         alt="Hasil grooming kucing warna putih di Central Cat’s">
+
+    <button class="slider-btn prev" aria-label="Sebelumnya">‹</button>
+    <button class="slider-btn next" aria-label="Selanjutnya">›</button>
+  </div>
+
+  <figcaption>Hasil grooming kucing di Central Cat’s</figcaption>
+</figure>
 
   <figure class="gallery-item">
     <img src="assets%20toko/Produk%20Lengkap.jpg"
@@ -456,6 +528,29 @@ dengan proses grooming yang aman dan pendekatan lembut khusus untuk kucing.
     <small>© 2020–2026 Central Cat’s. All rights reserved.</small>
   </div>
 </footer>
+<script>
+document.querySelectorAll('.gallery-slider').forEach(slider => {
+  const images = slider.querySelectorAll('img');
+  const prevBtn = slider.querySelector('.prev');
+  const nextBtn = slider.querySelector('.next');
+  let index = 0;
+
+  function showImage(i){
+    images.forEach(img => img.classList.remove('active'));
+    images[i].classList.add('active');
+  }
+
+  prevBtn.addEventListener('click', () => {
+    index = (index - 1 + images.length) % images.length;
+    showImage(index);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    index = (index + 1) % images.length;
+    showImage(index);
+  });
+});
+</script>
 
 </body>
 </html>
