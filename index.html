@@ -110,28 +110,35 @@ header{border-bottom:1px solid #eee}
   max-width:360px;
 }
 
-/* GALLERY */
-.gallery-title{
-  text-align:center;
-  margin-bottom:32px;
-}
 .gallery{
   display:grid;
-  grid-template-columns:1.2fr 1.6fr 1.2fr;
-  gap:24px;
+  grid-template-columns:repeat(3, 1fr);
+  gap:28px;
+  align-items:start;
 }
-.gallery img{
+
+.gallery-item{
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.gallery-item img{
   width:100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  border-radius:12px;
+  aspect-ratio:3 / 4;
+  object-fit:cover;
+  border-radius:16px;
+  display:block;
 }
 
 .gallery-item figcaption{
-  margin-top:10px;
-  font-size:15px;
+  margin-top:12px;
+  max-width:90%;
+  font-size:14px;
   color:var(--muted);
   text-align:center;
+  line-height:1.4;
 }
 
 /* RESPONSIVE */
