@@ -5,26 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Central Cat’s Petshop & Grooming Kucing | Tangerang</title>
-<meta name="description" content="Central Cat’s adalah petshop lengkap di Tangerang dengan layanan grooming profesional khusus kucing yang aman dan higienis.">
+<meta name="description" content="Central Cat’s adalah petshop lengkap untuk semua hewan peliharaan di Tangerang, dengan layanan grooming profesional khusus kucing yang aman, higienis, dan berpengalaman.">
 
 <style>
-
-/* =========================
-   ROOT
-========================= */
-
 :root{
-  --primary:#e2556b;
+  --primary:#f04b6e;
   --text:#111;
   --muted:#6b6b6b;
   --bg:#ffffff;
   --soft:#fafafa;
-  --max:1150px;
-  --radius:18px;
+  --max:1100px;
+  --radius:14px;
+  --shadow:0 8px 28px rgba(0,0,0,.06);
 }
-
 *{box-sizing:border-box}
-
 body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
@@ -32,273 +26,147 @@ body{
   color:var(--text);
   line-height:1.6;
 }
-
-.container{
-  max-width:var(--max);
-  margin:auto;
-  padding:0 24px;
-}
-
+.container{max-width:var(--max);margin:auto;padding:0 20px}
+section{padding:72px 0}
 a{text-decoration:none;color:inherit}
 
-/* =========================
-   HEADER
-========================= */
-
-header{
-  border-bottom:1px solid #eee;
-  background:#fff;
-}
-
+/* HEADER */
+header{border-bottom:1px solid #eee}
 .header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:20px 0;
+  padding:18px 0;
 }
-
 .brand{
   display:flex;
+  gap:12px;
   align-items:center;
-  gap:14px;
 }
-
 .brand img{
   width:44px;
   height:44px;
-  border-radius:12px;
+  border-radius:10px;
 }
-
-.brand-text strong{
+.brand strong{
   display:block;
-  font-size:16px;
-  margin-bottom:2px;
+  line-height:1.15;
 }
-
-.brand-text span{
-  font-size:13px;
+.brand-tagline{
+  font-size:12px;
   color:var(--muted);
 }
-
-.nav{
-  display:flex;
-  gap:28px;
-  align-items:center;
-}
-
 .nav a{
+  margin-left:16px;
   font-weight:600;
 }
-
 .btn{
-  padding:12px 22px;
-  border-radius:999px;
-  font-weight:600;
   display:inline-block;
+  padding:12px 20px;
+  border-radius:999px;
+  font-weight:700;
 }
-
 .btn-primary{
   background:var(--primary);
   color:#fff;
 }
 
-/* =========================
-   HERO
-========================= */
-
+/* HERO */
 .hero{
   display:grid;
   grid-template-columns:1fr 420px;
-  gap:60px;
+  gap:48px;
   align-items:center;
-  padding:90px 0;
 }
-
 .hero h1{
-  font-size:48px;
-  line-height:1.1;
-  margin:0 0 20px;
+  font-size:40px;
+  line-height:1.15;
+  margin:0 0 18px;
 }
-
-.hero h1 span{
-  display:block;
-  margin-top:16px;
-  color:var(--primary);
-}
-
 .hero p{
   color:var(--muted);
   max-width:560px;
-  margin-bottom:28px;
+  margin:0 0 24px;
 }
-
 .hero img{
   width:100%;
-  max-width:380px;
-  margin-left:auto;
+  border-radius:var(--radius);
+}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;text-align:center}
+  .hero p{margin:auto}
+}
+@media(max-width:520px){
+  .hero h1{font-size:30px}
 }
 
-/* =========================
-   GALLERY
-========================= */
-
-.gallery-section{
-  padding:80px 0;
-  text-align:center;
-}
-
-.gallery-section h2{
-  margin-bottom:10px;
-}
-
-.gallery-section p{
-  color:var(--muted);
-  margin-bottom:50px;
-}
-
-.gallery-grid{
+/* ABOUT */
+.about{background:var(--soft)}
+.about-grid{
   display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:40px;
+  grid-template-columns:1fr 1fr;
+  gap:48px;
+  align-items:center;
 }
-
-.gallery-item img{
-  width:100%;
+.about-card{
+  background:#fff;
+  padding:36px;
   border-radius:20px;
-  transition:.3s;
+  box-shadow:var(--shadow);
+}
+.about img{
+  width:100%;
+  max-width:360px;
+  margin:auto;
+}
+@media(max-width:900px){
+  .about-grid{grid-template-columns:1fr;text-align:center}
 }
 
-.gallery-item img:hover{
-  transform:scale(1.03);
-}
-
-.gallery-item p{
-  margin-top:14px;
-  color:var(--muted);
-}
-
-/* =========================
-   GROOMING PREMIUM
-========================= */
-
-.groom-section{
-  padding:90px 0;
-  text-align:center;
-  background:var(--soft);
-}
-
-.groom-grid{
+/* GALLERY */
+.gallery-title{text-align:center;margin-bottom:40px}
+.gallery{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:30px;
-  margin:50px 0;
+  gap:28px;
 }
-
-.groom-grid img{
+.gallery img{
   width:100%;
-  border-radius:20px;
-  transition:.4s;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  border-radius:16px;
+}
+@media(max-width:900px){
+  .gallery{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){
+  .gallery{grid-template-columns:1fr}
 }
 
-.groom-grid img:hover{
-  transform:scale(1.04);
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-.footer-section{
-  background:#fafafa;
-  padding:80px 0 30px;
+/* FOOTER */
+footer{
   border-top:1px solid #eee;
+  padding:56px 0 24px;
 }
-
-.footer-grid{
+.footer{
   display:grid;
   grid-template-columns:2fr 1fr 1fr;
-  gap:60px;
+  gap:40px;
 }
-
-.footer-col h3{
-  margin-bottom:16px;
-}
-
-.footer-col h4{
-  margin-bottom:14px;
-}
-
-.footer-col p{
+.footer small{
   color:var(--muted);
-  line-height:1.7;
 }
-
-.footer-col ul{
-  list-style:none;
-  padding:0;
-}
-
-.footer-col li{
-  margin-bottom:10px;
-  color:var(--muted);
-  font-size:14px;
-}
-
-.footer-col a:hover{
-  color:var(--primary);
-}
-
 .footer-bottom{
-  margin-top:60px;
+  margin-top:40px;
   padding-top:20px;
   border-top:1px solid #eee;
   text-align:center;
   font-size:13px;
   color:var(--muted);
 }
-
-/* =========================
-   RESPONSIVE
-========================= */
-
 @media(max-width:900px){
-
-  .hero{
-    grid-template-columns:1fr;
-    text-align:center;
-  }
-
-  .hero img{
-    margin:40px auto 0;
-    max-width:260px;
-  }
-
-  .gallery-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .groom-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .footer-grid{
-    grid-template-columns:1fr;
-    text-align:center;
-  }
+  .footer{grid-template-columns:1fr;text-align:center}
 }
-
-@media(max-width:520px){
-
-  .hero h1{
-    font-size:34px;
-  }
-
-  .gallery-grid,
-  .groom-grid{
-    grid-template-columns:1fr;
-  }
-}
-
 </style>
 </head>
 
@@ -307,21 +175,16 @@ header{
 <header>
   <div class="container header">
     <div class="brand">
-      <img src="assets/logo/logo.png" alt="Central Cat’s Logo">
-      <div class="brand-text">
+      <img src="assets/logo/logo.png" alt="Central Cat’s">
+      <div>
         <strong>Central Cat’s</strong>
-        <span>Petshop & Grooming Kucing</span>
+        <small class="brand-tagline">Yang berkualitas ada di sini</small>
       </div>
     </div>
-
-    <div class="nav">
+    <nav class="nav">
+      <a href="#about">Tentang</a>
       <a href="#gallery">Galeri</a>
-      <a href="#grooming">Grooming</a>
-      <a href="cabang.html">Cabang</a>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc1JyC-PvP0J13kGJ3--x-R8D_iJgvGHwBVEZvVSpM476MPNw/viewform" class="btn btn-primary" target="_blank">
-        Booking
-      </a>
-    </div>
+    </nav>
   </div>
 </header>
 
@@ -330,115 +193,72 @@ header{
 <section class="hero">
   <div>
     <h1>
-      Petshop Lengkap & Grooming Kucing Profesional
-      <span>Tenang, Aman, Higienis</span>
+      Petshop Lengkap & Grooming Kucing Profesional<br>
+      <span style="color:var(--primary)">Tenang, Aman, dan Higienis</span>
     </h1>
-
     <p>
-      Central Cat’s menyediakan berbagai kebutuhan hewan peliharaan di Tangerang
-      dengan layanan grooming khusus kucing oleh groomer berpengalaman.
+      Central Cat’s menyediakan petshop lengkap serta layanan grooming profesional khusus kucing dengan pendekatan yang aman dan lembut.
     </p>
-
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSc1JyC-PvP0J13kGJ3--x-R8D_iJgvGHwBVEZvVSpM476MPNw/viewform"
-       target="_blank"
-       class="btn btn-primary">
-       Booking Sekarang
+    <a class="btn btn-primary" href="https://wa.me/6282111827798" target="_blank">
+      Booking Grooming
     </a>
   </div>
-
-  <img src="assets/maskot/hero-maskot-transparent.png"
-       alt="Maskot Central Cat’s">
+  <img src="assets/maskot/hero-maskot-transparent.png" alt="Grooming Kucing Central Cat’s">
 </section>
 
-<section id="gallery" class="gallery-section">
-  <h2>Galeri</h2>
-  <p>Beberapa aktivitas dan tampilan petshop kami</p>
-
-  <div class="gallery-grid">
-    <div class="gallery-item">
-      <img src="assets/toko/petshop-kami.jpg" alt="Tampak depan petshop">
-      <p>Tampak depan petshop</p>
+<section id="about" class="about">
+  <div class="container about-grid">
+    <div class="about-card">
+      <h2>Tentang Central Cat’s</h2>
+      <p>
+        Central Cat’s adalah petshop yang melayani berbagai kebutuhan hewan peliharaan, dengan layanan grooming yang difokuskan khusus untuk kucing. Kami mengutamakan kenyamanan, keamanan, dan hasil yang higienis.
+      </p>
     </div>
-
-    <div class="gallery-item">
-      <img src="assets/toko/produk-lengkap.jpg" alt="Produk petshop lengkap">
-      <p>Produk petshop lengkap</p>
-    </div>
-
-    <div class="gallery-item">
-      <img src="assets/logo/logo.png" alt="Logo Central Cat’s">
-      <p>Brand Central Cat’s</p>
-    </div>
+    <img src="assets/maskot/maskot-about-transparent.png" alt="Maskot Central Cat’s">
   </div>
 </section>
 
-<section id="grooming" class="grooming-section">
-  <div class="container">
+<section id="gallery">
+  <div class="gallery-title">
+    <h2>Galeri</h2>
+    <p style="color:var(--muted)">Beberapa hasil grooming dan aktivitas petshop kami</p>
+  </div>
 
-    <div class="grooming-header">
-      <h2>Hasil Grooming Kucing</h2>
-      <p>Lihat transformasi anabul setelah grooming</p>
-    </div>
+  <div class="gallery">
 
-    <div class="groom-grid">
-      <div class="groom-card">
-        <img src="assets/grooming/groom-cream-before.png" alt="Grooming 1">
-      </div>
+    <img src="assets/toko/petshop-kami.jpg" alt="Tampak depan petshop Central Cat’s">
 
-      <div class="groom-card">
-        <img src="assets/grooming/groom-orange-before.png" alt="Grooming 2">
-      </div>
+    <img src="assets/grooming/groom-cream-before.png" alt="Hasil grooming kucing cream">
 
-      <div class="groom-card">
-        <img src="assets/grooming/groom-white-before.png" alt="Grooming 3">
-      </div>
-    </div>
-
-    <div class="grooming-buttons">
-      <a href="https://instagram.com/central.catgrooming" target="_blank" class="btn-instagram">
-        🔥 Lihat Lebih Banyak di Instagram
-      </a>
-
-      <a href="#booking" class="btn-secondary">
-        Booking Grooming Sekarang
-      </a>
-    </div>
+    <img src="assets/toko/produk-lengkap.jpg" alt="Rak produk petshop lengkap">
 
   </div>
 </section>
-
 
 </main>
 
-<footer class="footer-section">
-  <div class="container footer-grid">
-
-    <div class="footer-col">
-      <h3>Central Cat’s</h3>
-      <p>
-        Petshop lengkap di Tangerang dengan layanan grooming profesional khusus kucing
-        yang aman dan higienis.
-      </p>
+<footer>
+  <div class="container footer">
+    <div>
+      <strong>Central Cat’s</strong><br>
+      <small>Petshop lengkap & Grooming profesional khusus kucing di Tangerang.</small>
     </div>
 
-    <div class="footer-col">
-      <h4>Jam Operasional</h4>
-      <ul>
-        <li>Toko : 08.00 – 21.00</li>
-        <li>Grooming : 08.00 – 17.00</li>
-        <li>Reservasi terakhir : 16.00</li>
-      </ul>
+    <div>
+      <strong>Jam Operasional</strong><br>
+      <small>
+        Toko: 08.00 – 21.00<br>
+        Grooming: 08.00 – 17.00
+      </small>
     </div>
 
-    <div class="footer-col">
-      <h4>Kontak</h4>
-      <ul>
-        <li><a href="https://wa.me/6282111827798">WhatsApp</a></li>
-        <li><a href="https://www.instagram.com/centralcat_official" target="_blank">Instagram</a></li>
-        <li><a href="cabang.html">Lihat Cabang</a></li>
-      </ul>
+    <div>
+      <strong>Kontak</strong><br>
+      <small>
+        <a href="https://wa.me/6282111827798">WhatsApp</a><br>
+        <a href="https://www.instagram.com/centralcat_official" target="_blank">Instagram</a>
+      </small>
     </div>
-
   </div>
 
   <div class="footer-bottom">
