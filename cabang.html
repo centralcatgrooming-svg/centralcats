@@ -1,41 +1,168 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Cabang Central Cat’s</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cabang Central Cat’s | Petshop & Grooming Kucing</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
-body{
-  font-family:system-ui,Segoe UI,Arial;
+:root{
+  --primary:#1e3a8a;
+  --accent:#d4af37;
+  --light:#f3f4f6;
+  --text:#111;
+}
+
+*{
   margin:0;
-  padding:40px;
-  background:#fff;
-  color:#111;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
 }
+
+body{
+  background:var(--light);
+  color:var(--text);
+}
+
+header{
+  background:var(--primary);
+  padding:15px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+header img{
+  height:50px;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:20px;
+  font-weight:500;
+}
+
+nav a:hover{
+  color:var(--accent);
+}
+
+.section{
+  padding:80px 5%;
+  text-align:center;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+  margin-top:40px;
+}
+
 .card{
-  max-width:520px;
-  margin:auto;
-  padding:24px;
-  border-radius:14px;
-  box-shadow:0 8px 28px rgba(0,0,0,.06);
+  background:white;
+  padding:35px;
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.06);
+  transition:.3s ease;
 }
-a{color:#f04b6e;text-decoration:none;font-weight:600}
+
+.card:hover{
+  transform:translateY(-6px);
+}
+
+.branch-name{
+  font-size:20px;
+  font-weight:700;
+  color:var(--primary);
+  margin-bottom:10px;
+}
+
+.address{
+  font-size:14px;
+  color:#555;
+  margin-bottom:20px;
+  line-height:1.6;
+}
+
+.btn{
+  display:inline-block;
+  padding:12px 24px;
+  background:var(--accent);
+  color:#111;
+  text-decoration:none;
+  font-weight:600;
+  border-radius:8px;
+}
+
+footer{
+  background:var(--primary);
+  color:white;
+  text-align:center;
+  padding:40px 5%;
+  margin-top:60px;
+}
+
+@media(max-width:768px){
+  nav{display:none;}
+}
 </style>
 </head>
 
 <body>
-  <div class="card">
-    <h2>Cabang Central Cat’s</h2>
-    <p>Pilih cabang terdekat untuk informasi lokasi & booking.</p>
 
-    <p>
-      <strong>Central Cat’s – Tangerang</strong><br>
-      <a href="https://wa.me/6282111827798">Hubungi via WhatsApp</a>
-    </p>
+<header>
+  <img src="assets/logo/logo.png" alt="Central Cat's Logo">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="tentang.html">Tentang</a>
+    <a href="cabang.html">Cabang</a>
+  </nav>
+</header>
 
-    <p style="color:#666">Cabang lain akan segera hadir.</p>
+<section class="section">
+  <h1 style="color:var(--primary);">Pilih Cabang Terdekat</h1>
+  <p style="margin-top:10px;color:#555;">
+    Silakan pilih cabang untuk informasi lokasi dan booking layanan.
+  </p>
 
-    <p><a href="index.html">← Kembali ke Beranda</a></p>
+  <div class="grid">
+
+    <!-- BUMI INDAH -->
+    <div class="card">
+      <div class="branch-name">Central Cat’s – Bumi Indah</div>
+      <div class="address">
+        Bumi Indah RMR 03<br>
+        Jam Operasional: 09.00 – 20.00 WIB
+      </div>
+      <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20booking%20untuk%20cabang%20Bumi%20Indah." 
+      class="btn">
+      Booking Cabang Ini
+      </a>
+    </div>
+
+    <!-- GARDENIA -->
+    <div class="card">
+      <div class="branch-name">Central Cat’s – Gardenia E11</div>
+      <div class="address">
+        Rajeg Gardenia E11<br>
+        Jam Operasional: 09.00 – 20.00 WIB
+      </div>
+      <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20booking%20untuk%20cabang%20Gardenia%20E11." 
+      class="btn">
+      Booking Cabang Ini
+      </a>
+    </div>
+
   </div>
+</section>
+
+<footer>
+  <p>© 2026 Central Cat’s. All Rights Reserved.</p>
+</footer>
+
 </body>
 </html>
