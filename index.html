@@ -4,10 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Central Cat’s Petshop & Grooming Kucing | Tangerang</title>
-  <meta name="description" content="Central Cat’s adalah petshop lengkap di Tangerang dengan layanan grooming profesional khusus kucing yang aman, higienis, dan berpengalaman.">
-  <meta name="keywords" content="Petshop, Grooming Kucing, Tangerang, Central Cat’s">
-
-  <!-- Favicon -->
   <link rel="icon" href="assets/logo/logo-bulat.png" type="image/png">
 
   <style>
@@ -16,7 +12,6 @@
       --text:#111;
       --muted:#6b6b6b;
       --bg:#ffffff;
-      --soft:#fafafa;
       --max:1100px;
     }
     body {margin:0;font-family:system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text);}
@@ -27,14 +22,15 @@
     .btn-primary{background:var(--primary);color:#fff}
 
     /* HEADER */
-    header{border-bottom:1px solid #eee}
+    header{border-bottom:1px solid #eee;background:#fff;position:sticky;top:0;z-index:100}
     .header{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
     .brand{display:flex;gap:12px;align-items:center}
     .brand img{width:44px;height:44px}
     .brand strong{display:block;line-height:1.15}
     .brand-tagline{font-size:12px;color:var(--muted)}
-    .nav{display:flex;gap:16px}
-    .nav a{font-weight:600}
+    .nav{display:flex;gap:20px}
+    .nav a{font-weight:600;transition:.3s}
+    .nav a:hover{color:var(--primary)}
     .menu-toggle{display:none;font-size:24px;cursor:pointer}
     @media(max-width:768px){
       .nav{display:none;flex-direction:column;gap:12px;background:#fff;padding:20px;position:absolute;top:64px;right:20px;border:1px solid #eee;box-shadow:0 4px 12px rgba(0,0,0,.1)}
@@ -47,7 +43,7 @@
     .hero h1{font-size:40px;margin:0 0 18px}
     .hero p{color:var(--muted);max-width:560px;margin:0 0 24px}
     .hero img{width:100%;max-width:320px;margin:auto;filter:drop-shadow(0 8px 16px rgba(0,0,0,.15))}
-    @media(max-width:900px){.hero{grid-template-columns:1fr;text-align:center}}
+    @media(max-width:900px){.hero{grid-template-columns:1fr;text-align:center}.hero h1{font-size:28px}}
 
     /* ABOUT */
     .about{background:linear-gradient(180deg,#fff 0%,#fafafa 100%)}
@@ -60,9 +56,9 @@
 
     /* GALLERY */
     .gallery-title{text-align:center;margin:0 auto 40px}
-    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:28px}
-    .gallery-item{text-align:center}
-    .gallery-item img{width:120px;height:auto;filter:drop-shadow(0 6px 12px rgba(0,0,0,.15));transition:0.3s}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px}
+    .gallery-item{text-align:center;background:#fafafa;padding:20px;border-radius:12px}
+    .gallery-item img{width:100%;max-width:160px;height:auto;filter:drop-shadow(0 6px 12px rgba(0,0,0,.15));transition:0.3s}
     .gallery-item img:hover{transform:scale(1.05)}
     .gallery-item figcaption{margin-top:12px;font-size:14px;color:var(--muted)}
 
@@ -125,23 +121,4 @@
     </div>
     <div class="gallery">
       <figure class="gallery-item">
-        <img src="assets maskot/maskot-mandi_transparent.png" alt="Grooming Kucing">
-        <figcaption>Layanan Grooming – mandi & perawatan</figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <img src="assets maskot/maskot-yang-berkualitas-ada-di-sini.png" alt="Greeting">
-        <figcaption>Sambutan hangat untuk pelanggan</figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <img src="assets maskot/maskot-about_transparent.png" alt="Friendly">
-        <figcaption>Suasana ramah & nyaman</figcaption>
-      </figure>
-    </div>
-  </section>
-</main>
-
-<!-- FOOTER -->
-<footer>
-  <div class="container footer">
-    <div class="footer-col">
-      <img src="assets/logo/logo-bulat.png" alt="Central Cat’s" style="width:64px
+        <img src="assets maskot/maskot-m
