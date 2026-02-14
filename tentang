@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tentang Central Cat’s | Petshop & Grooming Kucing Profesional</title>
+<title>Profil Central Cat’s | Grooming Kucing & Petshop di Tangerang</title>
 
-<meta name="description" content="Tentang Central Cat’s — Petshop lengkap dan grooming profesional khusus kucing dengan standar aman, higienis, dan terpercaya.">
+<meta name="description" content="Profil Central Cat’s — Petshop dan grooming kucing terpercaya di Tangerang dengan standar higienis, sistem profesional, dan pelayanan penuh perhatian.">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -53,13 +53,6 @@ nav a:hover{
   color:var(--accent);
 }
 
-.hero{
-  background:linear-gradient(135deg,#1e3a8a,#243c94);
-  color:white;
-  padding:100px 5%;
-  text-align:center;
-}
-
 .section{
   padding:80px 5%;
 }
@@ -69,7 +62,115 @@ nav a:hover{
   margin:auto;
 }
 
-.grid{
-  display:flex;
-  flex-wrap:wrap;
-  gap:50px
+h1{
+  font-size:2.5rem;
+  color:var(--primary);
+  margin-bottom:20px;
+}
+
+h2{
+  margin-top:40px;
+  color:var(--primary);
+}
+
+.highlight{
+  color:var(--accent);
+  font-weight:600;
+}
+
+.btn{
+  display:inline-block;
+  padding:12px 24px;
+  background:var(--accent);
+  color:#111;
+  text-decoration:none;
+  font-weight:600;
+  border-radius:8px;
+  margin-top:30px;
+}
+
+footer{
+  background:var(--primary);
+  color:white;
+  text-align:center;
+  padding:40px 5%;
+  margin-top:60px;
+}
+
+@media(max-width:768px){
+  nav{display:none;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <img src="assets/logo/logo.png" alt="Central Cat's Logo">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="cabang.html">Cabang</a>
+    <a href="tentang.html">Profil</a>
+  </nav>
+</header>
+
+<section class="section">
+  <div class="container">
+
+    <h1>Profil Central Cat’s</h1>
+
+    <p>
+      Central Cat’s adalah <span class="highlight">petshop dan grooming kucing terpercaya di Tangerang</span> 
+      yang hadir untuk memberikan perawatan terbaik, penuh kasih, dan aman bagi sahabat berbulu Anda.
+    </p>
+
+    <p>
+      Kami percaya bahwa setiap kucing layak mendapatkan pelayanan profesional dengan standar kebersihan tinggi. 
+      Karena itu, Central Cat’s dibangun dengan sistem operasional yang rapi, jam layanan yang terstruktur, 
+      serta proses grooming yang higienis dan terkontrol.
+    </p>
+
+    <h2>Fokus Kami</h2>
+
+    <p>
+      Berbeda dari petshop umum, Central Cat’s fokus pada ekosistem perawatan kucing yang terintegrasi, mulai dari:
+    </p>
+
+    <ul style="margin-top:15px;padding-left:20px;">
+      <li>Grooming kucing dengan standar higienis.</li>
+      <li>Treatment khusus seperti perawatan kutu.</li>
+      <li>Cat Hotel yang aman dan nyaman.</li>
+      <li>Penyediaan produk berkualitas untuk kebutuhan harian kucing.</li>
+    </ul>
+
+    <h2>Standar Profesional</h2>
+
+    <p>
+      Kami menerapkan sistem reservasi yang jelas, jam operasional terpisah antara grooming dan petshop, 
+      serta batas waktu reservasi demi menjaga kualitas pelayanan. 
+      Hal ini memastikan setiap kucing mendapatkan perhatian yang maksimal.
+    </p>
+
+    <h2>Komitmen Lokal Tangerang</h2>
+
+    <p>
+      Sebagai brand yang berkembang di Tangerang dan Rajeg, Central Cat’s berkomitmen menjadi 
+      pilihan utama bagi pecinta kucing di wilayah ini. Kami tidak hanya membangun bisnis, 
+      tetapi juga membangun kepercayaan dan komunitas.
+    </p>
+
+    <p>
+      Setiap kunjungan ke Central Cat’s adalah pengalaman yang terstruktur, aman, dan profesional.
+    </p>
+
+    <a href="cabang.html" class="btn">Lihat Cabang Terdekat</a>
+
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Central Cat’s. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
