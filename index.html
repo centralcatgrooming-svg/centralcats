@@ -7,19 +7,6 @@
   <meta name="description" content="Central Cat’s adalah petshop lengkap di Tangerang dengan layanan grooming profesional khusus kucing yang aman, higienis, dan berpengalaman.">
   <meta name="keywords" content="Petshop, Grooming Kucing, Tangerang, Central Cat’s">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Central Cat’s Petshop & Grooming Kucing | Tangerang">
-  <meta property="og:description" content="Grooming kucing aman, higienis, dan profesional di Tangerang.">
-  <meta property="og:image" content="assets/logo/logo-bulat.png">
-  <meta property="og:url" content="https://centralcatgrooming-svg.github.io/centralcats/">
-  <meta property="og:type" content="website">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Central Cat’s Petshop & Grooming Kucing | Tangerang">
-  <meta name="twitter:description" content="Grooming kucing aman, higienis, dan profesional di Tangerang.">
-  <meta name="twitter:image" content="assets/logo/logo-bulat.png">
-
   <!-- Favicon -->
   <link rel="icon" href="assets/logo/logo-bulat.png" type="image/png">
 
@@ -31,8 +18,6 @@
       --bg:#ffffff;
       --soft:#fafafa;
       --max:1100px;
-      --radius:14px;
-      --shadow:0 8px 28px rgba(0,0,0,.06);
     }
     body {margin:0;font-family:system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text);}
     .container{max-width:var(--max);margin:auto;padding:0 20px}
@@ -48,7 +33,14 @@
     .brand img{width:44px;height:44px}
     .brand strong{display:block;line-height:1.15}
     .brand-tagline{font-size:12px;color:var(--muted)}
-    .nav a{margin-left:16px;font-weight:600}
+    .nav{display:flex;gap:16px}
+    .nav a{font-weight:600}
+    .menu-toggle{display:none;font-size:24px;cursor:pointer}
+    @media(max-width:768px){
+      .nav{display:none;flex-direction:column;gap:12px;background:#fff;padding:20px;position:absolute;top:64px;right:20px;border:1px solid #eee;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+      .nav.active{display:flex}
+      .menu-toggle{display:block}
+    }
 
     /* HERO */
     .hero{display:grid;grid-template-columns:1fr 420px;gap:48px;align-items:center}
@@ -94,10 +86,11 @@
         <small class="brand-tagline">Petshop & Grooming Kucing</small>
       </div>
     </div>
-    <nav class="nav">
+    <nav class="nav" id="nav">
       <a href="#about">Tentang</a>
       <a href="#gallery">Galeri</a>
     </nav>
+    <div class="menu-toggle" onclick="document.getElementById('nav').classList.toggle('active')">☰</div>
   </div>
 </header>
 
@@ -110,7 +103,7 @@
       <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSc1JyC-PvP0J13kGJ3--x-R8D_iJgvGHwBVEZvVSpM476MPNw/viewform" target="_blank">Booking Grooming</a>
       <div style="margin-top:14px;font-size:14px;color:#666">Atau <a href="https://wa.me/6282111827798">konsultasi via WhatsApp</a></div>
     </div>
-    <img src="assets/maskot/cat-megaphone.png" alt="Maskot Central Cat’s">
+    <img src="assets maskot/maskot-megaphone-transparant.png" alt="Maskot Central Cat’s">
   </section>
 
   <!-- ABOUT -->
@@ -120,7 +113,7 @@
         <h2>Tentang Central Cat’s</h2>
         <p>Central Cat’s adalah petshop yang melayani berbagai kebutuhan hewan peliharaan, dengan layanan grooming khusus kucing. Kami mengutamakan kenyamanan anabul, hasil rapi, serta pelayanan yang jujur dan bertanggung jawab.</p>
       </div>
-      <img src="assets/maskot/cat-thinking.png" alt="Tentang Central Cat’s">
+      <img src="assets maskot/hero-maskot-transparent.png" alt="Tentang Central Cat’s">
     </div>
   </section>
 
@@ -132,13 +125,23 @@
     </div>
     <div class="gallery">
       <figure class="gallery-item">
-        <img src="assets/maskot/cat-bathtub.png" alt="Kucing mandi">
+        <img src="assets maskot/maskot-mandi_transparent.png" alt="Kucing mandi">
         <figcaption>Maskot Central Cat’s – Grooming</figcaption>
       </figure>
       <figure class="gallery-item">
-        <img src="assets/maskot/cat-greeting.png" alt="Kucing menyapa">
+        <img src="assets maskot/maskot-yang-berkualitas-ada-di-sini.png" alt="Kucing menyapa">
         <figcaption>Maskot Central Cat’s – Greeting</figcaption>
       </figure>
       <figure class="gallery-item">
-        <img src="assets/maskot/cat-wave.png" alt="Kucing melambaikan tangan">
-        <figcaption>Maskot
+        <img src="assets maskot/maskot-about_transparent.png" alt="Kucing melambaikan tangan">
+        <figcaption>Maskot Central Cat’s – Friendly</figcaption>
+      </figure>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer">
+    <div class="footer-col">
+      <img src="assets/logo/logo-bulat.png" alt="Central Cat’s" style="width:
