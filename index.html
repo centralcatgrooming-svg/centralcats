@@ -179,7 +179,7 @@ nav a:hover{color:var(--accent);}
 
 /* khusus icon cat hotel agar proporsional */
 .card img[alt="Cat Hotel"]{
-  max-width:70px;
+  max-width:80px;
 }
 
 .icon-frame{
@@ -288,30 +288,34 @@ footer{
 
 @media(max-width:768px){
   nav{display:none;}
-  .hero-container{flex-direction:column;text-align:center;gap:25px;}
-  .hero-text h1{font-size:1.9rem;}
-  .search-box{display:none;}
+  header{padding:10px 6%;}
+  .logo-area img{height:48px;}
+
+  .hero{padding:70px 6%;}
+  .hero-container{flex-direction:column;text-align:center;gap:20px;}
+  .hero-text h1{font-size:1.8rem;line-height:1.25;}
+  .hero-text p{font-size:.95rem;}
 
   /* Hero image lebih proporsional */
   .hero img{
-    max-width:260px !important;
+    max-width:240px !important;
   }
 
   /* Section padding lebih compact */
   .section{
-    padding:60px 6%;
+    padding:55px 6%;
   }
 
   /* Card lebih ringan di mobile */
   .card{
-    padding:22px;
+    padding:20px;
     min-height:auto;
   }
 
   /* Icon frame tetap rapi */
   .icon-frame{
-    width:110px;
-    height:110px;
+    width:100px;
+    height:100px;
   }
 
   .card img{
@@ -321,30 +325,53 @@ footer{
   /* Maskot section header lebih subtle */
   #services img,
   #reviews img{
-    max-width:70px !important;
+    max-width:65px !important;
   }
 
-  /* Review spacing lebih rapat */
+  /* Review spacing lebih rapat & elegan */
   .review-stars{
     font-size:20px;
-    margin-bottom:6px;
+    margin:8px 0 6px;
   }
 
   #reviews .card p{
-    margin-top:2px;
+    margin-top:4px;
+    font-size:.95rem;
   }
 
-  /* WA floating lebih kecil */
+  /* Semua tombol full width & lebih rapi */
+  .btn{
+    display:block;
+    width:100%;
+    text-align:center;
+    margin:12px 0 0 0 !important;
+  }
+
+  /* Hero button spacing */
+  .hero .btn{
+    max-width:260px;
+    margin:12px auto 0 !important;
+  }
+
+  /* Review button agar center & tidak aneh */
+  #reviews .btn{
+    max-width:240px;
+    margin:12px auto 0 !important;
+  }
+
+  /* Review button container spacing */
+  #reviews div[style*="margin-top:40px"]{
+    margin-top:30px !important;
+  }
+
+  /* WA floating lebih kecil & lebih subtle */
   .wa-float{
     font-size:12px;
     padding:10px 14px;
     bottom:15px;
     right:15px;
+    border-radius:40px;
   }
-}
-  .hero-container{flex-direction:column;text-align:center;}
-  .hero-text h1{font-size:1.8rem;}
-  .search-box{display:none;}
 }
 
 </style>
