@@ -32,7 +32,7 @@ header{
 }
 
 .logo-area{display:flex;align-items:center;}
-.logo-area img{height:60px;width:auto;display:block;}
+.logo-area img{height:75px;width:auto;display:block;}
 
 nav{display:flex;align-items:center;}
 
@@ -111,14 +111,14 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 .social-icons a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:rgba(255,255,255,0.1);border-radius:50%;transition:.3s ease;}
 .social-icons a:hover{background:var(--accent);} 
 
-.wa-float{position:fixed;bottom:20px;right:20px;width:58px;height:58px;background:#25D366;display:flex;align-items:center;justify-content:center;border-radius:50%;box-shadow:0 6px 18px rgba(0,0,0,.2);} 
+.wa-float{position:fixed;bottom:20px;right:20px;width:58px;height:58px;background:#25D366;display:flex;align-items:center;justify-content:center;border-radius:50%;box-shadow:0 6px 18px rgba(0,0,0,.2);z-index:1001;text-decoration:none;} 
 
 @media(max-width:768px){
   nav{display:none;}
 
   /* Header */
   header{padding:10px 6%;}
-  .logo-area img{height:48px;}
+  .logo-area img{height:60px;}
 
   /* Hamburger */
   .hamburger{display:flex;flex-direction:column;gap:5px;width:28px;cursor:pointer;}
@@ -526,6 +526,12 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
   </div>
   <div class="footer-bottom">© 2026 Central Cat’s. All Rights Reserved.</div>
 </footer>
+
+<a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20informasi%20lebih%20lanjut." class="wa-float" aria-label="Customer Service">
+  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" viewBox="0 0 24 24">
+    <path d="M12 2a8 8 0 0 0-8 8v3a3 3 0 0 0 3 3h1v-6H6a6 6 0 1 1 12 0h-2v6h1a3 3 0 0 0 3-3v-3a8 8 0 0 0-8-8zm-4 14v2a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2H8z"/>
+  </svg>
+</a>
 
 <script>
 // HAMBURGER TOGGLE
