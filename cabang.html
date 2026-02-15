@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cabang Central Cat’s | Petshop & Grooming Kucing</title>
+<title>Cabang Central Cat’s | Grooming & Petshop</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -16,25 +16,11 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-
-body{
-  background:#fff;
-  color:var(--text);
-  padding-top:95px; /* penting untuk header fixed */
-}
-
+body{background:#fff;color:var(--text);padding-top:95px;}
 body.no-scroll{overflow:hidden;}
 
-.section{
-  padding:90px 5%;
-  text-align:center;
-  background:var(--light);
-}
-
-.section h1{
-  font-size:2.4rem;
-  color:var(--primary);
-}
+.section{padding:80px 5%;text-align:center;background:var(--light);}
+.section h1{font-size:2.4rem;color:var(--primary);}
 
 .grid{
   display:grid;
@@ -48,32 +34,11 @@ body.no-scroll{overflow:hidden;}
   padding:35px;
   border-radius:18px;
   box-shadow:0 10px 30px rgba(0,0,0,.06);
-  transition:.3s ease;
 }
 
-.card:hover{
-  transform:translateY(-6px);
-}
-
-.branch-name{
-  font-size:20px;
-  font-weight:700;
-  color:var(--primary);
-  margin-bottom:15px;
-}
-
-.address{
-  font-size:14px;
-  color:#555;
-  margin-bottom:20px;
-  line-height:1.7;
-}
-
-.note{
-  color:#c0392b;
-  font-size:13px;
-  margin-top:10px;
-}
+.branch-name{font-size:20px;font-weight:700;color:var(--primary);margin-bottom:15px;}
+.address{font-size:14px;color:#555;margin-bottom:20px;line-height:1.7;}
+.note{color:#c0392b;font-size:13px;margin-top:10px;}
 
 .btn{
   display:inline-block;
@@ -93,19 +58,14 @@ body.no-scroll{overflow:hidden;}
 
 <body>
 
-<!-- HEADER (partial) -->
 <div id="header-placeholder"></div>
 
 <section class="section">
-
   <h1>Pilih Cabang Terdekat</h1>
-  <p style="margin-top:10px;color:#555;">
-    Silakan pilih cabang untuk informasi lokasi dan booking layanan.
-  </p>
+  <p style="margin-top:10px;color:#555;">Silakan pilih cabang untuk informasi lokasi dan booking layanan.</p>
 
   <div class="grid">
 
-    <!-- BUMI INDAH -->
     <div class="card">
       <div class="branch-name">Central Cat’s – Bumi Indah</div>
       <div class="address">
@@ -113,18 +73,11 @@ body.no-scroll{overflow:hidden;}
         <strong>Jam Operasional:</strong><br>
         Grooming: 08.00 – 18.00 WIB<br>
         Petshop: 08.00 – 21.00 WIB
-        <div class="note">
-          *Reservasi maksimal pukul 16.00 WIB
-        </div>
+        <div class="note">*Reservasi maksimal pukul 16.00 WIB</div>
       </div>
-
-      <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20booking%20untuk%20cabang%20Bumi%20Indah."
-         class="btn">
-         Booking Cabang Ini
-      </a>
+      <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20booking%20cabang%20Bumi%20Indah." class="btn">Booking Cabang Ini</a>
     </div>
 
-    <!-- GARDENIA -->
     <div class="card">
       <div class="branch-name">Central Cat’s – Gardenia E11</div>
       <div class="address">
@@ -132,25 +85,17 @@ body.no-scroll{overflow:hidden;}
         <strong>Jam Operasional:</strong><br>
         Grooming: 08.00 – 18.00 WIB<br>
         Petshop: 08.00 – 21.00 WIB
-        <div class="note">
-          *Reservasi maksimal pukul 16.00 WIB
-        </div>
+        <div class="note">*Reservasi maksimal pukul 16.00 WIB</div>
       </div>
-
-      <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20booking%20untuk%20cabang%20Gardenia%20E11."
-         class="btn">
-         Booking Cabang Ini
-      </a>
+      <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20booking%20cabang%20Gardenia%20E11." class="btn">Booking Cabang Ini</a>
     </div>
 
   </div>
 </section>
 
-<!-- FOOTER (partial) -->
 <div id="footer-placeholder"></div>
 
 <script>
-/* LOAD HEADER */
 fetch('partials/header.html')
   .then(res => res.text())
   .then(data => {
@@ -178,7 +123,6 @@ fetch('partials/header.html')
     }
   });
 
-/* LOAD FOOTER */
 fetch('partials/footer.html')
   .then(res => res.text())
   .then(data => {
