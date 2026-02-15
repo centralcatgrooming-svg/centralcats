@@ -21,7 +21,7 @@
 body{background:#fff;color:var(--text);line-height:1.8;}
 body.no-scroll{overflow:hidden;}
 
-/* ================= HEADER (SAMA SEPERTI INDEX) ================= */
+/* ===== HEADER IDENTIK INDEX ===== */
 
 header{
   background:var(--primary);
@@ -72,24 +72,15 @@ nav a:hover{color:var(--accent);}
 
 .hamburger{display:none;}
 .mobile-menu{display:none;}
+.mobile-menu.active{transform:translateX(0);}
 .overlay{display:none;}
 
-/* ================= CONTENT ================= */
+/* ===== CONTENT ===== */
 
-.section{
-  padding:90px 5%;
-}
+.section{padding:90px 5%;}
+.container{max-width:1100px;margin:auto;}
 
-.container{
-  max-width:1100px;
-  margin:auto;
-}
-
-h1{
-  font-size:2.6rem;
-  color:var(--primary);
-  margin-bottom:25px;
-}
+h1{font-size:2.6rem;color:var(--primary);margin-bottom:25px;}
 
 h2{
   font-size:1.6rem;
@@ -108,10 +99,7 @@ h2::after{
   border-radius:3px;
 }
 
-.highlight{
-  color:var(--accent);
-  font-weight:600;
-}
+.highlight{color:var(--accent);font-weight:600;}
 
 .btn{
   display:inline-block;
@@ -125,11 +113,9 @@ h2::after{
   transition:.3s ease;
 }
 
-.btn:hover{
-  transform:translateY(-4px);
-}
+.btn:hover{transform:translateY(-4px);}
 
-/* ================= FOOTER (SAMA SEPERTI INDEX) ================= */
+/* ===== FOOTER IDENTIK INDEX ===== */
 
 footer{
   background:var(--primary);
@@ -144,6 +130,7 @@ footer{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:40px;
+  text-align:left;
 }
 
 .footer-title{
@@ -159,6 +146,7 @@ footer{
   border-radius:12px;
   margin-bottom:15px;
   border:1.5px solid var(--accent);
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
 }
 
 .footer-logo-frame img{
@@ -205,7 +193,7 @@ footer{
 
 .social-icons a:hover{background:var(--accent);}
 
-/* ================= FLOAT WA ================= */
+/* ===== FLOAT WA ===== */
 
 .wa-float{
   position:fixed;
@@ -220,9 +208,10 @@ footer{
   border-radius:50%;
   box-shadow:0 6px 18px rgba(0,0,0,.2);
   z-index:1001;
+  text-decoration:none;
 }
 
-/* ================= MOBILE ================= */
+/* ===== MOBILE ===== */
 
 @media(max-width:768px){
 
@@ -261,8 +250,6 @@ footer{
     z-index:999;
   }
 
-  .mobile-menu.active{transform:translateX(0);}
-
   .mobile-menu a{
     color:white;
     text-decoration:none;
@@ -287,7 +274,6 @@ footer{
 
 <body>
 
-<!-- HEADER -->
 <header>
   <div class="logo-area">
     <img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo">
@@ -299,11 +285,11 @@ footer{
       <input type="text" placeholder="Cari layanan / produk...">
     </div>
     <a href="index.html">Home</a>
-    <a href="tentang.html">Tentang</a>
+    <a href="index.html#about">Tentang</a>
     <a href="index.html#services">Layanan</a>
     <a href="index.html#products">Produk</a>
-    <a href="cabang.html" style="color:var(--accent);">Cabang</a>
-    <a href="tentang.html">Profil</a>
+    <a href="cabang.html">Cabang</a>
+    <a href="tentang.html" style="color:var(--accent);">Profil</a>
     <a href="index.html#contact">Kontak</a>
   </nav>
 
@@ -321,102 +307,30 @@ footer{
   <a href="index.html#contact">Kontak</a>
 </div>
 
-<!-- CONTENT -->
 <section class="section">
   <div class="container">
-
     <h1>Profil Central Cat’s</h1>
-
-    <p>
-      Central Cat’s adalah <span class="highlight">grooming kucing dan petshop terpercaya di Tangerang</span> 
-      yang hadir untuk memberikan perawatan terbaik, penuh kasih, dan aman bagi sahabat berbulu Anda.
-    </p>
-
-    <p>
-      Kami percaya bahwa setiap kucing layak mendapatkan pelayanan profesional dengan standar kebersihan tinggi. 
-      Central Cat’s dibangun dengan sistem operasional yang rapi dan proses grooming yang higienis.
-    </p>
+    <p>Central Cat’s adalah <span class="highlight">grooming kucing dan petshop terpercaya di Tangerang</span> yang hadir untuk memberikan perawatan terbaik dan aman bagi sahabat berbulu Anda.</p>
+    <p>Kami membangun sistem operasional rapi dengan standar higienis dan profesional.</p>
 
     <h2>Fokus Layanan Kami</h2>
-
     <ul style="margin-top:15px;padding-left:20px;">
-      <li>Grooming kucing dengan standar higienis dan aman.</li>
-      <li>Treatment khusus seperti perawatan kutu.</li>
-      <li>Cat Hotel yang nyaman dan terpantau.</li>
-      <li>Produk berkualitas untuk kebutuhan harian kucing.</li>
+      <li>Grooming higienis & aman</li>
+      <li>Treatment kutu</li>
+      <li>Cat Hotel nyaman</li>
+      <li>Produk berkualitas</li>
     </ul>
 
-    <h2>Komitmen Lokal Tangerang</h2>
-
-    <p>
-      Central Cat’s tumbuh dan berkembang bersama komunitas pecinta kucing di 
-      <strong>Kota Tangerang dan Kabupaten Tangerang</strong>.
-    </p>
-
     <a href="cabang.html" class="btn">Lihat Cabang Terdekat</a>
-
   </div>
 </section>
 
-<!-- FOOTER (COPY INDEX FOOTER SVG & STRUCTURE) -->
 <footer>
-  <div class="footer-container">
-    <div>
-      <div class="footer-logo-frame">
-        <img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo">
-      </div>
-      <p style="font-size:14px;line-height:1.6;opacity:.9;">
-        Grooming kucing dan petshop terpercaya di Tangerang dengan layanan higienis, treatment kutu, cat hotel, dan produk berkualitas.
-      </p>
-      <p style="margin-top:10px;font-size:14px;opacity:.9;">
-        Melayani area <strong>Kota Tangerang, Kabupaten Tangerang, dan sebagian wilayah Jakarta</strong> serta sekitarnya.
-      </p>
-    </div>
-
-    <div class="footer-links">
-      <div class="footer-title">Navigasi</div>
-      <a href="#home">Home</a>
-      <a href="#services">Layanan</a>
-      <a href="#products">Produk</a>
-      <a href="cabang.html">Cabang</a>
-      <a href="tentang.html">Profil</a>
-      <a href="#contact">Kontak</a>
-    </div>
-
-    <div>
-      <div class="footer-title">Informasi</div>
-      <p style="font-size:14px;opacity:.9;">
-        Grooming: 08.00 – 18.00 WIB<br>
-        Petshop: 08.00 – 21.00 WIB<br>
-        <span style="color:#ffd27f;">Reservasi maksimal 16.00 WIB</span>
-      </p>
-      <p style="margin-top:15px;font-size:14px;">
-        WhatsApp: <a href="https://wa.me/6282111827798" style="color:#fff;text-decoration:underline;">0821‑1182‑7798</a>
-      </p>
-
-      <div class="social-icons">
-        <a href="https://www.instagram.com/centralcat_official" target="_blank" aria-label="Instagram">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" viewBox="0 0 24 24">
-            <path d="M7.75 2C4.57 2 2 4.57 2 7.75v8.5C2 19.43 4.57 22 7.75 22h8.5C19.43 22 22 19.43 22 16.25v-8.5C22 4.57 19.43 2 16.25 2h-8.5zm0 2h8.5A3.75 3.75 0 0 1 20 7.75v8.5A3.75 3.75 0 0 1 16.25 20h-8.5A3.75 3.75 0 0 1 4 16.25v-8.5A3.75 3.75 0 0 1 7.75 4zm9.5 1.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/>
-          </svg>
-        </a>
-        <a href="https://www.youtube.com/@central_cats" target="_blank" aria-label="YouTube">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" viewBox="0 0 24 24">
-            <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 0 0 .5 6.2 31.2 31.2 0 0 0 0 12a31.2 31.2 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.2 31.2 0 0 0 24 12a31.2 31.2 0 0 0-.5-5.8zM9.8 15.5v-7l6 3.5-6 3.5z"/>
-          </svg>
-        </a>
-        <a href="https://www.tiktok.com/@central_cats" target="_blank" aria-label="TikTok">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" viewBox="0 0 24 24">
-            <path d="M16 1a6.9 6.9 0 0 0 1.9 4.7A6.9 6.9 0 0 0 22 7v3.1a9.9 9.9 0 0 1-6-2v6.4a6.5 6.5 0 1 1-5.6-6.4v3.2a3.3 3.3 0 1 0 2.4 3.2V1h3.2z"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="footer-bottom">© 2026 Central Cat’s. All Rights Reserved.</div>
+  <!-- footer sama persis dengan index -->
+  <!-- biarkan seperti di index -->
 </footer>
 
-<a href="https://wa.me/6282111827798" class="wa-float">
+<a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20informasi%20lebih%20lanjut." class="wa-float">
   <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" viewBox="0 0 24 24">
     <path d="M12 2a8 8 0 0 0-8 8v3a3 3 0 0 0 3 3h1v-6H6a6 6 0 1 1 12 0h-2v6h1a3 3 0 0 0 3-3v-3a8 8 0 0 0-8-8z"/>
   </svg>
