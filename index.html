@@ -152,6 +152,11 @@ nav a:hover{color:var(--accent);}
   border-radius:16px;
   box-shadow:0 8px 25px rgba(0,0,0,.05);
   transition:all .3s ease;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:center;
+  min-height:420px;
 }
 
 .card.hide{
@@ -162,10 +167,36 @@ nav a:hover{color:var(--accent);}
 }
 
 .card img{
-  width:120px;
+  max-width:80px;
   height:auto;
   object-fit:contain;
-  margin-bottom:15px;
+}
+
+.icon-frame{
+  width:120px;
+  height:120px;
+  background:white;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
+  border:2px solid var(--accent);
+  margin:0 auto 15px;
+}
+
+.card h3{
+  margin:15px 0 10px;
+  height:72px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  text-align:center;
+}
+
+.card p{
+  min-height:80px;
+  line-height:1.6;
 }
 
 footer{
@@ -360,14 +391,18 @@ footer{
   <div class="grid">
 
     <div class="card" style="text-align:center;">
-      <img src="assets/maskot/maskot-mandi-transparent.png" alt="Grooming">
+      <div class="icon-frame">
+        <img src="assets/maskot/maskot-mandi-transparent.png" alt="Grooming">
+      </div>
       <h3>1. Grooming</h3>
       <p>Mandi, pengeringan, potong kuku, bersih telinga & perawatan dasar lainnya.</p>
       <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20booking%20untuk%20cabang%20Bumi%20Indah%20atau%20Gardenia." class="btn" style="margin-top:15px;display:inline-block;">Booking</a>
     </div>
 
     <div class="card" style="text-align:center;">
-      <img src="assets/maskot/maskot-treatmentkutu-transparent.png" alt="Treatment Kutu" style="max-width:120px;height:auto;margin-bottom:15px;">
+      <div class="icon-frame">
+        <img src="assets/maskot/maskot-treatmentkutu-transparent.png" alt="Treatment Kutu">
+      </div>
       <h3>2. Treatment Kutu</h3>
       <p>Perawatan khusus untuk membantu mengatasi kutu dan menjaga kesehatan kulit serta bulu kucing.</p>
       <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20booking%20untuk%20cabang%20Bumi%20Indah%20atau%20Gardenia." class="btn" style="margin-top:15px;display:inline-block;">Konsultasi</a>
