@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Profil Central Cat’s | Grooming Kucing & Petshop Terpercaya di Tangerang</title>
-<meta name="description" content="Profil Central Cat’s — Grooming kucing dan petshop terpercaya di Tangerang dengan standar higienis dan sistem profesional.">
+<meta name="description" content="Profil Central Cat’s — Grooming kucing dan petshop terpercaya di Tangerang dengan standar higienis, sistem profesional, treatment kutu, cat hotel, dan pelayanan penuh perhatian.">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -17,19 +17,24 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#fff;color:var(--text);line-height:1.8;padding-top:95px;}
+body{background:#fff;color:var(--text);line-height:1.8;}
 body.no-scroll{overflow:hidden;}
+
+
+
 
 .section{padding:90px 5%;}
 .container{max-width:1100px;margin:auto;}
 
 h1{font-size:2.6rem;color:var(--primary);margin-bottom:25px;}
+
 h2{
   font-size:1.6rem;
   margin-top:50px;
   color:var(--primary);
   position:relative;
 }
+
 h2::after{
   content:"";
   display:block;
@@ -54,70 +59,36 @@ h2::after{
 }
 
 @media(max-width:768px){
-  .section{padding:60px 6%;}
-  h1{font-size:1.9rem;}
+  nav{display:none;}
 }
 </style>
 </head>
 
 <body>
 
-<div id="header-placeholder"></div>
+
 
 <section class="section">
   <div class="container">
     <h1>Profil Central Cat’s</h1>
     <p>Central Cat’s adalah <span class="highlight">grooming kucing dan petshop terpercaya di Tangerang</span> yang hadir untuk memberikan perawatan terbaik dan aman bagi sahabat berbulu Anda.</p>
-    <p>Kami membangun sistem operasional rapi dengan standar higienis dan profesional.</p>
+    <p>Kami membangun sistem operasional rapi dengan standar higienis dan profesional agar setiap kucing mendapatkan pengalaman terbaik.</p>
 
     <h2>Fokus Layanan Kami</h2>
     <ul style="margin-top:15px;padding-left:20px;">
       <li>Grooming higienis & aman</li>
-      <li>Treatment kutu</li>
-      <li>Cat Hotel nyaman</li>
-      <li>Produk berkualitas</li>
+      <li>Treatment kutu profesional</li>
+      <li>Cat Hotel nyaman & terpantau</li>
+      <li>Produk berkualitas & terkurasi</li>
     </ul>
 
     <a href="cabang.html" class="btn">Lihat Cabang Terdekat</a>
   </div>
 </section>
 
-<div id="footer-placeholder"></div>
 
-<script>
-fetch('partials/header.html')
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById('header-placeholder').innerHTML = data;
 
-    const hamburger = document.querySelector('.hamburger');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const overlay = document.querySelector('.overlay');
 
-    if(hamburger){
-      hamburger.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
-        const isActive = mobileMenu.classList.contains('active');
-        if(overlay) overlay.style.display = isActive ? 'block' : 'none';
-        document.body.classList.toggle('no-scroll', isActive);
-      });
-    }
-
-    if(overlay){
-      overlay.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-        overlay.style.display = 'none';
-        document.body.classList.remove('no-scroll');
-      });
-    }
-  });
-
-fetch('partials/footer.html')
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById('footer-placeholder').innerHTML = data;
-  });
-</script>
 
 </body>
 </html>
