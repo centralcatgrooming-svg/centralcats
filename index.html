@@ -283,6 +283,60 @@ footer{
 
 @media(max-width:768px){
   nav{display:none;}
+  .hero-container{flex-direction:column;text-align:center;gap:25px;}
+  .hero-text h1{font-size:1.9rem;}
+  .search-box{display:none;}
+
+  /* Hero image lebih proporsional */
+  .hero img{
+    max-width:260px !important;
+  }
+
+  /* Section padding lebih compact */
+  .section{
+    padding:60px 6%;
+  }
+
+  /* Card lebih ringan di mobile */
+  .card{
+    padding:22px;
+    min-height:auto;
+  }
+
+  /* Icon frame tetap rapi */
+  .icon-frame{
+    width:110px;
+    height:110px;
+  }
+
+  .card img{
+    max-width:55px;
+  }
+
+  /* Maskot section header lebih subtle */
+  #services img,
+  #reviews img{
+    max-width:70px !important;
+  }
+
+  /* Review spacing lebih rapat */
+  .review-stars{
+    font-size:20px;
+    margin-bottom:6px;
+  }
+
+  #reviews .card p{
+    margin-top:2px;
+  }
+
+  /* WA floating lebih kecil */
+  .wa-float{
+    font-size:12px;
+    padding:10px 14px;
+    bottom:15px;
+    right:15px;
+  }
+}
   .hero-container{flex-direction:column;text-align:center;}
   .hero-text h1{font-size:1.8rem;}
   .search-box{display:none;}
@@ -443,8 +497,8 @@ footer{
     </div>
 
     <div class="card" style="text-align:center;">
-      <div style="width:120px;height:120px;margin:0 auto 15px;background:#e5e7eb;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;color:#555;">
-        Icon<br>Menyusul
+      <div class="icon-frame">
+        <img src="assets/maskot/maskot-cathottel-transparent.png" alt="Cat Hotel">
       </div>
       <h3>3. Cat Hotel</h3>
       <p>Layanan penitipan kucing yang aman, bersih, dan nyaman dengan pengawasan rutin.</p>
