@@ -77,7 +77,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 .footer-logo-frame{
   background:#ffffff;
   display:inline-block;
-  padding:10px 14px;
+  padding:12px 18px;
   border-radius:12px;
   margin-bottom:15px;
   border:1.5px solid var(--accent);
@@ -85,7 +85,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 }
 
 .footer-logo-frame img{
-  height:45px;
+  height:60px;
   display:block;
 }
 .footer-links a{display:block;color:white;text-decoration:none;margin-bottom:8px;font-size:14px;opacity:.9;}
@@ -96,7 +96,20 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 .social-icons a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:rgba(255,255,255,0.1);border-radius:50%;transition:.3s ease;}
 .social-icons a:hover{background:var(--accent);}
 
-.wa-float{position:fixed;bottom:20px;right:20px;background:#25D366;color:white;font-size:14px;padding:14px 16px;border-radius:50px;text-decoration:none;}
+.wa-float{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:58px;
+  height:58px;
+  background:#25D366;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  box-shadow:0 6px 18px rgba(0,0,0,.2);
+  text-decoration:none;
+}
 .review-stars{color:#f5c518;font-size:22px;margin-bottom:4px;letter-spacing:2px;}
 #reviews .card p{margin-top:4px;}
 #reviews .card:hover{transform:translateY(-6px);box-shadow:0 14px 35px rgba(0,0,0,.08);}#reviews .card{padding:25px 25px 30px;}
@@ -533,7 +546,11 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
   <div class="footer-bottom">© 2026 Central Cat’s. All Rights Reserved.</div>
 </footer>
 
-<a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20booking%20layanan%20Grooming." class="wa-float">Chat WhatsApp</a>
+<a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20booking%20layanan%20Grooming." class="wa-float" aria-label="Customer Service">
+  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" viewBox="0 0 24 24">
+    <path d="M12 2a8 8 0 0 0-8 8v3a3 3 0 0 0 3 3h1v-6H6a6 6 0 1 1 12 0h-2v6h1a3 3 0 0 0 3-3v-3a8 8 0 0 0-8-8zm-4 14v2a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2H8z"/>
+  </svg>
+</a>
 
 <script>
 
