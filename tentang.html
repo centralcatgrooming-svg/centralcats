@@ -93,19 +93,31 @@ h2::after{
 <div id="footer-placeholder"></div>
 
 <script>
-// Load Header
-fetch('partials/header.html')
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById('header-placeholder').innerHTML = data;
-  });
+document.addEventListener("DOMContentLoaded", function(){
 
-// Load Footer
-fetch('partials/footer.html')
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById('footer-placeholder').innerHTML = data;
-  });
+  // Load Header
+  fetch('./partials/header.html')
+    .then(response => {
+      if (!response.ok) throw new Error('Header gagal load');
+      return response.text();
+    })
+    .then(data => {
+      document.getElementById('header-placeholder').innerHTML = data;
+    })
+    .catch(error => console.error(error));
+
+  // Load Footer
+  fetch('./partials/footer.html')
+    .then(response => {
+      if (!response.ok) throw new Error('Footer gagal load');
+      return response.text();
+    })
+    .then(data => {
+      document.getElementById('footer-placeholder').innerHTML = data;
+    })
+    .catch(error => console.error(error));
+
+});
 </script>
 
 </body>
