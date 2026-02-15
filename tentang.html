@@ -1,124 +1,119 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Profil Central Cat’s | Grooming Kucing & Petshop Terpercaya di Tangerang</title>
-<meta name="description" content="Profil Central Cat’s — Grooming kucing dan petshop terpercaya di Tangerang dengan standar higienis, sistem profesional, treatment kutu, cat hotel, dan pelayanan penuh perhatian.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil Central Cat’s | Grooming Kucing & Petshop Terpercaya di Tangerang</title>
+  <meta name="description" content="Profil Central Cat’s — Grooming kucing dan petshop terpercaya di Tangerang dengan standar higienis, sistem profesional, treatment kutu, cat hotel, dan pelayanan penuh perhatian.">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-<style>
-:root{
-  --primary:#1e3a8a;
-  --accent:#d4af37;
-  --light:#f3f4f6;
-  --text:#111;
-}
+  <style>
+    :root{
+      --primary:#1e3a8a;
+      --accent:#d4af37;
+      --light:#f3f4f6;
+      --text:#111;
+    }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#fff;color:var(--text);line-height:1.8;}
-body.no-scroll{overflow:hidden;}
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+    body{background:#fff;color:var(--text);line-height:1.8;}
+    body.no-scroll{overflow:hidden;}
 
+    .section{padding:90px 5%;}
+    .container{max-width:1100px;margin:auto;}
 
+    h1{font-size:2.6rem;color:var(--primary);margin-bottom:25px;}
 
+    h2{
+      font-size:1.6rem;
+      margin-top:50px;
+      color:var(--primary);
+      position:relative;
+    }
 
-.section{padding:90px 5%;}
-.container{max-width:1100px;margin:auto;}
+    h2::after{
+      content:"";
+      display:block;
+      width:60px;
+      height:4px;
+      background:var(--accent);
+      margin-top:10px;
+      border-radius:3px;
+    }
 
-h1{font-size:2.6rem;color:var(--primary);margin-bottom:25px;}
+    .highlight{color:var(--accent);font-weight:600;}
 
-h2{
-  font-size:1.6rem;
-  margin-top:50px;
-  color:var(--primary);
-  position:relative;
-}
+    .btn{
+      display:inline-block;
+      padding:12px 24px;
+      background:var(--accent);
+      color:#111;
+      text-decoration:none;
+      font-weight:600;
+      border-radius:8px;
+      margin-top:30px;
+    }
 
-h2::after{
-  content:"";
-  display:block;
-  width:60px;
-  height:4px;
-  background:var(--accent);
-  margin-top:10px;
-  border-radius:3px;
-}
-
-.highlight{color:var(--accent);font-weight:600;}
-
-.btn{
-  display:inline-block;
-  padding:12px 24px;
-  background:var(--accent);
-  color:#111;
-  text-decoration:none;
-  font-weight:600;
-  border-radius:8px;
-  margin-top:30px;
-}
-
-@media(max-width:768px){
-  nav{display:none;}
-}
-</style>
+    @media(max-width:768px){
+      nav{display:none;}
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- LOAD HEADER PARTIAL -->
-<div id="header-placeholder"></div>
+  <!-- LOAD HEADER PARTIAL -->
+  <div id="header-placeholder"></div>
 
+  <section class="section">
+    <div class="container">
+      <h1>Profil Central Cat’s</h1>
+      <p>Central Cat’s adalah <span class="highlight">grooming kucing dan petshop terpercaya di Tangerang</span> yang hadir untuk memberikan perawatan terbaik dan aman bagi sahabat berbulu Anda.</p>
+      <p>Kami membangun sistem operasional rapi dengan standar higienis dan profesional agar setiap kucing mendapatkan pengalaman terbaik.</p>
 
+      <h2>Fokus Layanan Kami</h2>
+      <ul style="margin-top:15px;padding-left:20px;">
+        <li>Grooming higienis & aman</li>
+        <li>Treatment kutu profesional</li>
+        <li>Cat Hotel nyaman & terpantau</li>
+        <li>Produk berkualitas & terkurasi</li>
+      </ul>
 
-<section class="section">
-  <div class="container">
-    <h1>Profil Central Cat’s</h1>
-    <p>Central Cat’s adalah <span class="highlight">grooming kucing dan petshop terpercaya di Tangerang</span> yang hadir untuk memberikan perawatan terbaik dan aman bagi sahabat berbulu Anda.</p>
-    <p>Kami membangun sistem operasional rapi dengan standar higienis dan profesional agar setiap kucing mendapatkan pengalaman terbaik.</p>
+      <a href="cabang.html" class="btn">Lihat Cabang Terdekat</a>
+    </div>
+  </section>
 
-    <h2>Fokus Layanan Kami</h2>
-    <ul style="margin-top:15px;padding-left:20px;">
-      <li>Grooming higienis & aman</li>
-      <li>Treatment kutu profesional</li>
-      <li>Cat Hotel nyaman & terpantau</li>
-      <li>Produk berkualitas & terkurasi</li>
-    </ul>
+  <!-- LOAD FOOTER PARTIAL -->
+  <div id="footer-placeholder"></div>
 
-    <a href="cabang.html" class="btn">Lihat Cabang Terdekat</a>
-  </div>
-</section>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
 
-<!-- LOAD FOOTER PARTIAL -->
-<div id="footer-placeholder"></div>
+      // Fungsi untuk load partial
+      function loadPartial(id, file){
+        fetch(file)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(file + ' gagal di-load (status: ' + response.status + ')');
+            }
+            return response.text();
+          })
+          .then(data => {
+            document.getElementById(id).innerHTML = data;
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            document.getElementById(id).innerHTML = "<p style='color:red'>Gagal memuat " + file + "</p>";
+          });
+      }
 
-<script>
-document.addEventListener("DOMContentLoaded", function(){
+      // Load Header & Footer
+      loadPartial('header-placeholder', 'partials/header.html');
+      loadPartial('footer-placeholder', 'partials/footer.html');
 
-  // Load Header
-  fetch('./partials/header.html')
-    .then(response => {
-      if (!response.ok) throw new Error('Header gagal load');
-      return response.text();
-    })
-    .then(data => {
-      document.getElementById('header-placeholder').innerHTML = data;
-    })
-    .catch(error => console.error(error));
-
-  // Load Footer
-  fetch('./partials/footer.html')
-    .then(response => {
-      if (!response.ok) throw new Error('Footer gagal load');
-      return response.text();
-    })
-    .then(data => {
-      document.getElementById('footer-placeholder').innerHTML = data;
-    })
-    .catch(error => console.error(error));
-
-});
-</script>
+    });
+  </script>
 
 </body>
 </html>
