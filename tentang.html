@@ -18,16 +18,14 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-
 body{
   background:#fff;
   color:var(--text);
   line-height:1.8;
-  padding-top:95px; /* penting untuk header fixed */
+  padding-top:95px; /* IMPORTANT untuk header fixed */
 }
 
-body.no-scroll{overflow:hidden;}
-
+/* CONTENT */
 .section{padding:90px 5%;}
 .container{max-width:1100px;margin:auto;}
 
@@ -74,16 +72,12 @@ h2::after{
 .btn:hover{
   transform:translateY(-4px);
 }
-
-@media(max-width:768px){
-  .section{padding:60px 6%;}
-}
 </style>
 </head>
 
 <body>
 
-<!-- HEADER (partial) -->
+<!-- HEADER -->
 <div id="header-placeholder"></div>
 
 <section class="section">
@@ -92,22 +86,22 @@ h2::after{
     <h1>Profil Central Cat’s</h1>
 
     <p>
-      Central Cat’s adalah 
-      <span class="highlight">grooming kucing dan petshop terpercaya di Tangerang</span> 
+      Central Cat’s adalah <span class="highlight">grooming kucing dan petshop terpercaya di Tangerang</span>
       yang hadir untuk memberikan perawatan terbaik dan aman bagi sahabat berbulu Anda.
     </p>
 
     <p>
       Kami membangun sistem operasional rapi dengan standar higienis dan profesional.
+      Setiap layanan dirancang dengan penuh perhatian untuk memastikan kenyamanan dan keamanan kucing Anda.
     </p>
 
     <h2>Fokus Layanan Kami</h2>
 
     <ul style="margin-top:15px;padding-left:20px;">
       <li>Grooming higienis & aman</li>
-      <li>Treatment kutu</li>
-      <li>Cat Hotel nyaman</li>
-      <li>Produk berkualitas</li>
+      <li>Treatment kutu profesional</li>
+      <li>Cat Hotel nyaman & terpantau</li>
+      <li>Produk berkualitas & terkurasi</li>
     </ul>
 
     <a href="cabang.html" class="btn">Lihat Cabang Terdekat</a>
@@ -115,7 +109,7 @@ h2::after{
   </div>
 </section>
 
-<!-- FOOTER (partial) -->
+<!-- FOOTER -->
 <div id="footer-placeholder"></div>
 
 <script>
