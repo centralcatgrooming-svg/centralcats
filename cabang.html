@@ -1,134 +1,49 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cabang Central Cat’s | Grooming & Petshop</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-:root{
-  --primary:#1e3a8a;
-  --accent:#d4af37;
-  --light:#f3f4f6;
-  --text:#111;
-}
-
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#fff;color:var(--text);padding-top:95px;}
-body.no-scroll{overflow:hidden;}
-
-.section{padding:80px 5%;text-align:center;background:var(--light);}
-.section h1{font-size:2.4rem;color:var(--primary);}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:30px;
-  margin-top:40px;
-}
-
-.card{
-  background:white;
-  padding:35px;
-  border-radius:18px;
-  box-shadow:0 10px 30px rgba(0,0,0,.06);
-}
-
-.branch-name{font-size:20px;font-weight:700;color:var(--primary);margin-bottom:15px;}
-.address{font-size:14px;color:#555;margin-bottom:20px;line-height:1.7;}
-.note{color:#c0392b;font-size:13px;margin-top:10px;}
-
-.btn{
-  display:inline-block;
-  padding:12px 24px;
-  background:var(--accent);
-  color:#111;
-  text-decoration:none;
-  font-weight:600;
-  border-radius:8px;
-}
-
-@media(max-width:768px){
-  .section{padding:60px 6%;}
-}
-</style>
-</head>
-
-<body>
-
-<div id="header-placeholder"></div>
-
-<section class="section">
-  <h1>Pilih Cabang Terdekat</h1>
-  <p style="margin-top:10px;color:#555;">Silakan pilih cabang untuk informasi lokasi dan booking layanan.</p>
-
-  <div class="grid">
-
-    <div class="card">
-      <div class="branch-name">Central Cat’s – Bumi Indah</div>
-      <div class="address">
-        Bumi Indah RMR 03<br><br>
-        <strong>Jam Operasional:</strong><br>
-        Grooming: 08.00 – 18.00 WIB<br>
-        Petshop: 08.00 – 21.00 WIB
-        <div class="note">*Reservasi maksimal pukul 16.00 WIB</div>
-      </div>
-      <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20booking%20cabang%20Bumi%20Indah." class="btn">Booking Cabang Ini</a>
-    </div>
-
-    <div class="card">
-      <div class="branch-name">Central Cat’s – Gardenia E11</div>
-      <div class="address">
-        Rajeg Gardenia E11<br><br>
-        <strong>Jam Operasional:</strong><br>
-        Grooming: 08.00 – 18.00 WIB<br>
-        Petshop: 08.00 – 21.00 WIB
-        <div class="note">*Reservasi maksimal pukul 16.00 WIB</div>
-      </div>
-      <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20booking%20cabang%20Gardenia%20E11." class="btn">Booking Cabang Ini</a>
-    </div>
-
-  </div>
-</section>
-
-<div id="footer-placeholder"></div>
-
 <script>
-fetch('partials/header.html')
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById('header-placeholder').innerHTML = data;
+document.addEventListener("DOMContentLoaded", function(){
 
-    const hamburger = document.querySelector('.hamburger');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const overlay = document.querySelector('.overlay');
+  // Fungsi load partial
+  function loadPartial(id, file){
+    fetch(file)
+      .then(res => {
+        if (!res.ok) throw new Error(file + ' gagal di-load (status: ' + res.status + ')');
+        return res.text();
+      })
+      .then(data => {
+        document.getElementById(id).innerHTML = data;
 
-    if(hamburger){
-      hamburger.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
-        const isActive = mobileMenu.classList.contains('active');
-        if(overlay) overlay.style.display = isActive ? 'block' : 'none';
-        document.body.classList.toggle('no-scroll', isActive);
+        // Jika header di-load, aktifkan menu mobile
+        if(id === 'header-placeholder'){
+          const hamburger = document.querySelector('.hamburger');
+          const mobileMenu = document.querySelector('.mobile-menu');
+          const overlay = document.querySelector('.overlay');
+
+          if(hamburger){
+            hamburger.addEventListener('click', () => {
+              mobileMenu.classList.toggle('active');
+              const isActive = mobileMenu.classList.contains('active');
+              if(overlay) overlay.style.display = isActive ? 'block' : 'none';
+              document.body.classList.toggle('no-scroll', isActive);
+            });
+          }
+
+          if(overlay){
+            overlay.addEventListener('click', () => {
+              mobileMenu.classList.remove('active');
+              overlay.style.display = 'none';
+              document.body.classList.remove('no-scroll');
+            });
+          }
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        document.getElementById(id).innerHTML = "<p style='color:red'>Gagal memuat " + file + "</p>";
       });
-    }
+  }
 
-    if(overlay){
-      overlay.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-        overlay.style.display = 'none';
-        document.body.classList.remove('no-scroll');
-      });
-    }
-  });
+  // Load Header & Footer
+  loadPartial('header-placeholder', 'partials/header.html');
+  loadPartial('footer-placeholder', 'partials/footer.html');
 
-fetch('partials/footer.html')
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById('footer-placeholder').innerHTML = data;
-  });
+});
 </script>
-
-</body>
-</html>
