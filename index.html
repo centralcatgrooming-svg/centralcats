@@ -81,6 +81,16 @@ nav a:hover{color:var(--accent);}
   object-fit:contain;
 }
 
+/* khusus icon grooming agar lebih proporsional */
+.card img[alt="Grooming"]{
+  max-width:55px;
+}
+
+/* khusus icon cat hotel agar proporsional */
+.card img[alt="Cat Hotel"]{
+  max-width:80px;
+}
+
 .review-stars{
   color:#f5c518;
   font-size:22px;
@@ -105,11 +115,108 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 
 @media(max-width:768px){
   nav{display:none;}
+
+  /* Header */
+  header{padding:10px 6%;}
+  .logo-area img{height:48px;}
+
+  /* Hamburger */
   .hamburger{display:flex;flex-direction:column;gap:5px;width:28px;cursor:pointer;}
   .hamburger span{height:3px;background:white;border-radius:2px;}
-  .mobile-menu{position:fixed;top:0;right:0;width:75%;height:100vh;background:var(--primary);padding:80px 25px;display:flex;flex-direction:column;gap:20px;transform:translateX(100%);transition:.3s ease;}
-  .mobile-menu a{color:white;text-decoration:none;font-size:18px;font-weight:600;}
-  .overlay{position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(0,0,0,0.4);z-index:998;}
+
+  /* Mobile Menu */
+  .mobile-menu{
+    position:fixed;
+    top:0;
+    right:0;
+    width:75%;
+    height:100vh;
+    background:var(--primary);
+    padding:80px 25px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    transform:translateX(100%);
+    transition:.3s ease;
+    z-index:999;
+  }
+
+  .mobile-menu a{
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:600;
+  }
+
+  .overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background:rgba(0,0,0,0.4);
+    z-index:998;
+  }
+
+  /* Hero Mobile Layout */
+  .hero{padding:70px 6%;}
+  .hero-container{
+    flex-direction:column;
+    text-align:center;
+    gap:25px;
+  }
+
+  .hero img{
+    max-width:240px !important;
+  }
+
+  .hero-text h1{
+    font-size:1.8rem;
+    line-height:1.25;
+  }
+
+  .hero-text p{
+    font-size:.95rem;
+  }
+
+  /* Section spacing */
+  .section{padding:55px 6%;}
+
+  /* Card Mobile */
+  .card{
+    padding:20px;
+    min-height:auto;
+  }
+
+  .icon-frame{
+    width:100px;
+    height:100px;
+  }
+
+  .card img{
+    max-width:55px;
+  }
+
+  /* Buttons full width */
+  .btn{
+    display:block;
+    width:100%;
+    text-align:center;
+    margin:12px 0 0 0 !important;
+  }
+
+  .hero .btn{
+    max-width:260px;
+    margin:12px auto 0 !important;
+  }
+
+  /* Floating WA smaller */
+  .wa-float{
+    width:52px;
+    height:52px;
+    bottom:15px;
+    right:15px;
+  }
 }
 </style>
 </head>
@@ -419,6 +526,66 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
   </div>
   <div class="footer-bottom">© 2026 Central Cat’s. All Rights Reserved.</div>
 </footer>
+
+<script>
+// HAMBURGER TOGGLE
+const hamburger = document.querySelector('.hamburger');
+const mobileMenu = document.querySelector('.mobile-menu');
+const overlay = document.querySelector('.overlay');
+
+if(hamburger){
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+    const isActive = mobileMenu.classList.contains('active');
+    overlay.style.display = isActive ? 'block' : 'none';
+    document.body.classList.toggle('no-scroll', isActive);
+  });
+}
+
+if(overlay){
+  overlay.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+    overlay.style.display = 'none';
+    document.body.classList.remove('no-scroll');
+  });
+}
+
+// SEARCH FILTER
+const searchInput = document.getElementById('searchInput');
+if(searchInput){
+  searchInput.addEventListener('keyup', function(e) {
+    const filter = searchInput.value.toLowerCase();
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      const text = card.innerText.toLowerCase();
+      if(text.includes(filter)){
+        card.classList.remove('hide');
+      } else {
+        card.classList.add('hide');
+      }
+    });
+    if(e.key === 'Enter'){
+      document.getElementById('services').scrollIntoView({behavior:'smooth'});
+    }
+  });
+}
+
+// WHATSAPP HANDLER
+function sendWA(button){
+  const card = button.closest('.card');
+  const select = card.querySelector('.service-select');
+  const service = select.getAttribute('data-service');
+  const branch = select.value;
+  if(!branch){
+    alert('Silakan pilih cabang terlebih dahulu.');
+    return;
+  }
+  const message = `Halo Central Cat’s, saya ingin ${service} di cabang ${branch}.`;
+  const encodedMessage = encodeURIComponent(message);
+  const url = `https://wa.me/6282111827798?text=${encodedMessage}`;
+  window.open(url, '_blank');
+}
+</script>
 
 </body>
 </html>
