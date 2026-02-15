@@ -224,11 +224,18 @@ footer{
   text-decoration:none;
 }
 
+.review-stars{
+  color:#f5c518;
+  font-size:18px;
+  margin-bottom:10px;
+}
+
 @media(max-width:768px){
   nav{display:none;}
   .hero-container{flex-direction:column;text-align:center;}
   .hero-text h1{font-size:1.8rem;}
   .search-box{display:none;}
+}
 
 </style>
 
@@ -248,7 +255,12 @@ footer{
   },
   "areaServed": ["Kota Tangerang","Kabupaten Tangerang","Jakarta"],
   "url": "https://centralcatgrooming-svg.github.io/centralcats/",
-  "sameAs": []
+  "sameAs": [],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "3"
+  }
 }
 </script>
 
@@ -445,14 +457,74 @@ footer{
       <h3>Rajeg Gardenia E11</h3>
       <div style="border-radius:14px;overflow:hidden;margin:15px 0;">
         <iframe 
-          src="https://www.google.com/maps?q=Central%20Cat's%20Rajeg%20Gardenia%20Tangerang&output=embed"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.1385255185905!2d106.527102!3d-6.112045399999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ff26fcfaf78f%3A0x51739d0883609b67!2sPetshop%20Central%20Cat's%20(Rajeg%20Gardenia)!5e0!3m2!1sid!2sid!4v1771117820976!5m2!1sid!2sid"
           width="100%" 
           height="300" 
           style="border:0;" 
-          loading="lazy">
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
         </iframe>
       </div>
-      <a href="https://maps.app.goo.gl/ZeErXimUWfZv6b5W6" target="_blank" class="btn">Buka di Google Maps</a>
+      <a href="https://maps.app.goo.gl/4m1sTj7SqSaSiTn97" target="_blank" class="btn">Buka di Google Maps</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section" id="reviews" style="background:#ffffff;">
+  <div style="max-width:1200px;margin:auto;">
+
+    <div style="display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;">
+      <h2 style="margin:0;">Ulasan Pelanggan</h2>
+      <img src="assets/maskot/maskot-yang-berkualitas-ada-di-sini-transparent.png"
+           alt="Maskot Central Cat’s"
+           style="max-width:120px;height:auto;">
+    </div>
+    <p style="max-width:700px;margin:15px auto 40px;">
+      Ulasan asli dari pelanggan Central Cat’s yang telah mempercayakan perawatan kucing mereka kepada kami.
+    </p>
+
+    <div style="display:flex;align-items:flex-start;gap:60px;flex-wrap:wrap;">
+
+      <!-- LEFT: REVIEWS -->
+      <div style="flex:1.3;min-width:320px;">
+        <div class="grid" style="margin-top:0;">
+
+          <div class="card" style="text-align:center;">
+            <div class="review-stars">★★★★★</div>
+            <p>"Puas sekali anabulku pulang jadi tambah ganteng, bulunya tambah lembut. Pokoknya jangan ragu buat yang punya anabul, rekomendasi banget!"</p>
+            <strong>- Seni Rudi (Google Review)</strong>
+          </div>
+
+          <div class="card" style="text-align:center;">
+            <div class="review-stars">★★★★★</div>
+            <p>"Pelayanannya sangat baik, bisa antar jemput. Setelah grooming bulu kucing jadi halus dan bersih. Keren lah Central Cat’s."</p>
+            <strong>- Arsakha Putra Maulana (Google Review)</strong>
+          </div>
+
+          <div class="card" style="text-align:center;">
+            <div class="review-stars">★★★★★</div>
+            <p>"Pegawai grooming untuk home service recomended banget. Sudah 2 kali dan semuanya telaten serta sayang sama anabul."</p>
+            <strong>- Popi Oktaviani (Google Review)</strong>
+          </div>
+
+        </div>
+
+        <div style="margin-top:30px;text-align:center;">
+          <a href="https://maps.app.goo.gl/tcCTZihDzwFTpwD4A" target="_blank" rel="noopener noreferrer" class="btn" style="margin-right:10px;">Review Bumi Indah</a>
+          <a href="https://maps.app.goo.gl/4m1sTj7SqSaSiTn97" target="_blank" rel="noopener noreferrer" class="btn">Review Gardenia</a>
+        </div>
+      </div>
+
+      <!-- RIGHT: MASCOT -->
+      <div style="flex:0.9;min-width:260px;text-align:center;">
+        <img src="assets/maskot/maskot-yang-berkualitas-ada-di-sini-transparent.png"
+             alt="Maskot Central Cat’s"
+             style="max-width:360px;width:100%;height:auto;">
+      </div>
+
     </div>
 
   </div>
