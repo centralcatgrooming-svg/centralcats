@@ -262,8 +262,23 @@ footer{
 
 .review-stars{
   color:#f5c518;
-  font-size:18px;
-  margin-bottom:10px;
+  font-size:22px;
+  margin-bottom:4px;
+  letter-spacing:2px;
+}
+
+#reviews .card p{
+  margin-top:4px;
+}
+
+/* Subtle Premium Hover Effect for Reviews */
+#reviews .card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 14px 35px rgba(0,0,0,.08);
+}
+
+#reviews .card{
+  padding:25px 25px 30px;
 }
 
 @media(max-width:768px){
@@ -385,13 +400,15 @@ footer{
 
 <!-- SERVICES -->
 <section class="section" id="services" style="background:#f9fafb;">
-  <div style="display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;">
+  <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
     <h2 style="margin:0;">Layanan Kami</h2>
     <img src="assets/maskot/maskot-megaphone-transparent.png"
          alt="Maskot Central Cat’s"
-         style="max-width:110px;height:auto;">
+         style="max-width:85px;height:auto;">
   </div>
-  <p style="max-width:700px;margin:8px auto 30px;">Layanan profesional khusus kucing dengan standar aman, higienis, dan penuh perhatian.</p>
+  <p style="max-width:700px;margin:15px auto 35px;line-height:1.6;">
+    Layanan profesional khusus kucing dengan standar aman, higienis, dan penuh perhatian.
+  </p>
 
   <div class="grid">
 
@@ -401,7 +418,13 @@ footer{
       </div>
       <h3>1. Grooming</h3>
       <p>Mandi, pengeringan, potong kuku, bersih telinga & perawatan dasar lainnya.</p>
-      <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20booking%20untuk%20cabang%20Bumi%20Indah%20atau%20Gardenia." class="btn" style="margin-top:15px;display:inline-block;">Booking</a>
+
+      <select class="service-select" data-service="Grooming" style="margin-top:15px;padding:8px 12px;border-radius:6px;border:1px solid #ccc;">
+        <option value="">Pilih Cabang</option>
+        <option value="Bumi Indah">Bumi Indah</option>
+        <option value="Rajeg Gardenia E11">Rajeg Gardenia E11</option>
+      </select>
+      <button class="btn" style="margin-top:10px;" onclick="sendWA(this)">Booking</button>
     </div>
 
     <div class="card" style="text-align:center;">
@@ -410,7 +433,13 @@ footer{
       </div>
       <h3>2. Treatment Kutu</h3>
       <p>Perawatan khusus untuk membantu mengatasi kutu dan menjaga kesehatan kulit serta bulu kucing.</p>
-      <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20booking%20untuk%20cabang%20Bumi%20Indah%20atau%20Gardenia." class="btn" style="margin-top:15px;display:inline-block;">Konsultasi</a>
+
+      <select class="service-select" data-service="Treatment Kutu" style="margin-top:15px;padding:8px 12px;border-radius:6px;border:1px solid #ccc;">
+        <option value="">Pilih Cabang</option>
+        <option value="Bumi Indah">Bumi Indah</option>
+        <option value="Rajeg Gardenia E11">Rajeg Gardenia E11</option>
+      </select>
+      <button class="btn" style="margin-top:10px;" onclick="sendWA(this)">Konsultasi</button>
     </div>
 
     <div class="card" style="text-align:center;">
@@ -419,7 +448,13 @@ footer{
       </div>
       <h3>3. Cat Hotel</h3>
       <p>Layanan penitipan kucing yang aman, bersih, dan nyaman dengan pengawasan rutin.</p>
-      <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20booking%20untuk%20cabang%20Bumi%20Indah%20atau%20Gardenia." class="btn" style="margin-top:15px;display:inline-block;">Reservasi</a>
+
+      <select class="service-select" data-service="Cat Hotel" style="margin-top:15px;padding:8px 12px;border-radius:6px;border:1px solid #ccc;">
+        <option value="">Pilih Cabang</option>
+        <option value="Bumi Indah">Bumi Indah</option>
+        <option value="Rajeg Gardenia E11">Rajeg Gardenia E11</option>
+      </select>
+      <button class="btn" style="margin-top:10px;" onclick="sendWA(this)">Reservasi</button>
     </div>
 
   </div>
@@ -467,7 +502,7 @@ footer{
   <h2>Hubungi Kami</h2>
   <p>Booking grooming atau tanya produk langsung via WhatsApp.</p>
   <br>
-  <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20booking%20untuk%20cabang%20Bumi%20Indah%20atau%20Gardenia." class="btn">Chat WhatsApp</a>
+  <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20booking%20layanan%20Grooming." class="btn">Chat WhatsApp</a>
 </section>
 
 <!-- GOOGLE MAPS -->
@@ -601,7 +636,7 @@ footer{
   </div>
 </footer>
 
-<a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20booking%20untuk%20cabang%20Bumi%20Indah%20atau%20Gardenia." class="wa-float">Chat WhatsApp</a>
+<a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20booking%20layanan%20Grooming." class="wa-float">Chat WhatsApp</a>
 
 
 <script>
@@ -625,6 +660,25 @@ searchInput.addEventListener('keyup', function(e) {
     document.getElementById('services').scrollIntoView({behavior:'smooth'});
   }
 });
+
+// WhatsApp Dropdown Service Handler
+function sendWA(button){
+  const card = button.closest('.card');
+  const select = card.querySelector('.service-select');
+  const service = select.getAttribute('data-service');
+  const branch = select.value;
+
+  if(!branch){
+    alert('Silakan pilih cabang terlebih dahulu.');
+    return;
+  }
+
+  const message = `Halo Central Cat’s, saya ingin ${service} di cabang ${branch}.`;
+  const encodedMessage = encodeURIComponent(message);
+  const url = `https://wa.me/6282111827798?text=${encodedMessage}`;
+
+  window.open(url, '_blank');
+}
 </script>
 
 </body>
