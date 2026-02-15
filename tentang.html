@@ -18,69 +18,24 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#fff;color:var(--text);line-height:1.8;}
+
+body{
+  background:#fff;
+  color:var(--text);
+  line-height:1.8;
+  padding-top:95px; /* penting untuk header fixed */
+}
+
 body.no-scroll{overflow:hidden;}
-
-/* ===== HEADER IDENTIK INDEX ===== */
-
-header{
-  background:var(--primary);
-  padding:8px 5%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  position:sticky;
-  top:0;
-  z-index:1000;
-}
-
-.logo-area img{
-  height:75px;
-  width:auto;
-  display:block;
-}
-
-nav{display:flex;align-items:center;}
-
-nav a{
-  color:white;
-  text-decoration:none;
-  margin-left:20px;
-  font-weight:500;
-  transition:.3s ease;
-}
-
-nav a:hover{color:var(--accent);}
-
-.search-box{
-  display:flex;
-  align-items:center;
-  background:white;
-  border-radius:30px;
-  padding:6px 12px;
-  margin-right:20px;
-}
-
-.search-box input{
-  border:none;
-  outline:none;
-  font-size:14px;
-  width:160px;
-}
-
-.search-icon{margin-right:6px;font-size:14px;opacity:.6;}
-
-.hamburger{display:none;}
-.mobile-menu{display:none;}
-.mobile-menu.active{transform:translateX(0);}
-.overlay{display:none;}
-
-/* ===== CONTENT ===== */
 
 .section{padding:90px 5%;}
 .container{max-width:1100px;margin:auto;}
 
-h1{font-size:2.6rem;color:var(--primary);margin-bottom:25px;}
+h1{
+  font-size:2.6rem;
+  color:var(--primary);
+  margin-bottom:25px;
+}
 
 h2{
   font-size:1.6rem;
@@ -99,7 +54,10 @@ h2::after{
   border-radius:3px;
 }
 
-.highlight{color:var(--accent);font-weight:600;}
+.highlight{
+  color:var(--accent);
+  font-weight:600;
+}
 
 .btn{
   display:inline-block;
@@ -113,160 +71,11 @@ h2::after{
   transition:.3s ease;
 }
 
-.btn:hover{transform:translateY(-4px);}
-
-/* ===== FOOTER IDENTIK INDEX ===== */
-
-footer{
-  background:var(--primary);
-  color:white;
-  padding:60px 5% 30px;
-  margin-top:60px;
+.btn:hover{
+  transform:translateY(-4px);
 }
-
-.footer-container{
-  max-width:1200px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:40px;
-  text-align:left;
-}
-
-.footer-title{
-  font-weight:600;
-  margin-bottom:15px;
-  color:var(--accent);
-}
-
-.footer-logo-frame{
-  background:#ffffff;
-  display:inline-block;
-  padding:12px 18px;
-  border-radius:12px;
-  margin-bottom:15px;
-  border:1.5px solid var(--accent);
-  box-shadow:0 4px 12px rgba(0,0,0,0.08);
-}
-
-.footer-logo-frame img{
-  height:80px;
-  display:block;
-}
-
-.footer-links a{
-  display:block;
-  color:white;
-  text-decoration:none;
-  margin-bottom:8px;
-  font-size:14px;
-  opacity:.9;
-}
-
-.footer-links a:hover{color:var(--accent);}
-
-.footer-bottom{
-  text-align:center;
-  margin-top:40px;
-  font-size:13px;
-  opacity:.8;
-  border-top:1px solid rgba(255,255,255,.15);
-  padding-top:20px;
-}
-
-.social-icons{
-  margin-top:15px;
-  display:flex;
-  gap:12px;
-}
-
-.social-icons a{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:36px;
-  height:36px;
-  background:rgba(255,255,255,0.1);
-  border-radius:50%;
-  transition:.3s ease;
-}
-
-.social-icons a:hover{background:var(--accent);}
-
-/* ===== FLOAT WA ===== */
-
-.wa-float{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  width:58px;
-  height:58px;
-  background:#25D366;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
-  box-shadow:0 6px 18px rgba(0,0,0,.2);
-  z-index:1001;
-  text-decoration:none;
-}
-
-/* ===== MOBILE ===== */
 
 @media(max-width:768px){
-
-  nav{display:none;}
-
-  header{padding:10px 6%;}
-  .logo-area img{height:60px;}
-
-  .hamburger{
-    display:flex;
-    flex-direction:column;
-    gap:5px;
-    width:28px;
-    cursor:pointer;
-  }
-
-  .hamburger span{
-    height:3px;
-    background:white;
-    border-radius:2px;
-  }
-
-  .mobile-menu{
-    position:fixed;
-    top:0;
-    right:0;
-    width:75%;
-    height:100vh;
-    background:var(--primary);
-    padding:80px 25px;
-    display:flex;
-    flex-direction:column;
-    gap:20px;
-    transform:translateX(100%);
-    transition:.3s ease;
-    z-index:999;
-  }
-
-  .mobile-menu a{
-    color:white;
-    text-decoration:none;
-    font-size:18px;
-    font-weight:600;
-  }
-
-  .overlay{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100vh;
-    background:rgba(0,0,0,0.4);
-    z-index:998;
-  }
-
   .section{padding:60px 6%;}
 }
 </style>
@@ -274,46 +83,26 @@ footer{
 
 <body>
 
-<header>
-  <div class="logo-area">
-    <img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo">
-  </div>
-
-  <nav>
-    <div class="search-box">
-      <span class="search-icon">🔍</span>
-      <input type="text" placeholder="Cari layanan / produk...">
-    </div>
-    <a href="index.html">Home</a>
-    <a href="index.html#about">Tentang</a>
-    <a href="index.html#services">Layanan</a>
-    <a href="index.html#products">Produk</a>
-    <a href="cabang.html">Cabang</a>
-    <a href="tentang.html" style="color:var(--accent);">Profil</a>
-    <a href="index.html#contact">Kontak</a>
-  </nav>
-
-  <div class="hamburger"><span></span><span></span><span></span></div>
-</header>
-
-<div class="overlay"></div>
-
-<div class="mobile-menu">
-  <a href="index.html">Home</a>
-  <a href="index.html#services">Layanan</a>
-  <a href="index.html#products">Produk</a>
-  <a href="cabang.html">Cabang</a>
-  <a href="tentang.html">Profil</a>
-  <a href="index.html#contact">Kontak</a>
-</div>
+<!-- HEADER (partial) -->
+<div id="header-placeholder"></div>
 
 <section class="section">
   <div class="container">
+
     <h1>Profil Central Cat’s</h1>
-    <p>Central Cat’s adalah <span class="highlight">grooming kucing dan petshop terpercaya di Tangerang</span> yang hadir untuk memberikan perawatan terbaik dan aman bagi sahabat berbulu Anda.</p>
-    <p>Kami membangun sistem operasional rapi dengan standar higienis dan profesional.</p>
+
+    <p>
+      Central Cat’s adalah 
+      <span class="highlight">grooming kucing dan petshop terpercaya di Tangerang</span> 
+      yang hadir untuk memberikan perawatan terbaik dan aman bagi sahabat berbulu Anda.
+    </p>
+
+    <p>
+      Kami membangun sistem operasional rapi dengan standar higienis dan profesional.
+    </p>
 
     <h2>Fokus Layanan Kami</h2>
+
     <ul style="margin-top:15px;padding-left:20px;">
       <li>Grooming higienis & aman</li>
       <li>Treatment kutu</li>
@@ -322,41 +111,48 @@ footer{
     </ul>
 
     <a href="cabang.html" class="btn">Lihat Cabang Terdekat</a>
+
   </div>
 </section>
 
-<footer>
-  <!-- footer sama persis dengan index -->
-  <!-- biarkan seperti di index -->
-</footer>
-
-<a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20informasi%20lebih%20lanjut." class="wa-float">
-  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" viewBox="0 0 24 24">
-    <path d="M12 2a8 8 0 0 0-8 8v3a3 3 0 0 0 3 3h1v-6H6a6 6 0 1 1 12 0h-2v6h1a3 3 0 0 0 3-3v-3a8 8 0 0 0-8-8z"/>
-  </svg>
-</a>
+<!-- FOOTER (partial) -->
+<div id="footer-placeholder"></div>
 
 <script>
-const hamburger = document.querySelector('.hamburger');
-const mobileMenu = document.querySelector('.mobile-menu');
-const overlay = document.querySelector('.overlay');
+/* LOAD HEADER */
+fetch('partials/header.html')
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById('header-placeholder').innerHTML = data;
 
-if(hamburger){
-  hamburger.addEventListener('click', () => {
-    mobileMenu.classList.toggle('active');
-    const isActive = mobileMenu.classList.contains('active');
-    overlay.style.display = isActive ? 'block' : 'none';
-    document.body.classList.toggle('no-scroll', isActive);
-  });
-}
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const overlay = document.querySelector('.overlay');
 
-if(overlay){
-  overlay.addEventListener('click', () => {
-    mobileMenu.classList.remove('active');
-    overlay.style.display = 'none';
-    document.body.classList.remove('no-scroll');
+    if(hamburger){
+      hamburger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+        const isActive = mobileMenu.classList.contains('active');
+        if(overlay) overlay.style.display = isActive ? 'block' : 'none';
+        document.body.classList.toggle('no-scroll', isActive);
+      });
+    }
+
+    if(overlay){
+      overlay.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        overlay.style.display = 'none';
+        document.body.classList.remove('no-scroll');
+      });
+    }
   });
-}
+
+/* LOAD FOOTER */
+fetch('partials/footer.html')
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById('footer-placeholder').innerHTML = data;
+  });
 </script>
 
 </body>
