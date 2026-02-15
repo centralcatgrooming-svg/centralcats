@@ -18,6 +18,7 @@
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 body{background:#fff;color:var(--text);} 
+body.no-scroll{overflow:hidden;} 
 
 header{
   background:var(--primary);
@@ -498,12 +499,15 @@ const overlay = document.querySelector('.overlay');
 
 hamburger.addEventListener('click', () => {
   mobileMenu.classList.toggle('active');
-  overlay.style.display = mobileMenu.classList.contains('active') ? 'block' : 'none';
+  const isActive = mobileMenu.classList.contains('active');
+  overlay.style.display = isActive ? 'block' : 'none';
+  document.body.classList.toggle('no-scroll', isActive);
 });
 
 overlay.addEventListener('click', () => {
   mobileMenu.classList.remove('active');
   overlay.style.display = 'none';
+  document.body.classList.remove('no-scroll');
 });
 
 
