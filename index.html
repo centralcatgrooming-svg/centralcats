@@ -18,6 +18,10 @@
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 body{background:#fff;color:var(--text);} 
+
+html{scroll-behavior:smooth;} 
+
+section{scroll-margin-top:100px;} 
 body.no-scroll{overflow:hidden;} 
 
 header{
@@ -37,9 +41,9 @@ header{
 nav{display:flex;align-items:center;}
 
 .hamburger{display:none;}
-.mobile-menu{display:none;}
+.mobile-menu{position:fixed;top:0;right:0;width:75%;height:100vh;background:var(--primary);padding:80px 25px;display:flex;flex-direction:column;gap:20px;transform:translateX(100%);transition:.3s ease;z-index:999;}
 .mobile-menu.active{transform:translateX(0);} 
-.overlay{display:none;}
+.overlay{position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(0,0,0,0.4);z-index:998;display:none;}
 
 nav a{color:white;text-decoration:none;margin-left:20px;font-weight:500;transition:.3s ease;}
 nav a:hover{color:var(--accent);} 
@@ -86,12 +90,10 @@ nav a:hover{color:var(--accent);}
   object-fit:contain;
 }
 
-/* khusus icon grooming agar lebih proporsional */
 .card img[alt="Grooming"]{
   max-width:55px;
 }
 
-/* khusus icon cat hotel agar proporsional */
 .card img[alt="Cat Hotel"]{
   max-width:80px;
 }
@@ -120,16 +122,10 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 
 @media(max-width:768px){
   nav{display:none;}
-
-  /* Header */
   header{padding:10px 6%;}
   .logo-area img{height:60px;}
-
-  /* Hamburger */
   .hamburger{display:flex;flex-direction:column;gap:5px;width:28px;cursor:pointer;}
   .hamburger span{height:3px;background:white;border-radius:2px;}
-
-  /* Mobile Menu */
   .mobile-menu{
     position:fixed;
     top:0;
@@ -145,14 +141,12 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
     transition:.3s ease;
     z-index:999;
   }
-
   .mobile-menu a{
     color:white;
     text-decoration:none;
     font-size:18px;
     font-weight:600;
   }
-
   .overlay{
     position:fixed;
     top:0;
@@ -162,60 +156,44 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
     background:rgba(0,0,0,0.4);
     z-index:998;
   }
-
-  /* Hero Mobile Layout */
-  .hero{padding:70px 6%;}
+  .hero{padding:45px 6%;}
   .hero-container{
     flex-direction:column;
     text-align:center;
     gap:25px;
   }
-
   .hero img{
     max-width:240px !important;
   }
-
   .hero-text h1{
     font-size:1.8rem;
     line-height:1.25;
   }
-
   .hero-text p{
     font-size:.95rem;
   }
-
-  /* Section spacing */
   .section{padding:55px 6%;}
-
-  /* Card Mobile */
   .card{
     padding:20px;
     min-height:auto;
   }
-
   .icon-frame{
     width:100px;
     height:100px;
   }
-
   .card img{
     max-width:55px;
   }
-
-  /* Buttons full width */
   .btn{
     display:block;
     width:100%;
     text-align:center;
     margin:12px 0 0 0 !important;
   }
-
   .hero .btn{
     max-width:260px;
     margin:12px auto 0 !important;
   }
-
-  /* Floating WA smaller */
   .wa-float{
     width:52px;
     height:52px;
@@ -240,8 +218,8 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
     <a href="#about">Tentang</a>
     <a href="#services">Layanan</a>
     <a href="#products">Produk</a>
-    <a href="cabang.html">Cabang</a>
-    <a href="tentang.html">Profil</a>
+    <a href="#location">Cabang</a>
+    <a href="#about">Profil</a>
     <a href="#contact">Kontak</a>
   </nav>
   <div class="hamburger"><span></span><span></span><span></span></div>
@@ -253,8 +231,8 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
   <a href="#about">Tentang</a>
   <a href="#services">Layanan</a>
   <a href="#products">Produk</a>
-  <a href="cabang.html">Cabang</a>
-  <a href="tentang.html">Profil</a>
+  <a href="#location">Cabang</a>
+  <a href="#about">Profil</a>
   <a href="#contact">Kontak</a>
 </div>
 
@@ -299,11 +277,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 <section class="section" id="services" style="background:#f9fafb;">
   <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
     <h2 style="margin:0;">Layanan Kami</h2>
-    <img src="assets/maskot/maskot-megaphone-transparent.png" alt="Maskot Central Cat’s" style="max-width:85px;height:auto;">
   </div>
-  <p style="max-width:700px;margin:15px auto 35px;line-height:1.6;">
-    Layanan profesional khusus kucing dengan standar aman, higienis, dan penuh perhatian.
-  </p>
   <div class="grid">
 
     <div class="card" style="text-align:center;">
@@ -312,12 +286,6 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
       </div>
       <h3>1. Grooming</h3>
       <p>Mandi, pengeringan, potong kuku, bersih telinga & perawatan dasar lainnya.</p>
-      <select class="service-select" data-service="Grooming" style="margin-top:15px;padding:8px 12px;border-radius:6px;border:1px solid #ccc;">
-        <option value="">Pilih Cabang</option>
-        <option value="Bumi Indah">Bumi Indah</option>
-        <option value="Rajeg Gardenia E11">Rajeg Gardenia E11</option>
-      </select>
-      <button class="btn" style="margin-top:10px;" onclick="sendWA(this)">Booking</button>
     </div>
 
     <div class="card" style="text-align:center;">
@@ -326,12 +294,6 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
       </div>
       <h3>2. Treatment Kutu</h3>
       <p>Perawatan khusus untuk membantu mengatasi kutu dan menjaga kesehatan kulit serta bulu kucing.</p>
-      <select class="service-select" data-service="Treatment Kutu" style="margin-top:15px;padding:8px 12px;border-radius:6px;border:1px solid #ccc;">
-        <option value="">Pilih Cabang</option>
-        <option value="Bumi Indah">Bumi Indah</option>
-        <option value="Rajeg Gardenia E11">Rajeg Gardenia E11</option>
-      </select>
-      <button class="btn" style="margin-top:10px;" onclick="sendWA(this)">Konsultasi</button>
     </div>
 
     <div class="card" style="text-align:center;">
@@ -340,63 +302,13 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
       </div>
       <h3>3. Cat Hotel</h3>
       <p>Layanan penitipan kucing yang aman, bersih, dan nyaman dengan pengawasan rutin.</p>
-      <select class="service-select" data-service="Cat Hotel" style="margin-top:15px;padding:8px 12px;border-radius:6px;border:1px solid #ccc;">
-        <option value="">Pilih Cabang</option>
-        <option value="Bumi Indah">Bumi Indah</option>
-        <option value="Rajeg Gardenia E11">Rajeg Gardenia E11</option>
-      </select>
-      <button class="btn" style="margin-top:10px;" onclick="sendWA(this)">Reservasi</button>
     </div>
 
   </div>
-</section>
-
-<section class="section" id="products" style="background:#f3f4f6;">
-  <h2>Produk Petshop</h2>
-  <p style="max-width:700px;margin:15px auto 0;">Kami menyediakan berbagai kebutuhan hewan peliharaan berkualitas untuk menunjang kesehatan dan kenyamanan sahabat berbulu Anda.</p>
-  <div class="grid">
-
-    <div class="card" style="text-align:center;">
-      <div style="width:120px;height:120px;margin:0 auto 20px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.08);border:2px solid var(--accent);">
-        <span style="font-size:40px;">🍗</span>
-      </div>
-      <h3>Makanan & Nutrisi</h3>
-      <p>Makanan hewan peliharaan premium, vitamin, dan suplemen untuk menjaga kesehatan dan daya tahan tubuh.</p>
-      <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20bertanya%20tentang%20produk%20Makanan%20%26%20Nutrisi." class="btn" style="margin-top:15px;display:inline-block;">Tanya Produk</a>
-    </div>
-
-    <div class="card" style="text-align:center;">
-      <div style="width:120px;height:120px;margin:0 auto 20px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.08);border:2px solid var(--accent);">
-        <span style="font-size:40px;">🧺</span>
-      </div>
-      <h3>Perlengkapan & Aksesoris</h3>
-      <p>Pasir kucing, perlengkapan anjing, kandang, litter box, mainan, hingga perlengkapan harian lainnya.</p>
-      <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20bertanya%20tentang%20produk%20Perlengkapan%20%26%20Aksesoris." class="btn" style="margin-top:15px;display:inline-block;">Tanya Produk</a>
-    </div>
-
-    <div class="card" style="text-align:center;">
-      <div style="width:120px;height:120px;margin:0 auto 20px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.08);border:2px solid var(--accent);">
-        <span style="font-size:40px;">🧴</span>
-      </div>
-      <h3>Perawatan & Grooming Kit</h3>
-      <p>Shampoo khusus kucing dan anjing, sisir, dan perlengkapan perawatan untuk menjaga kebersihan dan kesehatan bulu.</p>
-      <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20bertanya%20tentang%20produk%20Perawatan%20%26%20Grooming%20Kit." class="btn" style="margin-top:15px;display:inline-block;">Tanya Produk</a>
-    </div>
-
-  </div>
-</section>
-
-<section class="section" id="contact">
-  <h2>Hubungi Kami</h2>
-  <p>Booking grooming atau tanya produk langsung via WhatsApp.</p>
-  <br>
-  <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20booking%20layanan%20Grooming." class="btn">Chat WhatsApp</a>
 </section>
 
 <section class="section" id="location" style="background:#f3f4f6;">
   <h2>Lokasi Cabang Kami</h2>
-  <p style="max-width:700px;margin:15px auto 40px;">Temukan Central Cat’s di Tangerang. Klik tombol di bawah peta untuk navigasi langsung.</p>
-  
   <div class="grid">
 
     <div class="card" style="text-align:center;">
@@ -433,43 +345,25 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 </section>
 
 <section class="section" id="reviews" style="background:#ffffff;">
-  <div style="max-width:1100px;margin:auto;">
+  <h2>Ulasan Pelanggan</h2>
+  <div class="grid">
 
-    <div style="display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;">
-      <h2 style="margin:0;">Ulasan Pelanggan</h2>
-      <img src="assets/maskot/maskot-yang-berkualitas-ada-di-sini-transparent.png" 
-           alt="Maskot Central Cat’s" 
-           style="max-width:110px;height:auto;">
-    </div>
-    <p style="max-width:700px;margin:15px auto 40px;">
-      Ulasan asli dari pelanggan Central Cat’s yang telah mempercayakan perawatan kucing mereka kepada kami.
-    </p>
-
-    <div class="grid">
-
-      <div class="card" style="text-align:center;">
-        <div class="review-stars">★★★★★</div>
-        <p>"Puas sekali anabulku pulang jadi tambah ganteng, bulunya tambah lembut. Pokoknya jangan ragu buat yang punya anabul, rekomendasi banget!"</p>
-        <strong>- Seni Rudi (Google Review)</strong>
-      </div>
-
-      <div class="card" style="text-align:center;">
-        <div class="review-stars">★★★★★</div>
-        <p>"Pelayanannya sangat baik, bisa antar jemput. Setelah grooming bulu kucing jadi halus dan bersih. Keren lah Central Cat’s."</p>
-        <strong>- Arsakha Putra Maulana (Google Review)</strong>
-      </div>
-
-      <div class="card" style="text-align:center;">
-        <div class="review-stars">★★★★★</div>
-        <p>"Pegawai grooming untuk home service recomended banget. Sudah 2 kali dan semuanya telaten serta sayang sama anabul."</p>
-        <strong>- Popi Oktaviani (Google Review)</strong>
-      </div>
-
+    <div class="card" style="text-align:center;">
+      <div class="review-stars">★★★★★</div>
+      <p>"Puas sekali anabulku pulang jadi tambah ganteng, bulunya tambah lembut. Rekomendasi banget!"</p>
+      <strong>- Seni Rudi (Google Review)</strong>
     </div>
 
-    <div style="margin-top:40px;text-align:center;">
-      <a href="https://maps.app.goo.gl/tcCTZihDzwFTpwD4A" target="_blank" rel="noopener noreferrer" class="btn" style="margin-right:10px;">Review Bumi Indah</a>
-      <a href="https://maps.app.goo.gl/4m1sTj7SqSaSiTn97" target="_blank" rel="noopener noreferrer" class="btn">Review Gardenia</a>
+    <div class="card" style="text-align:center;">
+      <div class="review-stars">★★★★★</div>
+      <p>"Pelayanannya sangat baik, bisa antar jemput. Setelah grooming bulu kucing jadi halus dan bersih."</p>
+      <strong>- Arsakha Putra Maulana (Google Review)</strong>
+    </div>
+
+    <div class="card" style="text-align:center;">
+      <div class="review-stars">★★★★★</div>
+      <p>"Pegawai grooming untuk home service recommended banget. Telaten dan sayang sama anabul."</p>
+      <strong>- Popi Oktaviani (Google Review)</strong>
     </div>
 
   </div>
@@ -494,8 +388,8 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
       <a href="#home">Home</a>
       <a href="#services">Layanan</a>
       <a href="#products">Produk</a>
-      <a href="cabang.html">Cabang</a>
-      <a href="tentang.html">Profil</a>
+      <a href="#location">Cabang</a>
+      <a href="#about">Profil</a>
       <a href="#contact">Kontak</a>
     </div>
 
@@ -533,9 +427,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 </footer>
 
 <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20informasi%20lebih%20lanjut." class="wa-float" aria-label="Customer Service">
-  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" viewBox="0 0 24 24">
-    <path d="M12 2a8 8 0 0 0-8 8v3a3 3 0 0 0 3 3h1v-6H6a6 6 0 1 1 12 0h-2v6h1a3 3 0 0 0 3-3v-3a8 8 0 0 0-8-8zm-4 14v2a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2H8z"/>
-  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" viewBox="0 0 24 24"><path d="M12 2a8 8 0 0 0-8 8v3a3 3 0 0 0 3 3h1v-6H6a6 6 0 1 1 12 0h-2v6h1a3 3 0 0 0 3-3v-3a8 8 0 0 0-8-8zm-4 14v2a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2H8z"/></svg>
 </a>
 
 <script>
@@ -584,9 +476,9 @@ if(searchInput){
 // WHATSAPP HANDLER
 function sendWA(button){
   const card = button.closest('.card');
-  const select = card.querySelector('.service-select');
-  const service = select.getAttribute('data-service');
-  const branch = select.value;
+  const select = card?.querySelector('.service-select');
+  const service = select?.getAttribute('data-service');
+  const branch = select?.value;
   if(!branch){
     alert('Silakan pilih cabang terlebih dahulu.');
     return;
