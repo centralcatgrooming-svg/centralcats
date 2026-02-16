@@ -3,13 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cabang Central Cat’s | Grooming & Petshop Tangerang</title>
-<meta name="description" content="Daftar cabang Central Cat’s di Tangerang.">
+<title>Cabang Central Cat’s | Tangerang</title>
+<meta name="description" content="Lokasi cabang Central Cat’s di Tangerang.">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* ==== COPY STYLE SAMA PERSIS SEPERTI INDEX ==== */
 :root{
   --primary:#1e3a8a;
   --accent:#d4af37;
@@ -30,17 +29,27 @@ header{
   top:0;
   z-index:1000;
 }
-.logo-area img{height:75px;width:auto;display:block;}
-nav{display:flex;align-items:center;}
-nav a{color:white;text-decoration:none;margin-left:20px;font-weight:500;transition:.3s ease;}
-nav a:hover{color:var(--accent);}
-.search-box{display:flex;align-items:center;background:white;border-radius:30px;padding:6px 12px;margin-right:20px;}
-.search-box input{border:none;outline:none;font-size:14px;width:160px;}
-.search-icon{margin-right:6px;font-size:14px;opacity:.6;}
+.logo-area img{height:75px;}
 
-.hamburger{display:none;}
-.mobile-menu{display:none;}
-.overlay{display:none;}
+nav{display:flex;align-items:center;}
+nav a{color:white;text-decoration:none;margin-left:20px;font-weight:500;transition:.3s;}
+nav a:hover{color:var(--accent);}
+
+.search-box{
+  display:flex;
+  align-items:center;
+  background:white;
+  border-radius:30px;
+  padding:6px 12px;
+  margin-right:20px;
+}
+.search-box input{
+  border:none;
+  outline:none;
+  font-size:14px;
+  width:160px;
+}
+.search-icon{margin-right:6px;font-size:14px;opacity:.6;}
 
 .section{padding:80px 5%;text-align:center;}
 .section h2{
@@ -59,13 +68,20 @@ nav a:hover{color:var(--accent);}
   border-radius:4px;
 }
 
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;margin-top:40px;}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:40px;
+  margin-top:40px;
+}
+
 .card{
   background:var(--light);
   padding:30px;
   border-radius:16px;
   box-shadow:0 8px 25px rgba(0,0,0,.05);
 }
+
 .btn{
   display:inline-block;
   padding:12px 24px;
@@ -89,8 +105,26 @@ footer{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:40px;
+  text-align:left;
 }
 .footer-title{font-weight:600;margin-bottom:15px;color:var(--accent);}
+.footer-logo-frame{
+  background:#fff;
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:12px;
+  margin-bottom:15px;
+}
+.footer-logo-frame img{height:80px;}
+.footer-links a{
+  display:block;
+  color:white;
+  text-decoration:none;
+  margin-bottom:8px;
+  font-size:14px;
+  opacity:.9;
+}
+.footer-links a:hover{color:var(--accent);}
 .footer-bottom{
   text-align:center;
   margin-top:40px;
@@ -100,47 +134,36 @@ footer{
   padding-top:20px;
 }
 
+.social-icons{
+  margin-top:15px;
+  display:flex;
+  gap:12px;
+}
+
+.wa-float{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:58px;
+  height:58px;
+  background:#25D366;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  box-shadow:0 6px 18px rgba(0,0,0,.2);
+  z-index:1001;
+  text-decoration:none;
+}
+
 @media(max-width:768px){
   nav{display:none;}
-  .hamburger{display:flex;flex-direction:column;gap:5px;width:28px;cursor:pointer;}
-  .hamburger span{height:3px;background:white;border-radius:2px;}
-  .mobile-menu{
-    position:fixed;
-    top:0;
-    right:0;
-    width:75%;
-    height:100vh;
-    background:var(--primary);
-    padding:80px 25px;
-    display:flex;
-    flex-direction:column;
-    gap:20px;
-    transform:translateX(100%);
-    transition:.3s ease;
-    z-index:999;
-  }
-  .mobile-menu.active{transform:translateX(0);}
-  .mobile-menu a{
-    color:white;
-    text-decoration:none;
-    font-size:18px;
-    font-weight:600;
-  }
-  .overlay{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100vh;
-    background:rgba(0,0,0,0.4);
-    z-index:998;
-  }
 }
 </style>
 </head>
 <body>
 
-<!-- ===== HEADER IDENTIK INDEX ===== -->
+<!-- ===== HEADER IDENTIK ===== -->
 <header>
   <div class="logo-area">
     <img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo">
@@ -148,7 +171,7 @@ footer{
   <nav>
     <div class="search-box">
       <span class="search-icon">🔍</span>
-      <input type="text" id="searchInput" placeholder="Cari layanan / produk...">
+      <input type="text" placeholder="Cari layanan / produk...">
     </div>
     <a href="index.html">Home</a>
     <a href="index.html#about">Tentang</a>
@@ -158,35 +181,45 @@ footer{
     <a href="tentang.html">Profil</a>
     <a href="index.html#contact">Kontak</a>
   </nav>
-  <div class="hamburger"><span></span><span></span><span></span></div>
 </header>
-
-<div class="overlay"></div>
-<div class="mobile-menu">
-  <a href="index.html">Home</a>
-  <a href="index.html#about">Tentang</a>
-  <a href="index.html#services">Layanan</a>
-  <a href="index.html#products">Produk</a>
-  <a href="cabang.html">Cabang</a>
-  <a href="tentang.html">Profil</a>
-  <a href="index.html#contact">Kontak</a>
-</div>
 
 <!-- ===== CONTENT CABANG ===== -->
 <section class="section">
   <h2>Cabang Central Cat’s</h2>
+
   <div class="grid">
 
+    <!-- BUMI INDAH -->
     <div class="card">
       <h3>Bumi Indah Union Square</h3>
       <p>Kota Tangerang</p>
-      <a href="https://maps.app.goo.gl/tcCTZihDzwFTpwD4A" target="_blank" class="btn">Lihat Lokasi</a>
+      <div style="border-radius:14px;overflow:hidden;margin:15px 0;">
+        <iframe
+          src="https://www.google.com/maps?q=Central%20Cat's%20Bumi%20Indah%20Tangerang&output=embed"
+          width="100%"
+          height="300"
+          style="border:0;"
+          loading="lazy">
+        </iframe>
+      </div>
+      <a href="https://maps.app.goo.gl/tcCTZihDzwFTpwD4A" target="_blank" class="btn">Buka di Google Maps</a>
     </div>
 
+    <!-- RAJEG -->
     <div class="card">
       <h3>Rajeg Gardenia E11</h3>
       <p>Kabupaten Tangerang</p>
-      <a href="https://maps.app.goo.gl/4m1sTj7SqSaSiTn97" target="_blank" class="btn">Lihat Lokasi</a>
+      <div style="border-radius:14px;overflow:hidden;margin:15px 0;">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.1385255185905!2d106.527102!3d-6.112045399999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ff26fcfaf78f%3A0x51739d0883609b67!2sPetshop%20Central%20Cat's%20(Rajeg%20Gardenia)!5e0!3m2!1sid!2sid!4v1771117820976!5m2!1sid!2sid"
+          width="100%"
+          height="300"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy">
+        </iframe>
+      </div>
+      <a href="https://maps.app.goo.gl/4m1sTj7SqSaSiTn97" target="_blank" class="btn">Buka di Google Maps</a>
     </div>
 
   </div>
@@ -195,50 +228,50 @@ footer{
 <!-- ===== FOOTER IDENTIK INDEX ===== -->
 <footer>
   <div class="footer-container">
+
     <div>
-      <h3 class="footer-title">Central Cat’s</h3>
-      <p>Grooming kucing dan petshop terpercaya di Tangerang.</p>
+      <div class="footer-logo-frame">
+        <img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo">
+      </div>
+      <p style="font-size:14px;line-height:1.6;opacity:.9;">
+        Grooming kucing dan petshop terpercaya di Tangerang dengan layanan higienis, treatment kutu, cat hotel, dan produk berkualitas.
+      </p>
+      <p style="margin-top:10px;font-size:14px;opacity:.9;">
+        Melayani area <strong>Kota Tangerang, Kabupaten Tangerang, dan sebagian wilayah Jakarta</strong>.
+      </p>
+    </div>
+
+    <div class="footer-links">
+      <div class="footer-title">Navigasi</div>
+      <a href="index.html">Home</a>
+      <a href="index.html#services">Layanan</a>
+      <a href="index.html#products">Produk</a>
+      <a href="cabang.html">Cabang</a>
+      <a href="tentang.html">Profil</a>
+      <a href="index.html#contact">Kontak</a>
     </div>
 
     <div>
-      <h3 class="footer-title">Navigasi</h3>
-      <a href="index.html" style="color:white;text-decoration:none;display:block;margin-bottom:6px;">Home</a>
-      <a href="index.html#services" style="color:white;text-decoration:none;display:block;margin-bottom:6px;">Layanan</a>
-      <a href="index.html#products" style="color:white;text-decoration:none;display:block;margin-bottom:6px;">Produk</a>
-      <a href="cabang.html" style="color:white;text-decoration:none;display:block;margin-bottom:6px;">Cabang</a>
+      <div class="footer-title">Informasi</div>
+      <p style="font-size:14px;opacity:.9;">
+        Grooming: 08.00 – 18.00 WIB<br>
+        Petshop: 08.00 – 21.00 WIB
+      </p>
+      <p style="margin-top:15px;font-size:14px;">
+        WhatsApp: <a href="https://wa.me/6282111827798" style="color:#fff;text-decoration:underline;">0821-1182-7798</a>
+      </p>
     </div>
 
-    <div>
-      <h3 class="footer-title">Informasi</h3>
-      <p>Grooming: 08.00 – 18.00 WIB</p>
-      <p>Petshop: 08.00 – 21.00 WIB</p>
-      <p>WhatsApp: 0821-1182-7798</p>
-    </div>
   </div>
 
   <div class="footer-bottom">© 2026 Central Cat’s. All Rights Reserved.</div>
 </footer>
 
-<script>
-const hamburger = document.querySelector('.hamburger');
-const mobileMenu = document.querySelector('.mobile-menu');
-const overlay = document.querySelector('.overlay');
-
-if(hamburger){
-  hamburger.addEventListener('click', () => {
-    mobileMenu.classList.toggle('active');
-    overlay.style.display = mobileMenu.classList.contains('active') ? 'block' : 'none';
-    document.body.classList.toggle('no-scroll');
-  });
-}
-if(overlay){
-  overlay.addEventListener('click', () => {
-    mobileMenu.classList.remove('active');
-    overlay.style.display = 'none';
-    document.body.classList.remove('no-scroll');
-  });
-}
-</script>
+<a href="https://wa.me/6282111827798" class="wa-float">
+  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" viewBox="0 0 24 24">
+    <path d="M12 2a8 8 0 0 0-8 8v3a3 3 0 0 0 3 3h1v-6H6a6 6 0 1 1 12 0h-2v6h1a3 3 0 0 0 3-3v-3a8 8 0 0 0-8-8z"/>
+  </svg>
+</a>
 
 </body>
 </html>
