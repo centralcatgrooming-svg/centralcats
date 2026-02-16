@@ -63,7 +63,7 @@ nav a:hover{color:var(--accent);}
 .search-box input{border:none;outline:none;font-size:14px;width:160px;}
 .search-icon{margin-right:6px;font-size:14px;opacity:.6;}
 
-.hero{background:linear-gradient(135deg,#1e3a8a,#243c94);color:white;padding:100px 5%;}
+.hero{background:linear-gradient(135deg,#1e3a8a,#243c94);color:white;padding:130px 5% 140px;}
 .hero-container{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:40px;}
 .hero-text h1{font-size:2.6rem;margin-bottom:20px;}
 .hero-text p{margin-bottom:25px;opacity:.9;}
@@ -160,6 +160,14 @@ nav a:hover{color:var(--accent);}
   box-shadow:0 6px 18px rgba(0,0,0,.08);
   border:2px solid var(--accent);
   margin:0 auto 15px;
+  overflow:hidden; /* memastikan border tetap clean di mobile */
+}
+
+/* CAT HOTEL BORDER FIX (mobile visual balance) */
+.card img[alt="Cat Hotel"]{
+  max-width:95px;
+  height:auto;
+  object-fit:contain;
 }
 
 .card img{
@@ -210,7 +218,39 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 
 .wa-float{position:fixed;bottom:20px;right:20px;width:58px;height:58px;background:#25D366;display:flex;align-items:center;justify-content:center;border-radius:50%;box-shadow:0 6px 18px rgba(0,0,0,.2);z-index:1001;text-decoration:none;} 
 
+/* DESKTOP ICON BALANCE FIX */
+@media(min-width:769px){
+  .icon-frame img{
+    max-width:68%;
+    height:auto;
+  }
+  .icon-frame img[alt="Cat Hotel"]{
+    max-width:78%;
+  }
+}
+
 @media(max-width:768px){
+
+  /* HIDE HERO BUTTONS ON MOBILE */
+  .hero .btn{
+    display:none !important;
+  }
+
+
+  /* REVIEW SLIDER MOBILE */
+  #reviews .grid{
+    display:flex;
+    overflow:hidden;
+    gap:16px;
+    scroll-behavior:smooth;
+  }
+
+  #reviews .card{
+    min-width:85%;
+    flex:0 0 85%;
+  }
+
+
   nav{display:none;}
 
   /* HEADER */
@@ -287,7 +327,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
   /* SERVICES MASCOT (SECONDARY HIERARCHY) */
   #services img[alt="Maskot Megaphone"],
   #reviews img[alt="Maskot Central Cats"]{
-    max-width:170px;
+    max-width:140px; /* diperkecil agar proporsional di mobile */
   }
 
   /* CARD COMPACT */
@@ -300,6 +340,12 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 
   .card img{
     max-width:60px;
+  }
+
+  /* FIX CAT HOTEL BORDER ON MOBILE */
+  .icon-frame img[alt="Cat Hotel"]{
+    max-width:65px;
+    height:auto;
   }
 
   .card h3{min-height:auto;margin-bottom:8px;}
@@ -370,10 +416,9 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
       <img src="assets/maskot/hero-maskot-transparent.png" alt="Maskot Central Cat’s - Grooming & Petshop Tangerang" style="max-width:380px;width:100%;">
     </div>
     <div class="hero-text" style="flex:1;">
-      <h1>Perawatan & Produk Terbaik<br><span style="color:var(--accent);">untuk Kucing Anda</span></h1>
+      <h1>Perawatan & Produk Terbaik<br><span style="color:var(--accent);">untuk Hewan Peliharaan Anda</span></h1>
       <p>Petshop lengkap dan grooming profesional khusus kucing dengan standar higienis & aman.</p>
-      <a href="#services" class="btn">Pesan Grooming</a>
-      <a href="#products" class="btn">Belanja Produk</a>
+      
     </div>
   </div>
 </section>
@@ -742,6 +787,27 @@ serviceButtons.forEach(btn => {
     window.open(waURL, '_blank');
   });
 });
+
+// REVIEW AUTO SLIDE (MOBILE ONLY)
+function initReviewSlider(){
+  if(window.innerWidth > 768) return;
+
+  const container = document.querySelector('#reviews .grid');
+  if(!container) return;
+
+  let index = 0;
+  const cards = container.querySelectorAll('.card');
+
+  setInterval(()=>{
+    index = (index + 1) % cards.length;
+    container.scrollTo({
+      left: cards[index].offsetLeft - 10,
+      behavior:'smooth'
+    });
+  }, 4000);
+}
+
+initReviewSlider();
 
 // FADE IN ON SCROLL
 const fadeSections = document.querySelectorAll('.fade-section');
