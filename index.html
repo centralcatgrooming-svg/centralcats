@@ -22,6 +22,17 @@ body{background:#fff;color:var(--text);}
 html{scroll-behavior:smooth;} 
 
 section{scroll-margin-top:100px;} 
+
+/* FADE IN ANIMATION */
+.fade-section{
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity .8s ease, transform .8s ease;
+}
+.fade-section.show{
+  opacity:1;
+  transform:translateY(0);
+} 
 body.no-scroll{overflow:hidden;} 
 
 header{
@@ -274,7 +285,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
   </div>
 </section>
 
-<section class="section" id="services" style="background:#f9fafb;">
+<section class="section fade-section" id="services" style="background:#f9fafb;">
   <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
     <h2 style="margin:0;">Layanan Kami</h2>
   </div>
@@ -307,7 +318,38 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
   </div>
 </section>
 
-<section class="section" id="location" style="background:#f3f4f6;">
+<section class="section fade-section" id="products" style="background:#f3f4f6;">
+  <h2>Produk Petshop</h2>
+  <div class="grid">
+
+    <div class="card" style="text-align:center;">
+      <div class="icon-frame">
+        <span style="font-size:40px;">🍗</span>
+      </div>
+      <h3>Makanan & Nutrisi</h3>
+      <p>Makanan premium, vitamin, dan suplemen untuk menjaga kesehatan dan daya tahan tubuh kucing Anda.</p>
+    </div>
+
+    <div class="card" style="text-align:center;">
+      <div class="icon-frame">
+        <span style="font-size:40px;">🧺</span>
+      </div>
+      <h3>Perlengkapan & Aksesoris</h3>
+      <p>Pasir kucing, kandang, litter box, mainan, dan kebutuhan harian lainnya.</p>
+    </div>
+
+    <div class="card" style="text-align:center;">
+      <div class="icon-frame">
+        <span style="font-size:40px;">🧴</span>
+      </div>
+      <h3>Perawatan & Grooming Kit</h3>
+      <p>Shampoo khusus, sisir, dan perlengkapan perawatan untuk menjaga kebersihan bulu.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section fade-section" id="location" style="background:#f3f4f6;">
   <h2>Lokasi Cabang Kami</h2>
   <div class="grid">
 
@@ -344,7 +386,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
   </div>
 </section>
 
-<section class="section" id="reviews" style="background:#ffffff;">
+<section class="section fade-section" id="reviews" style="background:#ffffff;">
   <h2>Ulasan Pelanggan</h2>
   <div class="grid">
 
@@ -367,6 +409,15 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
     </div>
 
   </div>
+</section>
+
+<section class="section fade-section" id="contact" style="background:#f3f4f6;">
+  <h2>Hubungi Kami</h2>
+  <p style="max-width:700px;margin:15px auto 0;">Booking grooming atau tanya produk langsung via WhatsApp.</p>
+  <br>
+  <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20informasi%20lebih%20lanjut." class="btn">
+    Chat WhatsApp
+  </a>
 </section>
 
 <footer>
@@ -472,6 +523,21 @@ if(searchInput){
     }
   });
 }
+
+// FADE IN ON SCROLL
+const fadeSections = document.querySelectorAll('.fade-section');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.15 });
+
+fadeSections.forEach(section => {
+  observer.observe(section);
+});
 
 // WHATSAPP HANDLER
 function sendWA(button){
