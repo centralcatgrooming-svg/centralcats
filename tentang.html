@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profil Central Cat’s | Tentang Kami</title>
+<meta name="description" content="Profil resmi Central Cat’s – Grooming kucing dan petshop terpercaya di Tangerang.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#1e3a8a;
+  --accent:#d4af37;
+  --light:#f3f4f6;
+  --text:#111;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#fff;color:var(--text);}
+
+header{
+  background:var(--primary);
+  padding:8px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.logo-area img{height:75px;width:auto;display:block;}
+
+nav{display:flex;align-items:center;}
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:20px;
+  font-weight:500;
+  transition:.3s ease;
+}
+nav a:hover{color:var(--accent);}
+
+.section{
+  padding:80px 5%;
+  text-align:center;
+}
+
+.section h2{
+  font-size:2.2rem;
+  font-weight:700;
+  color:var(--primary);
+  display:inline-block;
+  position:relative;
+}
+
+.section h2::after{
+  content:"";
+  display:block;
+  width:60px;
+  height:4px;
+  background:var(--accent);
+  margin:12px auto 0;
+  border-radius:4px;
+}
+
+.content-wrap{
+  max-width:1000px;
+  margin:40px auto 0;
+  text-align:left;
+  line-height:1.8;
+  font-size:1.05rem;
+}
+
+.content-wrap h3{
+  margin-top:40px;
+  color:var(--primary);
+}
+
+footer{
+  background:var(--primary);
+  color:white;
+  padding:60px 5% 30px;
+  margin-top:60px;
+}
+
+.footer-container{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:40px;
+  text-align:left;
+}
+
+.footer-title{
+  font-weight:600;
+  margin-bottom:15px;
+  color:var(--accent);
+}
+
+.footer-logo-frame{
+  background:#ffffff;
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:12px;
+  margin-bottom:15px;
+  border:1.5px solid var(--accent);
+}
+
+.footer-logo-frame img{height:80px;}
+
+.footer-links a{
+  display:block;
+  color:white;
+  text-decoration:none;
+  margin-bottom:8px;
+  font-size:14px;
+  opacity:.9;
+}
+
+.footer-links a:hover{color:var(--accent);}
+
+.footer-bottom{
+  text-align:center;
+  margin-top:40px;
+  font-size:13px;
+  opacity:.8;
+  border-top:1px solid rgba(255,255,255,.15);
+  padding-top:20px;
+}
+
+.social-icons{
+  margin-top:15px;
+  display:flex;
+  gap:12px;
+}
+
+.social-icons a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:36px;
+  height:36px;
+  background:rgba(255,255,255,0.1);
+  border-radius:50%;
+  transition:.3s ease;
+}
+
+.social-icons a:hover{
+  background:var(--accent);
+}
+
+@media(max-width:768px){
+  nav{display:none;}
+  header{padding:10px 6%;}
+  .logo-area img{height:60px;}
+  .section{padding:55px 6%;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo-area">
+    <img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo">
+  </div>
+  <nav>
+    <a href="index.html#home">Home</a>
+    <a href="index.html#about">Tentang</a>
+    <a href="index.html#services">Layanan</a>
+    <a href="index.html#products">Produk</a>
+    <a href="index.html#location">Cabang</a>
+    <a href="index.html#contact">Kontak</a>
+  </nav>
+</header>
+
+<!-- CONTENT -->
+<section class="section">
+  <h2>Profil Central Cat’s</h2>
+
+  <div class="content-wrap">
+
+    <p>
+      Central Cat’s lahir dari kecintaan terhadap kucing dan komitmen untuk menghadirkan layanan grooming yang aman, higienis, dan profesional di Tangerang.
+    </p>
+
+    <h3>Visi</h3>
+    <p>
+      Menjadi pusat perawatan dan kebutuhan kucing terpercaya dengan standar layanan terbaik dan sistem operasional profesional.
+    </p>
+
+    <h3>Misi</h3>
+    <ul>
+      <li>Menyediakan layanan grooming khusus kucing yang aman dan higienis.</li>
+      <li>Menyediakan produk petshop berkualitas dan terpercaya.</li>
+      <li>Membangun komunitas pecinta kucing yang edukatif dan suportif.</li>
+    </ul>
+
+    <h3>Komitmen Kami</h3>
+    <p>
+      Kami berkomitmen menjaga kualitas layanan, kebersihan alat, serta kenyamanan setiap kucing yang dititipkan kepada kami.
+    </p>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-container">
+
+    <div>
+      <div class="footer-logo-frame">
+        <img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo">
+      </div>
+      <p style="font-size:14px;line-height:1.6;opacity:.9;">
+        Grooming kucing dan petshop terpercaya di Tangerang dengan layanan higienis, treatment kutu, cat hotel, dan produk berkualitas.
+      </p>
+    </div>
+
+    <div class="footer-links">
+      <div class="footer-title">Navigasi</div>
+      <a href="index.html#home">Home</a>
+      <a href="index.html#services">Layanan</a>
+      <a href="index.html#products">Produk</a>
+      <a href="index.html#location">Cabang</a>
+      <a href="index.html#contact">Kontak</a>
+    </div>
+
+    <div>
+      <div class="footer-title">Informasi</div>
+      <p style="font-size:14px;opacity:.9;">
+        Grooming: 08.00 – 18.00 WIB<br>
+        Petshop: 08.00 – 21.00 WIB<br>
+        <span style="color:#ffd27f;">Reservasi maksimal 16.00 WIB</span>
+      </p>
+
+      <div class="social-icons">
+        <a href="https://www.instagram.com/centralcat_official" target="_blank"></a>
+        <a href="https://www.youtube.com/@central_cats" target="_blank"></a>
+        <a href="https://www.tiktok.com/@central_cats" target="_blank"></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Central Cat’s. All Rights Reserved.
+  </div>
+</footer>
+
+</body>
+</html>
