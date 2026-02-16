@@ -90,15 +90,16 @@ nav a:hover{color:var(--accent);}
 }
 
 #products .card p{
-  min-height:160px; /* samakan tinggi deskripsi agar sejajar */
+  min-height:120px; /* dikurangi agar tombol lebih dekat */
   display:flex;
   align-items:flex-start;
   justify-content:center;
   text-align:center;
+  margin-bottom:10px;
 }
 
 #products .card .btn{
-  margin-top:25px;
+  margin-top:12px; /* dipadatkan */
   align-self:center;
   min-width:170px;
   text-align:center;
@@ -129,9 +130,11 @@ nav a:hover{color:var(--accent);}
 
 /* ALIGN SERVICE CONTENT HEIGHT */
 #services .card p{
-  min-height:110px;
+  min-height:90px; /* dipadatkan agar jarak kategori & deskripsi lebih rapat */
   display:flex;
-  align-items:center;
+  align-items:flex-start;
+  justify-content:center;
+  margin-top:6px;
 }
 
 /* REMOVE EMPTY SPACE IN REVIEWS */
@@ -160,7 +163,7 @@ nav a:hover{color:var(--accent);}
 }
 
 .card img{
-  max-width:90px;
+  max-width:75px; /* konsisten & tidak memutus border lingkaran */
   height:auto;
   object-fit:contain;
 }
@@ -170,7 +173,7 @@ nav a:hover{color:var(--accent);}
 }
 
 .card img[alt="Cat Hotel"]{
-  max-width:80px;
+  max-width:95px; /* sedikit diperbesar agar lebih proporsional */
 }
 
 /* ALIGN SERVICE TITLES (FIXED WITHOUT BREAKING BUTTON ALIGNMENT) */
@@ -263,56 +266,67 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
     z-index:998;
   }
 
-  /* HERO (HIERARCHY TOP) */
+  /* HERO (TOP HIERARCHY) */
   .hero{padding:60px 18px;}
-  .hero-container{flex-direction:column;text-align:center;gap:30px;}
-  .hero img{max-width:260px !important;} /* paling dominan */
-  .hero-text h1{font-size:1.95rem;line-height:1.25;}
+  .hero-container{flex-direction:column;text-align:center;gap:28px;}
+  .hero img{max-width:250px !important;}
+  .hero-text h1{font-size:1.9rem;line-height:1.25;}
   .hero-text p{font-size:.95rem;}
 
+  /* STACK HERO BUTTONS */
   .hero .btn{
-    max-width:240px;
+    display:block;
+    width:100%;
+    max-width:260px;
     margin:12px auto 0 !important;
-    width:auto;
   }
 
   /* SECTION SPACING */
-  .section{padding:65px 18px;}
+  .section{padding:60px 18px;}
 
-  /* SERVICE / SECTION MASCOT (SECONDARY) */
+  /* SERVICES MASCOT (SECONDARY HIERARCHY) */
   #services img[alt="Maskot Megaphone"],
   #reviews img[alt="Maskot Central Cats"]{
-    max-width:200px;
+    max-width:170px;
   }
 
-  /* CARD */
+  /* CARD COMPACT */
   .card{
-    padding:22px;
+    padding:20px;
     min-height:auto;
   }
 
-  .icon-frame{width:95px;height:95px;} /* paling kecil dalam hierarchy */
+  .icon-frame{width:90px;height:90px;}
 
   .card img{
-    max-width:65px;
+    max-width:60px;
   }
 
-  .card h3{min-height:auto;}
+  .card h3{min-height:auto;margin-bottom:8px;}
+
+  #products .card p{min-height:auto;}
 
   #products .card .btn{
     width:auto;
-    min-width:160px;
+    min-width:150px;
   }
 
-  #location iframe{height:220px;}
+  /* MAP HEIGHT REDUCED */
+  #location iframe{height:200px;}
 
-  #reviews .card{gap:10px;}
+  /* REVIEW BUTTON STACK */
+  #reviews .btn{
+    width:100%;
+    max-width:260px;
+    margin:10px auto 0;
+  }
 
+  /* FLOAT BUTTON SAFER POSITION */
   .wa-float{
     width:52px;
     height:52px;
-    bottom:20px;
-    right:18px;
+    bottom:16px;
+    right:16px;
   }
 }
 </style>
@@ -392,6 +406,10 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
   <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
     <h2 style="margin:0;">Layanan Kami</h2>
   </div>
+  
+  <p style="max-width:700px;margin:18px auto 0;line-height:1.7;color:#444;">
+    Layanan profesional khusus kucing dengan standar aman, higienis, dan penuh perhatian.
+  </p>
 
   <div style="margin-top:25px;margin-bottom:40px;text-align:center;">
     <img src="assets/maskot/maskot-megaphone-transparent.png"
