@@ -4,11 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cabang Central Cat’s | Grooming & Petshop Tangerang</title>
-<meta name="description" content="Daftar cabang Central Cat’s di Tangerang. Temukan lokasi grooming dan petshop terdekat dari Anda.">
+<meta name="description" content="Daftar cabang Central Cat’s di Tangerang.">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
+/* ==== COPY STYLE SAMA PERSIS SEPERTI INDEX ==== */
 :root{
   --primary:#1e3a8a;
   --accent:#d4af37;
@@ -29,30 +30,42 @@ header{
   top:0;
   z-index:1000;
 }
-.logo-area img{height:75px;}
-
+.logo-area img{height:75px;width:auto;display:block;}
 nav{display:flex;align-items:center;}
-nav a{color:white;text-decoration:none;margin-left:20px;font-weight:500;transition:.3s;}
+nav a{color:white;text-decoration:none;margin-left:20px;font-weight:500;transition:.3s ease;}
 nav a:hover{color:var(--accent);}
-
 .search-box{display:flex;align-items:center;background:white;border-radius:30px;padding:6px 12px;margin-right:20px;}
 .search-box input{border:none;outline:none;font-size:14px;width:160px;}
+.search-icon{margin-right:6px;font-size:14px;opacity:.6;}
+
+.hamburger{display:none;}
+.mobile-menu{display:none;}
+.overlay{display:none;}
 
 .section{padding:80px 5%;text-align:center;}
-.section h2{font-size:2.2rem;font-weight:700;color:var(--primary);display:inline-block;}
-.section h2::after{content:"";display:block;width:60px;height:4px;background:var(--accent);margin:12px auto;border-radius:4px;}
+.section h2{
+  font-size:2.2rem;
+  font-weight:700;
+  color:var(--primary);
+  display:inline-block;
+}
+.section h2::after{
+  content:"";
+  display:block;
+  width:60px;
+  height:4px;
+  background:var(--accent);
+  margin:12px auto;
+  border-radius:4px;
+}
 
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;margin-top:40px;}
-
 .card{
   background:var(--light);
   padding:30px;
   border-radius:16px;
   box-shadow:0 8px 25px rgba(0,0,0,.05);
 }
-
-.card h3{margin-bottom:10px;color:var(--primary);}
-
 .btn{
   display:inline-block;
   padding:12px 24px;
@@ -78,19 +91,64 @@ footer{
   gap:40px;
 }
 .footer-title{font-weight:600;margin-bottom:15px;color:var(--accent);}
-.footer-bottom{text-align:center;margin-top:40px;font-size:13px;opacity:.8;border-top:1px solid rgba(255,255,255,.15);padding-top:20px;}
+.footer-bottom{
+  text-align:center;
+  margin-top:40px;
+  font-size:13px;
+  opacity:.8;
+  border-top:1px solid rgba(255,255,255,.15);
+  padding-top:20px;
+}
+
+@media(max-width:768px){
+  nav{display:none;}
+  .hamburger{display:flex;flex-direction:column;gap:5px;width:28px;cursor:pointer;}
+  .hamburger span{height:3px;background:white;border-radius:2px;}
+  .mobile-menu{
+    position:fixed;
+    top:0;
+    right:0;
+    width:75%;
+    height:100vh;
+    background:var(--primary);
+    padding:80px 25px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    transform:translateX(100%);
+    transition:.3s ease;
+    z-index:999;
+  }
+  .mobile-menu.active{transform:translateX(0);}
+  .mobile-menu a{
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:600;
+  }
+  .overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background:rgba(0,0,0,0.4);
+    z-index:998;
+  }
+}
 </style>
 </head>
 <body>
 
-<!-- HEADER IDENTIK -->
+<!-- ===== HEADER IDENTIK INDEX ===== -->
 <header>
   <div class="logo-area">
     <img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo">
   </div>
   <nav>
     <div class="search-box">
-      <input type="text" placeholder="Cari layanan / produk...">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Cari layanan / produk...">
     </div>
     <a href="index.html">Home</a>
     <a href="index.html#about">Tentang</a>
@@ -100,35 +158,41 @@ footer{
     <a href="tentang.html">Profil</a>
     <a href="index.html#contact">Kontak</a>
   </nav>
+  <div class="hamburger"><span></span><span></span><span></span></div>
 </header>
 
-<!-- HERO CABANG -->
+<div class="overlay"></div>
+<div class="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="index.html#about">Tentang</a>
+  <a href="index.html#services">Layanan</a>
+  <a href="index.html#products">Produk</a>
+  <a href="cabang.html">Cabang</a>
+  <a href="tentang.html">Profil</a>
+  <a href="index.html#contact">Kontak</a>
+</div>
+
+<!-- ===== CONTENT CABANG ===== -->
 <section class="section">
   <h2>Cabang Central Cat’s</h2>
-  <p style="max-width:700px;margin:15px auto;">
-    Temukan cabang Central Cat’s terdekat untuk grooming dan kebutuhan petshop Anda.
-  </p>
-
   <div class="grid">
 
     <div class="card">
       <h3>Bumi Indah Union Square</h3>
       <p>Kota Tangerang</p>
-      <p>Grooming & Petshop</p>
       <a href="https://maps.app.goo.gl/tcCTZihDzwFTpwD4A" target="_blank" class="btn">Lihat Lokasi</a>
     </div>
 
     <div class="card">
       <h3>Rajeg Gardenia E11</h3>
       <p>Kabupaten Tangerang</p>
-      <p>Grooming & Petshop</p>
       <a href="https://maps.app.goo.gl/4m1sTj7SqSaSiTn97" target="_blank" class="btn">Lihat Lokasi</a>
     </div>
 
   </div>
 </section>
 
-<!-- FOOTER IDENTIK -->
+<!-- ===== FOOTER IDENTIK INDEX ===== -->
 <footer>
   <div class="footer-container">
     <div>
@@ -154,6 +218,27 @@ footer{
 
   <div class="footer-bottom">© 2026 Central Cat’s. All Rights Reserved.</div>
 </footer>
+
+<script>
+const hamburger = document.querySelector('.hamburger');
+const mobileMenu = document.querySelector('.mobile-menu');
+const overlay = document.querySelector('.overlay');
+
+if(hamburger){
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+    overlay.style.display = mobileMenu.classList.contains('active') ? 'block' : 'none';
+    document.body.classList.toggle('no-scroll');
+  });
+}
+if(overlay){
+  overlay.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+    overlay.style.display = 'none';
+    document.body.classList.remove('no-scroll');
+  });
+}
+</script>
 
 </body>
 </html>
