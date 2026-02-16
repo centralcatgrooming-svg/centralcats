@@ -1,119 +1,172 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profil Central Cat’s | Grooming Kucing & Petshop Terpercaya di Tangerang</title>
-  <meta name="description" content="Profil Central Cat’s — Grooming kucing dan petshop terpercaya di Tangerang dengan standar higienis, sistem profesional, treatment kutu, cat hotel, dan pelayanan penuh perhatian.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profil Central Cat’s | Grooming & Petshop Tangerang</title>
+<meta name="description" content="Profil resmi Central Cat’s. Grooming khusus kucing dan petshop terpercaya di Tangerang dengan sistem operasional profesional.">
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --primary:#1e3a8a;
-      --accent:#d4af37;
-      --light:#f3f4f6;
-      --text:#111;
-    }
+<style>
+:root{
+  --primary:#1e3a8a;
+  --accent:#d4af37;
+  --light:#f3f4f6;
+  --text:#111;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#fff;color:var(--text);}
+body.no-scroll{overflow:hidden;}
 
-    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-    body{background:#fff;color:var(--text);line-height:1.8;}
-    body.no-scroll{overflow:hidden;}
+header{
+  background:var(--primary);
+  padding:8px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+.logo-area img{height:75px;}
 
-    .section{padding:90px 5%;}
-    .container{max-width:1100px;margin:auto;}
+nav{display:flex;align-items:center;}
+nav a{color:white;text-decoration:none;margin-left:20px;font-weight:500;transition:.3s;}
+nav a:hover{color:var(--accent);}
 
-    h1{font-size:2.6rem;color:var(--primary);margin-bottom:25px;}
+.search-box{display:flex;align-items:center;background:white;border-radius:30px;padding:6px 12px;margin-right:20px;}
+.search-box input{border:none;outline:none;font-size:14px;width:160px;}
 
-    h2{
-      font-size:1.6rem;
-      margin-top:50px;
-      color:var(--primary);
-      position:relative;
-    }
+.section{padding:80px 5%;text-align:center;}
+.section h2{
+  font-size:2.2rem;
+  font-weight:700;
+  color:var(--primary);
+  display:inline-block;
+}
+.section h2::after{
+  content:"";
+  display:block;
+  width:60px;
+  height:4px;
+  background:var(--accent);
+  margin:12px auto;
+  border-radius:4px;
+}
 
-    h2::after{
-      content:"";
-      display:block;
-      width:60px;
-      height:4px;
-      background:var(--accent);
-      margin-top:10px;
-      border-radius:3px;
-    }
+.content-box{
+  max-width:1000px;
+  margin:40px auto 0;
+  text-align:left;
+  line-height:1.8;
+  font-size:1.05rem;
+}
 
-    .highlight{color:var(--accent);font-weight:600;}
-
-    .btn{
-      display:inline-block;
-      padding:12px 24px;
-      background:var(--accent);
-      color:#111;
-      text-decoration:none;
-      font-weight:600;
-      border-radius:8px;
-      margin-top:30px;
-    }
-
-    @media(max-width:768px){
-      nav{display:none;}
-    }
-  </style>
+footer{
+  background:var(--primary);
+  color:white;
+  padding:60px 5% 30px;
+  margin-top:60px;
+}
+.footer-container{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:40px;
+}
+.footer-title{font-weight:600;margin-bottom:15px;color:var(--accent);}
+.footer-bottom{
+  text-align:center;
+  margin-top:40px;
+  font-size:13px;
+  opacity:.8;
+  border-top:1px solid rgba(255,255,255,.15);
+  padding-top:20px;
+}
+</style>
 </head>
-
 <body>
 
-  <!-- LOAD HEADER PARTIAL -->
-  <div id="header-placeholder"></div>
-
-  <section class="section">
-    <div class="container">
-      <h1>Profil Central Cat’s</h1>
-      <p>Central Cat’s adalah <span class="highlight">grooming kucing dan petshop terpercaya di Tangerang</span> yang hadir untuk memberikan perawatan terbaik dan aman bagi sahabat berbulu Anda.</p>
-      <p>Kami membangun sistem operasional rapi dengan standar higienis dan profesional agar setiap kucing mendapatkan pengalaman terbaik.</p>
-
-      <h2>Fokus Layanan Kami</h2>
-      <ul style="margin-top:15px;padding-left:20px;">
-        <li>Grooming higienis & aman</li>
-        <li>Treatment kutu profesional</li>
-        <li>Cat Hotel nyaman & terpantau</li>
-        <li>Produk berkualitas & terkurasi</li>
-      </ul>
-
-      <a href="cabang.html" class="btn">Lihat Cabang Terdekat</a>
+<!-- HEADER IDENTIK -->
+<header>
+  <div class="logo-area">
+    <img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo">
+  </div>
+  <nav>
+    <div class="search-box">
+      <input type="text" placeholder="Cari layanan / produk...">
     </div>
-  </section>
+    <a href="index.html">Home</a>
+    <a href="index.html#about">Tentang</a>
+    <a href="index.html#services">Layanan</a>
+    <a href="index.html#products">Produk</a>
+    <a href="cabang.html">Cabang</a>
+    <a href="tentang.html">Profil</a>
+    <a href="index.html#contact">Kontak</a>
+  </nav>
+</header>
 
-  <!-- LOAD FOOTER PARTIAL -->
-  <div id="footer-placeholder"></div>
+<!-- KONTEN PROFIL -->
+<section class="section">
+  <h2>Profil Central Cat’s</h2>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function(){
+  <div class="content-box">
+    <p>
+      Central Cat’s adalah brand grooming khusus kucing dan petshop terpercaya di Tangerang yang dibangun dengan sistem operasional profesional dan standar layanan higienis.
+    </p>
 
-      // Fungsi untuk load partial
-      function loadPartial(id, file){
-        fetch(file)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error(file + ' gagal di-load (status: ' + response.status + ')');
-            }
-            return response.text();
-          })
-          .then(data => {
-            document.getElementById(id).innerHTML = data;
-          })
-          .catch(error => {
-            console.error('Error:', error);
-            document.getElementById(id).innerHTML = "<p style='color:red'>Gagal memuat " + file + "</p>";
-          });
-      }
+    <p>
+      Kami tidak hanya menyediakan layanan grooming dan produk berkualitas, tetapi juga membangun ekosistem yang terstruktur dengan sistem data, operasional cabang, dan manajemen yang rapi.
+    </p>
 
-      // Load Header & Footer
-      loadPartial('header-placeholder', 'partials/header.html');
-      loadPartial('footer-placeholder', 'partials/footer.html');
+    <h3 style="margin-top:30px;color:var(--primary);">Visi</h3>
+    <p>
+      Menjadi pusat layanan dan kebutuhan kucing paling terpercaya di wilayah Tangerang dan sekitarnya.
+    </p>
 
-    });
-  </script>
+    <h3 style="margin-top:30px;color:var(--primary);">Misi</h3>
+    <ul style="padding-left:20px;">
+      <li>Menyediakan layanan grooming aman & profesional.</li>
+      <li>Menyediakan produk berkualitas dan terkurasi.</li>
+      <li>Membangun sistem operasional cabang yang rapi dan transparan.</li>
+      <li>Mengembangkan komunitas pecinta kucing.</li>
+    </ul>
+
+    <h3 style="margin-top:30px;color:var(--primary);">Komitmen Kami</h3>
+    <p>
+      Setiap kucing diperlakukan dengan penuh kasih, perhatian, dan standar kebersihan tinggi.
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER IDENTIK -->
+<footer>
+  <div class="footer-container">
+    <div>
+      <h3 class="footer-title">Central Cat’s</h3>
+      <p>Grooming kucing dan petshop terpercaya di Tangerang.</p>
+    </div>
+
+    <div>
+      <h3 class="footer-title">Navigasi</h3>
+      <a href="index.html" style="color:white;text-decoration:none;display:block;margin-bottom:6px;">Home</a>
+      <a href="index.html#services" style="color:white;text-decoration:none;display:block;margin-bottom:6px;">Layanan</a>
+      <a href="index.html#products" style="color:white;text-decoration:none;display:block;margin-bottom:6px;">Produk</a>
+      <a href="cabang.html" style="color:white;text-decoration:none;display:block;margin-bottom:6px;">Cabang</a>
+    </div>
+
+    <div>
+      <h3 class="footer-title">Informasi</h3>
+      <p>Grooming: 08.00 – 18.00 WIB</p>
+      <p>Petshop: 08.00 – 21.00 WIB</p>
+      <p>WhatsApp: 0821-1182-7798</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">© 2026 Central Cat’s. All Rights Reserved.</div>
+</footer>
 
 </body>
 </html>
