@@ -662,7 +662,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
       </div>
       <h3>Makanan & Nutrisi</h3>
       <p>Menyediakan pilihan makanan premium, vitamin, dan suplemen berkualitas untuk menunjang kesehatan serta daya tahan hewan peliharaan Anda setiap hari.</p>
-      
+      <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20bertanya%20tentang%20produk%20Makanan%20%26%20Nutrisi." target="_blank" class="btn">Tanya Produk</a>
     </div>
 
     <div class="card" style="text-align:center;">
@@ -671,7 +671,8 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
       </div>
       <h3>Perlengkapan & Aksesoris</h3>
       <p>Pasir kucing, kandang, litter box, mainan, dan kebutuhan harian lainnya.</p>
-          </div>
+      <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20bertanya%20tentang%20produk%20Perlengkapan%20%26%20Aksesoris." target="_blank" class="btn">Tanya Produk</a>
+    </div>
 
     <div class="card" style="text-align:center;">
       <div class="icon-frame">
@@ -1041,21 +1042,23 @@ if(ccClose){
   });
 }
 
-// QUICK BUTTON LOGIC (SEMI-SMART UPGRADE WITH PRICELIST FLOW)
+// QUICK BUTTON LOGIC (SEMI-SMART WITH NAME + PHONE COLLECTION)
 const quickButtons = document.querySelectorAll('.cc-quick');
 
 quickButtons.forEach(btn => {
   btn.addEventListener('click', function(){
-
     const type = this.dataset.type;
 
+    // collect user identity first
     const userName = prompt('Sebelum lanjut, boleh tahu nama Anda?');
     if(!userName) return;
 
     let userPhone = prompt('Mohon masukkan nomor WhatsApp aktif Anda (hanya angka):');
     if(!userPhone) return;
 
+    // VALIDASI NOMOR WA (HANYA ANGKA & MINIMAL 10 DIGIT)
     userPhone = userPhone.replace(/\s+/g,'');
+
     const isValidNumber = /^\d{10,15}$/.test(userPhone);
 
     if(!isValidNumber){
@@ -1065,79 +1068,67 @@ quickButtons.forEach(btn => {
 
     let message = '';
 
-    // ==== PRICELIST FLOW UPGRADE ====
-    if(type === 'pricelist'){
-
-      alert(
-`Berikut ringkasan paket Grooming Kucing Central Cat’s:
+    switch(type){
+      case 'booking':
+        message = `Halo Central Cat’s,
+Nama saya ${userName}.
+Nomor WA saya ${userPhone}.
+Saya ingin booking grooming kucing.`;
+        break;
+      case 'pricelist':
+        alert(`Berikut ringkasan paket Grooming Kucing Central Cat’s:
 
 • Basic Grooming
 • Medium Grooming
 • Full Grooming
 • Add-on Treatment Kutu tersedia
 
-Harga menyesuaikan berat & kondisi bulu.`
-      );
+Harga menyesuaikan berat & kondisi bulu.`);
 
-      const lanjutBooking = confirm('Apakah Anda ingin melanjutkan reservasi grooming sekarang?');
+        const lanjutBooking = confirm('Apakah Anda ingin melanjutkan reservasi grooming sekarang?');
 
-      if(lanjutBooking){
-        message = `Halo Central Cat’s,
+        if(lanjutBooking){
+          message = `Halo Central Cat’s,
 Nama saya ${userName}.
 Nomor WA saya ${userPhone}.
 Saya sudah melihat pricelist dan ingin melanjutkan reservasi grooming kucing.`;
-      }else{
-        message = `Halo Central Cat’s,
+        }else{
+          message = `Halo Central Cat’s,
 Nama saya ${userName}.
 Nomor WA saya ${userPhone}.
 Saya sudah melihat pricelist dan ingin berkonsultasi lebih lanjut mengenai paket grooming.`;
-      }
-
-    }else{
-
-      switch(type){
-        case 'booking':
-          message = `Halo Central Cat’s,
-Nama saya ${userName}.
-Nomor WA saya ${userPhone}.
-Saya ingin booking grooming kucing.`;
-          break;
-
-        case 'treatment':
-          message = `Halo Central Cat’s,
+        }
+        break;
+      case 'treatment':
+        message = `Halo Central Cat’s,
 Nama saya ${userName}.
 Nomor WA saya ${userPhone}.
 Saya ingin info treatment kutu kucing.`;
-          break;
-
-        case 'hotel':
-          message = `Halo Central Cat’s,
+        break;
+      case 'hotel':
+        message = `Halo Central Cat’s,
 Nama saya ${userName}.
 Nomor WA saya ${userPhone}.
 Saya ingin info Cat Hotel.`;
-          break;
-
-        case 'produk':
-          message = `Halo Central Cat’s,
+        break;
+      case 'produk':
+        message = `Halo Central Cat’s,
 Nama saya ${userName}.
 Nomor WA saya ${userPhone}.
 Saya ingin bertanya tentang produk.`;
-          break;
-
-        case 'lokasi':
-          message = `Halo Central Cat’s,
+        break;
+      case 'lokasi':
+        message = `Halo Central Cat’s,
 Nama saya ${userName}.
 Nomor WA saya ${userPhone}.
 Saya ingin info lokasi & jam operasional.`;
-          break;
-
-        case 'admin':
-          message = `Halo Admin Central Cat’s,
+        break;
+      case 'admin':
+        message = `Halo Admin Central Cat’s,
 Nama saya ${userName}.
 Nomor WA saya ${userPhone}.
 Saya ingin berbicara langsung dengan admin.`;
-          break;
-      }
+        break;
     }
 
     if(message){
@@ -1145,10 +1136,8 @@ Saya ingin berbicara langsung dengan admin.`;
       const waURL = `https://wa.me/6282111827798?text=${encoded}`;
       window.open(waURL, '_blank');
     }
-
   });
 });
-
 </script>
 
 </body>
