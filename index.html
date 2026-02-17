@@ -231,10 +231,10 @@ nav a:hover{color:var(--accent);}
 
 /* REMOVE EMPTY SPACE IN REVIEWS */
 #reviews .card{
-  min-height:auto;
-  justify-content:flex-start;
-  padding-bottom:30px;
-}
+    min-width:88%;
+    flex:0 0 88%;
+    scroll-snap-align:start;
+  }
 
 .card:hover{
   transform:translateY(-8px);
@@ -332,14 +332,16 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
   /* REVIEW SLIDER MOBILE */
   #reviews .grid{
     display:flex;
-    overflow:hidden;
-    gap:16px;
+    overflow-x:auto;
+    gap:18px;
     scroll-behavior:smooth;
+    padding-left:18px;
+    scroll-snap-type:x mandatory;
   }
 
   #reviews .card{
-    min-width:85%;
-    flex:0 0 85%;
+    min-width:92%;
+    flex:0 0 92%;
   }
 
 
