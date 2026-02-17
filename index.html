@@ -55,8 +55,8 @@
       "hasMap": "https://www.google.com/maps/place/CENTRAL+CAT'S+GROOMING+(PETSHOP)/@-6.1551806,106.5497454",
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "reviewCount": "120"
+        "ratingValue": "4.9",
+        "reviewCount": "157"
       }
     },
     {
@@ -90,8 +90,8 @@
       "hasMap": "https://www.google.com/maps/place/Petshop+Central+Cat's+(Rajeg+Gardenia)/@-6.1120454,106.527102",
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "reviewCount": "95"
+        "ratingValue": "4.9",
+        "reviewCount": "13"
       }
     }
   ]
@@ -900,6 +900,29 @@ function initReviewSlider(){
 }
 
 initReviewSlider();
+
+// LIVE SEARCH FILTER
+const searchInput = document.getElementById('searchInput');
+
+if(searchInput){
+  searchInput.addEventListener('input', function(){
+    const keyword = this.value.toLowerCase().trim();
+
+    const searchableCards = document.querySelectorAll('#services .card, #products .card');
+
+    searchableCards.forEach(card => {
+      const text = card.innerText.toLowerCase();
+
+      if(keyword === ''){
+        card.style.display = 'flex';
+      } else if(text.includes(keyword)){
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+}
 
 // FADE IN ON SCROLL
 const fadeSections = document.querySelectorAll('.fade-section');
