@@ -231,10 +231,13 @@ nav a:hover{color:var(--accent);}
 
 /* REMOVE EMPTY SPACE IN REVIEWS */
 #reviews .card{
-    min-width:88%;
-    flex:0 0 88%;
-    scroll-snap-align:start;
-  }
+  padding:18px 18px;
+  min-height:260px; /* tinggi seragam agar nama reviewer sejajar */
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+
 
 .card:hover{
   transform:translateY(-8px);
@@ -292,7 +295,49 @@ nav a:hover{color:var(--accent);}
   color:#f5c518;
   font-size:22px;
   letter-spacing:2px;
+  margin-bottom:10px;
+}
+
+/* REVIEW MICRO SPACING IMPROVEMENT (MORE COMPACT, ALIGNED & SOLID) */
+#reviews h2{
   margin-bottom:6px;
+}
+
+#reviews p{
+  margin-top:8px;
+}
+
+#reviews .card{
+  padding:18px 18px;
+  min-height:260px; /* tinggi seragam agar nama reviewer sejajar */
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+
+#reviews .card p{
+  margin:8px 0 14px;
+  line-height:1.55;
+  font-size:0.93rem;
+}
+
+#reviews .card strong{
+  display:block;
+  font-weight:700;
+  font-size:15px;
+  color:var(--primary);
+  letter-spacing:0.3px;
+  margin-top:auto; /* dorong ke bawah agar semua reviewer sejajar */
+  padding-top:8px;
+}
+
+
+#reviews .grid{
+  margin-top:24px;
+}
+
+#reviews img[alt="Maskot Central Cats"]{
+  margin-top:6px;
 }
 .card.hide{opacity:0;transform:scale(.95);pointer-events:none;position:absolute;}
 
@@ -703,7 +748,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
     </div>
 
     <!-- Review Cards -->
-    <div class="grid" style="margin-top:40px;">
+    <div class="grid" style="margin-top:28px;">
 
       <div class="card" style="text-align:center;">
         <div class="review-stars">★★★★★</div>
@@ -723,12 +768,6 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
         <strong>- Popi Oktaviani (Google Review)</strong>
       </div>
 
-    </div>
-
-    <!-- Review Buttons -->
-    <div style="margin-top:40px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;">
-      <a href="https://www.google.com/maps/place/CENTRAL+CAT'S+GROOMING+(PETSHOP)/@-6.1551806,106.5471651,17z/data=!4m8!3m7!1s0x2e69e57088463ef1:0x1a510b4e0894dd99!8m2!3d-6.1551806!4d106.5497454!9m1!1b1!16s%2Fg%2F11j8t8mpmw?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="btn">Review Bumi Indah</a>
-      <a href="https://www.google.com/maps/place/Petshop+Central+Cat's+(Rajeg+Gardenia)/@-6.1120454,106.5245217,17z/data=!4m8!3m7!1s0x2e69ff26fcfaf78f:0x51739d0883609b67!8m2!3d-6.1120454!4d106.527102!9m1!1b1!16s%2Fg%2F11k9rfzcfq?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="btn">Review Gardenia</a>
     </div>
 
   </div>
