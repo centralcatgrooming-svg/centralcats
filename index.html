@@ -353,7 +353,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 .social-icons a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:rgba(255,255,255,0.1);border-radius:50%;transition:.3s ease;}
 .social-icons a:hover{background:var(--accent);} 
 
-.wa-float{position:fixed;bottom:20px;right:20px;width:58px;height:58px;background:#25D366;display:flex;align-items:center;justify-content:center;border-radius:50%;box-shadow:0 6px 18px rgba(0,0,0,.2);z-index:1001;text-decoration:none;} 
+ 
 
 /* DESKTOP ICON BALANCE FIX */
 @media(min-width:769px){
@@ -507,12 +507,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
   }
 
   /* FLOAT BUTTON SAFER POSITION */
-  .wa-float{
-    width:52px;
-    height:52px;
-    bottom:16px;
-    right:16px;
-  }
+  
 }
 </style>
 </head>
@@ -667,7 +662,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
       </div>
       <h3>Makanan & Nutrisi</h3>
       <p>Menyediakan pilihan makanan premium, vitamin, dan suplemen berkualitas untuk menunjang kesehatan serta daya tahan hewan peliharaan Anda setiap hari.</p>
-      <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20bertanya%20tentang%20produk%20Makanan%20%26%20Nutrisi." target="_blank" class="btn">Tanya Produk</a>
+      
     </div>
 
     <div class="card" style="text-align:center;">
@@ -676,8 +671,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
       </div>
       <h3>Perlengkapan & Aksesoris</h3>
       <p>Pasir kucing, kandang, litter box, mainan, dan kebutuhan harian lainnya.</p>
-      <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20bertanya%20tentang%20produk%20Perlengkapan%20%26%20Aksesoris." target="_blank" class="btn">Tanya Produk</a>
-    </div>
+          </div>
 
     <div class="card" style="text-align:center;">
       <div class="icon-frame">
@@ -840,11 +834,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
   <div class="footer-bottom">© 2026 Central Cat’s. All Rights Reserved.</div>
 </footer>
 
-<a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat’s,%20saya%20ingin%20informasi%20lebih%20lanjut." class="wa-float" aria-label="Customer Service">
-  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" viewBox="0 0 24 24">
-    <path d="M20.52 3.48A11.86 11.86 0 0 0 12.05 0C5.4 0 .05 5.35.05 12c0 2.11.55 4.17 1.6 5.99L0 24l6.2-1.62A11.93 11.93 0 0 0 12.05 24C18.7 24 24.05 18.65 24.05 12c0-3.19-1.24-6.19-3.53-8.52zM12.05 21.82c-1.79 0-3.54-.48-5.07-1.38l-.36-.21-3.68.96.98-3.59-.23-.37A9.77 9.77 0 0 1 2.28 12c0-5.39 4.38-9.77 9.77-9.77 2.61 0 5.07 1.02 6.92 2.86A9.71 9.71 0 0 1 21.82 12c0 5.39-4.38 9.82-9.77 9.82zm5.38-7.29c-.29-.15-1.72-.85-1.99-.95-.27-.1-.47-.15-.67.15-.2.29-.77.95-.95 1.15-.17.2-.35.22-.64.07-.29-.15-1.22-.45-2.33-1.44-.86-.77-1.44-1.72-1.61-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.35.44-.52.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.29-1.05 1.03-1.05 2.52 0 1.49 1.08 2.93 1.23 3.13.15.2 2.13 3.25 5.17 4.56.72.31 1.28.49 1.72.63.72.23 1.37.2 1.89.12.58-.09 1.72-.7 1.97-1.37.24-.67.24-1.25.17-1.37-.07-.12-.27-.2-.57-.35z"/>
-  </svg>
-</a>
+
 
 <script>
 const hamburger = document.querySelector('.hamburger');
@@ -978,6 +968,118 @@ const observer = new IntersectionObserver((entries) => {
 
 fadeSections.forEach(section => {
   observer.observe(section);
+});
+</script>
+
+
+
+<!-- CENTRAL CAT'S ASSISTANT -->
+<div id="cc-assistant" style="position:fixed;bottom:20px;right:20px;z-index:1100;font-family:'Poppins',sans-serif;">
+  
+  <!-- Floating Icon -->
+  <div id="cc-icon" style="width:60px;height:60px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 25px rgba(0,0,0,.25);cursor:pointer;position:relative;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" viewBox="0 0 24 24">
+      <path d="M12 2a10 10 0 1 0 8.94 14.47L22 22l-5.53-1.06A10 10 0 0 0 12 2zm0 2a8 8 0 0 1 6.93 12.09l-.29.49.61 3.18-3.13-.63-.5.27A8 8 0 1 1 12 4zm-3 5h6v2H9V9zm0 4h4v2H9v-2z"/>
+    </svg>
+
+    <!-- Greeting Bubble -->
+    <div id="cc-bubble" style="position:absolute;bottom:75px;right:0;background:#fff;color:#111;padding:12px 16px;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,.15);font-size:13px;line-height:1.4;max-width:220px;display:none;">
+      Hallo Pet Owner 👋<br>Butuh info grooming atau produk hari ini?
+    </div>
+  </div>
+
+  <!-- Chat Panel -->
+  <div id="cc-panel" style="width:340px;max-width:92vw;background:#fff;border-radius:18px;box-shadow:0 15px 40px rgba(0,0,0,.2);overflow:hidden;display:none;margin-top:12px;">
+    <div style="background:var(--primary);color:#fff;padding:14px 16px;font-weight:600;display:flex;justify-content:space-between;align-items:center;">
+      <span>Central Cat’s Assistant</span>
+      <span id="cc-close" style="cursor:pointer;font-weight:400;opacity:.8;">✕</span>
+    </div>
+    <div style="padding:16px 16px 6px;font-size:14px;line-height:1.6;color:#333;">
+      Hallo Pet Owner 👋<br>
+      Silakan pilih kebutuhan hari ini ya 😊
+    </div>
+
+    <div style="padding:10px 16px 18px;display:flex;flex-direction:column;gap:10px;">
+      <button class="cc-quick" data-type="booking" style="padding:10px 12px;border-radius:10px;border:1px solid #e5e7eb;background:#f9fafb;text-align:left;cursor:pointer;">🐾 Booking Grooming Kucing</button>
+      <button class="cc-quick" data-type="pricelist" style="padding:10px 12px;border-radius:10px;border:1px solid #e5e7eb;background:#f9fafb;text-align:left;cursor:pointer;">🐾 Pricelist Grooming Kucing</button>
+      <button class="cc-quick" data-type="treatment" style="padding:10px 12px;border-radius:10px;border:1px solid #e5e7eb;background:#f9fafb;text-align:left;cursor:pointer;">🐾 Treatment Kutu Kucing &amp; Rulenya</button>
+      <button class="cc-quick" data-type="hotel" style="padding:10px 12px;border-radius:10px;border:1px solid #e5e7eb;background:#f9fafb;text-align:left;cursor:pointer;">🏨 Cat Hotel</button>
+      <button class="cc-quick" data-type="produk" style="padding:10px 12px;border-radius:10px;border:1px solid #e5e7eb;background:#f9fafb;text-align:left;cursor:pointer;">🛍 Tanya Produk</button>
+      <button class="cc-quick" data-type="lokasi" style="padding:10px 12px;border-radius:10px;border:1px solid #e5e7eb;background:#f9fafb;text-align:left;cursor:pointer;">📍 Lokasi &amp; Jam Operasional</button>
+      <button class="cc-quick" data-type="admin" style="padding:10px 12px;border-radius:10px;border:1px solid #e5e7eb;background:#fff3f3;border:1px solid #fecaca;text-align:left;cursor:pointer;color:#991b1b;font-weight:600;">💬 Chat Admin</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// AUTO GREETING AFTER 5 SECONDS
+setTimeout(()=>{
+  const bubble = document.getElementById('cc-bubble');
+  if(bubble) bubble.style.display = 'block';
+},5000);
+
+const ccIcon = document.getElementById('cc-icon');
+const ccBubble = document.getElementById('cc-bubble');
+const ccPanel = document.getElementById('cc-panel');
+
+if(ccIcon){
+  ccIcon.addEventListener('click', ()=>{
+    if(ccPanel.style.display === 'block'){
+      ccPanel.style.display = 'none';
+    }else{
+      ccPanel.style.display = 'block';
+      if(ccBubble) ccBubble.style.display = 'none';
+    }
+  });
+}
+
+// CLOSE BUTTON
+const ccClose = document.getElementById('cc-close');
+if(ccClose){
+  ccClose.addEventListener('click', ()=>{
+    ccPanel.style.display = 'none';
+  });
+}
+
+// QUICK BUTTON LOGIC (FILTER ADMIN CHAT)
+const quickButtons = document.querySelectorAll('.cc-quick');
+
+quickButtons.forEach(btn => {
+  btn.addEventListener('click', function(){
+    const type = this.dataset.type;
+
+    let message = '';
+
+    switch(type){
+      case 'booking':
+        message = 'Halo Central Cat’s, saya ingin booking grooming kucing.';
+        break;
+      case 'pricelist':
+        message = 'Halo Central Cat’s, boleh minta pricelist grooming kucing terbaru?';
+        break;
+      case 'treatment':
+        message = 'Halo Central Cat’s, saya ingin info treatment kutu kucing dan rulenya.';
+        break;
+      case 'hotel':
+        message = 'Halo Central Cat’s, saya ingin info dan ketersediaan Cat Hotel.';
+        break;
+      case 'produk':
+        message = 'Halo Central Cat’s, saya ingin bertanya tentang produk yang tersedia.';
+        break;
+      case 'lokasi':
+        message = 'Halo Central Cat’s, boleh info lokasi dan jam operasional masing-masing cabang?';
+        break;
+      case 'admin':
+        message = 'Halo Admin Central Cat’s, saya ingin berbicara langsung dengan admin.';
+        break;
+    }
+
+    if(message){
+      const encoded = encodeURIComponent(message);
+      const waURL = `https://wa.me/6282111827798?text=${encoded}`;
+      window.open(waURL, '_blank');
+    }
+  });
 });
 </script>
 
