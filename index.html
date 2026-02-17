@@ -368,6 +368,14 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 
 @media(max-width:768px){
 
+  /* HIDE ABOUT MASCOT ON MOBILE (FORCE SAFE SELECTOR) */
+  #about > div > div:last-child{
+    display:none !important;
+  }
+
+  /* HIDE HERO BUTTONS ON MOBILE */
+
+
   /* HIDE HERO BUTTONS ON MOBILE */
   .hero .btn{
     display:none !important;
@@ -515,7 +523,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 
 <header>
   <div class="logo-area">
-    <img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo">
+    <img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo" width="300" height="80" loading="lazy" decoding="async">
   </div>
   <nav>
     <div class="search-box">
@@ -547,7 +555,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 <section class="hero" id="home">
   <div class="hero-container">
     <div style="flex:1;text-align:center;">
-      <img src="assets/maskot/hero-maskot-transparent.png" alt="Maskot Central Cat’s - Grooming & Petshop Tangerang" style="max-width:380px;width:100%;">
+      <img src="assets/maskot/hero-maskot-transparent.png" alt="Maskot Central Cat’s - Grooming & Petshop Tangerang" width="380" height="380" style="max-width:380px;width:100%;" fetchpriority="high" decoding="async">
     </div>
     <div class="hero-text" style="flex:1;">
       <h1>Perawatan & Produk Terbaik<br><span style="color:var(--accent);">untuk Hewan Peliharaan Anda</span></h1>
@@ -576,7 +584,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
       <a href="tentang.html" class="btn">Baca Selengkapnya</a>
     </div>
     <div style="flex:1;min-width:280px;text-align:center;">
-      <img src="assets/maskot/maskot-about-transparent.png" alt="Maskot Central Cat’s Tentang Kami" style="max-width:420px;width:100%;">
+      <img src="assets/maskot/maskot-about-transparent.png" alt="Maskot Central Cat’s Tentang Kami" width="420" height="420" style="max-width:420px;width:100%;" loading="lazy" decoding="async">
     </div>
   </div>
 </section>
@@ -591,16 +599,14 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
   </p>
 
   <div style="margin-top:25px;margin-bottom:40px;text-align:center;">
-    <img src="assets/maskot/maskot-megaphone-transparent.png"
-         alt="Maskot Megaphone"
-         style="max-width:210px;width:100%;height:auto;">
+    <img src="assets/maskot/maskot-megaphone-transparent.png" alt="Maskot Megaphone" width="210" height="210" style="max-width:210px;width:100%;height:auto;" loading="lazy" decoding="async">
   </div>
 
   <div class="grid">
 
     <div class="card" style="text-align:center;">
       <div class="icon-frame">
-        <img src="assets/maskot/maskot-mandi-transparent.png" alt="Grooming">
+        <img src="assets/maskot/maskot-mandi-transparent.png" alt="Grooming" width="75" height="75" loading="lazy" decoding="async">
       </div>
       <h3>1. Grooming Kucing</h3>
       <p>Mandi, pengeringan, potong kuku, bersih telinga & perawatan dasar lainnya.</p>
@@ -616,7 +622,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 
     <div class="card" style="text-align:center;">
       <div class="icon-frame">
-        <img src="assets/maskot/maskot-treatmentkutu-transparent.png" alt="Treatment Kutu">
+        <img src="assets/maskot/maskot-treatmentkutu-transparent.png" alt="Treatment Kutu" width="75" height="75" loading="lazy" decoding="async">
       </div>
       <h3>2. Treatment Kutu Kucing</h3>
       <p>Perawatan khusus untuk membantu mengatasi kutu dan menjaga kesehatan kulit serta bulu kucing.</p>
@@ -632,7 +638,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 
     <div class="card" style="text-align:center;">
       <div class="icon-frame">
-        <img src="assets/maskot/maskot-cathottel-transparent.png" alt="Cat Hotel">
+        <img src="assets/maskot/maskot-cathottel-transparent.png" alt="Cat Hotel" width="95" height="95" loading="lazy" decoding="async">
       </div>
       <h3>3. Cat Hotel</h3>
       <p>Layanan penitipan kucing yang aman, bersih, dan nyaman dengan pengawasan rutin.</p>
@@ -658,7 +664,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 
     <div class="card" style="text-align:center;">
       <div class="icon-frame">
-        <img src="assets/icon/food-aluminium-3d.png" alt="Makanan Nutrisi Icon" style="width:100%;height:auto;">
+        <img src="assets/icon/food-aluminium-3d.png" alt="Makanan Nutrisi Icon" width="120" height="120" style="width:100%;height:auto;" loading="lazy" decoding="async">
       </div>
       <h3>Makanan & Nutrisi</h3>
       <p>Menyediakan pilihan makanan premium, vitamin, dan suplemen berkualitas untuk menunjang kesehatan serta daya tahan hewan peliharaan Anda setiap hari.</p>
@@ -667,7 +673,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 
     <div class="card" style="text-align:center;">
       <div class="icon-frame">
-        <img src="assets/icon/accessories-aluminium-3d.png" alt="Perlengkapan Aksesoris Icon" style="width:100%;height:auto;">
+        <img src="assets/icon/accessories-aluminium-3d.png" alt="Perlengkapan Aksesoris Icon" width="120" height="120" style="width:100%;height:auto;" loading="lazy" decoding="async">
       </div>
       <h3>Perlengkapan & Aksesoris</h3>
       <p>Pasir kucing, kandang, litter box, mainan, dan kebutuhan harian lainnya.</p>
@@ -676,7 +682,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 
     <div class="card" style="text-align:center;">
       <div class="icon-frame">
-        <img src="assets/icon/groomingkit-aluminium-3d.png" alt="Perawatan Grooming Kit Icon" style="width:100%;height:auto;">
+        <img src="assets/icon/groomingkit-aluminium-3d.png" alt="Perawatan Grooming Kit Icon" width="120" height="120" style="width:100%;height:auto;" loading="lazy" decoding="async">
       </div>
       <h3>Perawatan & Grooming Kit</h3>
       <p>Beragam produk perawatan seperti shampoo khusus, sisir, hingga grooming kit berkualitas untuk menjaga kebersihan, kenyamanan, dan kesehatan bulu hewan peliharaan Anda.</p>
@@ -737,9 +743,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 
     <!-- Mascot tetap di posisi tengah (tidak diubah layout-nya) -->
     <div style="margin-top:30px;margin-bottom:20px;">
-      <img src="assets/maskot/maskot-yang-berkualitas-ada-di-sini-transparent.png" 
-           alt="Maskot Central Cats"
-           style="max-width:260px;width:100%;height:auto;opacity:0.95;">
+      <img src="assets/maskot/maskot-yang-berkualitas-ada-di-sini-transparent.png" alt="Maskot Central Cats" width="260" height="260" style="max-width:260px;width:100%;height:auto;opacity:0.95;" loading="lazy" decoding="async">
     </div>
 
     <!-- Review Cards -->
