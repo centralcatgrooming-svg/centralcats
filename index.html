@@ -1041,37 +1041,103 @@ if(ccClose){
   });
 }
 
-// QUICK BUTTON LOGIC (FILTER ADMIN CHAT)
+// QUICK BUTTON LOGIC (SEMI-SMART UPGRADE WITH PRICELIST FLOW)
 const quickButtons = document.querySelectorAll('.cc-quick');
 
 quickButtons.forEach(btn => {
   btn.addEventListener('click', function(){
+
     const type = this.dataset.type;
+
+    const userName = prompt('Sebelum lanjut, boleh tahu nama Anda?');
+    if(!userName) return;
+
+    let userPhone = prompt('Mohon masukkan nomor WhatsApp aktif Anda (hanya angka):');
+    if(!userPhone) return;
+
+    userPhone = userPhone.replace(/\s+/g,'');
+    const isValidNumber = /^\d{10,15}$/.test(userPhone);
+
+    if(!isValidNumber){
+      alert('Nomor WhatsApp tidak valid. Gunakan hanya angka (minimal 10 digit, tanpa spasi atau simbol).');
+      return;
+    }
 
     let message = '';
 
-    switch(type){
-      case 'booking':
-        message = 'Halo Central Cat’s, saya ingin booking grooming kucing.';
-        break;
-      case 'pricelist':
-        message = 'Halo Central Cat’s, boleh minta pricelist grooming kucing terbaru?';
-        break;
-      case 'treatment':
-        message = 'Halo Central Cat’s, saya ingin info treatment kutu kucing dan rulenya.';
-        break;
-      case 'hotel':
-        message = 'Halo Central Cat’s, saya ingin info dan ketersediaan Cat Hotel.';
-        break;
-      case 'produk':
-        message = 'Halo Central Cat’s, saya ingin bertanya tentang produk yang tersedia.';
-        break;
-      case 'lokasi':
-        message = 'Halo Central Cat’s, boleh info lokasi dan jam operasional masing-masing cabang?';
-        break;
-      case 'admin':
-        message = 'Halo Admin Central Cat’s, saya ingin berbicara langsung dengan admin.';
-        break;
+    // ==== PRICELIST FLOW UPGRADE ====
+    if(type === 'pricelist'){
+
+      alert(
+`Berikut ringkasan paket Grooming Kucing Central Cat’s:
+
+• Basic Grooming
+• Medium Grooming
+• Full Grooming
+• Add-on Treatment Kutu tersedia
+
+Harga menyesuaikan berat & kondisi bulu.`
+      );
+
+      const lanjutBooking = confirm('Apakah Anda ingin melanjutkan reservasi grooming sekarang?');
+
+      if(lanjutBooking){
+        message = `Halo Central Cat’s,
+Nama saya ${userName}.
+Nomor WA saya ${userPhone}.
+Saya sudah melihat pricelist dan ingin melanjutkan reservasi grooming kucing.`;
+      }else{
+        message = `Halo Central Cat’s,
+Nama saya ${userName}.
+Nomor WA saya ${userPhone}.
+Saya sudah melihat pricelist dan ingin berkonsultasi lebih lanjut mengenai paket grooming.`;
+      }
+
+    }else{
+
+      switch(type){
+        case 'booking':
+          message = `Halo Central Cat’s,
+Nama saya ${userName}.
+Nomor WA saya ${userPhone}.
+Saya ingin booking grooming kucing.`;
+          break;
+
+        case 'treatment':
+          message = `Halo Central Cat’s,
+Nama saya ${userName}.
+Nomor WA saya ${userPhone}.
+Saya ingin info treatment kutu kucing.`;
+          break;
+
+        case 'hotel':
+          message = `Halo Central Cat’s,
+Nama saya ${userName}.
+Nomor WA saya ${userPhone}.
+Saya ingin info Cat Hotel.`;
+          break;
+
+        case 'produk':
+          message = `Halo Central Cat’s,
+Nama saya ${userName}.
+Nomor WA saya ${userPhone}.
+Saya ingin bertanya tentang produk.`;
+          break;
+
+        case 'lokasi':
+          message = `Halo Central Cat’s,
+Nama saya ${userName}.
+Nomor WA saya ${userPhone}.
+Saya ingin info lokasi & jam operasional.`;
+          break;
+
+        case 'admin':
+          message = `Halo Admin Central Cat’s,
+Nama saya ${userName}.
+Nomor WA saya ${userPhone}.
+Saya ingin berbicara langsung dengan admin.`;
+          break;
+      }
     }
 
     if(message){
@@ -1079,8 +1145,10 @@ quickButtons.forEach(btn => {
       const waURL = `https://wa.me/6282111827798?text=${encoded}`;
       window.open(waURL, '_blank');
     }
+
   });
 });
+
 </script>
 
 </body>
