@@ -892,11 +892,18 @@ navLinks.forEach(link => {
   });
 });
 
-// SERVICE WHATSAPP LOGIC
+// GLOBAL CONTEXT
+window.ccContext = {
+  service: null,
+  branch: null
+};
+
+// ===== SERVICE BUTTON → BOT =====
 const serviceButtons = document.querySelectorAll('.service-btn');
 
 serviceButtons.forEach(btn => {
   btn.addEventListener('click', function(){
+
     const card = this.closest('.card');
     const select = card.querySelector('.branch-select');
     const branch = select.value;
@@ -908,13 +915,43 @@ serviceButtons.forEach(btn => {
       return;
     }
 
-    const message = `Halo Central Cat’s, saya ingin ${service} di cabang ${branch}.`;
-    const encoded = encodeURIComponent(message);
-    const waURL = `https://wa.me/6282111827798?text=${encoded}`;
+    window.ccContext.service = service;
+    window.ccContext.branch = branch;
 
-    window.open(waURL, '_blank');
+    const panel = document.getElementById('cc-panel');
+    if(panel) panel.style.display = 'block';
+
+    let targetType = '';
+    if(service.includes('Grooming')) targetType = 'booking';
+    else if(service.includes('Treatment')) targetType = 'treatment';
+    else if(service.includes('Hotel')) targetType = 'hotel';
+
+    const quickBtn = document.querySelector(`.cc-quick[data-type="${targetType}"]`);
+    if(quickBtn) quickBtn.click();
+
   });
 });
+
+// ===== PRODUCT BUTTON → BOT =====
+const productButtons = document.querySelectorAll('#products .btn');
+
+productButtons.forEach(btn => {
+  btn.addEventListener('click', function(e){
+
+    e.preventDefault();
+
+    window.ccContext.service = 'Produk';
+    window.ccContext.branch = null;
+
+    const panel = document.getElementById('cc-panel');
+    if(panel) panel.style.display = 'block';
+
+    const quickBtn = document.querySelector('.cc-quick[data-type="produk"]');
+    if(quickBtn) quickBtn.click();
+
+  });
+});
+
 
 // REVIEW AUTO SLIDE (MOBILE ONLY)
 function initReviewSlider(){
@@ -1071,13 +1108,16 @@ quickButtons.forEach(btn => {
     }
 
     let message = '';
+const branchInfo = window.ccContext && window.ccContext.branch
+  ? ` di cabang ${window.ccContext.branch}`
+  : '';
 
     switch(type){
       case 'booking':
         message = `Halo Central Cat’s,
 Nama saya ${userName}.
 Nomor WA saya ${userPhone}.
-Saya ingin booking grooming kucing.`;
+Saya ingin booking grooming kucing${branchInfo}.`;
         break;
       case 'pricelist':
         alert(`Berikut ringkasan paket Grooming Kucing Central Cat’s:
@@ -1104,17 +1144,18 @@ Saya sudah melihat pricelist dan ingin berkonsultasi lebih lanjut mengenai paket
         }
         break;
       case 'treatment':
-        message = `Halo Central Cat’s,
+  message = `Halo Central Cat’s,
 Nama saya ${userName}.
 Nomor WA saya ${userPhone}.
-Saya ingin info treatment kutu kucing.`;
-        break;
-      case 'hotel':
-        message = `Halo Central Cat’s,
+Saya ingin info treatment kutu kucing${branchInfo}.`;
+  break;
+
+     case 'hotel':
+  message = `Halo Central Cat’s,
 Nama saya ${userName}.
 Nomor WA saya ${userPhone}.
-Saya ingin info Cat Hotel.`;
-        break;
+Saya ingin info Cat Hotel${branchInfo}.`;
+  break;
       case 'produk':
         message = `Halo Central Cat’s,
 Nama saya ${userName}.
@@ -1139,6 +1180,10 @@ Saya ingin berbicara langsung dengan admin.`;
       const encoded = encodeURIComponent(message);
       const waURL = `https://wa.me/6282111827798?text=${encoded}`;
       window.open(waURL, '_blank');
+      if(window.ccContext){
+  window.ccContext.service = null;
+  window.ccContext.branch = null;
+}
     }
   });
 });
