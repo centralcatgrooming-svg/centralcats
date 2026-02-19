@@ -892,18 +892,11 @@ navLinks.forEach(link => {
   });
 });
 
-// GLOBAL CONTEXT
-window.ccContext = {
-  service: null,
-  branch: null
-};
-
-// ===== SERVICE BUTTON → BOT =====
+// SERVICE WHATSAPP LOGIC
 const serviceButtons = document.querySelectorAll('.service-btn');
 
 serviceButtons.forEach(btn => {
   btn.addEventListener('click', function(){
-
     const card = this.closest('.card');
     const select = card.querySelector('.branch-select');
     const branch = select.value;
@@ -915,43 +908,13 @@ serviceButtons.forEach(btn => {
       return;
     }
 
-    window.ccContext.service = service;
-    window.ccContext.branch = branch;
+    const message = `Halo Central Cat’s, saya ingin ${service} di cabang ${branch}.`;
+    const encoded = encodeURIComponent(message);
+    const waURL = `https://wa.me/6282111827798?text=${encoded}`;
 
-    const panel = document.getElementById('cc-panel');
-    if(panel) panel.style.display = 'block';
-
-    let targetType = '';
-    if(service.includes('Grooming')) targetType = 'booking';
-    else if(service.includes('Treatment')) targetType = 'treatment';
-    else if(service.includes('Hotel')) targetType = 'hotel';
-
-    const quickBtn = document.querySelector(`.cc-quick[data-type="${targetType}"]`);
-    if(quickBtn) quickBtn.click();
-
+    window.open(waURL, '_blank');
   });
 });
-
-// ===== PRODUCT BUTTON → BOT =====
-const productButtons = document.querySelectorAll('#products .btn');
-
-productButtons.forEach(btn => {
-  btn.addEventListener('click', function(e){
-
-    e.preventDefault();
-
-    window.ccContext.service = 'Produk';
-    window.ccContext.branch = null;
-
-    const panel = document.getElementById('cc-panel');
-    if(panel) panel.style.display = 'block';
-
-    const quickBtn = document.querySelector('.cc-quick[data-type="produk"]');
-    if(quickBtn) quickBtn.click();
-
-  });
-});
-
 
 // REVIEW AUTO SLIDE (MOBILE ONLY)
 function initReviewSlider(){
@@ -1036,13 +999,12 @@ fadeSections.forEach(section => {
       <span>Central Cat’s Assistant</span>
       <span id="cc-close" style="cursor:pointer;font-weight:400;opacity:.8;">✕</span>
     </div>
-<div id="cc-body" style="padding:16px 16px 6px;font-size:14px;line-height:1.6;color:#333;">
+    <div style="padding:16px 16px 6px;font-size:14px;line-height:1.6;color:#333;">
       Hallo Pet Owner 👋<br>
       Silakan pilih kebutuhan hari ini ya 😊
     </div>
 
-   <div id="cc-actions" style="padding:10px 16px 18px;display:flex;flex-direction:column;gap:10px;">
-     
+    <div style="padding:10px 16px 18px;display:flex;flex-direction:column;gap:10px;">
       <button class="cc-quick" data-type="booking" style="padding:10px 12px;border-radius:10px;border:1px solid #e5e7eb;background:#f9fafb;text-align:left;cursor:pointer;">🐾 Booking Grooming Kucing</button>
       <button class="cc-quick" data-type="pricelist" style="padding:10px 12px;border-radius:10px;border:1px solid #e5e7eb;background:#f9fafb;text-align:left;cursor:pointer;">🐾 Pricelist Grooming Kucing</button>
       <button class="cc-quick" data-type="treatment" style="padding:10px 12px;border-radius:10px;border:1px solid #e5e7eb;background:#f9fafb;text-align:left;cursor:pointer;">🐾 Treatment Kutu Kucing &amp; Rulenya</button>
@@ -1052,18 +1014,6 @@ fadeSections.forEach(section => {
       <button class="cc-quick" data-type="admin" style="padding:10px 12px;border-radius:10px;border:1px solid #e5e7eb;background:#fff3f3;border:1px solid #fecaca;text-align:left;cursor:pointer;color:#991b1b;font-weight:600;">💬 Chat Admin</button>
     </div>
   </div>
-</div>
-<div id="cc-form" style="display:none;padding:16px;border-top:1px solid #eee;">
-  <input type="text" id="cc-name" placeholder="Nama Anda"
-    style="width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;margin-bottom:10px;">
-
-  <input type="tel" id="cc-phone" placeholder="Nomor WhatsApp (08xxxx)"
-    style="width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;margin-bottom:10px;">
-
-  <button id="cc-submit"
-    style="width:100%;padding:10px;border:none;border-radius:10px;background:var(--accent);font-weight:600;cursor:pointer;">
-    Kirim ke Admin
-  </button>
 </div>
 
 <script>
@@ -1079,255 +1029,104 @@ const ccPanel = document.getElementById('cc-panel');
 
 if(ccIcon){
   ccIcon.addEventListener('click', ()=>{
-
-    const isOpen = ccPanel.style.display === 'block';
-
-    if(isOpen){
+    if(ccPanel.style.display === 'block'){
       ccPanel.style.display = 'none';
-      ccIcon.style.display = 'flex';   // munculkan lagi icon
     }else{
       ccPanel.style.display = 'block';
-      ccIcon.style.display = 'none';   // sembunyikan icon
       if(ccBubble) ccBubble.style.display = 'none';
     }
-
   });
 }
-
 
 // CLOSE BUTTON
 const ccClose = document.getElementById('cc-close');
 if(ccClose){
   ccClose.addEventListener('click', ()=>{
-  ccPanel.style.display = 'none';
-  ccIcon.style.display = 'flex';
-});
-
-}
-// ===============================
-// SMART PRICE ENGINE
-// ===============================
-
-let ccFlow = {
-  step: 0,
-  age: null,
-  location: null
-};
-
-const PRICE = {
-  kitten: {
-    onsite: {
-      daily: '100K',
-      jamur: '120K',
-      beauty: '160K',
-      treatment: '370K'
-    },
-    home: {
-      daily: '110K',
-      jamur: '140K',
-      beauty: '180K',
-      treatment: '400K'
-    }
-  },
-  adult: {
-    onsite: {
-      daily: '120K',
-      jamur: '130K',
-      beauty: '180K',
-      treatment: '390K'
-    },
-    home: {
-      daily: '140K',
-      jamur: '150K',
-      beauty: '200K',
-      treatment: '420K'
-    }
-  }
-};
-
-function renderPriceStep() {
-
- const panelBody = document.getElementById('cc-body');
-const panelActions = document.getElementById('cc-actions');
-
-  panelActions.innerHTML = '';
-
-  // STEP 1 – Pilih Usia
-  if(ccFlow.step === 1){
-    panelBody.innerHTML = `
-      Anabul usia berapa ya? 😊
-    `;
-
-    panelActions.innerHTML = `
-      <button class="cc-dynamic" data-age="kitten">🐱 Kitten (3–6 bulan)</button>
-      <button class="cc-dynamic" data-age="adult">🐈 Adult (di atas 6 bulan)</button>
-    `;
-  }
-
-  // STEP 2 – Pilih Lokasi
-  if(ccFlow.step === 2){
-    panelBody.innerHTML = `
-      Layanan akan dilakukan di mana?
-    `;
-
-    panelActions.innerHTML = `
-      <button class="cc-dynamic" data-location="onsite">🏬 Datang ke Toko</button>
-      <button class="cc-dynamic" data-location="home">🚗 Home Service</button>
-      <button class="cc-back">⬅ Kembali</button>
-    `;
-  }
-
-  // STEP 3 – Tampilkan Harga
-  if(ccFlow.step === 3){
-
-    const data = PRICE[ccFlow.age][ccFlow.location];
-
-    panelBody.innerHTML = `
-      ✨ DAILY GROOMING – ${data.daily}<br>
-      ✨ GROOMING JAMUR – ${data.jamur}<br>
-      ✨ BEAUTY GROOMING – ${data.beauty}<br>
-      ✨ TREATMENT KUTU (3 Hari) – ${data.treatment}
-    `;
-
-    panelActions.innerHTML = `
-      <button class="cc-book-final">Lanjut Reservasi</button>
-      <button class="cc-back">⬅ Kembali</button>
-    `;
-  }
-
-  attachDynamicListeners();
-}
-
-function attachDynamicListeners(){
-
-  document.querySelectorAll('.cc-dynamic').forEach(btn=>{
-    btn.addEventListener('click', function(){
-
-      if(this.dataset.age){
-        ccFlow.age = this.dataset.age;
-        ccFlow.step = 2;
-      }
-
-      if(this.dataset.location){
-        ccFlow.location = this.dataset.location;
-        ccFlow.step = 3;
-      }
-
-      renderPriceStep();
-    });
+    ccPanel.style.display = 'none';
   });
-
-  document.querySelectorAll('.cc-back').forEach(btn=>{
-    btn.addEventListener('click', function(){
-
-      if(ccFlow.step === 3){
-        ccFlow.step = 2;
-      } else if(ccFlow.step === 2){
-        ccFlow.step = 1;
-      }
-
-      renderPriceStep();
-    });
-  });
-
-  const finalBtn = document.querySelector('.cc-book-final');
-  if(finalBtn){
-    finalBtn.addEventListener('click', ()=>{
-      document.querySelector('.cc-quick[data-type="booking"]').click();
-    });
-  }
 }
 
-
-// ===============================
-// FORM MODE (NO POPUP)
-// ===============================
-
-let selectedType = null;
-
-const ccForm = document.getElementById('cc-form');
-const ccName = document.getElementById('cc-name');
-const ccPhone = document.getElementById('cc-phone');
-const ccSubmit = document.getElementById('cc-submit');
+// QUICK BUTTON LOGIC (SEMI-SMART WITH NAME + PHONE COLLECTION)
 const quickButtons = document.querySelectorAll('.cc-quick');
 
 quickButtons.forEach(btn => {
   btn.addEventListener('click', function(){
-
     const type = this.dataset.type;
 
-    // pricelist tetap pakai price engine
-    if(type === 'pricelist'){
-      return;
-    }
+    // collect user identity first
+    const userName = prompt('Sebelum lanjut, boleh tahu nama Anda?');
+    if(!userName) return;
 
-    selectedType = type;
+    let userPhone = prompt('Mohon masukkan nomor WhatsApp aktif Anda (hanya angka):');
+    if(!userPhone) return;
 
-    if(ccForm){
-      ccForm.style.display = 'block';
-    }
-
-  });
-});
-
-if(ccSubmit){
-  ccSubmit.addEventListener('click', function(){
-
-    const userName = ccName.value.trim();
-    let userPhone = ccPhone.value.trim();
-
-    if(!userName || !userPhone){
-      alert('Mohon isi nama dan nomor WhatsApp terlebih dahulu.');
-      return;
-    }
-
+    // VALIDASI NOMOR WA (HANYA ANGKA & MINIMAL 10 DIGIT)
     userPhone = userPhone.replace(/\s+/g,'');
 
-    const isValid = /^\d{10,15}$/.test(userPhone);
+    const isValidNumber = /^\d{10,15}$/.test(userPhone);
 
-    if(!isValid){
-      alert('Nomor WhatsApp tidak valid.');
+    if(!isValidNumber){
+      alert('Nomor WhatsApp tidak valid. Gunakan hanya angka (minimal 10 digit, tanpa spasi atau simbol).');
       return;
     }
 
     let message = '';
 
-    switch(selectedType){
+    switch(type){
       case 'booking':
         message = `Halo Central Cat’s,
 Nama saya ${userName}.
 Nomor WA saya ${userPhone}.
 Saya ingin booking grooming kucing.`;
         break;
+      case 'pricelist':
+        alert(`Berikut ringkasan paket Grooming Kucing Central Cat’s:
 
+• Basic Grooming
+• Medium Grooming
+• Full Grooming
+• Add-on Treatment Kutu tersedia
+
+Harga menyesuaikan berat & kondisi bulu.`);
+
+        const lanjutBooking = confirm('Apakah Anda ingin melanjutkan reservasi grooming sekarang?');
+
+        if(lanjutBooking){
+          message = `Halo Central Cat’s,
+Nama saya ${userName}.
+Nomor WA saya ${userPhone}.
+Saya sudah melihat pricelist dan ingin melanjutkan reservasi grooming kucing.`;
+        }else{
+          message = `Halo Central Cat’s,
+Nama saya ${userName}.
+Nomor WA saya ${userPhone}.
+Saya sudah melihat pricelist dan ingin berkonsultasi lebih lanjut mengenai paket grooming.`;
+        }
+        break;
       case 'treatment':
         message = `Halo Central Cat’s,
 Nama saya ${userName}.
 Nomor WA saya ${userPhone}.
 Saya ingin info treatment kutu kucing.`;
         break;
-
       case 'hotel':
         message = `Halo Central Cat’s,
 Nama saya ${userName}.
 Nomor WA saya ${userPhone}.
 Saya ingin info Cat Hotel.`;
         break;
-
       case 'produk':
         message = `Halo Central Cat’s,
 Nama saya ${userName}.
 Nomor WA saya ${userPhone}.
 Saya ingin bertanya tentang produk.`;
         break;
-
       case 'lokasi':
         message = `Halo Central Cat’s,
 Nama saya ${userName}.
 Nomor WA saya ${userPhone}.
 Saya ingin info lokasi & jam operasional.`;
         break;
-
       case 'admin':
         message = `Halo Admin Central Cat’s,
 Nama saya ${userName}.
@@ -1339,12 +1138,10 @@ Saya ingin berbicara langsung dengan admin.`;
     if(message){
       const encoded = encodeURIComponent(message);
       const waURL = `https://wa.me/6282111827798?text=${encoded}`;
-      window.location.href = waURL;
+      window.open(waURL, '_blank');
     }
-
   });
-}
-
+});
 </script>
 
 </body>
