@@ -1319,7 +1319,7 @@ Saya ingin berbicara langsung dengan admin.`;
     if(message){
       const encoded = encodeURIComponent(message);
       const waURL = `https://wa.me/6282111827798?text=${encoded}`;
-      window.open(waURL, '_blank');
+      window.location.href = waURL;
 
       if(window.ccContext){
         window.ccContext.service = null;
