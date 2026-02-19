@@ -1036,12 +1036,12 @@ fadeSections.forEach(section => {
       <span>Central Cat’s Assistant</span>
       <span id="cc-close" style="cursor:pointer;font-weight:400;opacity:.8;">✕</span>
     </div>
-    <div style="padding:16px 16px 6px;font-size:14px;line-height:1.6;color:#333;">
+<div id="cc-body" style="padding:16px 16px 6px;font-size:14px;line-height:1.6;color:#333;">
       Hallo Pet Owner 👋<br>
       Silakan pilih kebutuhan hari ini ya 😊
     </div>
 
-    <div style="padding:10px 16px 18px;display:flex;flex-direction:column;gap:10px;">
+   <div id="cc-actions" style="padding:10px 16px 18px;display:flex;flex-direction:column;gap:10px;">
      
       <button class="cc-quick" data-type="booking" style="padding:10px 12px;border-radius:10px;border:1px solid #e5e7eb;background:#f9fafb;text-align:left;cursor:pointer;">🐾 Booking Grooming Kucing</button>
       <button class="cc-quick" data-type="pricelist" style="padding:10px 12px;border-radius:10px;border:1px solid #e5e7eb;background:#f9fafb;text-align:left;cursor:pointer;">🐾 Pricelist Grooming Kucing</button>
@@ -1147,8 +1147,8 @@ const PRICE = {
 
 function renderPriceStep() {
 
-  const panelBody = ccPanel.querySelector('div:nth-child(2)');
-  const panelActions = ccPanel.querySelector('div:nth-child(3)');
+ const panelBody = document.getElementById('cc-body');
+const panelActions = document.getElementById('cc-actions');
 
   panelActions.innerHTML = '';
 
