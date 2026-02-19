@@ -1066,14 +1066,21 @@ const ccPanel = document.getElementById('cc-panel');
 
 if(ccIcon){
   ccIcon.addEventListener('click', ()=>{
-    if(ccPanel.style.display === 'block'){
+
+    const isOpen = ccPanel.style.display === 'block';
+
+    if(isOpen){
       ccPanel.style.display = 'none';
+      ccIcon.style.display = 'flex';   // munculkan lagi icon
     }else{
       ccPanel.style.display = 'block';
+      ccIcon.style.display = 'none';   // sembunyikan icon
       if(ccBubble) ccBubble.style.display = 'none';
     }
+
   });
 }
+
 
 // CLOSE BUTTON
 const ccClose = document.getElementById('cc-close');
