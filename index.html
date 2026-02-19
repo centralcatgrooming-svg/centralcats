@@ -1086,8 +1086,10 @@ if(ccIcon){
 const ccClose = document.getElementById('cc-close');
 if(ccClose){
   ccClose.addEventListener('click', ()=>{
-    ccPanel.style.display = 'none';
-  });
+  ccPanel.style.display = 'none';
+  ccIcon.style.display = 'flex';
+});
+
 }
 // ===============================
 // SMART PRICE ENGINE
