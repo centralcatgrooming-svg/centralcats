@@ -1216,21 +1216,37 @@ function attachDynamicListeners(){
   }
 }
 
-// QUICK BUTTON LOGIC (SEMI-SMART WITH NAME + PHONE COLLECTION)
+// ===============================
+// QUICK BUTTON LOGIC (FINAL CLEAN)
+// ===============================
+
 const quickButtons = document.querySelectorAll('.cc-quick');
 
 quickButtons.forEach(btn => {
   btn.addEventListener('click', function(){
+
     const type = this.dataset.type;
 
-    // collect user identity first
+    // =========================
+    // PRICE ENGINE MODE
+    // =========================
+    if(type === 'pricelist'){
+      ccFlow.step = 1;
+      ccFlow.age = null;
+      ccFlow.location = null;
+      renderPriceStep();
+      return;
+    }
+
+    // =========================
+    // IDENTITAS HANYA UNTUK WA MODE
+    // =========================
     const userName = prompt('Sebelum lanjut, boleh tahu nama Anda?');
     if(!userName) return;
 
     let userPhone = prompt('Mohon masukkan nomor WhatsApp aktif Anda (hanya angka):');
     if(!userPhone) return;
 
-    // VALIDASI NOMOR WA (HANYA ANGKA & MINIMAL 10 DIGIT)
     userPhone = userPhone.replace(/\s+/g,'');
 
     const isValidNumber = /^\d{10,15}$/.test(userPhone);
@@ -1241,51 +1257,48 @@ quickButtons.forEach(btn => {
     }
 
     let message = '';
-const branchInfo = window.ccContext && window.ccContext.branch
-  ? ` di cabang ${window.ccContext.branch}`
-  : '';
+
+    const branchInfo = window.ccContext && window.ccContext.branch
+      ? ` di cabang ${window.ccContext.branch}`
+      : '';
 
     switch(type){
+
       case 'booking':
         message = `Halo Central Cat’s,
 Nama saya ${userName}.
 Nomor WA saya ${userPhone}.
 Saya ingin booking grooming kucing${branchInfo}.`;
         break;
-      case 'pricelist':
-
-  ccFlow.step = 1;
-  ccFlow.age = null;
-  ccFlow.location = null;
-
-  renderPriceStep();
-  return;
 
       case 'treatment':
-  message = `Halo Central Cat’s,
+        message = `Halo Central Cat’s,
 Nama saya ${userName}.
 Nomor WA saya ${userPhone}.
 Saya ingin info treatment kutu kucing${branchInfo}.`;
-  break;
+        break;
 
-     case 'hotel':
-  message = `Halo Central Cat’s,
+      case 'hotel':
+        message = `Halo Central Cat’s,
 Nama saya ${userName}.
 Nomor WA saya ${userPhone}.
 Saya ingin info Cat Hotel${branchInfo}.`;
-  break;
+        break;
+
       case 'produk':
         message = `Halo Central Cat’s,
 Nama saya ${userName}.
 Nomor WA saya ${userPhone}.
 Saya ingin bertanya tentang produk.`;
         break;
+
       case 'lokasi':
         message = `Halo Central Cat’s,
 Nama saya ${userName}.
 Nomor WA saya ${userPhone}.
 Saya ingin info lokasi & jam operasional.`;
         break;
+
       case 'admin':
         message = `Halo Admin Central Cat’s,
 Nama saya ${userName}.
@@ -1298,13 +1311,16 @@ Saya ingin berbicara langsung dengan admin.`;
       const encoded = encodeURIComponent(message);
       const waURL = `https://wa.me/6282111827798?text=${encoded}`;
       window.open(waURL, '_blank');
+
       if(window.ccContext){
-  window.ccContext.service = null;
-  window.ccContext.branch = null;
-}
+        window.ccContext.service = null;
+        window.ccContext.branch = null;
+      }
     }
+
   });
 });
+
 </script>
 
 </body>
