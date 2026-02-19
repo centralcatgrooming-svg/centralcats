@@ -1082,6 +1082,139 @@ if(ccClose){
     ccPanel.style.display = 'none';
   });
 }
+// ===============================
+// SMART PRICE ENGINE
+// ===============================
+
+let ccFlow = {
+  step: 0,
+  age: null,
+  location: null
+};
+
+const PRICE = {
+  kitten: {
+    onsite: {
+      daily: '100K',
+      jamur: '120K',
+      beauty: '160K',
+      treatment: '370K'
+    },
+    home: {
+      daily: '110K',
+      jamur: '140K',
+      beauty: '180K',
+      treatment: '400K'
+    }
+  },
+  adult: {
+    onsite: {
+      daily: '120K',
+      jamur: '130K',
+      beauty: '180K',
+      treatment: '390K'
+    },
+    home: {
+      daily: '140K',
+      jamur: '150K',
+      beauty: '200K',
+      treatment: '420K'
+    }
+  }
+};
+
+function renderPriceStep() {
+
+  const panelBody = ccPanel.querySelector('div:nth-child(2)');
+  const panelActions = ccPanel.querySelector('div:nth-child(3)');
+
+  panelActions.innerHTML = '';
+
+  // STEP 1 – Pilih Usia
+  if(ccFlow.step === 1){
+    panelBody.innerHTML = `
+      Anabul usia berapa ya? 😊
+    `;
+
+    panelActions.innerHTML = `
+      <button class="cc-dynamic" data-age="kitten">🐱 Kitten (3–6 bulan)</button>
+      <button class="cc-dynamic" data-age="adult">🐈 Adult (di atas 6 bulan)</button>
+    `;
+  }
+
+  // STEP 2 – Pilih Lokasi
+  if(ccFlow.step === 2){
+    panelBody.innerHTML = `
+      Layanan akan dilakukan di mana?
+    `;
+
+    panelActions.innerHTML = `
+      <button class="cc-dynamic" data-location="onsite">🏬 Datang ke Toko</button>
+      <button class="cc-dynamic" data-location="home">🚗 Home Service</button>
+      <button class="cc-back">⬅ Kembali</button>
+    `;
+  }
+
+  // STEP 3 – Tampilkan Harga
+  if(ccFlow.step === 3){
+
+    const data = PRICE[ccFlow.age][ccFlow.location];
+
+    panelBody.innerHTML = `
+      ✨ DAILY GROOMING – ${data.daily}<br>
+      ✨ GROOMING JAMUR – ${data.jamur}<br>
+      ✨ BEAUTY GROOMING – ${data.beauty}<br>
+      ✨ TREATMENT KUTU (3 Hari) – ${data.treatment}
+    `;
+
+    panelActions.innerHTML = `
+      <button class="cc-book-final">Lanjut Reservasi</button>
+      <button class="cc-back">⬅ Kembali</button>
+    `;
+  }
+
+  attachDynamicListeners();
+}
+
+function attachDynamicListeners(){
+
+  document.querySelectorAll('.cc-dynamic').forEach(btn=>{
+    btn.addEventListener('click', function(){
+
+      if(this.dataset.age){
+        ccFlow.age = this.dataset.age;
+        ccFlow.step = 2;
+      }
+
+      if(this.dataset.location){
+        ccFlow.location = this.dataset.location;
+        ccFlow.step = 3;
+      }
+
+      renderPriceStep();
+    });
+  });
+
+  document.querySelectorAll('.cc-back').forEach(btn=>{
+    btn.addEventListener('click', function(){
+
+      if(ccFlow.step === 3){
+        ccFlow.step = 2;
+      } else if(ccFlow.step === 2){
+        ccFlow.step = 1;
+      }
+
+      renderPriceStep();
+    });
+  });
+
+  const finalBtn = document.querySelector('.cc-book-final');
+  if(finalBtn){
+    finalBtn.addEventListener('click', ()=>{
+      document.querySelector('.cc-quick[data-type="booking"]').click();
+    });
+  }
+}
 
 // QUICK BUTTON LOGIC (SEMI-SMART WITH NAME + PHONE COLLECTION)
 const quickButtons = document.querySelectorAll('.cc-quick');
@@ -1120,29 +1253,14 @@ Nomor WA saya ${userPhone}.
 Saya ingin booking grooming kucing${branchInfo}.`;
         break;
       case 'pricelist':
-        alert(`Berikut ringkasan paket Grooming Kucing Central Cat’s:
 
-• Basic Grooming
-• Medium Grooming
-• Full Grooming
-• Add-on Treatment Kutu tersedia
+  ccFlow.step = 1;
+  ccFlow.age = null;
+  ccFlow.location = null;
 
-Harga menyesuaikan berat & kondisi bulu.`);
+  renderPriceStep();
+  return;
 
-        const lanjutBooking = confirm('Apakah Anda ingin melanjutkan reservasi grooming sekarang?');
-
-        if(lanjutBooking){
-          message = `Halo Central Cat’s,
-Nama saya ${userName}.
-Nomor WA saya ${userPhone}.
-Saya sudah melihat pricelist dan ingin melanjutkan reservasi grooming kucing.`;
-        }else{
-          message = `Halo Central Cat’s,
-Nama saya ${userName}.
-Nomor WA saya ${userPhone}.
-Saya sudah melihat pricelist dan ingin berkonsultasi lebih lanjut mengenai paket grooming.`;
-        }
-        break;
       case 'treatment':
   message = `Halo Central Cat’s,
 Nama saya ${userName}.
