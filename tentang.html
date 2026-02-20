@@ -9,246 +9,41 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --primary:#1e3a8a;
-  --accent:#d4af37;
-  --light:#f3f4f6;
-  --text:#111;
-}
-
+:root{--primary:#1e3a8a;--accent:#d4af37;--light:#f3f4f6;--text:#111;}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 body{background:#fff;color:var(--text);} 
-
 html{scroll-behavior:smooth;} 
-
- 
-
-/* FADE IN ANIMATION */
-.fade-section{
-  opacity:0;
-  transform:translateY(40px);
-  transition:opacity .8s ease, transform .8s ease;
-}
-.fade-section.show{
-  opacity:1;
-  transform:translateY(0);
-} 
 body.no-scroll{overflow:hidden;} 
-
-header{
-  background:var(--primary);
-  padding:8px 5%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  position:sticky;
-  top:0;
-  z-index:1000;
-}
-
-.logo-area{display:flex;align-items:center;}
+header{background:var(--primary);padding:8px 5%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000;}
 .logo-area img{height:75px;width:auto;display:block;}
-
 nav{display:flex;align-items:center;}
-
-.hamburger{display:none;}
-.mobile-menu{position:fixed;top:0;right:0;width:75%;height:100vh;background:var(--primary);padding:80px 25px;display:flex;flex-direction:column;gap:20px;transform:translateX(100%);transition:.3s ease;z-index:999;}
-.mobile-menu.active{transform:translateX(0);} 
-.overlay{position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(0,0,0,0.4);z-index:998;display:none;}
-
 nav a{color:white;text-decoration:none;margin-left:20px;font-weight:500;transition:.3s ease;}
 nav a:hover{color:var(--accent);} 
-
-.search-box{display:flex;align-items:center;background:white;border-radius:30px;padding:6px 12px;margin-right:20px;}
-.search-box input{border:none;outline:none;font-size:14px;width:160px;}
-.search-icon{margin-right:6px;font-size:14px;opacity:.6;}
-
-.hero{background:linear-gradient(135deg,#1e3a8a,#243c94);color:white;padding:130px 5% 140px;}
-.hero-container{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:40px;}
-.hero-text h1{font-size:2.6rem;margin-bottom:20px;}
-.hero-text p{margin-bottom:25px;opacity:.9;}
-
-.btn{
-  display:inline-block;
-  padding:12px 26px;
-  background:var(--accent);
-  color:#111;
-  text-decoration:none;
-  font-weight:600;
-  border-radius:10px;
-  transition:all .3s ease;
-}
-
-.btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 10px 20px rgba(0,0,0,.12);
-}
-
-/* PRODUCT CARD BUTTON ALIGNMENT */
-#products .card{
-  justify-content:space-between;
-}
-
-#products .card p{
-  min-height:120px; /* dikurangi agar tombol lebih dekat */
-  display:flex;
-  align-items:flex-start;
-  justify-content:center;
-  text-align:center;
-  margin-bottom:10px;
-}
-
-#products .card .btn{
-  margin-top:12px; /* dipadatkan */
-  align-self:center;
-  min-width:170px;
-  text-align:center;
-}
-
-.section{
-  padding:70px 5% 80px;
-  text-align:center;
-}
+.hamburger{display:none;}
+.mobile-menu{position:fixed;top:0;right:0;width:78%;height:100vh;background:var(--primary);padding:90px 28px;display:flex;flex-direction:column;gap:22px;transform:translateX(100%);transition:.35s ease;z-index:999;}
+.mobile-menu.active{transform:translateX(0);} 
+.mobile-menu a{color:white;text-decoration:none;font-size:18px;font-weight:600;}
+.overlay{position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(0,0,0,0.45);display:none;z-index:998;}
+.overlay.active{display:block;}
+.section{padding:90px 5% 100px;text-align:center;background:#f8fafc;} 
+.corp-container{max-width:1100px;margin:60px auto 0;text-align:left;} 
+.corp-intro{max-width:850px;margin:0 auto 60px;font-size:16px;line-height:1.9;color:#333;} 
+.vision-box{background:#ffffff;padding:45px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.06);border-left:6px solid var(--accent);margin-bottom:70px;transition:.3s ease;cursor:pointer;} 
+.vision-box:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.08);} 
+.vision-box h3{margin-bottom:18px;color:var(--primary);letter-spacing:.5px;} 
+.vision-box p{font-style:italic;font-size:17px;line-height:1.9;} 
+.mission-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:30px;margin-bottom:80px;} 
+.mission-card{background:#ffffff;padding:32px;border-radius:16px;box-shadow:0 8px 25px rgba(0,0,0,0.05);transition:.3s ease;} 
+.mission-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.08);} 
+.mission-number{font-weight:700;color:var(--primary);margin-bottom:12px;font-size:14px;letter-spacing:1px;} 
+.mission-card h4{margin-bottom:12px;font-size:17px;color:#111;} 
+.mission-card p{font-size:14px;line-height:1.8;color:#444;} 
+.values-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;} 
+.value-box{background:#ffffff;padding:24px;border-radius:14px;text-align:center;font-size:13px;font-weight:600;letter-spacing:.8px;color:#333;box-shadow:0 6px 20px rgba(0,0,0,0.04);transition:.3s ease;cursor:pointer;} 
+.value-box:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.08);} 
+@media(max-width:900px){.mission-grid{grid-template-columns:1fr;} .values-strip{grid-template-columns:1fr 1fr;}}
 .section h2{font-size:2.2rem;font-weight:700;color:var(--primary);letter-spacing:.5px;position:relative;display:inline-block;}
 .section h2::after{content:"";display:block;width:60px;height:4px;background:var(--accent);margin:12px auto 0;border-radius:4px;}
-
-
-
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;margin-top:40px;}
-.card{
-  background:var(--light);
-  padding:30px;
-  border-radius:16px;
-  box-shadow:0 8px 25px rgba(0,0,0,.05);
-  transition:transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s cubic-bezier(.4,0,.2,1);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-start;
-  min-height:420px;
-}
-
-/* ALIGN SERVICE CONTENT HEIGHT */
-#services .card p{
-  min-height:90px; /* dipadatkan agar jarak kategori & deskripsi lebih rapat */
-  display:flex;
-  align-items:flex-start;
-  justify-content:center;
-  margin-top:6px;
-}
-
-/* REMOVE EMPTY SPACE IN REVIEWS */
-#reviews .card{
-  padding:18px 18px;
-  min-height:260px; /* tinggi seragam agar nama reviewer sejajar */
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-start;
-}
-
-
-.card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 18px 40px rgba(0,0,0,.10);
-}
-
-.icon-frame{
-  width:120px;
-  height:120px;
-  background:white;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 6px 18px rgba(0,0,0,.08);
-  border:2px solid var(--accent);
-  margin:0 auto 15px;
-  overflow:hidden; /* memastikan border tetap clean di mobile */
-}
-
-/* CAT HOTEL BORDER FIX (mobile visual balance) */
-.card img[alt="Cat Hotel"]{
-  max-width:95px;
-  height:auto;
-  object-fit:contain;
-}
-
-.card img{
-  max-width:75px; /* konsisten & tidak memutus border lingkaran */
-  height:auto;
-  object-fit:contain;
-}
-
-.card img[alt="Grooming"]{
-  max-width:55px;
-}
-
-.card img[alt="Cat Hotel"]{
-  max-width:95px; /* sedikit diperbesar agar lebih proporsional */
-}
-
-/* ALIGN SERVICE TITLES (FIXED WITHOUT BREAKING BUTTON ALIGNMENT) */
-.card h3{
-  width:100%;
-  min-height:60px; /* menjaga tinggi konsisten */
-  display:flex;
-  align-items:flex-start; /* rata atas supaya visual sejajar */
-  justify-content:center;
-  text-align:center;
-  margin:18px 0 10px;
-  line-height:1.35;
-}
-
-.review-stars{
-  color:#f5c518;
-  font-size:22px;
-  letter-spacing:2px;
-  margin-bottom:10px;
-}
-
-/* REVIEW MICRO SPACING IMPROVEMENT (MORE COMPACT, ALIGNED & SOLID) */
-#reviews h2{
-  margin-bottom:6px;
-}
-
-#reviews p{
-  margin-top:8px;
-}
-
-#reviews .card{
-  padding:18px 18px;
-  min-height:260px; /* tinggi seragam agar nama reviewer sejajar */
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-start;
-}
-
-#reviews .card p{
-  margin:8px 0 14px;
-  line-height:1.55;
-  font-size:0.93rem;
-}
-
-#reviews .card strong{
-  display:block;
-  font-weight:700;
-  font-size:15px;
-  color:var(--primary);
-  letter-spacing:0.3px;
-  margin-top:auto; /* dorong ke bawah agar semua reviewer sejajar */
-  padding-top:8px;
-}
-
-
-#reviews .grid{
-  margin-top:24px;
-}
-
-#reviews img[alt="Maskot Central Cats"]{
-  margin-top:6px;
-}
-.card.hide{opacity:0;transform:scale(.95);pointer-events:none;position:absolute;}
-
 footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60px;}
 .footer-container{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:40px;text-align:left;}
 .footer-title{font-weight:600;margin-bottom:15px;color:var(--accent);} 
@@ -257,287 +52,144 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 .footer-links a{display:block;color:white;text-decoration:none;margin-bottom:8px;font-size:14px;opacity:.9;} 
 .footer-links a:hover{color:var(--accent);} 
 .footer-bottom{text-align:center;margin-top:40px;font-size:13px;opacity:.8;border-top:1px solid rgba(255,255,255,.15);padding-top:20px;}
-.social-icons{margin-top:15px;display:flex;gap:12px;}
-.social-icons a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:rgba(255,255,255,0.1);border-radius:50%;transition:.3s ease;}
-.social-icons a:hover{background:var(--accent);} 
-
- 
-
-/* DESKTOP ICON BALANCE FIX */
-@media(min-width:769px){
-  .icon-frame img{
-    max-width:68%;
-    height:auto;
-  }
-  .icon-frame img[alt="Cat Hotel"]{
-    max-width:78%;
-  }
-}
-
-@media(max-width:768px){
-
-  /* HIDE ABOUT MASCOT ON MOBILE (FORCE SAFE SELECTOR) */
-  #about > div > div:last-child{
-    display:none !important;
-  }
-
-  /* HIDE HERO BUTTONS ON MOBILE */
-
-
-  /* HIDE HERO BUTTONS ON MOBILE */
-  .hero .btn{
-    display:none !important;
-  }
-
-
-  /* REVIEW SLIDER MOBILE */
-  #reviews .grid{
-    display:flex;
-    overflow-x:auto;
-    gap:18px;
-    scroll-behavior:smooth;
-    padding-left:18px;
-    scroll-snap-type:x mandatory;
-  }
-
-  #reviews .card{
-    min-width:92%;
-    flex:0 0 92%;
-  }
-
-
-  nav{display:none;}
-
-  /* HEADER */
-  header{padding:12px 18px;}
-  .logo-area img{height:58px;}
-
-  .hamburger{
-    display:flex;
-    flex-direction:column;
-    gap:5px;
-    width:30px;
-    cursor:pointer;
-    align-items:flex-end;
-  }
-
-  .hamburger span{
-    height:3px;
-    width:100%;
-    background:white;
-    border-radius:2px;
-  }
-
-  .mobile-menu{
-    position:fixed;
-    top:0;
-    right:0;
-    width:78%;
-    height:100vh;
-    background:var(--primary);
-    padding:90px 28px;
-    display:flex;
-    flex-direction:column;
-    gap:22px;
-    transform:translateX(100%);
-    transition:.35s ease;
-    z-index:999;
-  }
-
-  .mobile-menu a{
-    color:white;
-    text-decoration:none;
-    font-size:18px;
-    font-weight:600;
-  }
-
-  .overlay{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100vh;
-    background:rgba(0,0,0,0.45);
-    z-index:998;
-  }
-
-  /* HERO (TOP HIERARCHY) */
-  .hero{padding:60px 18px;}
-  .hero-container{flex-direction:column;text-align:center;gap:28px;}
-  .hero img{max-width:250px !important;}
-  .hero-text h1{font-size:1.9rem;line-height:1.25;}
-  .hero-text p{font-size:.95rem;}
-
-  /* STACK HERO BUTTONS */
-  .hero .btn{
-    display:block;
-    width:100%;
-    max-width:260px;
-    margin:12px auto 0 !important;
-  }
-
-  /* SECTION SPACING */
-  .section{padding:60px 18px;}
-
-  /* SERVICES MASCOT (SECONDARY HIERARCHY) */
-  #services img[alt="Maskot Megaphone"],
-  #reviews img[alt="Maskot Central Cats"]{
-    max-width:140px; /* diperkecil agar proporsional di mobile */
-  }
-
-  /* CARD COMPACT */
-  .card{
-    padding:20px;
-    min-height:auto;
-  }
-
-  .icon-frame{width:90px;height:90px;}
-
-  .card img{
-    max-width:60px;
-  }
-
-  /* FIX CAT HOTEL BORDER ON MOBILE */
-  .icon-frame img[alt="Cat Hotel"]{
-    max-width:65px;
-    height:auto;
-  }
-
-  .card h3{min-height:auto;margin-bottom:8px;}
-
-  #products .card p{min-height:auto;}
-
-  #products .card .btn{
-    width:auto;
-    min-width:150px;
-  }
-
-  /* MAP HEIGHT REDUCED */
-  #location iframe{height:200px;}
-
-  /* REVIEW BUTTON STACK */
-  #reviews .btn{
-    width:100%;
-    max-width:260px;
-    margin:10px auto 0;
-  }
-
-  /* FLOAT BUTTON SAFER POSITION */
-  
-}
+@media(max-width:768px){nav{display:none;}header{padding:12px 18px;}.logo-area img{height:58px;}.hamburger{display:flex;flex-direction:column;gap:5px;width:30px;cursor:pointer;align-items:flex-end;}.hamburger span{height:3px;width:100%;background:white;border-radius:2px;}}
 </style>
 </head>
 <body>
-
-<!-- HEADER -->
 <header>
-  <div class="logo-area">
-    <img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo" width="300" height="80" loading="lazy" decoding="async">
-  </div>
-  <nav>
-    <div class="search-box">
-      <span class="search-icon">🔍</span>
-      <input type="text" id="searchInput" placeholder="Cari layanan / produk...">
-    </div>
-    <a href="#home">Home</a>
-    <a href="#about">Tentang</a>
-    <a href="#services">Layanan</a>
-    <a href="#products">Produk</a>
-    <a href="#location">Lokasi</a>
-    <a href="tentang.html">Profil</a>
-    <a href="#contact">Kontak</a>
-  </nav>
-  <div class="hamburger"><span></span><span></span><span></span></div>
+<div class="logo-area">
+<img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo" width="300" height="80">
+</div>
+<nav>
+<a href="index.html">Home</a>
+<a href="index.html#about">Tentang</a>
+<a href="index.html#services">Layanan</a>
+<a href="index.html#products">Produk</a>
+<a href="index.html#location">Lokasi</a>
+<a href="tentang.html">Profil</a>
+<a href="index.html#contact">Kontak</a>
+</nav>
+<div class="hamburger"><span></span><span></span><span></span></div>
 </header>
-
-<!-- CONTENT -->
+<div class="mobile-menu">
+<a href="index.html">Home</a>
+<a href="index.html#about">Tentang</a>
+<a href="index.html#services">Layanan</a>
+<a href="index.html#products">Produk</a>
+<a href="index.html#location">Lokasi</a>
+<a href="tentang.html">Profil</a>
+<a href="index.html#contact">Kontak</a>
+</div>
+<div class="overlay"></div>
 <section class="section">
-  <h2>Profil Central Cat’s</h2>
+<h2>Profil Central Cat’s</h2>
+<div class="corp-container">
 
-  <div class="content-wrap">
+<div class="corp-intro">
+Central Cat’s lahir dari kecintaan terhadap kucing dan komitmen untuk menghadirkan layanan grooming yang aman, higienis, dan profesional di Tangerang.
+</div>
 
-    <p>
-      Central Cat’s lahir dari kecintaan terhadap kucing dan komitmen untuk menghadirkan layanan grooming yang aman, higienis, dan profesional di Tangerang.
-    </p>
+<div class="vision-box">
+<h3>VISI CENTRAL CAT’S</h3>
+<p>"Menjadi pilihan utama bagi pemilik hewan peliharaan dengan menyediakan produk dan layanan berkualitas yang mendukung kesejahteraan, kebahagiaan, dan kesehatan hewan peliharaan di seluruh Indonesia."</p>
+</div>
 
-    <h3>Visi</h3>
-    <p>
-      "Menjadi pilihan utama bagi pemilik hewan peliharaan dengan menyediakan produk 
-      dan layanan berkualitas yang mendukung kesejahteraan, kebahagiaan, dan kesehatan hewan peliharaan di seluruh Indonesia."
-    </p>
+<h3 style="color:var(--primary);margin-bottom:30px;">MISI CENTRAL CAT’S</h3>
+<div class="mission-grid">
 
-    <h3>Misi</h3>
-    <ul>
-      <li>Menyediakan layanan grooming khusus kucing yang aman dan higienis.</li>
-      <li>Menyediakan produk petshop berkualitas dan terpercaya.</li>
-      <li>Membangun komunitas pecinta kucing yang edukatif dan suportif.</li>
-    </ul>
+<div class="mission-card">
+<div class="mission-number">01</div>
+<h4>Menyediakan Produk Berkualitas Tinggi</h4>
+<p>Kami berkomitmen untuk menawarkan produk hewan peliharaan terbaik, mulai dari makanan, aksesoris, hingga perawatan kesehatan, yang semuanya terjamin kualitasnya dan aman bagi hewan peliharaan.</p>
+</div>
 
-    <h3>Komitmen Kami</h3>
-    <p>
-      Kami berkomitmen menjaga kualitas layanan, kebersihan alat, serta kenyamanan setiap kucing yang dititipkan kepada kami.
-    </p>
+<div class="mission-card">
+<div class="mission-number">02</div>
+<h4>Memberikan Layanan Pelanggan yang Unggul</h4>
+<p>Memberikan pengalaman belanja yang nyaman, dengan layanan pelanggan yang ramah, responsif, dan siap membantu memenuhi segala kebutuhan hewan peliharaan Anda.</p>
+</div>
 
-  </div>
+<div class="mission-card">
+<div class="mission-number">03</div>
+<h4>Edukasi dan Penyuluhan untuk Pemilik Hewan</h4>
+<p>Memberikan edukasi tentang perawatan dan kesehatan hewan peliharaan melalui artikel, video, dan konsultasi agar pemilik hewan lebih memahami cara memberikan yang terbaik bagi teman berbulu mereka.</p>
+</div>
+
+<div class="mission-card">
+<div class="mission-number">04</div>
+<h4>Mendukung Kesejahteraan Hewan</h4>
+<p>Kami berfokus pada kesejahteraan hewan peliharaan dengan menawarkan produk yang mendukung gaya hidup sehat, aktif, dan bahagia, serta bekerja sama dengan penyedia layanan hewan terpercaya.</p>
+</div>
+
+<div class="mission-card">
+<div class="mission-number">05</div>
+<h4>Berkomitmen pada Keberlanjutan dan Etika</h4>
+<p>Mendorong keberlanjutan dengan memilih produk yang ramah lingkungan dan bekerja sama dengan mitra yang berkomitmen pada prinsip etika dalam perawatan dan penjualan hewan.</p>
+</div>
+
+<div class="mission-card">
+<div class="mission-number">06</div>
+<h4>Inovasi dan Adaptasi dengan Kebutuhan Pasar</h4>
+<p>Selalu berinovasi untuk memenuhi kebutuhan pasar yang berkembang dengan menawarkan produk terbaru dan solusi kreatif untuk berbagai tantangan dalam merawat hewan peliharaan.</p>
+</div>
+
+</div>
+
+<h3 style="color:var(--primary);margin-bottom:30px;">NILAI-NILAI KAMI</h3>
+<div class="values-strip">
+<div class="value-box">KUALITAS & KEAMANAN</div>
+<div class="value-box">PEDULI & EMPATI</div>
+<div class="value-box">KEPERCAYAAN & TRANSPARANSI</div>
+<div class="value-box">INOVASI BERKELANJUTAN</div>
+</div>
+
+</div>
 </section>
-
-<!-- FOOTER -->
 <footer>
-  <div class="footer-container">
-    <div>
-      <div class="footer-logo-frame">
-        <img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo">
-      </div>
-      <p style="font-size:14px;line-height:1.6;opacity:.9;">
-        Grooming kucing dan petshop terpercaya di Tangerang dengan layanan higienis, treatment kutu, cat hotel, dan produk berkualitas.
-      </p>
-      <p style="margin-top:10px;font-size:14px;opacity:.9;">
-        Melayani area <strong>Kota Tangerang, Kabupaten Tangerang, dan sebagian wilayah Jakarta</strong> serta sekitarnya.
-      </p>
-    </div>
+<div class="footer-container">
+<div>
+<div class="footer-logo-frame">
+<img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo">
+</div>
+<p style="font-size:14px;line-height:1.6;opacity:.9;">Grooming kucing dan petshop terpercaya di Tangerang dengan layanan higienis, treatment kutu, cat hotel, dan produk berkualitas.</p>
+<p style="margin-top:10px;font-size:14px;opacity:.9;">Melayani area <strong>Kota Tangerang, Kabupaten Tangerang, dan sebagian wilayah Jakarta</strong> serta sekitarnya.</p>
+</div>
+<div class="footer-links">
+<div class="footer-title">Navigasi</div>
+<a href="index.html">Home</a>
+<a href="index.html#services">Layanan</a>
+<a href="index.html#products">Produk</a>
+<a href="index.html#location">Lokasi</a>
+<a href="tentang.html">Profil</a>
+<a href="index.html#contact">Kontak</a>
+</div>
+<div>
+<div class="footer-title">Informasi</div>
+<p style="font-size:14px;opacity:.9;">Grooming: 08.00 – 18.00 WIB<br>Petshop: 08.00 – 21.00 WIB<br><span style="color:#ffd27f;">Reservasi maksimal 16.00 WIB</span></p>
+<p style="margin-top:15px;font-size:14px;">WhatsApp: <a href="https://wa.me/6282111827798" style="color:#fff;text-decoration:underline;">0821-1182-7798</a></p>
 
-    <div class="footer-links">
-      <div class="footer-title">Navigasi</div>
-      <a href="#home">Home</a>
-      <a href="#services">Layanan</a>
-      <a href="#products">Produk</a>
-      <a href="#location">Lokasi</a>
-      <a href="tentang.html">Profil</a>
-      <a href="#contact">Kontak</a>
-    </div>
-
-    <div>
-      <div class="footer-title">Informasi</div>
-      <p style="font-size:14px;opacity:.9;">
-        Grooming: 08.00 – 18.00 WIB<br>
-        Petshop: 08.00 – 21.00 WIB<br>
-        <span style="color:#ffd27f;">Reservasi maksimal 16.00 WIB</span>
-      </p>
-      <p style="margin-top:15px;font-size:14px;">
-        WhatsApp: <a href="https://wa.me/6282111827798" style="color:#fff;text-decoration:underline;">0821‑1182‑7798</a>
-      </p>
-
-      <div class="social-icons">
-        <a href="https://www.instagram.com/centralcat_official" target="_blank" aria-label="Instagram">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" viewBox="0 0 24 24">
-            <path d="M7.75 2C4.57 2 2 4.57 2 7.75v8.5C2 19.43 4.57 22 7.75 22h8.5C19.43 22 22 19.43 22 16.25v-8.5C22 4.57 19.43 2 16.25 2h-8.5zm0 2h8.5A3.75 3.75 0 0 1 20 7.75v8.5A3.75 3.75 0 0 1 16.25 20h-8.5A3.75 3.75 0 0 1 4 16.25v-8.5A3.75 3.75 0 0 1 7.75 4zm9.5 1.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/>
-          </svg>
-        </a>
-        <a href="https://www.youtube.com/@central_cats" target="_blank" aria-label="YouTube">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" viewBox="0 0 24 24">
-            <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 0 0 .5 6.2 31.2 31.2 0 0 0 0 12a31.2 31.2 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.2 31.2 0 0 0 24 12a31.2 31.2 0 0 0-.5-5.8zM9.8 15.5v-7l6 3.5-6 3.5z"/>
-          </svg>
-        </a>
-        <a href="https://www.tiktok.com/@central_cats" target="_blank" aria-label="TikTok">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" viewBox="0 0 24 24">
-            <path d="M16 1a6.9 6.9 0 0 0 1.9 4.7A6.9 6.9 0 0 0 22 7v3.1a9.9 9.9 0 0 1-6-2v6.4a6.5 6.5 0 1 1-5.6-6.4v3.2a3.3 3.3 0 1 0 2.4 3.2V1h3.2z"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="footer-bottom">© 2026 Central Cat’s. All Rights Reserved.</div>
+<div style="margin-top:18px;display:flex;gap:12px;">
+<a href="https://www.instagram.com/centralcat_official" target="_blank" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.1);border-radius:50%;">
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M7.75 2C4.57 2 2 4.57 2 7.75v8.5C2 19.43 4.57 22 7.75 22h8.5C19.43 22 22 19.43 22 16.25v-8.5C22 4.57 19.43 2 16.25 2h-8.5zm0 2h8.5A3.75 3.75 0 0 1 20 7.75v8.5A3.75 3.75 0 0 1 16.25 20h-8.5A3.75 3.75 0 0 1 4 16.25v-8.5A3.75 3.75 0 0 1 7.75 4zm9.5 1.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
+</a>
+<a href="https://www.youtube.com/@central_cats" target="_blank" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.1);border-radius:50%;">
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 0 0 .5 6.2 31.2 31.2 0 0 0 0 12a31.2 31.2 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.2 31.2 0 0 0 24 12a31.2 31.2 0 0 0-.5-5.8zM9.8 15.5v-7l6 3.5-6 3.5z"/></svg>
+</a>
+<a href="https://www.tiktok.com/@central_cats" target="_blank" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.1);border-radius:50%;">
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M16 1a6.9 6.9 0 0 0 1.9 4.7A6.9 6.9 0 0 0 22 7v3.1a9.9 9.9 0 0 1-6-2v6.4a6.5 6.5 0 1 1-5.6-6.4v3.2a3.3 3.3 0 1 0 2.4 3.2V1h3.2z"/></svg>
+</a>
+</div>
+</div>
+</div>
+<div class="footer-bottom">© 2026 Central Cat’s. All Rights Reserved.</div>
 </footer>
-
+<script>
+const hamburger=document.querySelector('.hamburger');
+const mobileMenu=document.querySelector('.mobile-menu');
+const overlay=document.querySelector('.overlay');
+hamburger.addEventListener('click',()=>{mobileMenu.classList.toggle('active');overlay.classList.toggle('active');document.body.classList.toggle('no-scroll');});
+overlay.addEventListener('click',()=>{mobileMenu.classList.remove('active');overlay.classList.remove('active');document.body.classList.remove('no-scroll');});
+document.querySelectorAll('.mobile-menu a').forEach(link=>{link.addEventListener('click',()=>{mobileMenu.classList.remove('active');overlay.classList.remove('active');document.body.classList.remove('no-scroll');});});
+</script>
 </body>
 </html>
