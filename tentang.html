@@ -438,30 +438,70 @@ ccStart.addEventListener('click',()=>{
 });
 
 function showServiceOptions(){
-  const services=['Daily Grooming','Grooming Jamur','Beauty Grooming','Treatment Kutu','Lion Cut','Cat Hotel (Rp75.000 / hari)'];
+  botReply('Silakan pilih kebutuhan layanan Anda:');
 
-  services.forEach(service=>{
+  const mainMenus=[
+    'Grooming',
+    'Treatment Kutu',
+    'Lion Cut',
+    'Cat Hotel (Rp75.000 / hari)'
+  ];
+
+  mainMenus.forEach(menu=>{
     const btn=document.createElement('button');
     btn.className='cc-msg cc-bot';
     btn.style.cursor='pointer';
-    btn.innerText=service;
+    btn.innerText=menu;
     btn.onclick=()=>{
-      addMessage(service,'user');
-      userData.service=service;
-
-      // Jika Cat Hotel langsung ke durasi & phone (tanpa kategori grooming)
-      if(service.includes('Cat Hotel')){
+      addMessage(menu,'user');
+      
+      if(menu==='Grooming'){
+        showGroomingTypes();
+      }
+      else if(menu==='Treatment Kutu'){
+        userData.service='Treatment Kutu';
+        showCategoryOptions();
+      }
+      else if(menu==='Lion Cut'){
+        userData.service='Lion Cut';
+        step='phone';
+        botReply('Untuk kebutuhan invoice, mohon nomor WhatsApp aktif Anda 😊');
+      }
+      else if(menu.includes('Cat Hotel')){
+        userData.service='Cat Hotel';
         userData.category='-';
         userData.serviceType='Boarding';
         step='hotelDays';
         botReply('Berapa hari Anabul akan menginap? (contoh: 3)');
       }
-      else{
-        showCategoryOptions();
-      }
     };
     ccChat.appendChild(btn);
   });
+
+  ccChat.scrollTop=ccChat.scrollHeight;
+}
+
+function showGroomingTypes(){
+  botReply('Silakan pilih jenis grooming yang diinginkan:');
+
+  const groomingTypes=[
+    'Daily Grooming',
+    'Grooming Jamur',
+    'Beauty Grooming'
+  ];
+
+  groomingTypes.forEach(type=>{
+    const btn=document.createElement('button');
+    btn.className='cc-msg cc-bot';
+    btn.innerText=type;
+    btn.onclick=()=>{
+      addMessage(type,'user');
+      userData.service=type;
+      showCategoryOptions();
+    };
+    ccChat.appendChild(btn);
+  });
+
   ccChat.scrollTop=ccChat.scrollHeight;
 }
 
@@ -475,10 +515,18 @@ function showCategoryOptions(){
     btn.onclick=()=>{
       addMessage(cat,'user');
       userData.category=cat;
-      showServiceTypeOptions();
+
+      if(userData.service==='Lion Cut'){
+        step='phone';
+        botReply('Untuk kebutuhan invoice, mohon nomor WhatsApp aktif Anda 😊');
+      } else {
+        showServiceTypeOptions();
+      }
     };
     ccChat.appendChild(btn);
   });
+
+  ccChat.scrollTop=ccChat.scrollHeight;
 }
 
 function showServiceTypeOptions(){
@@ -496,6 +544,8 @@ function showServiceTypeOptions(){
     };
     ccChat.appendChild(btn);
   });
+
+  ccChat.scrollTop=ccChat.scrollHeight;
 }
 
 function finishBooking(){
@@ -507,12 +557,12 @@ function finishBooking(){
 Nama: ${userData.name}%0A
 Layanan: ${userData.service}%0A`;
 
-  if(userData.service.includes('Cat Hotel')){
+  if(userData.service==='Cat Hotel'){
     message+=`Durasi: ${userData.days} hari%0A`;
     message+=`Estimasi Biaya: Rp ${userData.price.toLocaleString('id-ID')}%0A`;
   } else {
-    message+=`Kategori: ${userData.category}%0A`;
-    message+=`Tipe: ${userData.serviceType}%0A`;
+    if(userData.category) message+=`Kategori: ${userData.category}%0A`;
+    if(userData.serviceType) message+=`Tipe: ${userData.serviceType}%0A`;
   }
 
   message+=`No WA: ${userData.phone}%0A`;
@@ -523,13 +573,10 @@ Layanan: ${userData.service}%0A`;
 
   message+=`Saya ingin melakukan reservasi sesuai detail di atas.`;
 
-  // SEND DATA TO GOOGLE SHEETS
   fetch('https://script.google.com/macros/s/AKfycbwYjL2WJxecuZdabXrYtwR_l05uvpMUsqCO8PtwhSVK_9IbpoSMlhvEQUFwBsLMHJJ2zw/exec', {
     method: 'POST',
     mode: 'no-cors',
-    headers: {
-      'Content-Type': 'application/json'
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(userData)
   }).catch(err=>console.log('Sheet Error:',err));
 
