@@ -504,6 +504,7 @@ No WA: ${userData.phone}%0A`;
   // SEND DATA TO GOOGLE SHEETS
   fetch('https://script.google.com/macros/s/AKfycbwYjL2WJxecuZdabXrYtwR_l05uvpMUsqCO8PtwhSVK_9IbpoSMlhvEQUFwBsLMHJJ2zw/exec', {
     method: 'POST',
+    mode: 'no-cors',
     headers: {
       'Content-Type': 'application/json'
     },
