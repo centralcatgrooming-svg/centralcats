@@ -413,18 +413,23 @@ ccStart.addEventListener('click',()=>{
     userData.name=val;
     localStorage.setItem('ccUserName',val);
     step='menu';
+
     botReply('Terima kasih '+val+' 😊 Silakan pilih layanan grooming yang diinginkan:');
-    showServiceOptions();
+
+    setTimeout(()=>{
+      showServiceOptions();
+    },900);
   }
   else if(step==='phone'){
     userData.phone=val;
-
-    if(userData.serviceType==='Home Service'){
-      step='address';
-      botReply('Mohon kirim alamat lengkap untuk layanan Home Service ya 😊');
-    } else {
-      finishBooking();
-    }
+    step='address';
+    botReply('Untuk kebutuhan invoice & data pelanggan, mohon kirim alamat lengkap Anda ya 😊');
+  }
+  else if(step==='hotelDays'){
+    userData.days=val;
+    userData.price=75000 * parseInt(val || 0);
+    step='phone';
+    botReply('Untuk kebutuhan invoice, mohon nomor WhatsApp aktif Anda 😊');
   }
   else if(step==='address'){
     userData.address=val;
@@ -433,7 +438,7 @@ ccStart.addEventListener('click',()=>{
 });
 
 function showServiceOptions(){
-  const services=['Daily Grooming','Grooming Jamur','Beauty Grooming','Treatment Kutu'];
+  const services=['Daily Grooming','Grooming Jamur','Beauty Grooming','Treatment Kutu','Lion Cut','Cat Hotel (Rp75.000 / hari)'];
 
   services.forEach(service=>{
     const btn=document.createElement('button');
@@ -443,7 +448,17 @@ function showServiceOptions(){
     btn.onclick=()=>{
       addMessage(service,'user');
       userData.service=service;
-      showCategoryOptions();
+
+      // Jika Cat Hotel langsung ke durasi & phone (tanpa kategori grooming)
+      if(service.includes('Cat Hotel')){
+        userData.category='-';
+        userData.serviceType='Boarding';
+        step='hotelDays';
+        botReply('Berapa hari Anabul akan menginap? (contoh: 3)');
+      }
+      else{
+        showCategoryOptions();
+      }
     };
     ccChat.appendChild(btn);
   });
@@ -490,10 +505,17 @@ function finishBooking(){
 
   let message=`Halo Central Cat’s,%0A
 Nama: ${userData.name}%0A
-Layanan: ${userData.service}%0A
-Kategori: ${userData.category}%0A
-Tipe: ${userData.serviceType}%0A
-No WA: ${userData.phone}%0A`;
+Layanan: ${userData.service}%0A`;
+
+  if(userData.service.includes('Cat Hotel')){
+    message+=`Durasi: ${userData.days} hari%0A`;
+    message+=`Estimasi Biaya: Rp ${userData.price.toLocaleString('id-ID')}%0A`;
+  } else {
+    message+=`Kategori: ${userData.category}%0A`;
+    message+=`Tipe: ${userData.serviceType}%0A`;
+  }
+
+  message+=`No WA: ${userData.phone}%0A`;
 
   if(userData.address){
     message+=`Alamat: ${userData.address}%0A`;
