@@ -319,5 +319,229 @@ const observer=new IntersectionObserver(entries=>{
 },{threshold:0.2});
 trustItems.forEach(item=>observer.observe(item));
 </script>
+
+<!-- LUXURY CHAT ASSISTANT -->
+<div class="cc-assistant">
+  <div class="cc-trigger" id="ccTrigger">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/>
+    </svg>
+  </div>
+
+  <div class="cc-panel" id="ccPanel">
+    <div class="cc-header">
+      <div>
+        <strong>Central Cat’s Concierge</strong>
+        <div class="cc-sub">Luxury Grooming Assistance</div>
+      </div>
+      <div class="cc-close" id="ccClose">✕</div>
+    </div>
+
+    <div class="cc-chat" id="ccChat"></div>
+
+    <div class="cc-input-area">
+      <input type="text" id="ccName" placeholder="Ketik pesan Anda...">
+      <button id="ccStart" disabled>Mulai</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.cc-assistant{position:fixed;bottom:24px;right:24px;z-index:1500;font-family:'Poppins',sans-serif;}
+.cc-trigger{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--primary),#162c6b);display:flex;align-items:center;justify-content:center;box-shadow:0 15px 35px rgba(0,0,0,.3);cursor:pointer;transition:.3s;}
+.cc-panel{width:360px;max-width:95vw;height:500px;background:#fff;border-radius:20px;box-shadow:0 25px 60px rgba(0,0,0,.25);display:none;flex-direction:column;overflow:hidden;animation:ccFade .35s ease;}
+.cc-header{background:var(--primary);color:#fff;padding:16px;display:flex;justify-content:space-between;align-items:center;}
+.cc-chat{flex:1;padding:16px;overflow-y:auto;background:#f9fafb;display:flex;flex-direction:column;gap:12px;}
+.cc-msg{max-width:75%;padding:10px 14px;border-radius:16px;font-size:14px;line-height:1.5;animation:fadeIn .3s ease;}
+.cc-bot{background:#fff;border:1px solid #eee;align-self:flex-start;}
+.cc-user{background:var(--primary);color:#fff;align-self:flex-end;}
+.cc-input-area{display:flex;border-top:1px solid #eee;}
+.cc-input-area input{flex:1;padding:12px;border:none;outline:none;font-size:14px;}
+.cc-input-area button{padding:0 18px;border:none;background:var(--primary);color:#fff;font-weight:600;cursor:pointer;transition:.2s;}
+.cc-input-area button:disabled{opacity:.4;cursor:not-allowed;}
+.cc-input-area button.press{transform:scale(.92);}
+.cc-close{cursor:pointer;}
+.typing{font-size:13px;color:#777;font-style:italic;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+@keyframes ccFade{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+</style>
+
+<script>
+const ccTrigger=document.getElementById('ccTrigger');
+const ccPanel=document.getElementById('ccPanel');
+const ccClose=document.getElementById('ccClose');
+const ccChat=document.getElementById('ccChat');
+const ccInput=document.getElementById('ccName');
+const ccStart=document.getElementById('ccStart');
+
+ccTrigger.onclick=()=>{
+  ccPanel.style.display='flex';
+  ccTrigger.style.display='none';
+  ccInput.focus();
+};
+
+ccClose.onclick=()=>{
+  ccPanel.style.display='none';
+  ccTrigger.style.display='flex';
+};
+
+ccInput.addEventListener('input',()=>{
+  ccStart.disabled=!ccInput.value.trim();
+});
+
+ccInput.addEventListener('keydown',(e)=>{
+  if(e.key==='Enter' && !ccStart.disabled){
+    e.preventDefault();
+    ccStart.classList.add('press');
+    setTimeout(()=>ccStart.classList.remove('press'),150);
+    ccStart.click();
+  }
+});
+
+let step='name';
+let userData={};
+
+ccStart.addEventListener('click',()=>{
+  const val=ccInput.value.trim();
+  if(!val) return;
+
+  addMessage(val,'user');
+  ccInput.value='';
+  ccStart.disabled=true;
+
+  if(step==='name'){
+    userData.name=val;
+    localStorage.setItem('ccUserName',val);
+    step='menu';
+    botReply('Terima kasih '+val+' 😊 Silakan pilih layanan grooming yang diinginkan:');
+    showServiceOptions();
+  }
+  else if(step==='phone'){
+    userData.phone=val;
+
+    if(userData.serviceType==='Home Service'){
+      step='address';
+      botReply('Mohon kirim alamat lengkap untuk layanan Home Service ya 😊');
+    } else {
+      finishBooking();
+    }
+  }
+  else if(step==='address'){
+    userData.address=val;
+    finishBooking();
+  }
+});
+
+function showServiceOptions(){
+  const services=['Daily Grooming','Grooming Jamur','Beauty Grooming','Treatment Kutu'];
+
+  services.forEach(service=>{
+    const btn=document.createElement('button');
+    btn.className='cc-msg cc-bot';
+    btn.style.cursor='pointer';
+    btn.innerText=service;
+    btn.onclick=()=>{
+      addMessage(service,'user');
+      userData.service=service;
+      showCategoryOptions();
+    };
+    ccChat.appendChild(btn);
+  });
+  ccChat.scrollTop=ccChat.scrollHeight;
+}
+
+function showCategoryOptions(){
+  botReply('Silakan pilih kategori usia:');
+
+  ['Kitten','Adult'].forEach(cat=>{
+    const btn=document.createElement('button');
+    btn.className='cc-msg cc-bot';
+    btn.innerText=cat;
+    btn.onclick=()=>{
+      addMessage(cat,'user');
+      userData.category=cat;
+      showServiceTypeOptions();
+    };
+    ccChat.appendChild(btn);
+  });
+}
+
+function showServiceTypeOptions(){
+  botReply('Pilih jenis layanan:');
+
+  ['On The Spot','Home Service'].forEach(type=>{
+    const btn=document.createElement('button');
+    btn.className='cc-msg cc-bot';
+    btn.innerText=type;
+    btn.onclick=()=>{
+      addMessage(type,'user');
+      userData.serviceType=type;
+      step='phone';
+      botReply('Untuk kebutuhan invoice, mohon nomor WhatsApp aktif Anda 😊');
+    };
+    ccChat.appendChild(btn);
+  });
+}
+
+function finishBooking(){
+  step='done';
+
+  botReply('Terima kasih 😊 Kami siapkan detail reservasi Anda, mohon tunggu sebentar...');
+
+  let message=`Halo Central Cat’s,%0A
+Nama: ${userData.name}%0A
+Layanan: ${userData.service}%0A
+Kategori: ${userData.category}%0A
+Tipe: ${userData.serviceType}%0A
+No WA: ${userData.phone}%0A`;
+
+  if(userData.address){
+    message+=`Alamat: ${userData.address}%0A`;
+  }
+
+  message+=`Saya ingin melakukan reservasi sesuai detail di atas.`;
+
+  setTimeout(()=>{
+    window.open(`https://wa.me/6282111827798?text=${message}`,'_blank');
+    resetChat();
+  },1200);
+}
+
+function addMessage(text,type){
+  const msg=document.createElement('div');
+  msg.className='cc-msg '+(type==='bot'?'cc-bot':'cc-user');
+  msg.innerText=text;
+  ccChat.appendChild(msg);
+  ccChat.scrollTop=ccChat.scrollHeight;
+}
+
+function botReply(text){
+  const typing=document.createElement('div');
+  typing.className='cc-msg cc-bot typing';
+  typing.innerText='Central Cat’s sedang mengetik...';
+  ccChat.appendChild(typing);
+  ccChat.scrollTop=ccChat.scrollHeight;
+
+  setTimeout(()=>{
+    typing.remove();
+    addMessage(text,'bot');
+    ccInput.focus();
+  },800);
+}
+
+function resetChat(){
+  ccChat.innerHTML='';
+  step='name';
+  userData={};
+  startConversation();
+}
+
+function startConversation(){
+  botReply('Selamat datang di Central Cat’s ✨ Senang membantu kebutuhan Anabul hari ini. Boleh kami mengetahui nama Anda terlebih dahulu?');
+}
+
+startConversation();
+</script>
+
 </body>
 </html>
