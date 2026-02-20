@@ -27,7 +27,7 @@ nav a:hover{color:var(--accent);}
 .overlay.active{display:block;}
 .section{padding:70px 5% 80px;text-align:center;background:#f8fafc;} 
 .corp-container{max-width:1100px;margin:40px auto 0;text-align:left;} 
-.corp-intro{max-width:850px;margin:0 auto 35px;font-size:16px;line-height:1.9;color:#333;} 
+.corp-intro{max-width:850px;margin:0 auto 35px;font-size:16px;line-height:1.9;color:#333;text-align:center;} 
 .vision-box{position:relative;background:#ffffff;padding:45px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.06);border-left:6px solid var(--accent);margin-bottom:70px;transition:all .35s cubic-bezier(.4,0,.2,1);cursor:pointer;overflow:hidden;} 
 .vision-box::after{content:"";position:absolute;bottom:0;left:0;width:0;height:3px;background:linear-gradient(90deg,var(--accent),#f7e7a1);transition:width .35s ease;} 
 .vision-box:hover::after{width:100%;} 
@@ -500,6 +500,15 @@ No WA: ${userData.phone}%0A`;
   }
 
   message+=`Saya ingin melakukan reservasi sesuai detail di atas.`;
+
+  // SEND DATA TO GOOGLE SHEETS
+  fetch('https://script.google.com/macros/s/AKfycbwYjL2WJxecuZdabXrYtwR_l05uvpMUsqCO8PtwhSVK_9IbpoSMlhvEQUFwBsLMHJJ2zw/exec', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userData)
+  }).catch(err=>console.log('Sheet Error:',err));
 
   setTimeout(()=>{
     window.open(`https://wa.me/6282111827798?text=${message}`,'_blank');
