@@ -33,17 +33,17 @@ nav a:hover{color:var(--accent);}
 .vision-box:hover::after{width:100%;} 
 .vision-box:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.08),0 0 0 2px rgba(212,175,55,0.25);border-left:6px solid #d4af37;} 
 .vision-box h3{margin-bottom:18px;color:var(--primary);letter-spacing:.5px;} 
-.vision-box p{font-style:italic;font-size:17px;line-height:1.9;} 
+.vision-box p{font-style:normal;font-size:17px;line-height:1.95;font-weight:500;letter-spacing:.3px;} 
 .mission-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:30px;margin-bottom:80px;} 
-.mission-card{position:relative;background:#ffffff;padding:32px;border-radius:16px;box-shadow:0 8px 25px rgba(0,0,0,0.05);transition:all .35s cubic-bezier(.4,0,.2,1);cursor:pointer;overflow:hidden;} 
+.mission-card{position:relative;background:linear-gradient(145deg,#ffffff,#fdfcf8);padding:34px;border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,0.06);transition:all .35s cubic-bezier(.4,0,.2,1);cursor:pointer;overflow:hidden;} 
 .mission-card::after{content:"";position:absolute;bottom:0;left:0;width:0;height:3px;background:linear-gradient(90deg,var(--accent),#f7e7a1);transition:width .35s ease;} 
 .mission-card:hover::after{width:100%;} 
 .mission-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.08),0 0 0 2px rgba(212,175,55,0.25);background:linear-gradient(135deg,#ffffff,#fffdf6);} 
 .mission-number{font-weight:700;color:var(--primary);margin-bottom:12px;font-size:14px;letter-spacing:1px;} 
-.mission-card h4{margin-bottom:12px;font-size:17px;color:#111;} 
+.mission-card h4{margin-bottom:14px;font-size:18px;color:#111;font-weight:600;} 
 .mission-card p{font-size:14px;line-height:1.8;color:#444;} 
 .values-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;} 
-.value-box{position:relative;background:#ffffff;padding:24px;border-radius:14px;text-align:center;font-size:13px;font-weight:600;letter-spacing:.8px;color:#333;box-shadow:0 6px 20px rgba(0,0,0,0.04);transition:all .35s cubic-bezier(.4,0,.2,1);cursor:pointer;overflow:hidden;} 
+.value-box{position:relative;background:linear-gradient(145deg,#ffffff,#fdfcf8);padding:26px;border-radius:16px;text-align:center;font-size:14.5px;font-weight:600;letter-spacing:1px;color:#222;box-shadow:0 10px 28px rgba(0,0,0,0.05);transition:all .35s cubic-bezier(.4,0,.2,1);cursor:pointer;overflow:hidden;} 
 .value-box::after{content:"";position:absolute;bottom:0;left:0;width:0;height:3px;background:linear-gradient(90deg,var(--accent),#f7e7a1);transition:width .35s ease;} 
 .value-box:hover::after{width:100%;} 
 .value-box:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.08),0 0 0 2px rgba(212,175,55,0.25);color:var(--primary);background:linear-gradient(135deg,#ffffff,#fffdf5);} 
@@ -90,17 +90,19 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 
 /* TYPOGRAPHY SCALE UPGRADE */
 .section h1{font-size:2.6rem;font-weight:700;color:var(--primary);margin-bottom:10px;}
-.section-subtitle{font-size:1.05rem;color:#555;margin-bottom:40px;}
+.section-subtitle{font-size:1.05rem;color:var(--primary);opacity:.75;margin-bottom:50px;font-weight:500;letter-spacing:.6px;}
 .corp-intro{font-size:17px;line-height:1.9;}
 .mission-card p{font-size:15px;line-height:1.85;}
 .trust-strip{display:flex;gap:40px;margin:60px 0 70px;flex-wrap:wrap;}
-.trust-item{position:relative;flex:1;min-width:220px;background:#ffffff;padding:24px 28px;border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,0.05);transition:all .35s cubic-bezier(.4,0,.2,1);cursor:pointer;overflow:hidden;}
+.trust-item{position:relative;flex:1;min-width:220px;background:#ffffff;padding:24px 28px;border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,0.05);transition:all .35s cubic-bezier(.4,0,.2,1);cursor:pointer;overflow:hidden;opacity:0;transform:translateY(25px);} 
+.trust-item.show{opacity:1;transform:translateY(0);transition:all .6s cubic-bezier(.4,0,.2,1);}
 .trust-item::after{content:"";position:absolute;bottom:0;left:0;width:0;height:3px;background:linear-gradient(90deg,var(--accent),#f7e7a1);transition:width .35s ease;}
 .trust-item:hover::after{width:100%;}
 .trust-item:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.08),0 0 0 2px rgba(212,175,55,0.25);background:linear-gradient(135deg,#ffffff,#fffdf6);}
-.trust-item h4{color:var(--primary);margin-bottom:8px;font-size:15px;letter-spacing:.5px;}
+.trust-item h4{color:var(--primary);margin-bottom:10px;font-size:16.5px;letter-spacing:1px;font-weight:700;}
 .trust-item p{font-size:14.5px;color:#444;}
-.brand-positioning{max-width:900px;margin:0 auto 35px;font-size:17px;line-height:1.9;color:#222;font-weight:500;text-align:center;}
+.brand-positioning{max-width:800px;margin:60px auto 20px;font-size:18px;line-height:1.95;color:#111;font-weight:600;text-align:center;letter-spacing:.2px;}
+.section-heading{color:var(--primary);margin-bottom:35px;font-size:1.4rem;font-weight:600;letter-spacing:.6px;}
 @media(max-width:768px){.trust-strip{flex-direction:column;gap:18px;}.section h1{font-size:2rem;}}
 
 /* PREMIUM SUBTLE DIVIDER */
@@ -120,6 +122,9 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
   opacity:.6;
 }
 
+.footer-social{margin-top:18px;display:flex;gap:12px;}
+.footer-social a{width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.1);border-radius:50%;transition:all .3s ease;}
+.footer-social a:hover{background:rgba(212,175,55,0.25);transform:scale(1.08);}
 </style>
 </head>
 <body>
@@ -163,11 +168,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 Central Cat’s lahir dari kecintaan terhadap kucing dan komitmen untuk menghadirkan layanan grooming yang aman, higienis, dan profesional di Tangerang.
 </div>
 
-<div class="brand-positioning">
-Lebih dari sekadar petshop dan grooming, Central Cat’s membangun standar perawatan kucing yang profesional, terstruktur, dan berintegritas sejak 2020.
-</div>
 
-<div class="divider-soft"></div>
 
 <div class="trust-strip">
   <div class="trust-item">
@@ -193,7 +194,7 @@ Lebih dari sekadar petshop dan grooming, Central Cat’s membangun standar peraw
 
 <div class="divider"></div>
 
-<h3 style="color:var(--primary);margin-bottom:30px;">MISI CENTRAL CAT’S</h3>
+<h3 class="section-heading">MISI CENTRAL CAT’S</h3>
 <div class="mission-grid">
 
 <div class="mission-card">
@@ -236,12 +237,18 @@ Lebih dari sekadar petshop dan grooming, Central Cat’s membangun standar peraw
 
 <div class="divider"></div>
 
-<h3 style="color:var(--primary);margin-bottom:30px;">NILAI-NILAI KAMI</h3>
+<h3 class="section-heading">NILAI-NILAI KAMI</h3>
 <div class="values-strip">
 <div class="value-box">KUALITAS & KEAMANAN</div>
 <div class="value-box">PEDULI & EMPATI</div>
 <div class="value-box">KEPERCAYAAN & TRANSPARANSI</div>
 <div class="value-box">INOVASI BERKELANJUTAN</div>
+</div>
+
+<div class="divider-soft"></div>
+
+<div class="brand-positioning">
+Lebih dari sekadar petshop dan grooming, Central Cat’s membangun standar perawatan kucing yang profesional, terstruktur, dan berintegritas sejak 2020.
 </div>
 
 </div>
@@ -270,7 +277,7 @@ Lebih dari sekadar petshop dan grooming, Central Cat’s membangun standar peraw
 <p style="font-size:14px;opacity:.9;">Grooming: 08.00 – 18.00 WIB<br>Petshop: 08.00 – 21.00 WIB<br><span style="color:#ffd27f;">Reservasi maksimal 16.00 WIB</span></p>
 <p style="margin-top:15px;font-size:14px;">WhatsApp: <a href="https://wa.me/6282111827798" style="color:#fff;text-decoration:underline;">0821-1182-7798</a></p>
 
-<div style="margin-top:18px;display:flex;gap:12px;">
+<div class="footer-social">
 <a href="https://www.instagram.com/centralcat_official" target="_blank" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.1);border-radius:50%;">
 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M7.75 2C4.57 2 2 4.57 2 7.75v8.5C2 19.43 4.57 22 7.75 22h8.5C19.43 22 22 19.43 22 16.25v-8.5C22 4.57 19.43 2 16.25 2h-8.5zm0 2h8.5A3.75 3.75 0 0 1 20 7.75v8.5A3.75 3.75 0 0 1 16.25 20h-8.5A3.75 3.75 0 0 1 4 16.25v-8.5A3.75 3.75 0 0 1 7.75 4zm9.5 1.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
 </a>
@@ -300,6 +307,17 @@ setTimeout(()=>{
     intro.parentNode.removeChild(intro);
   }
 },2300);
+
+// FADE IN TRUST ITEMS ON SCROLL
+const trustItems=document.querySelectorAll('.trust-item');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+},{threshold:0.2});
+trustItems.forEach(item=>observer.observe(item));
 </script>
 </body>
 </html>
