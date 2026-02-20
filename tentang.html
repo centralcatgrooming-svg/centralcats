@@ -17,7 +17,23 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#fff;color:var(--text);}
+body{background:#fff;color:var(--text);} 
+
+html{scroll-behavior:smooth;} 
+
+ 
+
+/* FADE IN ANIMATION */
+.fade-section{
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity .8s ease, transform .8s ease;
+}
+.fade-section.show{
+  opacity:1;
+  transform:translateY(0);
+} 
+body.no-scroll{overflow:hidden;} 
 
 header{
   background:var(--primary);
@@ -30,137 +46,387 @@ header{
   z-index:1000;
 }
 
+.logo-area{display:flex;align-items:center;}
 .logo-area img{height:75px;width:auto;display:block;}
 
 nav{display:flex;align-items:center;}
-nav a{
-  color:white;
+
+.hamburger{display:none;}
+.mobile-menu{position:fixed;top:0;right:0;width:75%;height:100vh;background:var(--primary);padding:80px 25px;display:flex;flex-direction:column;gap:20px;transform:translateX(100%);transition:.3s ease;z-index:999;}
+.mobile-menu.active{transform:translateX(0);} 
+.overlay{position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(0,0,0,0.4);z-index:998;display:none;}
+
+nav a{color:white;text-decoration:none;margin-left:20px;font-weight:500;transition:.3s ease;}
+nav a:hover{color:var(--accent);} 
+
+.search-box{display:flex;align-items:center;background:white;border-radius:30px;padding:6px 12px;margin-right:20px;}
+.search-box input{border:none;outline:none;font-size:14px;width:160px;}
+.search-icon{margin-right:6px;font-size:14px;opacity:.6;}
+
+.hero{background:linear-gradient(135deg,#1e3a8a,#243c94);color:white;padding:130px 5% 140px;}
+.hero-container{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:40px;}
+.hero-text h1{font-size:2.6rem;margin-bottom:20px;}
+.hero-text p{margin-bottom:25px;opacity:.9;}
+
+.btn{
+  display:inline-block;
+  padding:12px 26px;
+  background:var(--accent);
+  color:#111;
   text-decoration:none;
-  margin-left:20px;
-  font-weight:500;
-  transition:.3s ease;
+  font-weight:600;
+  border-radius:10px;
+  transition:all .3s ease;
 }
-nav a:hover{color:var(--accent);}
+
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 20px rgba(0,0,0,.12);
+}
+
+/* PRODUCT CARD BUTTON ALIGNMENT */
+#products .card{
+  justify-content:space-between;
+}
+
+#products .card p{
+  min-height:120px; /* dikurangi agar tombol lebih dekat */
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  text-align:center;
+  margin-bottom:10px;
+}
+
+#products .card .btn{
+  margin-top:12px; /* dipadatkan */
+  align-self:center;
+  min-width:170px;
+  text-align:center;
+}
 
 .section{
-  padding:80px 5%;
+  padding:70px 5% 80px;
   text-align:center;
 }
+.section h2{font-size:2.2rem;font-weight:700;color:var(--primary);letter-spacing:.5px;position:relative;display:inline-block;}
+.section h2::after{content:"";display:block;width:60px;height:4px;background:var(--accent);margin:12px auto 0;border-radius:4px;}
 
-.section h2{
-  font-size:2.2rem;
-  font-weight:700;
-  color:var(--primary);
-  display:inline-block;
-  position:relative;
-}
 
-.section h2::after{
-  content:"";
-  display:block;
-  width:60px;
-  height:4px;
-  background:var(--accent);
-  margin:12px auto 0;
-  border-radius:4px;
-}
 
-.content-wrap{
-  max-width:1000px;
-  margin:40px auto 0;
-  text-align:left;
-  line-height:1.8;
-  font-size:1.05rem;
-}
-
-.content-wrap h3{
-  margin-top:40px;
-  color:var(--primary);
-}
-
-footer{
-  background:var(--primary);
-  color:white;
-  padding:60px 5% 30px;
-  margin-top:60px;
-}
-
-.footer-container{
-  max-width:1200px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:40px;
-  text-align:left;
-}
-
-.footer-title{
-  font-weight:600;
-  margin-bottom:15px;
-  color:var(--accent);
-}
-
-.footer-logo-frame{
-  background:#ffffff;
-  display:inline-block;
-  padding:12px 18px;
-  border-radius:12px;
-  margin-bottom:15px;
-  border:1.5px solid var(--accent);
-}
-
-.footer-logo-frame img{height:80px;}
-
-.footer-links a{
-  display:block;
-  color:white;
-  text-decoration:none;
-  margin-bottom:8px;
-  font-size:14px;
-  opacity:.9;
-}
-
-.footer-links a:hover{color:var(--accent);}
-
-.footer-bottom{
-  text-align:center;
-  margin-top:40px;
-  font-size:13px;
-  opacity:.8;
-  border-top:1px solid rgba(255,255,255,.15);
-  padding-top:20px;
-}
-
-.social-icons{
-  margin-top:15px;
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;margin-top:40px;}
+.card{
+  background:var(--light);
+  padding:30px;
+  border-radius:16px;
+  box-shadow:0 8px 25px rgba(0,0,0,.05);
+  transition:transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s cubic-bezier(.4,0,.2,1);
   display:flex;
-  gap:12px;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  min-height:420px;
 }
 
-.social-icons a{
-  display:inline-flex;
+/* ALIGN SERVICE CONTENT HEIGHT */
+#services .card p{
+  min-height:90px; /* dipadatkan agar jarak kategori & deskripsi lebih rapat */
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  margin-top:6px;
+}
+
+/* REMOVE EMPTY SPACE IN REVIEWS */
+#reviews .card{
+  padding:18px 18px;
+  min-height:260px; /* tinggi seragam agar nama reviewer sejajar */
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+
+
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 18px 40px rgba(0,0,0,.10);
+}
+
+.icon-frame{
+  width:120px;
+  height:120px;
+  background:white;
+  border-radius:50%;
+  display:flex;
   align-items:center;
   justify-content:center;
-  width:36px;
-  height:36px;
-  background:rgba(255,255,255,0.1);
-  border-radius:50%;
-  transition:.3s ease;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
+  border:2px solid var(--accent);
+  margin:0 auto 15px;
+  overflow:hidden; /* memastikan border tetap clean di mobile */
 }
 
-.social-icons a:hover{
-  background:var(--accent);
+/* CAT HOTEL BORDER FIX (mobile visual balance) */
+.card img[alt="Cat Hotel"]{
+  max-width:95px;
+  height:auto;
+  object-fit:contain;
+}
+
+.card img{
+  max-width:75px; /* konsisten & tidak memutus border lingkaran */
+  height:auto;
+  object-fit:contain;
+}
+
+.card img[alt="Grooming"]{
+  max-width:55px;
+}
+
+.card img[alt="Cat Hotel"]{
+  max-width:95px; /* sedikit diperbesar agar lebih proporsional */
+}
+
+/* ALIGN SERVICE TITLES (FIXED WITHOUT BREAKING BUTTON ALIGNMENT) */
+.card h3{
+  width:100%;
+  min-height:60px; /* menjaga tinggi konsisten */
+  display:flex;
+  align-items:flex-start; /* rata atas supaya visual sejajar */
+  justify-content:center;
+  text-align:center;
+  margin:18px 0 10px;
+  line-height:1.35;
+}
+
+.review-stars{
+  color:#f5c518;
+  font-size:22px;
+  letter-spacing:2px;
+  margin-bottom:10px;
+}
+
+/* REVIEW MICRO SPACING IMPROVEMENT (MORE COMPACT, ALIGNED & SOLID) */
+#reviews h2{
+  margin-bottom:6px;
+}
+
+#reviews p{
+  margin-top:8px;
+}
+
+#reviews .card{
+  padding:18px 18px;
+  min-height:260px; /* tinggi seragam agar nama reviewer sejajar */
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+
+#reviews .card p{
+  margin:8px 0 14px;
+  line-height:1.55;
+  font-size:0.93rem;
+}
+
+#reviews .card strong{
+  display:block;
+  font-weight:700;
+  font-size:15px;
+  color:var(--primary);
+  letter-spacing:0.3px;
+  margin-top:auto; /* dorong ke bawah agar semua reviewer sejajar */
+  padding-top:8px;
+}
+
+
+#reviews .grid{
+  margin-top:24px;
+}
+
+#reviews img[alt="Maskot Central Cats"]{
+  margin-top:6px;
+}
+.card.hide{opacity:0;transform:scale(.95);pointer-events:none;position:absolute;}
+
+footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60px;}
+.footer-container{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:40px;text-align:left;}
+.footer-title{font-weight:600;margin-bottom:15px;color:var(--accent);} 
+.footer-logo-frame{background:#ffffff;display:inline-block;padding:12px 18px;border-radius:12px;margin-bottom:15px;border:1.5px solid var(--accent);box-shadow:0 4px 12px rgba(0,0,0,0.08);} 
+.footer-logo-frame img{height:80px;display:block;}
+.footer-links a{display:block;color:white;text-decoration:none;margin-bottom:8px;font-size:14px;opacity:.9;} 
+.footer-links a:hover{color:var(--accent);} 
+.footer-bottom{text-align:center;margin-top:40px;font-size:13px;opacity:.8;border-top:1px solid rgba(255,255,255,.15);padding-top:20px;}
+.social-icons{margin-top:15px;display:flex;gap:12px;}
+.social-icons a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:rgba(255,255,255,0.1);border-radius:50%;transition:.3s ease;}
+.social-icons a:hover{background:var(--accent);} 
+
+ 
+
+/* DESKTOP ICON BALANCE FIX */
+@media(min-width:769px){
+  .icon-frame img{
+    max-width:68%;
+    height:auto;
+  }
+  .icon-frame img[alt="Cat Hotel"]{
+    max-width:78%;
+  }
 }
 
 @media(max-width:768px){
+
+  /* HIDE ABOUT MASCOT ON MOBILE (FORCE SAFE SELECTOR) */
+  #about > div > div:last-child{
+    display:none !important;
+  }
+
+  /* HIDE HERO BUTTONS ON MOBILE */
+
+
+  /* HIDE HERO BUTTONS ON MOBILE */
+  .hero .btn{
+    display:none !important;
+  }
+
+
+  /* REVIEW SLIDER MOBILE */
+  #reviews .grid{
+    display:flex;
+    overflow-x:auto;
+    gap:18px;
+    scroll-behavior:smooth;
+    padding-left:18px;
+    scroll-snap-type:x mandatory;
+  }
+
+  #reviews .card{
+    min-width:92%;
+    flex:0 0 92%;
+  }
+
+
   nav{display:none;}
-  header{padding:10px 6%;}
-  .logo-area img{height:60px;}
-  .section{padding:55px 6%;}
+
+  /* HEADER */
+  header{padding:12px 18px;}
+  .logo-area img{height:58px;}
+
+  .hamburger{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+    width:30px;
+    cursor:pointer;
+    align-items:flex-end;
+  }
+
+  .hamburger span{
+    height:3px;
+    width:100%;
+    background:white;
+    border-radius:2px;
+  }
+
+  .mobile-menu{
+    position:fixed;
+    top:0;
+    right:0;
+    width:78%;
+    height:100vh;
+    background:var(--primary);
+    padding:90px 28px;
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+    transform:translateX(100%);
+    transition:.35s ease;
+    z-index:999;
+  }
+
+  .mobile-menu a{
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:600;
+  }
+
+  .overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background:rgba(0,0,0,0.45);
+    z-index:998;
+  }
+
+  /* HERO (TOP HIERARCHY) */
+  .hero{padding:60px 18px;}
+  .hero-container{flex-direction:column;text-align:center;gap:28px;}
+  .hero img{max-width:250px !important;}
+  .hero-text h1{font-size:1.9rem;line-height:1.25;}
+  .hero-text p{font-size:.95rem;}
+
+  /* STACK HERO BUTTONS */
+  .hero .btn{
+    display:block;
+    width:100%;
+    max-width:260px;
+    margin:12px auto 0 !important;
+  }
+
+  /* SECTION SPACING */
+  .section{padding:60px 18px;}
+
+  /* SERVICES MASCOT (SECONDARY HIERARCHY) */
+  #services img[alt="Maskot Megaphone"],
+  #reviews img[alt="Maskot Central Cats"]{
+    max-width:140px; /* diperkecil agar proporsional di mobile */
+  }
+
+  /* CARD COMPACT */
+  .card{
+    padding:20px;
+    min-height:auto;
+  }
+
+  .icon-frame{width:90px;height:90px;}
+
+  .card img{
+    max-width:60px;
+  }
+
+  /* FIX CAT HOTEL BORDER ON MOBILE */
+  .icon-frame img[alt="Cat Hotel"]{
+    max-width:65px;
+    height:auto;
+  }
+
+  .card h3{min-height:auto;margin-bottom:8px;}
+
+  #products .card p{min-height:auto;}
+
+  #products .card .btn{
+    width:auto;
+    min-width:150px;
+  }
+
+  /* MAP HEIGHT REDUCED */
+  #location iframe{height:200px;}
+
+  /* REVIEW BUTTON STACK */
+  #reviews .btn{
+    width:100%;
+    max-width:260px;
+    margin:10px auto 0;
+  }
+
+  /* FLOAT BUTTON SAFER POSITION */
+  
 }
 </style>
 </head>
-
 <body>
 
 <!-- HEADER -->
