@@ -25,9 +25,9 @@ nav a:hover{color:var(--accent);}
 .mobile-menu a{color:white;text-decoration:none;font-size:18px;font-weight:600;}
 .overlay{position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(0,0,0,0.45);display:none;z-index:998;}
 .overlay.active{display:block;}
-.section{padding:90px 5% 100px;text-align:center;background:#f8fafc;} 
-.corp-container{max-width:1100px;margin:60px auto 0;text-align:left;} 
-.corp-intro{max-width:850px;margin:0 auto 60px;font-size:16px;line-height:1.9;color:#333;} 
+.section{padding:70px 5% 80px;text-align:center;background:#f8fafc;} 
+.corp-container{max-width:1100px;margin:40px auto 0;text-align:left;} 
+.corp-intro{max-width:850px;margin:0 auto 35px;font-size:16px;line-height:1.9;color:#333;} 
 .vision-box{position:relative;background:#ffffff;padding:45px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.06);border-left:6px solid var(--accent);margin-bottom:70px;transition:all .35s cubic-bezier(.4,0,.2,1);cursor:pointer;overflow:hidden;} 
 .vision-box::after{content:"";position:absolute;bottom:0;left:0;width:0;height:3px;background:linear-gradient(90deg,var(--accent),#f7e7a1);transition:width .35s ease;} 
 .vision-box:hover::after{width:100%;} 
@@ -68,7 +68,7 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
   align-items:center;
   justify-content:center;
   z-index:2000;
-  animation:logoFadeOut 1.8s ease forwards;
+  animation:logoFadeOut 2.3s ease forwards;
 }
 
 .logo-intro img{
@@ -84,15 +84,42 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 
 @keyframes logoFadeOut{
   0%{opacity:1;}
-  75%{opacity:1;}
+  80%{opacity:1;}
   100%{opacity:0;visibility:hidden;}
 }
-  10%{opacity:1;}
-  30%{transform:translate(75vw,0vh) scale(.7) rotate(-4deg);} 
-  55%{transform:translate(40vw,15vh) scale(.85) rotate(2deg);} 
-  80%{transform:translate(10vw,25vh) scale(.7) rotate(6deg);} 
-  100%{transform:translate(-20vw,35vh) scale(.5) rotate(8deg);opacity:0;}
+
+/* TYPOGRAPHY SCALE UPGRADE */
+.section h1{font-size:2.6rem;font-weight:700;color:var(--primary);margin-bottom:10px;}
+.section-subtitle{font-size:1.05rem;color:#555;margin-bottom:40px;}
+.corp-intro{font-size:17px;line-height:1.9;}
+.mission-card p{font-size:15px;line-height:1.85;}
+.trust-strip{display:flex;gap:40px;margin:60px 0 70px;flex-wrap:wrap;}
+.trust-item{position:relative;flex:1;min-width:220px;background:#ffffff;padding:24px 28px;border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,0.05);transition:all .35s cubic-bezier(.4,0,.2,1);cursor:pointer;overflow:hidden;}
+.trust-item::after{content:"";position:absolute;bottom:0;left:0;width:0;height:3px;background:linear-gradient(90deg,var(--accent),#f7e7a1);transition:width .35s ease;}
+.trust-item:hover::after{width:100%;}
+.trust-item:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.08),0 0 0 2px rgba(212,175,55,0.25);background:linear-gradient(135deg,#ffffff,#fffdf6);}
+.trust-item h4{color:var(--primary);margin-bottom:8px;font-size:15px;letter-spacing:.5px;}
+.trust-item p{font-size:14.5px;color:#444;}
+.brand-positioning{max-width:900px;margin:0 auto 35px;font-size:17px;line-height:1.9;color:#222;font-weight:500;text-align:center;}
+@media(max-width:768px){.trust-strip{flex-direction:column;gap:18px;}.section h1{font-size:2rem;}}
+
+/* PREMIUM SUBTLE DIVIDER */
+.divider{
+  width:100%;
+  height:1px;
+  background:linear-gradient(to right, transparent, rgba(212,175,55,0.35), transparent);
+  margin:45px 0;
 }
+
+.divider-soft{
+  width:60px;
+  height:3px;
+  background:linear-gradient(90deg,var(--accent),#f7e7a1);
+  margin:35px auto;
+  border-radius:3px;
+  opacity:.6;
+}
+
 </style>
 </head>
 <body>
@@ -126,18 +153,45 @@ footer{background:var(--primary);color:white;padding:60px 5% 30px;margin-top:60p
 <a href="index.html#contact">Kontak</a>
 </div>
 <div class="overlay"></div>
+<main>
 <section class="section">
-<h2>Profil Central Cat’s</h2>
+<h1>Profil Central Cat’s</h1>
+<div class="section-subtitle">Didirikan tahun 2020 • Grooming Khusus Kucing • Multi Cabang Tangerang</div>
 <div class="corp-container">
 
 <div class="corp-intro">
 Central Cat’s lahir dari kecintaan terhadap kucing dan komitmen untuk menghadirkan layanan grooming yang aman, higienis, dan profesional di Tangerang.
 </div>
 
+<div class="brand-positioning">
+Lebih dari sekadar petshop dan grooming, Central Cat’s membangun standar perawatan kucing yang profesional, terstruktur, dan berintegritas sejak 2020.
+</div>
+
+<div class="divider-soft"></div>
+
+<div class="trust-strip">
+  <div class="trust-item">
+    <h4>BERDIRI SEJAK</h4>
+    <p>2020 — Konsisten melayani pemilik kucing dengan standar higienis dan prosedur profesional.</p>
+  </div>
+  <div class="trust-item">
+    <h4>MULTI CABANG</h4>
+    <p>Beroperasi di beberapa titik Tangerang untuk menjangkau lebih banyak komunitas pecinta kucing.</p>
+  </div>
+  <div class="trust-item">
+    <h4>SPESIALISASI</h4>
+    <p>Fokus khusus pada grooming kucing, bukan general pet grooming.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
 <div class="vision-box">
 <h3>VISI CENTRAL CAT’S</h3>
 <p>"Menjadi pilihan utama bagi pemilik hewan peliharaan dengan menyediakan produk dan layanan berkualitas yang mendukung kesejahteraan, kebahagiaan, dan kesehatan hewan peliharaan di seluruh Indonesia."</p>
 </div>
+
+<div class="divider"></div>
 
 <h3 style="color:var(--primary);margin-bottom:30px;">MISI CENTRAL CAT’S</h3>
 <div class="mission-grid">
@@ -180,6 +234,8 @@ Central Cat’s lahir dari kecintaan terhadap kucing dan komitmen untuk menghadi
 
 </div>
 
+<div class="divider"></div>
+
 <h3 style="color:var(--primary);margin-bottom:30px;">NILAI-NILAI KAMI</h3>
 <div class="values-strip">
 <div class="value-box">KUALITAS & KEAMANAN</div>
@@ -190,6 +246,7 @@ Central Cat’s lahir dari kecintaan terhadap kucing dan komitmen untuk menghadi
 
 </div>
 </section>
+</main>
 <footer>
 <div class="footer-container">
 <div>
@@ -242,7 +299,7 @@ setTimeout(()=>{
   if(intro && intro.parentNode){
     intro.parentNode.removeChild(intro);
   }
-},1800);
+},2300);
 </script>
 </body>
 </html>
