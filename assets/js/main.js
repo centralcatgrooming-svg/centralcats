@@ -1,54 +1,41 @@
 /* =========================================
    CENTRAL CAT’S MAIN JS
-   Clean Production Version
+   Premium Clean Production Version
 ========================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
 
   /* =========================================
-     MOBILE MENU
+     PREMIUM HEADER MOBILE MENU
   ========================================= */
 
-  const hamburger = document.querySelector(".hamburger");
-  const mobileMenu = document.querySelector(".mobile-menu");
-  const overlay = document.querySelector(".overlay");
+  const hamburger = document.getElementById("ccHamburger");
+  const nav = document.querySelector(".cc-nav");
 
-  if (hamburger && mobileMenu && overlay) {
+  if (hamburger && nav) {
     hamburger.addEventListener("click", () => {
-      mobileMenu.classList.toggle("active");
-      overlay.classList.toggle("active");
-      document.body.classList.toggle("no-scroll");
+      nav.classList.toggle("active");
     });
-
-    overlay.addEventListener("click", closeMenu);
-
-    document.querySelectorAll(".mobile-menu a").forEach(link => {
-      link.addEventListener("click", closeMenu);
-    });
-
-    function closeMenu() {
-      mobileMenu.classList.remove("active");
-      overlay.classList.remove("active");
-      document.body.classList.remove("no-scroll");
-    }
   }
 
-  /* =========================================
-     LOGO INTRO REMOVE
-  ========================================= */
+  /* MOBILE DROPDOWN TOGGLE */
+  const dropdownLinks = document.querySelectorAll(".cc-dropdown > a");
 
-  const intro = document.getElementById("logoIntro");
-  if (intro) {
-    setTimeout(() => {
-      intro.remove();
-    }, 2300);
-  }
+  dropdownLinks.forEach(link => {
+    link.addEventListener("click", function (e) {
+      if (window.innerWidth <= 992) {
+        e.preventDefault();
+        this.parentElement.classList.toggle("open");
+      }
+    });
+  });
 
   /* =========================================
-     TRUST STRIP ANIMATION
+     TRUST STRIP ANIMATION (SAFE)
   ========================================= */
 
   const trustItems = document.querySelectorAll(".trust-item");
+
   if (trustItems.length > 0) {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -62,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* =========================================
-     CHAT ASSISTANT
+     CHAT ASSISTANT (UNIFIED)
   ========================================= */
 
   const ccTrigger = document.getElementById("ccTrigger");
@@ -77,57 +64,52 @@ document.addEventListener("DOMContentLoaded", function () {
     let step = "name";
     let userData = {};
 
-    /* OPEN / CLOSE */
-
     ccTrigger.addEventListener("click", () => {
       ccPanel.style.display = "flex";
       ccTrigger.style.display = "none";
-      ccInput.focus();
+      if (ccInput) ccInput.focus();
     });
 
-    ccClose.addEventListener("click", () => {
-      ccPanel.style.display = "none";
-      ccTrigger.style.display = "flex";
-    });
+    if (ccClose) {
+      ccClose.addEventListener("click", () => {
+        ccPanel.style.display = "none";
+        ccTrigger.style.display = "flex";
+      });
+    }
 
-    /* ENABLE BUTTON */
+    if (ccInput) {
+      ccInput.addEventListener("input", () => {
+        if (ccStart) ccStart.disabled = !ccInput.value.trim();
+      });
 
-    ccInput.addEventListener("input", () => {
-      ccStart.disabled = !ccInput.value.trim();
-    });
+      ccInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && ccStart && !ccStart.disabled) {
+          e.preventDefault();
+          ccStart.click();
+        }
+      });
+    }
 
-    ccInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" && !ccStart.disabled) {
-        e.preventDefault();
-        ccStart.click();
-      }
-    });
+    if (ccStart) {
+      ccStart.addEventListener("click", () => {
+        const val = ccInput.value.trim();
+        if (!val) return;
 
-    /* MAIN FLOW */
+        addMessage(val, "user");
+        ccInput.value = "";
+        ccStart.disabled = true;
 
-    ccStart.addEventListener("click", () => {
-      const val = ccInput.value.trim();
-      if (!val) return;
-
-      addMessage(val, "user");
-      ccInput.value = "";
-      ccStart.disabled = true;
-
-      if (step === "name") {
-        userData.name = val;
-        step = "menu";
-        botReply(`Terima kasih ${val} 😊 Silakan pilih layanan:`);
-        setTimeout(showServiceOptions, 800);
-      }
-
-      else if (step === "phone") {
-        userData.phone = val;
-        step = "done";
-        finishBooking();
-      }
-    });
-
-    /* SERVICES */
+        if (step === "name") {
+          userData.name = val;
+          step = "menu";
+          botReply(`Terima kasih ${val}. Silakan pilih layanan:`);
+          setTimeout(showServiceOptions, 600);
+        } else if (step === "phone") {
+          userData.phone = val;
+          finishBooking();
+        }
+      });
+    }
 
     function showServiceOptions() {
       const services = [
@@ -148,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
           addMessage(service, "user");
           userData.service = service;
           step = "phone";
-          botReply("Mohon nomor WhatsApp aktif Anda 😊");
+          botReply("Mohon nomor WhatsApp aktif Anda.");
         };
 
         ccChat.appendChild(btn);
@@ -156,8 +138,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       ccChat.scrollTop = ccChat.scrollHeight;
     }
-
-    /* BOOKING FINISH */
 
     function finishBooking() {
       botReply("Kami siapkan detail reservasi Anda...");
@@ -175,10 +155,8 @@ document.addEventListener("DOMContentLoaded", function () {
           "_blank"
         );
         resetChat();
-      }, 1000);
+      }, 800);
     }
-
-    /* MESSAGE FUNCTION */
 
     function addMessage(text, type) {
       const msg = document.createElement("div");
@@ -189,9 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function botReply(text) {
-      setTimeout(() => {
-        addMessage(text, "bot");
-      }, 600);
+      setTimeout(() => addMessage(text, "bot"), 400);
     }
 
     function resetChat() {
@@ -202,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function startConversation() {
-      botReply("Selamat datang di Central Cat’s ✨ Boleh tahu nama Anda?");
+      botReply("Selamat datang di Central Cat’s. Boleh tahu nama Anda?");
     }
 
     startConversation();
