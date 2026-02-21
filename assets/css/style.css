@@ -1,14 +1,16 @@
 /* ============================= */
 /* CENTRAL CAT’S GLOBAL STYLE   */
-/* SOFT CUTE PREMIUM VERSION    */
+/* ROSE GOLD PREMIUM VERSION    */
 /* ============================= */
 
 :root {
-  --primary: linear-gradient(135deg,#ff8fb1,#ff5e9c);
-  --primary-solid: #ff5e9c;
-  --primary-light: #fff0f6;
+  --primary: linear-gradient(135deg,#c97c8f,#b76e79);
+  --primary-solid: #b76e79;
+  --primary-light: #f6e8ea;
+
   --accent: #d4af37;
   --accent-soft: #f3e5c3;
+
   --text: #2b2b2b;
   --white: #ffffff;
 }
@@ -46,7 +48,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 6px 25px rgba(255,94,156,0.25);
+  box-shadow: 0 6px 25px rgba(183,110,121,0.25);
 }
 
 .logo-area img {
@@ -160,7 +162,7 @@ nav a:hover::after {
 
 .section {
   padding: 80px 5%;
-  background: #fff5f8;
+  background: var(--primary-light);
   text-align: center;
 }
 
@@ -178,20 +180,20 @@ nav a:hover::after {
 }
 
 /* ============================= */
-/* CARD STYLE (MISSION, ETC)    */
+/* CARD STYLE                    */
 /* ============================= */
 
 .card-soft {
   background: #ffffff;
   padding: 30px;
   border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(255,94,156,0.1);
+  box-shadow: 0 10px 30px rgba(183,110,121,0.1);
   transition: .3s ease;
 }
 
 .card-soft:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(255,94,156,0.2);
+  box-shadow: 0 18px 40px rgba(183,110,121,0.2);
 }
 
 /* ============================= */
@@ -211,7 +213,7 @@ nav a:hover::after {
   background: #ffffff;
   padding: 24px;
   border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(255,94,156,0.08);
+  box-shadow: 0 6px 20px rgba(183,110,121,0.08);
   opacity: 0;
   transform: translateY(25px);
   transition: .6s ease;
@@ -227,7 +229,7 @@ nav a:hover::after {
 /* ============================= */
 
 footer {
-  background: linear-gradient(135deg,#ff8fb1,#ff5e9c);
+  background: var(--primary);
   color: #ffffff;
   padding: 60px 5% 30px;
   margin-top: 60px;
@@ -288,7 +290,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 12px 30px rgba(255,94,156,0.3);
+  box-shadow: 0 12px 30px rgba(183,110,121,0.3);
   cursor: pointer;
 }
 
@@ -316,7 +318,7 @@ footer {
   flex: 1;
   padding: 16px;
   overflow-y: auto;
-  background: #fff5f8;
+  background: var(--primary-light);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -331,7 +333,7 @@ footer {
 
 .cc-bot {
   background: #ffffff;
-  border: 1px solid #ffe0ea;
+  border: 1px solid #ead4d9;
   align-self: flex-start;
 }
 
