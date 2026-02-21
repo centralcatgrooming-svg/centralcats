@@ -1,12 +1,15 @@
 /* ============================= */
 /* CENTRAL CAT’S GLOBAL STYLE   */
+/* SOFT & CUTE BRAND VERSION    */
 /* ============================= */
 
 :root {
-  --primary: #1e3a8a;
-  --accent: #d4af37;
-  --light: #f3f4f6;
-  --text: #111;
+  --primary: #e26d9f;        /* soft raspberry pink */
+  --primary-dark: #d45a8f;
+  --accent: #d4af37;         /* soft gold */
+  --light: #fdf4f8;          /* very soft pink tint */
+  --text: #2a2a2a;
+  --container: 1200px;
 }
 
 * {
@@ -21,12 +24,18 @@ html {
 }
 
 body {
-  background: #fff;
+  background: #ffffff;
   color: var(--text);
 }
 
 body.no-scroll {
   overflow: hidden;
+}
+
+.container {
+  max-width: var(--container);
+  margin: auto;
+  padding: 0 5%;
 }
 
 /* ============================= */
@@ -35,13 +44,16 @@ body.no-scroll {
 
 header {
   background: var(--primary);
-  padding: 8px 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 8px 0;
   position: sticky;
   top: 0;
   z-index: 1000;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo-area img {
@@ -58,7 +70,7 @@ nav {
 nav a {
   color: white;
   text-decoration: none;
-  margin-left: 20px;
+  margin-left: 22px;
   font-weight: 500;
   transition: 0.3s ease;
 }
@@ -122,10 +134,6 @@ nav a:hover {
     display: none;
   }
 
-  header {
-    padding: 12px 18px;
-  }
-
   .logo-area img {
     height: 58px;
   }
@@ -148,13 +156,44 @@ nav a:hover {
 }
 
 /* ============================= */
+/* BREADCRUMB                    */
+/* ============================= */
+
+.breadcrumb {
+  background: var(--light);
+  padding: 14px 0;
+  font-size: 14px;
+}
+
+.breadcrumb .container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.breadcrumb a {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.breadcrumb span {
+  margin: 0 6px;
+  color: #999;
+}
+
+.breadcrumb .current {
+  color: #666;
+}
+
+/* ============================= */
 /* SECTION GLOBAL                */
 /* ============================= */
 
 .section {
-  padding: 70px 5% 80px;
+  padding: 70px 0 80px;
   text-align: center;
-  background: #f8fafc;
+  background: #ffffff;
 }
 
 .section h1 {
@@ -180,13 +219,14 @@ nav a:hover {
 footer {
   background: var(--primary);
   color: white;
-  padding: 60px 5% 30px;
+  padding: 60px 0 30px;
   margin-top: 60px;
 }
 
 .footer-container {
-  max-width: 1200px;
+  max-width: var(--container);
   margin: auto;
+  padding: 0 5%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 40px;
@@ -216,7 +256,7 @@ footer {
   text-align: center;
   margin-top: 40px;
   font-size: 13px;
-  opacity: 0.8;
+  opacity: 0.85;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   padding-top: 20px;
 }
