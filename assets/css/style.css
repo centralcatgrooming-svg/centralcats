@@ -342,3 +342,18 @@ footer {
   color: #ffffff;
   align-self: flex-end;
 }
+/* ===== FIX CHAT PANEL CLICK ISSUE ===== */
+
+.cc-panel {
+  position: relative;
+  z-index: 10000;
+  pointer-events: auto;
+}
+
+.cc-assistant {
+  z-index: 10000;
+}
+
+.overlay {
+  z-index: 500;
+}
