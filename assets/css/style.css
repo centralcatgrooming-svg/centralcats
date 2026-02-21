@@ -1,7 +1,7 @@
-/* ============================= */
-/* CENTRAL CAT’S GLOBAL STYLE   */
-/* EXECUTIVE ROSE VERSION       */
-/* ============================= */
+/* =========================================
+   CENTRAL CAT’S GLOBAL STYLE
+   EXECUTIVE ROSE – CLEAN FINAL BUILD
+========================================= */
 
 :root {
   --primary: linear-gradient(135deg,#c97988,#b65b6b);
@@ -15,6 +15,8 @@
   --white: #ffffff;
 }
 
+/* RESET */
+
 * {
   margin: 0;
   padding: 0;
@@ -22,22 +24,18 @@
   font-family: 'Poppins', sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   background: #ffffff;
   color: var(--text);
 }
 
-body.no-scroll {
-  overflow: hidden;
-}
+body.no-scroll { overflow: hidden; }
 
-/* ============================= */
-/* HEADER                        */
-/* ============================= */
+/* =========================================
+   HEADER
+========================================= */
 
 header {
   background: var(--primary);
@@ -56,10 +54,7 @@ header {
   width: auto;
 }
 
-nav {
-  display: flex;
-  align-items: center;
-}
+nav { display: flex; align-items: center; }
 
 nav a {
   color: #ffffff;
@@ -68,10 +63,6 @@ nav a {
   font-weight: 500;
   transition: .3s ease;
   position: relative;
-}
-
-nav a:hover {
-  opacity: .95;
 }
 
 nav a::after {
@@ -85,17 +76,13 @@ nav a::after {
   transition: .3s ease;
 }
 
-nav a:hover::after {
-  width: 100%;
-}
+nav a:hover::after { width: 100%; }
 
-/* ============================= */
-/* MOBILE MENU                   */
-/* ============================= */
+/* =========================================
+   MOBILE MENU
+========================================= */
 
-.hamburger {
-  display: none;
-}
+.hamburger { display: none; }
 
 .mobile-menu {
   position: fixed;
@@ -110,12 +97,10 @@ nav a:hover::after {
   gap: 22px;
   transform: translateX(100%);
   transition: .35s ease;
-  z-index: 999;
+  z-index: 2000;
 }
 
-.mobile-menu.active {
-  transform: translateX(0);
-}
+.mobile-menu.active { transform: translateX(0); }
 
 .mobile-menu a {
   color: #ffffff;
@@ -132,12 +117,10 @@ nav a:hover::after {
   height: 100vh;
   background: rgba(0,0,0,.4);
   display: none;
-  z-index: 998;
+  z-index: 1500;
 }
 
-.overlay.active {
-  display: block;
-}
+.overlay.active { display: block; }
 
 @media(max-width:768px){
   nav { display: none; }
@@ -156,9 +139,9 @@ nav a:hover::after {
   }
 }
 
-/* ============================= */
-/* SECTION GLOBAL                */
-/* ============================= */
+/* =========================================
+   SECTION
+========================================= */
 
 .section {
   padding: 80px 5%;
@@ -179,9 +162,9 @@ nav a:hover::after {
   margin-bottom: 50px;
 }
 
-/* ============================= */
-/* CARD STYLE                    */
-/* ============================= */
+/* =========================================
+   CARD
+========================================= */
 
 .card-soft {
   background: #ffffff;
@@ -196,37 +179,9 @@ nav a:hover::after {
   box-shadow: 0 20px 45px rgba(150,70,85,0.24);
 }
 
-/* ============================= */
-/* TRUST STRIP                   */
-/* ============================= */
-
-.trust-strip {
-  display: flex;
-  gap: 30px;
-  flex-wrap: wrap;
-  margin: 60px 0;
-}
-
-.trust-item {
-  flex: 1;
-  min-width: 220px;
-  background: #ffffff;
-  padding: 24px;
-  border-radius: 16px;
-  box-shadow: 0 8px 22px rgba(150,70,85,0.1);
-  opacity: 0;
-  transform: translateY(25px);
-  transition: .6s ease;
-}
-
-.trust-item.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ============================= */
-/* FOOTER                        */
-/* ============================= */
+/* =========================================
+   FOOTER
+========================================= */
 
 footer {
   background: linear-gradient(135deg,#b65b6b,#9e4c5a);
@@ -258,9 +213,7 @@ footer {
   opacity: .9;
 }
 
-.footer-links a:hover {
-  color: var(--accent);
-}
+.footer-links a:hover { color: var(--accent); }
 
 .footer-bottom {
   text-align: center;
@@ -271,39 +224,49 @@ footer {
   padding-top: 20px;
 }
 
-/* ============================= */
-/* CHAT ASSISTANT                */
-/* ============================= */
+/* Footer logo support */
+.footer-logo {
+  height: 55px;
+  margin-bottom: 15px;
+}
+
+/* =========================================
+   CHAT ASSISTANT
+========================================= */
 
 .cc-assistant {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  z-index: 1500;
+  z-index: 999999;
 }
 
 .cc-trigger {
-  width: 56px;
-  height: 56px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 14px 35px rgba(150,70,85,0.35);
+  box-shadow: 0 15px 35px rgba(150,70,85,0.35);
   cursor: pointer;
 }
 
 .cc-panel {
+  position: fixed;
+  bottom: 100px;
+  right: 24px;
   width: 360px;
   max-width: 95vw;
   height: 500px;
   background: #ffffff;
   border-radius: 20px;
-  box-shadow: 0 25px 60px rgba(0,0,0,.25);
+  box-shadow: 0 30px 70px rgba(0,0,0,.25);
   display: none;
   flex-direction: column;
   overflow: hidden;
+  z-index: 999999;
 }
 
 .cc-header {
@@ -341,19 +304,4 @@ footer {
   background: var(--primary-solid);
   color: #ffffff;
   align-self: flex-end;
-}
-/* ===== FIX CHAT PANEL CLICK ISSUE ===== */
-
-.cc-panel {
-  position: relative;
-  z-index: 10000;
-  pointer-events: auto;
-}
-
-.cc-assistant {
-  z-index: 10000;
-}
-
-.overlay {
-  z-index: 500;
 }
