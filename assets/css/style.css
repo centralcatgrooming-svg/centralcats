@@ -1,12 +1,12 @@
 /* ============================= */
 /* CENTRAL CAT’S GLOBAL STYLE   */
-/* ROSE GOLD PREMIUM VERSION    */
+/* EXECUTIVE ROSE VERSION       */
 /* ============================= */
 
 :root {
-  --primary: linear-gradient(135deg,#d08a98,#c06c7a);
-  --primary-solid: #c06c7a;
-  --primary-light: #f7e6ea;
+  --primary: linear-gradient(135deg,#c97988,#b65b6b);
+  --primary-solid: #b65b6b;
+  --primary-light: #f6e3e7;
 
   --accent: #d4af37;
   --accent-soft: #f3e5c3;
@@ -48,7 +48,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 6px 25px rgba(176,95,109,0.25);
+  box-shadow: 0 8px 30px rgba(150,70,85,0.28);
 }
 
 .logo-area img {
@@ -71,7 +71,7 @@ nav a {
 }
 
 nav a:hover {
-  opacity: .9;
+  opacity: .95;
 }
 
 nav a::after {
@@ -167,7 +167,7 @@ nav a:hover::after {
 }
 
 .section h1 {
-  font-size: 2.5rem;
+  font-size: 2.6rem;
   font-weight: 700;
   color: var(--primary-solid);
   margin-bottom: 12px;
@@ -175,7 +175,7 @@ nav a:hover::after {
 
 .section-subtitle {
   font-size: 1rem;
-  opacity: .75;
+  opacity: .8;
   margin-bottom: 50px;
 }
 
@@ -187,13 +187,13 @@ nav a:hover::after {
   background: #ffffff;
   padding: 30px;
   border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(176,95,109,0.12);
+  box-shadow: 0 12px 35px rgba(150,70,85,0.14);
   transition: .3s ease;
 }
 
 .card-soft:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(176,95,109,0.22);
+  box-shadow: 0 20px 45px rgba(150,70,85,0.24);
 }
 
 /* ============================= */
@@ -213,7 +213,7 @@ nav a:hover::after {
   background: #ffffff;
   padding: 24px;
   border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(176,95,109,0.08);
+  box-shadow: 0 8px 22px rgba(150,70,85,0.1);
   opacity: 0;
   transform: translateY(25px);
   transition: .6s ease;
@@ -229,7 +229,7 @@ nav a:hover::after {
 /* ============================= */
 
 footer {
-  background: linear-gradient(135deg,#c06c7a,#b45e6c);
+  background: linear-gradient(135deg,#b65b6b,#9e4c5a);
   color: #ffffff;
   padding: 60px 5% 30px;
   margin-top: 60px;
@@ -266,8 +266,8 @@ footer {
   text-align: center;
   margin-top: 40px;
   font-size: 13px;
-  opacity: .8;
-  border-top: 1px solid rgba(255,255,255,.2);
+  opacity: .85;
+  border-top: 1px solid rgba(255,255,255,.25);
   padding-top: 20px;
 }
 
@@ -290,7 +290,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 12px 30px rgba(176,95,109,0.3);
+  box-shadow: 0 14px 35px rgba(150,70,85,0.35);
   cursor: pointer;
 }
 
@@ -333,7 +333,7 @@ footer {
 
 .cc-bot {
   background: #ffffff;
-  border: 1px solid #f1d6db;
+  border: 1px solid #f0cfd5;
   align-self: flex-start;
 }
 
