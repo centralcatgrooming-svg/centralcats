@@ -4,9 +4,9 @@
 /* ============================= */
 
 :root {
-  --primary: linear-gradient(135deg,#c97c8f,#b76e79);
-  --primary-solid: #b76e79;
-  --primary-light: #f6e8ea;
+  --primary: linear-gradient(135deg,#d08a98,#c06c7a);
+  --primary-solid: #c06c7a;
+  --primary-light: #f7e6ea;
 
   --accent: #d4af37;
   --accent-soft: #f3e5c3;
@@ -48,7 +48,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 6px 25px rgba(183,110,121,0.25);
+  box-shadow: 0 6px 25px rgba(176,95,109,0.25);
 }
 
 .logo-area img {
@@ -71,7 +71,7 @@ nav a {
 }
 
 nav a:hover {
-  opacity: .85;
+  opacity: .9;
 }
 
 nav a::after {
@@ -175,7 +175,7 @@ nav a:hover::after {
 
 .section-subtitle {
   font-size: 1rem;
-  opacity: .7;
+  opacity: .75;
   margin-bottom: 50px;
 }
 
@@ -187,13 +187,13 @@ nav a:hover::after {
   background: #ffffff;
   padding: 30px;
   border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(183,110,121,0.1);
+  box-shadow: 0 10px 30px rgba(176,95,109,0.12);
   transition: .3s ease;
 }
 
 .card-soft:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(183,110,121,0.2);
+  box-shadow: 0 18px 40px rgba(176,95,109,0.22);
 }
 
 /* ============================= */
@@ -213,7 +213,7 @@ nav a:hover::after {
   background: #ffffff;
   padding: 24px;
   border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(183,110,121,0.08);
+  box-shadow: 0 6px 20px rgba(176,95,109,0.08);
   opacity: 0;
   transform: translateY(25px);
   transition: .6s ease;
@@ -229,7 +229,7 @@ nav a:hover::after {
 /* ============================= */
 
 footer {
-  background: var(--primary);
+  background: linear-gradient(135deg,#c06c7a,#b45e6c);
   color: #ffffff;
   padding: 60px 5% 30px;
   margin-top: 60px;
@@ -290,7 +290,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 12px 30px rgba(183,110,121,0.3);
+  box-shadow: 0 12px 30px rgba(176,95,109,0.3);
   cursor: pointer;
 }
 
@@ -333,7 +333,7 @@ footer {
 
 .cc-bot {
   background: #ffffff;
-  border: 1px solid #ead4d9;
+  border: 1px solid #f1d6db;
   align-self: flex-start;
 }
 
