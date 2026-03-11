@@ -120,11 +120,19 @@ html{scroll-behavior:smooth;}
 .fade-section{opacity:0;transform:translateY(40px);transition:opacity .8s ease, transform .8s ease;}
 .fade-section.show{opacity:1;transform:translateY(0);} 
 
-header{background:var(--primary);padding:6px 5%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000;}
-.logo-area{display:flex;align-items:center;margin-left:12px;}
-.logo-area img{height:58px;width:auto;display:block;}
+header{background:transparent;padding:18px 0;display:flex;justify-content:center;align-items:center;position:absolute;top:0;left:0;width:100%;z-index:1000;transition:all .3s ease;} 
+
+header.scrolled{background:rgba(30,58,138,.92);backdrop-filter:blur(6px);position:fixed;} 
+.header-inner{width:100%;max-width:1200px;display:flex;justify-content:space-between;align-items:center;padding:0 28px;}
+.logo-area{display:flex;align-items:center;}
+.logo-area img{height:44px;width:auto;display:block;}
 nav{display:flex;align-items:center;}
-nav a{color:white;text-decoration:none;margin-left:20px;font-weight:500;transition:.3s ease;position:relative;font-size:12px;} 
+nav a{color:white;text-decoration:none;margin-left:20px;font-weight:500;transition:.3s ease;position:relative;font-size:12px;padding-bottom:4px;} 
+
+nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--accent);transition:width .25s ease;border-radius:2px;} 
+nav a.active::after{width:100%;}
+
+nav a:hover::after{width:100%;} 
 
 /* DROPDOWN */
 .nav-item{position:relative;}
@@ -134,7 +142,7 @@ nav a{color:white;text-decoration:none;margin-left:20px;font-weight:500;transiti
 .nav-item:hover .nav-dropdown{display:flex;}
 nav a:hover{color:var(--accent);} 
 
-.hero{background:linear-gradient(135deg,#1e3a8a,#243c94);color:white;padding:130px 5% 140px;}
+.hero{background:linear-gradient(135deg,#1e3a8a,#243c94);color:white;padding:160px 5% 140px;}
 .hero-container{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:40px;}
 .hero-text h1{font-size:2.6rem;margin-bottom:20px;}
 .hero-text p{margin-bottom:25px;opacity:.9;}
@@ -147,12 +155,14 @@ nav a:hover{color:var(--accent);}
 .section h2::after{content:"";display:block;width:60px;height:4px;background:var(--accent);margin:12px auto 0;border-radius:4px;}
 
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;margin-top:40px;}
-.card{background:var(--light);padding:26px 28px;border-radius:16px;box-shadow:0 8px 25px rgba(0,0,0,.05);transition:transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;align-items:center;text-align:center;} 
+.card{background:var(--light);padding:26px 28px;border-radius:16px;box-shadow:0 8px 25px rgba(0,0,0,.05);transition:transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s cubic-bezier(.4,0,.2,1), border-color .35s ease;display:flex;flex-direction:column;align-items:center;text-align:center;border:1px solid transparent;position:relative;overflow:hidden;} 
 
 .card h3{margin:10px 0 6px;font-size:20px;}
 
 .card p{max-width:260px;line-height:1.65;font-size:15px;color:#333;margin-top:4px;}
-.card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(0,0,0,.10);} 
+.card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 22px 50px rgba(0,0,0,.14);border-color:var(--accent);} 
+.card:hover img{transform:scale(1.08);} 
+.card img{transition:transform .35s ease;} .card::before{content:"";position:absolute;inset:0;border-radius:16px;padding:1px;background:linear-gradient(135deg,transparent,transparent,rgba(212,175,55,.45),transparent);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .35s ease;pointer-events:none;} .card:hover::before{opacity:1;} 
 
 footer{background:var(--primary);color:white;padding:45px 5% 18px;margin-top:30px;}
 
@@ -160,9 +170,34 @@ footer{background:var(--primary);color:white;padding:45px 5% 18px;margin-top:30p
   max-width:1100px;
   margin:auto;
   display:grid;
-  grid-template-columns:1.2fr 1fr 0.9fr;
-  gap:70px;
-  align-items:start;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:60px;
+  align-items:flex-start;
+}
+
+.footer-brand{
+  text-align:left;
+}
+
+.footer-brand img{
+  height:64px;
+  margin-bottom:16px;
+}
+
+.footer-brand p{
+  font-size:12px;
+  line-height:1.7;
+  opacity:.9;
+  margin-top:6px;
+  max-width:260px;
+}
+
+.footer-contact{
+  text-align:left;
+}
+
+.footer-info{
+  text-align:left;
 }
 
 .footer-info{
@@ -225,6 +260,7 @@ footer{background:var(--primary);color:white;padding:45px 5% 18px;margin-top:30p
 
 <!-- HEADER LOCKED - FINAL STRUCTURE DO NOT MODIFY -->
 <header>
+  <div class="header-inner">
   <div class="logo-area">
     <a href="#home" style="display:flex;align-items:center;">
       <img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo" width="300" height="80">
@@ -255,6 +291,7 @@ footer{background:var(--primary);color:white;padding:45px 5% 18px;margin-top:30p
     </div>
 
   </nav>
+</div>
 </header>
 
 <section class="hero" id="home">
@@ -274,29 +311,25 @@ footer{background:var(--primary);color:white;padding:45px 5% 18px;margin-top:30p
 
 <section id="about" class="section" style="background:#f3f4f6;">
 
-<div style="max-width:820px;margin:auto;text-align:center;">
+<div style="max-width:760px;margin:auto;text-align:center;">
 
 <h2>Tentang Central Cat’s</h2>
 
-<p style="margin-top:22px;font-size:1.05rem;line-height:1.8;color:#333;max-width:640px;margin-left:auto;margin-right:auto;text-align:left;">
-Central Cat's adalah petshop lengkap untuk hewan peliharaan
- dan layanan grooming profesional khusus kucing di Tangerang.
-
-Kami berkomitmen memberikan perawatan terbaik
-untuk setiap anabul.
+<p style="margin-top:26px;font-size:16px;line-height:1.8;color:#333;">
+Central Cat's adalah petshop lengkap untuk hewan peliharaan dan layanan grooming profesional khusus kucing di Tangerang. Kami berkomitmen memberikan perawatan terbaik untuk setiap anabul.
 </p>
 
-<p style="margin-top:14px;line-height:1.8;color:#333;max-width:640px;margin-left:auto;margin-right:auto;text-align:left;">
+<p style="margin-top:14px;font-size:15px;line-height:1.8;color:#444;">
 Dengan standar layanan yang terjaga dan tim yang peduli terhadap kesejahteraan kucing, Central Cat’s menghadirkan berbagai layanan mulai dari grooming, treatment kesehatan bulu dan kulit, hingga penyediaan produk petshop berkualitas untuk kebutuhan harian kucing.
 </p>
 
-<ul style="margin-top:22px;list-style:none;padding:0;max-width:520px;margin-left:auto;margin-right:auto;text-align:left;line-height:1.9;color:#333;">
-<li style="display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;">🐾 <span>Perawatan kucing dengan standar higienis dan aman.</span></li>
-<li style="display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;">🐾 <span>Produk petshop berkualitas untuk kesehatan anabul.</span></li>
+<ul style="margin-top:26px;list-style:none;padding:0;max-width:520px;margin-left:auto;margin-right:auto;text-align:left;line-height:1.9;color:#333;font-size:15px;">
+<li style="display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;">🐾 <span>Perawatan kucing dengan standar higienis dan aman.</span></li>
+<li style="display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;">🐾 <span>Produk petshop berkualitas untuk kesehatan anabul.</span></li>
 <li style="display:flex;align-items:flex-start;gap:10px;">🐾 <span>Layanan profesional dengan perhatian penuh pada kenyamanan kucing.</span></li>
 </ul>
 
-<a href="tentang.html" class="btn" style="margin-top:26px;display:inline-block;">Baca Selengkapnya</a>
+<a href="tentang.html" class="btn" style="margin-top:30px;display:inline-block;">Baca Selengkapnya</a>
 
 </div>
 
@@ -314,7 +347,7 @@ Layanan profesional khusus kucing dengan standar higienis, aman, dan penuh perha
 
 <div class="card" style="text-align:center;">
 
-  <div style="width:90px;height:90px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.08);margin-bottom:16px;">
+  <div style="width:92px;height:92px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.10);margin-bottom:16px;border:2px solid var(--accent);">
     <img src="assets/icons/maskot-mandi-transparent.webp" alt="Grooming Kucing" style="max-width:46px;height:auto;">
   </div>
 
@@ -335,7 +368,7 @@ Layanan profesional khusus kucing dengan standar higienis, aman, dan penuh perha
 
 <div class="card" style="text-align:center;">
 
-  <div style="width:90px;height:90px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.08);margin-bottom:16px;">
+  <div style="width:92px;height:92px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.10);margin-bottom:16px;border:2px solid var(--accent);">
     <img src="assets/icons/maskot-treatmentkutu-transparent.webp" alt="Treatment Kutu" style="max-width:46px;height:auto;">
   </div>
 
@@ -356,7 +389,7 @@ Layanan profesional khusus kucing dengan standar higienis, aman, dan penuh perha
 
 <div class="card" style="text-align:center;">
 
-  <div style="width:90px;height:90px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.08);margin-bottom:16px;">
+  <div style="width:92px;height:92px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.10);margin-bottom:16px;border:2px solid var(--accent);">
     <img src="assets/icons/maskot-cathottel-transparent.webp" alt="Cat Hotel" style="max-width:46px;height:auto;">
   </div>
 
@@ -389,8 +422,8 @@ Kami menyediakan berbagai kebutuhan hewan peliharaan berkualitas untuk menunjang
 <div class="grid">
 
 <div class="card" style="text-align:center;">
-  <div style="width:90px;height:90px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.08);margin-bottom:10px;">
-    <img src="assets/icons/food-aluminium-3d.webp" alt="Makanan Kucing" style="max-width:50px;height:auto;">
+  <div style="width:92px;height:92px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.10);margin-bottom:12px;border:2px solid var(--accent);">
+    <img src="assets/icons/food-aluminium-3d.webp" alt="Makanan Kucing" style="max-width:44px;height:auto;object-fit:contain;">
   </div>
   <h3>Makanan & Nutrisi</h3>
   <p>Menyediakan berbagai pilihan makanan premium, vitamin, dan suplemen untuk menjaga kesehatan, energi, dan daya tahan tubuh kucing Anda setiap hari.</p>
@@ -398,8 +431,8 @@ Kami menyediakan berbagai kebutuhan hewan peliharaan berkualitas untuk menunjang
 </div>
 
 <div class="card" style="text-align:center;">
-  <div style="width:90px;height:90px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.08);margin-bottom:10px;">
-    <img src="assets/icons/accessories-aluminium-3d.webp" alt="Aksesoris Kucing" style="max-width:50px;height:auto;">
+  <div style="width:92px;height:92px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.10);margin-bottom:12px;border:2px solid var(--accent);">
+    <img src="assets/icons/accessories-aluminium-3d.webp" alt="Aksesoris Kucing" style="max-width:44px;height:auto;object-fit:contain;">
   </div>
   <h3>Perlengkapan & Aksesoris</h3>
   <p>Berbagai perlengkapan seperti pasir kucing, litter box, kandang, mainan, hingga aksesoris untuk menunjang aktivitas dan kenyamanan kucing Anda.</p>
@@ -407,8 +440,8 @@ Kami menyediakan berbagai kebutuhan hewan peliharaan berkualitas untuk menunjang
 </div>
 
 <div class="card" style="text-align:center;">
-  <div style="width:90px;height:90px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.08);margin-bottom:10px;">
-    <img src="assets/icons/groomingkit-aluminium-3d.webp" alt="Grooming Kit" style="max-width:50px;height:auto;">
+  <div style="width:92px;height:92px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.10);margin-bottom:12px;border:2px solid var(--accent);">
+    <img src="assets/icons/groomingkit-aluminium-3d.webp" alt="Grooming Kit" style="max-width:44px;height:auto;object-fit:contain;">
   </div>
   <h3>Perawatan & Grooming Kit</h3>
   <p>Shampoo khusus kucing, sisir, grooming kit, dan berbagai produk perawatan bulu untuk menjaga kebersihan dan kesehatan kulit kucing.</p>
@@ -577,5 +610,47 @@ Indonesia
 
 </footer>
 
+<script>
+
+/* HERO PARALLAX */
+window.addEventListener('scroll',()=>{
+ const hero=document.querySelector('.hero img');
+ if(hero){
+  const offset=window.scrollY*0.15;
+  hero.style.transform=`translateY(${offset}px)`;
+ }
+});
+
+/* ACTIVE MENU SCROLLSPY */
+const sections=document.querySelectorAll('section');
+const navLinks=document.querySelectorAll('nav a[href^="#"]');
+
+window.addEventListener('scroll',()=>{
+ let current="";
+ sections.forEach(section=>{
+   const sectionTop=section.offsetTop-120;
+   if(window.scrollY>=sectionTop){
+     current=section.getAttribute('id');
+   }
+ });
+
+ navLinks.forEach(a=>{
+   a.classList.remove('active');
+   if(a.getAttribute('href')==="#"+current){
+     a.classList.add('active');
+   }
+ });
+});
+
+
+window.addEventListener('scroll',function(){
+  const header=document.querySelector('header');
+  if(window.scrollY>40){
+    header.classList.add('scrolled');
+  }else{
+    header.classList.remove('scrolled');
+  }
+});
+</script>
 </body>
 </html>
