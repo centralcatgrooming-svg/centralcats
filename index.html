@@ -120,14 +120,14 @@ html{scroll-behavior:smooth;}
 .fade-section{opacity:0;transform:translateY(40px);transition:opacity .8s ease, transform .8s ease;}
 .fade-section.show{opacity:1;transform:translateY(0);} 
 
-header{background:transparent;padding:18px 0;display:flex;justify-content:center;align-items:center;position:absolute;top:0;left:0;width:100%;z-index:1000;transition:all .3s ease;} 
+header{background:transparent;padding:12px 0;display:flex;justify-content:center;align-items:center;position:absolute;top:0;left:0;width:100%;z-index:1000;transition:all .3s ease;} 
 
 header.scrolled{background:rgba(30,58,138,.92);backdrop-filter:blur(6px);position:fixed;} 
-.header-inner{width:100%;max-width:1200px;display:flex;justify-content:space-between;align-items:center;padding:0 28px;}
+.header-inner{width:100%;max-width:1200px;display:flex;justify-content:space-between;align-items:center;padding:0 20px;}
 .logo-area{display:flex;align-items:center;}
-.logo-area img{height:44px;width:auto;display:block;}
+.logo-area img{height:56px;width:auto;display:block;}
 nav{display:flex;align-items:center;}
-nav a{color:white;text-decoration:none;margin-left:20px;font-weight:500;transition:.3s ease;position:relative;font-size:12px;padding-bottom:4px;} 
+nav a{color:white;text-decoration:none;margin-left:20px;font-weight:500;transition:.3s ease;position:relative;font-size:12px;padding:6px 0;display:flex;align-items:center;} 
 
 nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--accent);transition:width .25s ease;border-radius:2px;} 
 nav a.active::after{width:100%;}
@@ -142,7 +142,7 @@ nav a:hover::after{width:100%;}
 .nav-item:hover .nav-dropdown{display:flex;}
 nav a:hover{color:var(--accent);} 
 
-.hero{background:linear-gradient(135deg,#1e3a8a,#243c94);color:white;padding:160px 5% 140px;}
+.hero{background:linear-gradient(135deg,#1e3a8a,#243c94);color:white;padding:120px 5% 140px;}
 .hero-container{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:40px;}
 .hero-text h1{font-size:2.6rem;margin-bottom:20px;}
 .hero-text p{margin-bottom:25px;opacity:.9;}
