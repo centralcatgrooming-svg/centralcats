@@ -102,6 +102,8 @@
 
 </script>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -112,62 +114,130 @@
   --text:#111;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#fff;color:var(--text);} 
-html{scroll-behavior:smooth;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;
+}
+body{background:#fff;color:var(--text);
+}
+
+html{scroll-behavior:smooth;
+}
 
  
 
-.fade-section{opacity:0;transform:translateY(40px);transition:opacity .8s ease, transform .8s ease;}
-.fade-section.show{opacity:1;transform:translateY(0);} 
+.fade-section{opacity:0;transform:translateY(40px);transition:opacity .8s ease, transform .8s ease;
+}
+.fade-section.show{opacity:1;transform:translateY(0);
+}
 
-header{background:transparent;height:60px;padding:0;display:flex;justify-content:center;align-items:center;position:absolute;top:0;left:0;width:100%;z-index:1000;transition:all .3s ease;} 
 
-header.scrolled{background:rgba(30,58,138,.92);backdrop-filter:blur(6px);position:fixed;} 
-.header-inner{width:100%;max-width:1200px;height:60px;display:flex;justify-content:space-between;align-items:center;padding:0 20px;}
-.logo-area{display:flex;align-items:center;}
-.logo-img{height:44px;width:auto;display:block;transition:transform .35s ease, filter .35s ease;} .logo-link:hover .logo-img{transform:scale(1.06);filter:drop-shadow(0 2px 6px rgba(0,0,0,.25));} .logo-link{display:flex;align-items:center;background:white;padding:0 4px;border-radius:6px;box-shadow:0 3px 8px rgba(0,0,0,.10);}
-nav.desktop-nav{display:flex;align-items:center;} 
-.mobile-nav{display:none;} 
-.hamburger{display:none;}
-nav a{color:white;text-decoration:none;margin-left:20px;font-weight:500;transition:.3s ease;position:relative;font-size:12px;padding:6px 0;display:flex;align-items:center;} 
+header{background:transparent;height:60px;padding:0;display:flex;justify-content:center;align-items:center;position:absolute;top:0;left:0;width:100%;z-index:1000;transition:all .3s ease;
+}
 
-nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--accent);transition:width .25s ease;border-radius:2px;} 
-nav a.active::after{width:100%;}
 
-nav a:hover::after{width:100%;} 
+header.scrolled{background:rgba(30,58,138,.92);backdrop-filter:blur(6px);position:fixed;
+}
+
+.header-inner{width:100%;max-width:1200px;height:60px;display:flex;justify-content:space-between;align-items:center;padding:0 20px;
+}
+.logo-area{display:flex;align-items:center;
+}
+.logo-img{height:44px;width:auto;display:block;transition:transform .35s ease, filter .35s ease;
+}
+
+.logo-link:hover .logo-img{transform:scale(1.06);filter:drop-shadow(0 2px 6px rgba(0,0,0,.25));
+}
+
+.logo-link{display:flex;align-items:center;background:white;padding:0 4px;border-radius:6px;box-shadow:0 3px 8px rgba(0,0,0,.10);
+}
+nav.desktop-nav{display:flex;align-items:center;
+}
+
+.mobile-nav{display:none;
+}
+
+.hamburger{display:none;
+}
+nav a{color:white;text-decoration:none;margin-left:20px;font-weight:500;transition:.3s ease;position:relative;font-size:12px;padding:6px 0;display:flex;align-items:center;
+}
+
+
+nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--accent);transition:width .25s ease;border-radius:2px;
+}
+
+nav a.active::after{width:100%;
+}
+
+nav a:hover::after{width:100%;
+}
+
 
 /* DROPDOWN */
-.nav-item{position:relative;}
-.nav-dropdown{position:absolute;top:100%;left:0;background:white;border-radius:8px;box-shadow:0 10px 25px rgba(0,0,0,.15);display:none;flex-direction:column;min-width:160px;overflow:hidden;padding-top:6px;}
-.nav-dropdown a{color:#111;margin:0;padding:10px 14px;font-size:12px;}
-.nav-dropdown a:hover{background:#f3f4f6;color:var(--primary);} 
-.nav-item:hover .nav-dropdown{display:flex;}
-nav a:hover{color:var(--accent);} 
+.nav-item{position:relative;
+}
+.nav-dropdown{position:absolute;top:100%;left:0;background:white;border-radius:8px;box-shadow:0 10px 25px rgba(0,0,0,.15);display:none;flex-direction:column;min-width:160px;overflow:hidden;padding-top:6px;
+}
+.nav-dropdown a{color:#111;margin:0;padding:10px 14px;font-size:12px;
+}
+.nav-dropdown a:hover{background:#f3f4f6;color:var(--primary);
+}
 
-.hero{background:linear-gradient(135deg,#1e3a8a,#243c94);color:white;padding:120px 5% 140px;}
-.hero-container{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:40px;}
-.hero-text h1{font-size:2.6rem;margin-bottom:20px;}
-.hero-text p{margin-bottom:25px;opacity:.9;}
+.nav-item:hover .nav-dropdown{display:flex;
+}
+nav a:hover{color:var(--accent);
+}
 
-.btn{display:inline-block;padding:12px 26px;background:var(--accent);color:#111;text-decoration:none;font-weight:600;border-radius:10px;transition:all .3s ease;}
-.btn:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(0,0,0,.12);} 
 
-.section{padding:70px 5% 80px;text-align:center;}
-.section h2{font-size:2.2rem;font-weight:700;color:var(--primary);letter-spacing:.5px;position:relative;display:inline-block;}
-.section h2::after{content:"";display:block;width:60px;height:4px;background:var(--accent);margin:12px auto 0;border-radius:4px;}
+.hero{background:linear-gradient(135deg,#1e3a8a,#243c94);color:white;padding:110px 5% 110px;
+}
+.hero-container{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:40px;
+}
+.hero-text h1{font-size:2.6rem;margin-bottom:20px;
+}
+.hero-text p{margin-bottom:25px;opacity:.9;
+}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;margin-top:40px;}
-.card{background:var(--light);padding:26px 28px;border-radius:16px;box-shadow:0 8px 25px rgba(0,0,0,.05);transition:transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s cubic-bezier(.4,0,.2,1), border-color .35s ease;display:flex;flex-direction:column;align-items:center;text-align:center;border:1px solid transparent;position:relative;overflow:hidden;} 
+.btn{display:inline-block;padding:12px 26px;background:var(--accent);color:#111;text-decoration:none;font-weight:600;border-radius:10px;transition:all .3s ease;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(0,0,0,.12);
+}
 
-.card h3{margin:10px 0 6px;font-size:20px;}
 
-.card p{max-width:260px;line-height:1.65;font-size:15px;color:#333;margin-top:4px;}
-.card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 22px 50px rgba(0,0,0,.14);border-color:var(--accent);} 
-.card:hover img{transform:scale(1.08);} 
-.card img{transition:transform .35s ease;} .card::before{content:"";position:absolute;inset:0;border-radius:16px;padding:1px;background:linear-gradient(135deg,transparent,transparent,rgba(212,175,55,.45),transparent);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .35s ease;pointer-events:none;} .card:hover::before{opacity:1;} 
+.section{padding:70px 5% 80px;text-align:center;
+}
+.section h2{font-size:2.2rem;font-weight:700;color:var(--primary);letter-spacing:.5px;position:relative;display:inline-block;
+}
+.section h2::after{content:"";display:block;width:60px;height:4px;background:var(--accent);margin:12px auto 0;border-radius:4px;
+}
 
-footer{background:var(--primary);color:white;padding:45px 5% 18px;margin-top:30px;border-top:3px solid var(--accent);box-shadow:0 -2px 18px rgba(212,175,55,.35);}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;margin-top:40px;
+}
+.card{background:var(--light);padding:26px 28px;border-radius:16px;box-shadow:0 8px 25px rgba(0,0,0,.05);transition:transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s cubic-bezier(.4,0,.2,1), border-color .35s ease;display:flex;flex-direction:column;align-items:center;text-align:center;border:1px solid transparent;position:relative;overflow:hidden;
+}
+
+
+.card h3{margin:10px 0 6px;font-size:20px;
+}
+
+.card p{max-width:260px;line-height:1.65;font-size:15px;color:#333;margin-top:4px;
+}
+.card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 22px 50px rgba(0,0,0,.14);border-color:var(--accent);
+}
+
+.card:hover img{transform:scale(1.08);
+}
+
+.card img{transition:transform .35s ease;
+}
+
+.card::before{content:"";position:absolute;inset:0;border-radius:16px;padding:1px;background:linear-gradient(135deg,transparent,transparent,rgba(212,175,55,.45),transparent);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .35s ease;pointer-events:none;
+}
+
+.card:hover::before{opacity:1;
+}
+
+
+footer{background:var(--primary);color:white;padding:45px 5% 18px;margin-top:30px;border-top:3px solid var(--accent);box-shadow:0 -2px 18px rgba(212,175,55,.35);
+}
 
 .footer-container{
   max-width:1100px;
@@ -182,15 +252,20 @@ footer{background:var(--primary);color:white;padding:45px 5% 18px;margin-top:30p
   text-align:left;
 }
 
-.footer-brand img{height:64px;margin-bottom:16px;} /* normalized */
+.footer-brand img{height:64px;margin-bottom:16px;
+}
+/* normalized */
 
-.footer-brand p{font-size:12px;line-height:1.7;opacity:.9;margin-top:10px;max-width:420px;} /* normalized */
+.footer-brand p{font-size:12px;line-height:1.7;opacity:.9;margin-top:10px;max-width:420px;
+}
+/* normalized */
 
 .footer-contact{
   text-align:left;
 }
 
-.footer-info{text-align:left;justify-self:end;}
+.footer-info{text-align:left;justify-self:end;
+}
 
 .footer-info{
   justify-self:end;
@@ -242,15 +317,20 @@ footer{background:var(--primary);color:white;padding:45px 5% 18px;margin-top:30p
 /* ================= MOBILE RESPONSIVE ================= */
 @media(max-width:768px){
 
-.desktop-nav{display:none;}
-.hamburger{display:flex;}
-.mobile-nav{display:flex;}
+.desktop-nav{display:none;
+}
+.hamburger{display:flex;
+}
+.mobile-nav{display:flex;
+}
 
 /* make contact rows tappable on mobile */
-.footer-contact a{display:inline-block;padding:4px 0;}
+.footer-contact a{display:inline-block;padding:4px 0;
+}
 
 /* SMS clickable */
-.footer-contact span{cursor:pointer;}
+.footer-contact span{cursor:pointer;
+}
 
 /* larger social icons for easier tapping */
 .footer-social a{
@@ -265,10 +345,12 @@ footer{background:var(--primary);color:white;padding:45px 5% 18px;margin-top:30p
 
 
 /* hide footer logo on mobile for cleaner layout */
-.footer-brand > div:first-child{display:none;}
+.footer-brand > div:first-child{display:none;
+}
 
 
-header{padding:6px 0;}
+header{padding:6px 0;
+}
 
 .header-inner{
   padding:0 16px;
@@ -278,15 +360,25 @@ header{padding:6px 0;}
   height:48px;
 }
 
-nav{display:flex;} /* keep menu available for hamburger */ 
+nav{display:flex;
+}
+/* keep menu available for hamburger */ 
 
-.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;z-index:1200;}
-.hamburger span{width:26px;height:2px;background:white;border-radius:2px;transition:all .3s ease;}
+.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;z-index:1200;
+}
+.hamburger span{width:26px;height:2px;background:white;border-radius:2px;transition:all .3s ease;
+}
 
 /* animated hamburger */
-.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);} 
-.hamburger.active span:nth-child(2){opacity:0;} 
-.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px);} 
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);
+}
+
+.hamburger.active span:nth-child(2){opacity:0;
+}
+
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px);
+}
+
 
 /* mobile slide menu */
 #mobileMenu{display:flex;
@@ -303,9 +395,11 @@ transition:right .35s ease;
 box-shadow:-10px 0 30px rgba(0,0,0,.25);
 }
 
-#mobileMenu a{margin:0;font-size:14px;}
+#mobileMenu a{margin:0;font-size:14px;
+}
 
-#mobileMenu.open{right:0;}
+#mobileMenu.open{right:0;
+}
 
 /* HERO MOBILE */
 .hero{
@@ -383,12 +477,36 @@ iframe{
 
 }
 
-.service-icon{width:92px;height:92px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.10);margin-bottom:16px;border:2px solid var(--accent);} 
+.service-icon{width:92px;height:92px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.10);margin-bottom:16px;border:2px solid var(--accent);
+}
 
-.section-light{background:#f3f4f6;} 
-.section-soft{background:#f9fafb;} 
 
-.card{text-align:center;} 
+/* ICON SIZE SYSTEM */
+.icon-sm{max-width:52px;height:auto;
+}
+.icon-md{max-width:60px;height:auto;
+}
+.icon-lg{max-width:78px;height:auto;
+}
+
+/* STAR RATING SYSTEM */
+.stars{display:flex;gap:4px;margin-bottom:6px;
+}
+.stars svg{width:18px;height:18px;fill:var(--accent);
+}
+
+ 
+
+.section-light{background:#f3f4f6;
+}
+
+.section-soft{background:#f9fafb;
+}
+
+
+.card{text-align:center;
+}
+
 
 </style>
 </head>
@@ -417,6 +535,7 @@ iframe{
 
       <a href="#services">Layanan</a>
       <a href="#products">Produk</a>
+      <a href="#reviews">Ulasan</a>
       <a href="#location">Lokasi</a>
       <a href="karir.html">Karir</a>
 
@@ -449,6 +568,7 @@ iframe{
 
     <a href="#services">Layanan</a>
     <a href="#products">Produk</a>
+      <a href="#reviews">Ulasan</a>
     <a href="#location">Lokasi</a>
     <a href="karir.html">Karir</a>
 
@@ -460,7 +580,6 @@ iframe{
       </div>
     </div>
 </nav>
-</div>
 </header>
 
 <section class="hero" id="home">
@@ -504,7 +623,7 @@ Dengan standar layanan yang terjaga dan tim yang peduli terhadap kesejahteraan k
 
 </section>
 
-<section class="section section-soft">
+<section class="section section-soft" id="services">
 
 <h2>Layanan Kami</h2>
 
@@ -515,113 +634,141 @@ Layanan profesional khusus kucing dengan standar higienis, aman, dan penuh perha
 <div class="grid" style="margin-top:40px;">
 
 <div class="card">
-
   <div class="service-icon">
-    <img src="assets/icons/maskot-mandi-transparent.webp" alt="Grooming Kucing" style="max-width:52px;height:auto;">
+    <img src="assets/icons/maskot-mandi-transparent.webp" alt="Grooming Kucing" class="icon-md">
   </div>
-
   <h3>Grooming Kucing</h3>
-
   <p>
-  Layanan mandi kucing profesional meliputi pembersihan bulu, pengeringan,
-  potong kuku, pembersihan telinga, serta perawatan dasar agar kucing
-  tetap bersih, sehat, dan nyaman.
+  Layanan mandi kucing profesional meliputi pembersihan bulu, pengeringan, potong kuku, pembersihan telinga, serta perawatan dasar agar kucing tetap bersih, sehat, dan nyaman.
   </p>
-
-  
-
-  
-
 </div>
 
-
 <div class="card">
-
   <div class="service-icon">
-    <img src="assets/icons/maskot-treatmentkutu-transparent.webp" alt="Treatment Kutu" style="max-width:60px;height:auto;">
+    <img src="assets/icons/maskot-treatmentkutu-transparent.webp" alt="Treatment Kutu" class="icon-md">
   </div>
-
   <h3>Treatment Kutu Kucing</h3>
-
   <p>
-  Perawatan khusus untuk membantu mengatasi kutu, menjaga kesehatan kulit,
-  serta merawat bulu kucing agar tetap bersih, sehat, dan bebas dari
-  parasit yang mengganggu.
+  Perawatan khusus untuk membantu mengatasi kutu, menjaga kesehatan kulit serta merawat bulu kucing agar tetap bersih dan bebas parasit.
   </p>
-
-  
-
-  
-
 </div>
 
-
 <div class="card">
-
   <div class="service-icon">
-    <img src="assets/icons/maskot-cathottel-transparent.webp" alt="Cat Hotel" style="max-width:60px;height:auto;">
+    <img src="assets/icons/maskot-cathottel-transparent.webp" alt="Cat Hotel" class="icon-md">
   </div>
-
   <h3>Cat Hotel</h3>
-
   <p>
-  Layanan penitipan kucing yang aman dan nyaman dengan pengawasan rutin,
-  kebersihan terjaga, serta lingkungan yang mendukung kenyamanan
-  kucing selama dititipkan.
+  Layanan penitipan kucing yang aman dan nyaman dengan pengawasan rutin serta lingkungan bersih untuk menjaga kenyamanan anabul selama dititipkan.
   </p>
-
-  
-
-  
-
 </div>
 
 </div>
 
 </section>
 
-<section class="section section-light">
+<section class="section section-light" id="products">
 
 <h2>Produk Petshop</h2>
 
-<p style="max-width:620px;margin:15px auto 0;line-height:1.6;color:#444;">
-Kami menyediakan berbagai kebutuhan hewan peliharaan berkualitas untuk menunjang kesehatan dan kenyamanan kucing kesayangan Anda.
+<p style="max-width:700px;margin:15px auto 0;line-height:1.6;color:#444;">
+Central Cat’s menyediakan berbagai kebutuhan hewan peliharaan berkualitas untuk menunjang kesehatan, kenyamanan, dan kebahagiaan anabul Anda setiap hari.
 </p>
 
-<div class="grid">
+<div class="grid" style="margin-top:40px;">
 
 <div class="card">
   <div class="service-icon">
-    <img src="assets/icons/food-aluminium-3d.webp" alt="Makanan Kucing" style="max-width:60px;height:auto;object-fit:contain;">
+    <img src="assets/icons/food-aluminium-3d.webp" alt="Makanan dan Nutrisi" class="icon-lg">
   </div>
   <h3>Makanan & Nutrisi</h3>
-  <p>Menyediakan berbagai pilihan makanan premium, vitamin, dan suplemen untuk menjaga kesehatan, energi, dan daya tahan tubuh kucing Anda setiap hari.</p>
-  
+  <p>
+  Berbagai pilihan makanan kucing berkualitas, vitamin, dan suplemen nutrisi untuk menjaga kesehatan serta daya tahan tubuh anabul.
+  </p>
 </div>
 
 <div class="card">
   <div class="service-icon">
-    <img src="assets/icons/accessories-aluminium-3d.webp" alt="Aksesoris Kucing" style="max-width:60px;height:auto;object-fit:contain;">
+    <img src="assets/icons/accessories-aluminium-3d.webp" alt="Aksesoris Kucing" class="icon-lg">
   </div>
   <h3>Perlengkapan & Aksesoris</h3>
-  <p>Berbagai perlengkapan seperti pasir kucing, litter box, kandang, mainan, hingga aksesoris untuk menunjang aktivitas dan kenyamanan kucing Anda.</p>
-  
+  <p>
+  Menyediakan berbagai perlengkapan kucing seperti litter box, pasir kucing, mainan, kandang, serta aksesoris yang menunjang kenyamanan anabul.
+  </p>
 </div>
 
 <div class="card">
   <div class="service-icon">
-    <img src="assets/icons/groomingkit-aluminium-3d.webp" alt="Grooming Kit" style="max-width:78px;height:auto;object-fit:contain;">
+    <img src="assets/icons/groomingkit-aluminium-3d.webp" alt="Grooming Kit" class="icon-lg">
   </div>
   <h3>Perawatan & Grooming Kit</h3>
-  <p>Shampoo khusus kucing, sisir, grooming kit, dan berbagai produk perawatan bulu untuk menjaga kebersihan dan kesehatan kulit kucing.</p>
-  
+  <p>
+  Produk perawatan seperti shampoo khusus kucing, sisir grooming, dan perlengkapan kebersihan untuk menjaga bulu tetap sehat dan bersih.
+  </p>
 </div>
 
 </div>
 
 </section>
 
-<section class="section section-light">
+<section class="section section-light" id="reviews">
+
+<h2>Ulasan Pelanggan</h2>
+
+<p style="max-width:650px;margin:15px auto 0;line-height:1.6;color:#444;">
+Berikut beberapa ulasan pelanggan yang telah menggunakan layanan grooming dan petshop Central Cat's. Kepuasan dan kenyamanan anabul menjadi prioritas utama dalam setiap layanan kami.
+</p>
+
+<div class="review-slider" style="margin-top:40px;overflow:hidden;max-width:900px;margin-left:auto;margin-right:auto;">
+
+<div class="review-track" style="display:flex;gap:20px;transition:transform .6s ease;">
+
+<div class="card review-card" style="min-width:100%;">
+<div class="stars">
+<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+</div>
+<p>"Baru banget tau ada tempat grooming deket rumah. Love sama hasilnya. Nana aku cantik lagi dan haruuuuummm."</p>
+<p style="margin-top:8px;font-size:13px;font-weight:600;">linda mutiara Ayu</p>
+<p style="font-size:12px;opacity:.7;">Local Guide • 2 hari lalu</p>
+</div>
+
+<div class="card review-card" style="min-width:100%;">
+<div class="stars">
+<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+</div>
+<p>"Teliti, sigap, gercep aku pake layanan home servis. Makasih udah bikin anabulku ganteng poll."</p>
+<p style="margin-top:8px;font-size:13px;font-weight:600;">aiimas mastoah</p>
+<p style="font-size:12px;opacity:.7;">2 minggu lalu</p>
+</div>
+
+<div class="card review-card" style="min-width:100%;">
+<div class="stars">
+<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+</div>
+<p>"Pelayanannya sangat sangat baik. Bisa antar jemput kucing. Setelah grooming bulunya makin halus dan bersih."</p>
+<p style="margin-top:8px;font-size:13px;font-weight:600;">Arsakha Putra Maulana</p>
+<p style="font-size:12px;opacity:.7;">Sebulan lalu</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section section-light" id="location">
 
 <h2>Lokasi Central Cat's</h2>
 
@@ -824,6 +971,18 @@ window.addEventListener('scroll',function(){
 });
 
 /* PREMIUM HAMBURGER */
+/* MOBILE DROPDOWN ACCORDION */
+document.querySelectorAll('#mobileMenu .nav-item > a').forEach(btn=>{
+ btn.addEventListener('click',function(e){
+  const parent=this.parentElement;
+  const drop=parent.querySelector('.nav-dropdown');
+  if(drop){
+    e.preventDefault();
+    drop.style.display = drop.style.display==='flex'?'none':'flex';
+  }
+ });
+});
+
 const burger=document.getElementById('hamburger');
 const menu=document.getElementById('mobileMenu');
 
@@ -841,6 +1000,23 @@ document.querySelectorAll('#mobileMenu a').forEach(link=>{
   menu.classList.remove('open');
  });
 });
+
+/* REVIEW SLIDER */
+const reviewTrack=document.querySelector('.review-track');
+const reviewCards=document.querySelectorAll('.review-card');
+let reviewIndex=0;
+
+function moveReview(){
+  if(!reviewTrack) return;
+  reviewIndex++;
+  if(reviewIndex>=reviewCards.length){
+    reviewIndex=0;
+  }
+  reviewTrack.style.transform=`translateX(-${reviewIndex*100}%)`;
+}
+
+setInterval(moveReview,5000);
+
 </script>
 </body>
 </html>
