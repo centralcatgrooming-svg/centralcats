@@ -33,7 +33,7 @@ body{background:#fff;color:var(--text)}
 
 /* PAGE LOADER */
 #page-loader{position:fixed;inset:0;background:#ffffff;display:flex;align-items:center;justify-content:center;z-index:5000;flex-direction:column;transition:opacity 1s ease, visibility 1s ease}
-#page-loader img{width:120px;height:auto;animation:loaderPulse 1.8s ease-in-out infinite;margin-bottom:28px}
+#page-loader img{width:120px;height:auto;animation:loaderPulse 1s ease-in-out infinite;margin-bottom:28px}
 
 /* gold progress bar */
 .loader-bar{width:220px;height:4px;background:#e5e7eb;border-radius:4px;overflow:hidden}
@@ -45,7 +45,7 @@ body.loaded #page-loader{opacity:0;visibility:hidden}
 
 html{scroll-behavior:smooth}
 header{background:var(--primary);height:60px;display:flex;justify-content:center;align-items:center;position:sticky;top:0;left:0;width:100%;z-index:1000;transition:all .3s ease}
-header.scrolled{background:rgba(30,58,138,.92);backdrop-filter:blur(6px);position:fixed}
+header.scrolled{background:rgba(30,58,138,.92);backdrop-filter:blur(6px)}
 .header-inner{width:100%;max-width:1200px;height:60px;display:flex;justify-content:space-between;align-items:center;padding:0 20px}
 .logo-img{height:44px}
 .logo-link{display:flex;align-items:center;background:white;padding:0 4px;border-radius:6px;box-shadow:0 3px 8px rgba(0,0,0,.10)}
@@ -75,7 +75,7 @@ nav a:hover::after{width:100%}
 .card p{font-size:17px;line-height:1.85;color:#333;max-width:460px;margin:auto}
 
 
-.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,.12)}
+
 
 /* content panels for text sections */
 .content-panel{background:#ffffff;border-radius:18px;padding:40px;box-shadow:0 10px 35px rgba(0,0,0,.06);}
@@ -236,7 +236,7 @@ footer{background:var(--primary);color:white;padding:45px 5% 18px;margin-top:30p
         <a href="index.html#about">Tentang</a>
         <div class="nav-dropdown">
           <a href="tentang.html">Profil</a>
-          <a href="visi-misi.html">Visi & Misi</a>
+          <a href="tentang.html#visi-misi">Visi & Misi</a>
         </div>
       </div>
 
@@ -270,7 +270,7 @@ footer{background:var(--primary);color:white;padding:45px 5% 18px;margin-top:30p
       <a href="index.html#about">Tentang</a>
       <div class="nav-dropdown">
         <a href="tentang.html">Profil</a>
-        <a href="visi-misi.html">Visi & Misi</a>
+        <a href="tentang.html#visi-misi">Visi & Misi</a>
       </div>
     </div>
 
@@ -389,7 +389,7 @@ Central Cat’s berkomitmen memberikan pelayanan yang profesional dan ramah sehi
 
 
 <!-- VISI MISI SINGKAT -->
-<section class="section section-soft">
+<section id="visi-misi" class="section section-soft">
 
 <h2>Visi & Misi Central Cat’s</h2>
 
