@@ -101,7 +101,14 @@ footer{background:var(--primary);color:white;padding:45px 5% 18px;margin-top:30p
 
 
 /* Instagram reel hover effect */
-.ig-reel{border-radius:18px;overflow:hidden;aspect-ratio:9/16;background:#000;transition:transform .25s ease, box-shadow .25s ease}
+.ig-reel{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:9/16;background:#000;transition:transform .25s ease, box-shadow .25s ease;border:2px solid rgba(212,175,55,.6);box-shadow:0 12px 30px rgba(0,0,0,.15);}
+
+/* elegant frame like product cards */
+.ig-reel:before{content:"";position:absolute;inset:0;border-radius:22px;padding:1px;background:linear-gradient(135deg,transparent,rgba(212,175,55,.6),transparent);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s ease;pointer-events:none}
+
+.ig-reel:hover:before{opacity:1}
+
+.ig-reel iframe{width:100%;height:100%;border:0;display:block}
 
 /* Instagram grid responsive */
 .ig-grid{display:grid;grid-template-columns:repeat(3,1fr);max-width:1000px;margin:auto;gap:40px}
@@ -628,8 +635,9 @@ window.addEventListener('load',()=>{
 });
 
 // fallback if load event delayed
+// keep it slightly longer than loader duration so animation can finish
 window.addEventListener('DOMContentLoaded',()=>{
- setTimeout(hideLoader,400);
+ setTimeout(hideLoader,1200);
 });
 </script>
 
