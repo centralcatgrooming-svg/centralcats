@@ -1,55 +1,275 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Central Cat’s | Petshop Terdekat & Grooming Kucing di Tangerang</title>
+<meta name="description" content="Central Cat's adalah petshop dan grooming kucing terdekat di Tangerang yang menyediakan layanan grooming profesional, treatment kutu kucing, cat hotel, serta berbagai produk kebutuhan kucing berkualitas.">
+<meta name="keywords" content="petshop tangerang, petshop terdekat, grooming kucing tangerang, grooming kucing terdekat, petshop rajeg, grooming kucing pasar kemis, cat hotel tangerang">
+<link rel="canonical" href="https://www.centralcats.id/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#1e3a8a">
 
-<title>Profil Central Cat’s | Petshop & Grooming Kucing Tangerang</title>
+<!-- GEO SEO -->
+<meta name="geo.region" content="ID-BT">
+<meta name="geo.placename" content="Tangerang">
+<meta name="geo.position" content="-6.1551806;106.5497454">
+<meta name="ICBM" content="-6.1551806, 106.5497454">
 
-<meta name="description" content="Profil Central Cat's petshop dan grooming kucing di Tangerang yang menyediakan layanan grooming profesional serta berbagai kebutuhan kucing berkualitas.">
-
-<link rel="canonical" href="https://www.centralcats.id/tentang.html">
-
+<!-- FAVICON -->
 <link rel="icon" href="/assets/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/assets/icons/favicon-32x32.png">
+
+<!-- OPEN GRAPH -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Central Cat’s | Petshop & Grooming Kucing di Tangerang">
+<meta property="og:description" content="Petshop dan grooming kucing terpercaya di Tangerang dengan layanan grooming profesional, treatment kutu kucing, dan cat hotel.">
+<meta property="og:url" content="https://www.centralcats.id/">
+<meta property="og:image" content="https://www.centralcats.id/assets/logo/logo-horizontal.png">
+
+<!-- TWITTER -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Central Cat’s Petshop & Grooming Tangerang">
+<meta name="twitter:description" content="Petshop dan grooming kucing terpercaya di Tangerang.">
+<meta name="twitter:image" content="https://www.centralcats.id/assets/logo/logo-horizontal.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="assets/css/style.css">
+<style>
+:root{
+  --primary:#1e3a8a;
+  --accent:#d4af37;
+  --light:#f3f4f6;
+  --text:#111;
+}
 
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;
+}
+body{background:#fff;color:var(--text);
+}
+
+html{scroll-behavior:smooth;
+}
+
+.fade-section{opacity:0;transform:translateY(40px);transition:opacity .8s ease, transform .8s ease;
+}
+.fade-section.show{opacity:1;transform:translateY(0);
+}
+
+header{background:transparent;height:60px;padding:0;display:flex;justify-content:center;align-items:center;position:absolute;top:0;left:0;width:100%;z-index:1000;transition:all .3s ease;
+}
+
+header.scrolled{background:rgba(30,58,138,.92);backdrop-filter:blur(6px);position:fixed;
+}
+
+.header-inner{width:100%;max-width:1200px;height:60px;display:flex;justify-content:space-between;align-items:center;padding:0 20px;
+}
+.logo-area{display:flex;align-items:center;
+}
+.logo-img{height:44px;width:auto;display:block;transition:transform .35s ease, filter .35s ease;
+}
+
+.logo-link:hover .logo-img{transform:scale(1.06);filter:drop-shadow(0 2px 6px rgba(0,0,0,.25));
+}
+
+.logo-link{display:flex;align-items:center;background:white;padding:0 4px;border-radius:6px;box-shadow:0 3px 8px rgba(0,0,0,.10);
+}
+nav.desktop-nav{display:flex;align-items:center;
+}
+
+.mobile-nav{display:none;
+}
+
+.hamburger{display:none;
+}
+nav a{color:white;text-decoration:none;margin-left:20px;font-weight:500;transition:.3s ease;position:relative;font-size:12px;padding:6px 0;display:flex;align-items:center;
+}
+
+nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--accent);transition:width .25s ease;border-radius:2px;
+}
+
+nav a.active::after{width:100%;
+}
+
+nav a:hover::after{width:100%;
+}
+
+.nav-item{position:relative;
+}
+.nav-dropdown{position:absolute;top:100%;left:0;background:white;border-radius:8px;box-shadow:0 10px 25px rgba(0,0,0,.15);display:none;flex-direction:column;min-width:160px;overflow:hidden;padding-top:6px;
+}
+.nav-dropdown a{color:#111;margin:0;padding:10px 14px;font-size:12px;
+}
+.nav-dropdown a:hover{background:#f3f4f6;color:var(--primary);
+}
+
+.nav-item:hover .nav-dropdown{display:flex;
+}
+nav a:hover{color:var(--accent);
+}
+
+.hero{background:linear-gradient(135deg,#1e3a8a,#243c94);color:white;padding:110px 5% 110px;
+}
+.hero-container{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:40px;
+}
+.hero-text h1{font-size:2.6rem;margin-bottom:20px;
+}
+.hero-text p{margin-bottom:25px;opacity:.9;
+}
+
+.btn{display:inline-block;padding:12px 26px;background:var(--accent);color:#111;text-decoration:none;font-weight:600;border-radius:10px;transition:all .3s ease;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(0,0,0,.12);
+}
+
+.section{padding:70px 5% 80px;text-align:center;
+}
+.section h2{font-size:2.2rem;font-weight:700;color:var(--primary);letter-spacing:.5px;position:relative;display:inline-block;
+}
+.section h2::after{content:"";display:block;width:60px;height:4px;background:var(--accent);margin:12px auto 0;border-radius:4px;
+}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;margin-top:40px;
+}
+.card{background:var(--light);padding:26px 28px;border-radius:16px;box-shadow:0 8px 25px rgba(0,0,0,.05);transition:transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s cubic-bezier(.4,0,.2,1), border-color .35s ease;display:flex;flex-direction:column;align-items:center;text-align:center;border:1px solid transparent;position:relative;overflow:hidden;
+}
+
+.card h3{margin:10px 0 6px;font-size:20px;
+}
+
+.card p{max-width:260px;line-height:1.65;font-size:15px;color:#333;margin-top:4px;
+}
+.card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 22px 50px rgba(0,0,0,.14);border-color:var(--accent);
+}
+
+.card:hover img{transform:scale(1.08);
+}
+
+.card img{transition:transform .35s ease;
+}
+
+.section-light{background:#f3f4f6;
+}
+
+.section-soft{background:#f9fafb;
+}
+
+
+.service-icon{width:92px;height:92px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.10);margin-bottom:16px;border:2px solid var(--accent);}
+
+.icon-sm{max-width:52px;height:auto;}
+.icon-md{max-width:60px;height:auto;}
+.icon-lg{max-width:78px;height:auto;}
+
+.stars{display:flex;gap:4px;margin-bottom:6px;}
+.stars svg{width:18px;height:18px;fill:var(--accent);} 
+
+/* FOOTER */
+footer{background:var(--primary);color:white;padding:45px 5% 18px;margin-top:30px;border-top:3px solid var(--accent);box-shadow:0 -2px 18px rgba(212,175,55,.35);} 
+
+.footer-container{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:60px;align-items:flex-start;} 
+
+.footer-brand{text-align:left;} 
+.footer-brand img{height:64px;margin-bottom:16px;} 
+
+.footer-brand p{font-size:12px;line-height:1.7;opacity:.9;margin-top:10px;max-width:420px;} 
+
+.footer-contact{text-align:left;} 
+
+.footer-info{text-align:left;justify-self:end;} 
+.footer-info strong{font-size:14px;display:block;margin-bottom:10px;} 
+
+.footer-social{margin-top:18px;display:grid;grid-template-columns:repeat(2,1fr);gap:22px 40px;align-items:center;max-width:420px;}
+.footer-social-item{display:flex;align-items:center;gap:10px;font-size:13px;color:#fff;text-decoration:none;white-space:nowrap;}
+.footer-social-icon{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.footer-social-item:hover .footer-social-icon{background:var(--accent);} 
+
+.footer-bottom{text-align:center;margin-top:50px;font-size:10px;opacity:.85;border-top:1px solid rgba(255,255,255,.15);padding-top:22px;} 
+
+/* CONTACT ICON HOVER */
+.footer-contact svg{transition:transform .2s ease;}
+.footer-contact div:hover svg{transform:scale(1.15);} 
+
+
+/* ================= MOBILE / HANDPHONE ================= */
+@media(max-width:768px){
+
+header{height:68px;} 
+.header-inner{height:68px;} 
+.logo-img{height:48px;}
+
+.desktop-nav{display:none;}
+.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;z-index:1200;}
+.hamburger span{width:26px;height:2px;background:white;border-radius:2px;transition:all .3s ease;}
+
+/* hamburger animation */
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);} 
+.hamburger.active span:nth-child(2){opacity:0;} 
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px);} 
+
+/* mobile menu */
+.mobile-nav{display:flex;position:fixed;top:0;right:-260px;width:240px;height:100vh;background:#1e3a8a;flex-direction:column;padding:90px 24px;gap:18px;transition:right .35s ease;box-shadow:-10px 0 30px rgba(0,0,0,.25);} 
+.mobile-nav a{margin:0;font-size:14px;color:#fff;} 
+.mobile-nav.open{right:0;} 
+
+/* hero mobile */
+.hero{padding:90px 20px 80px;} 
+.hero-container{flex-direction:column;text-align:center;gap:30px;} 
+.hero img{max-width:260px;} 
+.hero-text h1{font-size:1.8rem;} 
+.hero-text p{font-size:14px;} 
+
+/* sections */
+.section{padding:60px 20px 70px;} 
+.grid{grid-template-columns:1fr;gap:26px;} 
+.card{padding:22px 22px;} 
+.card h3{font-size:18px;} 
+.card p{font-size:14px;} 
+
+/* map */
+iframe{height:220px;} 
+
+/* footer mobile */
+.footer-container{grid-template-columns:1fr;gap:40px;} 
+.footer-info{justify-self:start;} 
+.footer-brand p{max-width:100%;} 
+.footer-social{grid-template-columns:repeat(2,1fr);} 
+
+}
+
+</style>
 </head>
-
 <body>
 
-
-
-<!-- HEADER COPY PERSIS DARI INDEX -->
+<!-- HEADER LOCKED - FINAL STRUCTURE DO NOT MODIFY -->
 <header>
   <div class="header-inner">
     <div class="logo-area">
-      <a href="index.html#home" class="logo-link">
+      <a href="#home" class="logo-link">
         <img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo" class="logo-img">
       </a>
     </div>
 
     <nav class="desktop-nav">
-      <a href="index.html#home">Home</a>
+      <a href="#home">Home</a>
 
       <div class="nav-item">
-        <a href="#">Tentang</a>
+        <a href="#about">Tentang</a>
         <div class="nav-dropdown">
           <a href="tentang.html">Profil</a>
           <a href="visi-misi.html">Visi & Misi</a>
         </div>
       </div>
 
-      <a href="index.html#services">Layanan</a>
-      <a href="index.html#products">Produk</a>
-      <a href="index.html#reviews">Ulasan</a>
-      <a href="index.html#location">Lokasi</a>
+      <a href="#services">Layanan</a>
+      <a href="#products">Produk</a>
+      <a href="#reviews">Ulasan</a>
+      <a href="#location">Lokasi</a>
       <a href="karir.html">Karir</a>
 
       <div class="nav-item">
@@ -67,6 +287,32 @@
       <span></span>
     </div>
   </div>
+
+<nav id="mobileMenu" class="mobile-nav">
+    <a href="#home">Home</a>
+
+    <div class="nav-item">
+      <a href="#about">Tentang</a>
+      <div class="nav-dropdown">
+        <a href="tentang.html">Profil</a>
+        <a href="visi-misi.html">Visi & Misi</a>
+      </div>
+    </div>
+
+    <a href="#services">Layanan</a>
+    <a href="#products">Produk</a>
+      <a href="#reviews">Ulasan</a>
+    <a href="#location">Lokasi</a>
+    <a href="karir.html">Karir</a>
+
+    <div class="nav-item">
+      <a href="kerjasama.html">Kerjasama</a>
+      <div class="nav-dropdown">
+        <a href="supplier.html">Supplier</a>
+        <a href="waralaba.html">Waralaba</a>
+      </div>
+    </div>
+</nav>
 </header>
 
 
