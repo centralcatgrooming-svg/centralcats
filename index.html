@@ -52,7 +52,10 @@
 body{background:#fff;color:var(--text);
 }
 
-html{scroll-behavior:smooth;
+html{scroll-behavior:smooth;}
+
+/* FIX: prevent anchor sections from hiding behind fixed header */
+section{scroll-margin-top:90px;}
 }
 
 .fade-section{opacity:0;transform:translateY(40px);transition:opacity .8s ease, transform .8s ease;
