@@ -80,7 +80,7 @@ nav a:hover::after{width:100%}
 /* content panels for text sections */
 .content-panel{background:#ffffff;border-radius:18px;padding:40px;box-shadow:0 10px 35px rgba(0,0,0,.06);}
 
-.section h2{font-size:28px;color:var(--primary);position:relative;display:inline-block}
+.section h2{font-size:28px;color:var(--primary);position:relative;display:inline-block;margin-bottom:12px}
 .section h2:after{content:"";display:block;width:60px;height:4px;background:var(--accent);margin:10px auto 0;border-radius:4px}
 
 .section-soft{background:#f9fafb}
@@ -100,10 +100,8 @@ footer{background:var(--primary);color:white;padding:45px 5% 18px;margin-top:30p
 .footer-bottom{text-align:center;margin-top:50px;font-size:10px;opacity:.85;border-top:1px solid rgba(255,255,255,.15);padding-top:22px}
 
 
-/* Instagram reel hover effect */
-/* Instagram reels strip layout (single row) */
-/* Instagram reels layout desktop */
-.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:900px;margin:auto}
+/* Instagram reels layout */
+.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;max-width:900px;margin:auto}
 
 @media(max-width:900px){
 .ig-grid{grid-template-columns:repeat(2,1fr)}
@@ -112,33 +110,16 @@ footer{background:var(--primary);color:white;padding:45px 5% 18px;margin-top:30p
 @media(max-width:600px){
 .ig-grid{display:flex;overflow-x:auto;gap:20px;scroll-snap-type:x mandatory;padding-bottom:6px}
 }
+
 .ig-grid::-webkit-scrollbar{display:none}
 
-.ig-reel{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:9/16;background:#000;transition:transform .25s ease, box-shadow .25s ease;box-shadow:0 14px 34px rgba(0,0,0,.25)}
+/* clean instagram frame */
+.ig-reel{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:9/16;background:#000}
 
-@media(max-width:600px){
-.ig-reel{flex:0 0 220px;scroll-snap-align:center}
-}
+.ig-reel iframe{width:100%;height:100%;border:0;display:block}
 
-/* play icon overlay like YouTube Shorts */
-.ig-reel::after{content:"▶";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:42px;color:white;background:rgba(0,0,0,.25);opacity:.85;transition:.25s}
-
-.ig-reel:hover::after{opacity:0}
-
-/* elegant frame like product cards */
-.ig-reel:before{content:"";position:absolute;inset:0;border-radius:22px;padding:1px;background:linear-gradient(135deg,transparent,rgba(212,175,55,.6),transparent);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s ease;pointer-events:none}
-
-.ig-reel:hover:before{opacity:1}
-
-.ig-reel iframe{width:100%;height:120%;border:0;display:block;margin-top:-40px;}
-
-/* crop instagram UI (top profile bar & bottom actions) */
-.ig-reel{background:#000}
-.ig-reel iframe{pointer-events:auto}
-
-
-/* YouTube Shorts style reel strip */
-.ig-reel:hover{transform:translateY(-6px);box-shadow:0 20px 44px rgba(0,0,0,.35)}
+/* subtle hover only */
+.ig-reel:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(0,0,0,.18)}
 
 /* slider dots */
 .ig-dots{display:none;justify-content:center;gap:8px;margin-top:18px}
@@ -224,7 +205,7 @@ footer{background:var(--primary);color:white;padding:45px 5% 18px;margin-top:30p
 <header>
   <div class="header-inner">
     <div class="logo-area">
-      <a href="#home" class="logo-link">
+      <a href="index.html#home" class="logo-link">
         <img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo" class="logo-img">
       </a>
     </div>
@@ -233,7 +214,7 @@ footer{background:var(--primary);color:white;padding:45px 5% 18px;margin-top:30p
       <a href="index.html#home">Home</a>
 
       <div class="nav-item">
-        <a href="index.html#about">Tentang</a>
+        <a href="tentang.html">Tentang</a>
         <div class="nav-dropdown">
           <a href="tentang.html">Profil</a>
           <a href="tentang.html#visi-misi">Visi & Misi</a>
@@ -267,7 +248,7 @@ footer{background:var(--primary);color:white;padding:45px 5% 18px;margin-top:30p
     <a href="index.html#home">Home</a>
 
     <div class="nav-item">
-      <a href="index.html#about">Tentang</a>
+      <a href="tentang.html">Tentang</a>
       <div class="nav-dropdown">
         <a href="tentang.html">Profil</a>
         <a href="tentang.html#visi-misi">Visi & Misi</a>
@@ -292,32 +273,7 @@ footer{background:var(--primary);color:white;padding:45px 5% 18px;margin-top:30p
 </header>
 
 
-<!-- VIDEO INSTAGRAM -->
-<section class="section section-light">
 
-<h2>Aktivitas Central Cat’s</h2>
-
-<div style="max-width:900px;margin:40px auto 0;">
-
-<div class="ig-grid">
-
-<div class="ig-reel">
-<iframe src="https://www.instagram.com/reel/DG95d-rzF2I/embed" width="100%" height="100%" frameborder="0" scrolling="no" loading="lazy"></iframe>
-</div>
-
-<div class="ig-reel">
-<iframe src="https://www.instagram.com/reel/C-rZVoASkHv/embed" width="100%" height="100%" frameborder="0" scrolling="no" loading="lazy"></iframe>
-</div>
-
-<div class="ig-reel">
-<iframe src="https://www.instagram.com/reel/DM4atO2TMO9/embed" width="100%" height="100%" frameborder="0" scrolling="no" loading="lazy"></iframe>
-</div>
-
-</div>
-
-</div>
-
-</section>
 
 
 <!-- PROFIL PERUSAHAAN -->
@@ -388,25 +344,29 @@ Central Cat’s berkomitmen memberikan pelayanan yang profesional dan ramah sehi
 </section>
 
 
-<!-- VISI MISI SINGKAT -->
+<!-- VISI MISI -->
 <section id="visi-misi" class="section section-soft">
 
 <h2>Visi & Misi Central Cat’s</h2>
 
-<div class="content-panel" style="max-width:900px;margin:auto;text-align:left;margin-top:30px;">
+<div class="grid" style="margin-top:40px;">
 
-<h3 style="color:var(--primary);margin-bottom:10px;">Visi</h3>
-<p style="font-size:16px;line-height:1.9;color:#333;">
+<div class="card" style="text-align:left;">
+<h3 style="color:var(--primary);">Visi</h3>
+<p style="margin-top:10px;font-size:16px;line-height:1.9;color:#333;">
 Menjadi petshop dan layanan grooming kucing terpercaya di Tangerang dengan standar perawatan profesional serta produk berkualitas bagi hewan peliharaan.
 </p>
+</div>
 
-<h3 style="color:var(--primary);margin-top:24px;margin-bottom:10px;">Misi</h3>
-<ul style="padding-left:18px;line-height:1.9;color:#333;font-size:16px;">
+<div class="card" style="text-align:left;">
+<h3 style="color:var(--primary);">Misi</h3>
+<ul style="margin-top:10px;padding-left:18px;line-height:1.9;color:#333;font-size:16px;">
 <li>Memberikan layanan grooming kucing dengan standar kebersihan dan perawatan yang baik.</li>
 <li>Menyediakan produk kebutuhan hewan peliharaan yang berkualitas dan terpercaya.</li>
 <li>Mengutamakan kenyamanan serta keselamatan kucing selama proses perawatan.</li>
 <li>Mengembangkan layanan petshop yang profesional bagi pecinta hewan peliharaan.</li>
 </ul>
+</div>
 
 </div>
 
@@ -418,13 +378,13 @@ Menjadi petshop dan layanan grooming kucing terpercaya di Tangerang dengan stand
 
 <h2>Komitmen Central Cat’s</h2>
 
-<div class="content-panel" style="max-width:900px;margin:auto;margin-top:30px;font-size:16px;line-height:1.9;color:#333;text-align:left;">
+<div style="max-width:900px;margin:40px auto 0;text-align:left;">
 
-<p>
+<p style="font-size:16px;line-height:1.9;color:#333;margin-bottom:22px;">
 Central Cat’s berkomitmen untuk memberikan pelayanan yang profesional, aman, dan nyaman bagi setiap hewan peliharaan. Kami percaya bahwa setiap kucing adalah bagian dari keluarga, sehingga setiap layanan yang kami berikan dilakukan dengan perhatian penuh terhadap kesehatan dan kesejahteraan mereka.
 </p>
 
-<p style="margin-top:18px;">
+<p style="font-size:16px;line-height:1.9;color:#333;">
 Melalui tim yang berpengalaman, penggunaan produk yang berkualitas, serta lingkungan perawatan yang bersih, Central Cat’s terus berupaya menjaga kepercayaan pelanggan dan menjadi tempat perawatan kucing yang dapat diandalkan di wilayah Tangerang.
 </p>
 
@@ -442,6 +402,9 @@ Melalui tim yang berpengalaman, penggunaan produk yang berkualitas, serta lingku
 
 <div class="card">
 <h3>Perawatan Profesional</h3>
+<div class="ig-reel" style="margin:20px auto 26px;max-width:220px;">
+<iframe src="https://www.instagram.com/reel/DG95d-rzF2I/embed" frameborder="0" scrolling="no" loading="lazy"></iframe>
+</div>
 <p>
 Setiap layanan grooming dilakukan oleh tenaga yang berpengalaman dengan standar kebersihan tinggi untuk menjaga kesehatan kulit dan bulu kucing.
 </p>
@@ -449,6 +412,9 @@ Setiap layanan grooming dilakukan oleh tenaga yang berpengalaman dengan standar 
 
 <div class="card">
 <h3>Kenyamanan Kucing</h3>
+<div class="ig-reel" style="margin:20px auto 26px;max-width:220px;">
+<iframe src="https://www.instagram.com/reel/C-rZVoASkHv/embed" frameborder="0" scrolling="no" loading="lazy"></iframe>
+</div>
 <p>
 Kami memastikan setiap kucing mendapatkan perlakuan yang lembut dan penuh perhatian agar tetap merasa nyaman selama proses perawatan.
 </p>
@@ -456,6 +422,9 @@ Kami memastikan setiap kucing mendapatkan perlakuan yang lembut dan penuh perhat
 
 <div class="card">
 <h3>Produk Berkualitas</h3>
+<div class="ig-reel" style="margin:20px auto 26px;max-width:220px;">
+<iframe src="https://www.instagram.com/reel/DM4atO2TMO9/embed" frameborder="0" scrolling="no" loading="lazy"></iframe>
+</div>
 <p>
 Central Cat’s menyediakan berbagai produk kebutuhan kucing berkualitas untuk menunjang kesehatan dan kesejahteraan hewan peliharaan.
 </p>
@@ -599,6 +568,16 @@ function hideLoader(){
   setTimeout(()=>{loader.style.display='none';},200);
  }
  document.body.classList.add('loaded');
+
+ /* ensure anchor scroll works after loader */
+ if(window.location.hash){
+   const target=document.querySelector(window.location.hash);
+   if(target){
+     setTimeout(()=>{
+       target.scrollIntoView({behavior:'smooth',block:'start'});
+     },120);
+   }
+ }
 }
 
 window.addEventListener('load',()=>{
