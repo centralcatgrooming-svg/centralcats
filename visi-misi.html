@@ -508,7 +508,7 @@ Melalui tim yang berpengalaman, penggunaan produk yang berkualitas, serta lingku
 <div class="card">
 <h3>Perawatan<br>Profesional</h3>
 <div class="ig-reel" style="margin:20px auto 26px;max-width:220px;">
-<video muted playsinline preload="metadata" class="reel-video">
+<video muted playsinline autoplay loop preload="auto" class="reel-video" style="background:#000">
 <source src="assets/grooming/perawatan_profesional.mp4" type="video/mp4">
 </video>
 </div>
@@ -520,7 +520,7 @@ Setiap layanan grooming dilakukan oleh tenaga yang berpengalaman dengan standar 
 <div class="card">
 <h3>Kenyamanan<br>Kucing</h3>
 <div class="ig-reel" style="margin:20px auto 26px;max-width:220px;">
-<video muted playsinline preload="metadata" class="reel-video">
+<video muted playsinline autoplay loop preload="auto" class="reel-video" style="background:#000">
 <source src="assets/grooming/kenyamanan_kucing.mp4" type="video/mp4">
 </video>
 </div>
@@ -532,7 +532,7 @@ Kami memastikan setiap kucing mendapatkan perlakuan yang lembut dan penuh perhat
 <div class="card">
 <h3>Produk<br>Berkualitas</h3>
 <div class="ig-reel" style="margin:20px auto 26px;max-width:220px;">
-<video muted playsinline preload="metadata" class="reel-video">
+<video muted playsinline autoplay loop preload="auto" class="reel-video" style="background:#000">
 <source src="assets/grooming/Produk_Berkualitas.mp4" type="video/mp4">
 </video>
 </div>
@@ -693,22 +693,12 @@ function hideLoader(){
 
 window.addEventListener('load',()=>{
  const sound=document.getElementById('loader-sound');
- let duration=1000; // fallback
+ const duration=1000;
 
  if(sound){
   sound.volume=0.35;
   sound.currentTime=0;
-  const playPromise=sound.play();
-  if(playPromise!==undefined){
-    playPromise.catch(()=>{});
-  }
-
-  // align loader duration with audio length if available
-  sound.addEventListener('loadedmetadata',()=>{
-    if(sound.duration){
-      duration=Math.min(sound.duration*1000,1500); // cap at 1.5s
-    }
-  });
+  sound.play().catch(()=>{});
  }
 
  setTimeout(hideLoader,duration);
@@ -722,24 +712,14 @@ window.addEventListener('DOMContentLoaded',()=>{
 </script>
 
 <script>
-// smart reel autoplay only when visible
+// ensure videos always render and autoplay safely
 const reelVideos=document.querySelectorAll('.reel-video');
-
-const reelObserver=new IntersectionObserver((entries)=>{
- entries.forEach(entry=>{
-  const video=entry.target;
-  if(entry.isIntersecting){
-    video.play().catch(()=>{});
-  }else{
-    video.pause();
-    video.currentTime=0;
-  }
- });
-},{threshold:0.6});
-
 reelVideos.forEach(v=>{
+ v.muted=true;
+ v.autoplay=true;
  v.loop=true;
- reelObserver.observe(v);
+ v.playsInline=true;
+ v.play().catch(()=>{});
 });
 </script>
 
