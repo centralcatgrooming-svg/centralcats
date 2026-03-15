@@ -37,7 +37,7 @@ body{background:#fff;color:var(--text)}
 
 /* gold progress bar */
 .loader-bar{width:220px;height:4px;background:#e5e7eb;border-radius:4px;overflow:hidden}
-.loader-progress{height:100%;width:0%;background:linear-gradient(90deg,#d4af37,#f6e27a,#d4af37);animation:loaderMove 1s ease forwards}
+.loader-progress{height:100%;width:0%;background:linear-gradient(90deg,#d4af37,#f6e27a,#d4af37);animation:loaderMove 4s ease forwards}
 
 @keyframes loaderMove{0%{width:0%}100%{width:100%}}
 @keyframes loaderPulse{0%{transform:scale(.95);opacity:.7}50%{transform:scale(1.05);opacity:1}100%{transform:scale(.95);opacity:.7}}
@@ -504,7 +504,7 @@ Melalui tim yang berpengalaman, penggunaan produk yang berkualitas, serta lingku
 <div class="card">
 <h3>Perawatan<br>Profesional</h3>
 <div class="ig-reel" style="margin:20px auto 26px;max-width:220px;">
-<video muted playsinline autoplay loop preload="auto" class="reel-video" style="background:#000">
+<video controls preload="metadata" playsinline class="reel-video" style="background:#000">
 <source src="assets/grooming/perawatan_profesional.mp4" type="video/mp4">
 </video>
 </div>
@@ -516,7 +516,7 @@ Setiap layanan grooming dilakukan oleh tenaga yang berpengalaman dengan standar 
 <div class="card">
 <h3>Kenyamanan<br>Kucing</h3>
 <div class="ig-reel" style="margin:20px auto 26px;max-width:220px;">
-<video muted playsinline autoplay loop preload="auto" class="reel-video" style="background:#000">
+<video controls preload="metadata" playsinline class="reel-video" style="background:#000">
 <source src="assets/grooming/kenyamanan_kucing.mp4" type="video/mp4">
 </video>
 </div>
@@ -528,7 +528,7 @@ Kami memastikan setiap kucing mendapatkan perlakuan yang lembut dan penuh perhat
 <div class="card">
 <h3>Produk<br>Berkualitas</h3>
 <div class="ig-reel" style="margin:20px auto 26px;max-width:220px;">
-<video muted playsinline autoplay loop preload="auto" class="reel-video" style="background:#000">
+<video controls preload="metadata" playsinline class="reel-video" style="background:#000">
 <source src="assets/grooming/Produk_Berkualitas.mp4" type="video/mp4">
 </video>
 </div>
@@ -667,16 +667,15 @@ if(igGrid && dots.length){
 </script>
 
 <script>
-// page loader
+// PAGE LOADER + SOUND SYNC
 function hideLoader(){
  const loader=document.getElementById('page-loader');
  if(loader){
   loader.style.opacity='0';
-  setTimeout(()=>{loader.style.display='none';},200);
+  setTimeout(()=>{loader.style.display='none';},400);
  }
  document.body.classList.add('loaded');
 
- /* ensure anchor scroll works after loader */
  if(window.location.hash){
    const target=document.querySelector(window.location.hash);
    if(target){
@@ -687,35 +686,52 @@ function hideLoader(){
  }
 }
 
-window.addEventListener('load',()=>{
+// robust loader (prevents stuck if some assets delay window.load)
+(function(){
  const sound=document.getElementById('loader-sound');
- const duration=1000;
+ const progress=document.querySelector('.loader-progress');
+ const duration=4000; // match sound
 
- if(sound){
-  sound.volume=0.35;
-  sound.currentTime=0;
-  sound.play().catch(()=>{});
+ function startLoader(){
+   if(sound){
+     sound.volume=0.35;
+     sound.currentTime=0;
+     sound.play().catch(()=>{});
+   }
+
+   if(progress){
+     progress.style.animationDuration=duration+'ms';
+   }
+
+   setTimeout(()=>{
+     hideLoader();
+   },duration);
  }
 
- setTimeout(hideLoader,duration);
-});
+ // start when DOM ready (faster & prevents freeze)
+ if(document.readyState==='loading'){
+   document.addEventListener('DOMContentLoaded',startLoader);
+ }else{
+   startLoader();
+ }
 
-// fallback if load event delayed
-// keep it slightly longer than loader duration so animation can finish
-window.addEventListener('DOMContentLoaded',()=>{
- setTimeout(hideLoader,1200);
-});
+ // absolute safety fallback (never stuck)
+ setTimeout(()=>{
+   hideLoader();
+ },6000);
+})();
 </script>
 
 <script>
-// ensure videos always render and autoplay safely
-const reelVideos=document.querySelectorAll('.reel-video');
-reelVideos.forEach(v=>{
- v.muted=true;
- v.autoplay=true;
- v.loop=true;
- v.playsInline=true;
- v.play().catch(()=>{});
+// VIDEO PLAYER MODE (MANUAL CONTROL)
+// Clean video initialization without autoplay
+const reelVideos = document.querySelectorAll('.reel-video');
+
+reelVideos.forEach(video => {
+  video.autoplay = false;
+  video.loop = false;
+  video.muted = false;
+  video.controls = true;
 });
 </script>
 
