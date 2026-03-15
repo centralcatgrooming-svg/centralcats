@@ -112,9 +112,9 @@ nav a:hover::after{width:100%;
 nav a:hover{color:var(--accent);
 }
 
-.hero{background:linear-gradient(135deg,#1e3a8a,#243c94);color:white;padding:110px 5% 110px;
+.hero{background:linear-gradient(135deg,#1e3a8a,#243c94);color:white;padding:100px 20px 90px;width:100%;
 }
-.hero-container{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:40px;
+.hero-container{max-width:1200px;width:100%;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:40px;
 }
 .hero-text h1{font-size:2.6rem;margin-bottom:20px;
 }
@@ -126,7 +126,7 @@ nav a:hover{color:var(--accent);
 .btn:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(0,0,0,.12);
 }
 
-.section{padding:70px 5% 80px;text-align:center;
+.section{padding:70px 20px 80px;text-align:center;width:100%;
 }
 .section h2{font-size:2.2rem;font-weight:700;color:var(--primary);letter-spacing:.5px;position:relative;display:inline-block;
 }
@@ -178,9 +178,9 @@ nav a:hover{color:var(--accent);
 .stars svg{width:18px;height:18px;fill:var(--accent);} 
 
 /* FOOTER */
-footer{background:var(--primary);color:white;padding:45px 5% 18px;margin-top:30px;border-top:3px solid var(--accent);box-shadow:0 -2px 18px rgba(212,175,55,.35);} 
+footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:30px;border-top:3px solid var(--accent);box-shadow:0 -2px 18px rgba(212,175,55,.35);} 
 
-.footer-container{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:60px;align-items:flex-start;} 
+.footer-container{max-width:1100px;width:100%;margin:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:60px;align-items:flex-start;} 
 
 .footer-brand{text-align:left;}
 
@@ -233,12 +233,12 @@ header{height:68px;}
 .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px);} 
 
 /* mobile menu */
-.mobile-nav{display:flex;position:fixed;top:0;right:-260px;width:240px;height:100vh;background:#1e3a8a;flex-direction:column;padding:90px 24px;gap:18px;transition:right .35s ease;box-shadow:-10px 0 30px rgba(0,0,0,.25);} 
+.mobile-nav{display:flex;position:fixed;top:68px;right:-100%;width:100%;height:calc(100vh - 68px);background:#1e3a8a;flex-direction:column;padding:30px 24px;gap:18px;transition:right .35s ease;box-shadow:-10px 0 30px rgba(0,0,0,.25);} 
 .mobile-nav a{margin:0;font-size:14px;color:#fff;} 
 .mobile-nav.open{right:0;} 
 
 /* hero mobile */
-.hero{padding:90px 20px 80px;} 
+.hero{padding:80px 20px 60px;} 
 .hero-container{flex-direction:column;text-align:center;gap:30px;} 
 .hero img{max-width:260px;} 
 .hero-text h1{font-size:1.8rem;} 
@@ -286,7 +286,7 @@ iframe{height:220px;}
 .service-icon img.icon-lg{max-width:90%;max-height:90%;}
 
 /* footer mobile */
-.footer-container{grid-template-columns:1fr;gap:40px;} 
+.footer-container{grid-template-columns:1fr;gap:36px;padding:0 6px;} 
 .footer-info{justify-self:start;} 
 .footer-brand p{max-width:100%;} 
 .footer-social{grid-template-columns:repeat(2,1fr);} 
@@ -513,8 +513,6 @@ Layanan profesional khusus kucing dengan standar higienis, aman, dan penuh perha
   </p>
 </div>
 
-</div>
-
 </section>
 
 <!-- ===== SECTION ===== -->
@@ -573,7 +571,7 @@ Berikut beberapa ulasan pelanggan yang telah menggunakan layanan grooming dan pe
 
 <div class="review-slider" style="margin-top:40px;overflow:hidden;max-width:900px;margin-left:auto;margin-right:auto;">
 
-<div class="review-track" style="display:flex;gap:20px;transition:transform .6s ease;">
+<div class="review-track" style="display:flex;transition:transform .6s ease;">
 
 <div class="card review-card" style="min-width:100%;">
 <div class="stars">
