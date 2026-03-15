@@ -89,7 +89,7 @@ nav a:hover::after{width:100%}
 
 /* 3 column layout for service values */
 .grid-3{grid-template-columns:repeat(3,1fr);max-width:1100px}
-@media(max-width:900px){.grid-3{grid-template-columns:1fr 1fr}}
+
 @media(max-width:768px){.grid-3{grid-template-columns:1fr}}
 @media(max-width:768px){.grid{grid-template-columns:1fr;}}
 .card{background:var(--light);padding:42px 38px;border-radius:22px;border:2px solid transparent;box-shadow:0 8px 24px rgba(0,0,0,.05);transition:.25s;text-align:center;position:relative}
@@ -203,9 +203,7 @@ footer{background:var(--primary);color:white;padding:45px 5% 18px;margin-top:30p
 /* Instagram reels layout */
 .ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;max-width:900px;margin:auto}
 
-@media(max-width:900px){
-.ig-grid{grid-template-columns:repeat(2,1fr)}
-}
+
 
 @media(max-width:600px){
 .ig-grid{display:flex;overflow-x:auto;gap:20px;scroll-snap-type:x mandatory;padding-bottom:6px}
@@ -578,7 +576,7 @@ Indonesia
   </div>
 </div>
 
-<hr style="border:none;border-top:1px solid rgba(255,255,255,.25);margin:10px 0 10px 46px;">
+<hr style="border:none;border-top:1px solid rgba(255,255,255,.25);margin:12px 0;">
 
 <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
   <div style="width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;">
@@ -590,7 +588,7 @@ Indonesia
   </div>
 </div>
 
-<hr style="border:none;border-top:1px solid rgba(255,255,255,.25);margin:10px 0 10px 46px;">
+<hr style="border:none;border-top:1px solid rgba(255,255,255,.25);margin:12px 0;">
 
 <div style="display:flex;align-items:center;gap:12px;">
   <div style="width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;">
@@ -652,119 +650,55 @@ Petshop : 08.00 – 21.00 WIB<br>
 </footer>
 
 <script>
-// mobile slider dots sync
+// ================= LOADER SYSTEM =================
+(function(){
+  const loader=document.getElementById('page-loader');
+  const sound=document.getElementById('loader-sound');
+  const duration=4000; // sync with progress bar animation
+
+  function hideLoader(){
+    document.body.classList.add('loaded');
+  }
+
+  function startLoader(){
+    if(sound){
+      sound.volume=0.35;
+      sound.currentTime=0;
+      sound.play().catch(()=>{});
+    }
+
+    setTimeout(()=>{
+      hideLoader();
+    },duration);
+
+    // safety fallback
+    setTimeout(()=>{
+      hideLoader();
+    },6000);
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',startLoader);
+  }else{
+    startLoader();
+  }
+})();
+
+// ================= MOBILE SLIDER (SAFE) =================
 const igGrid=document.querySelector('.ig-grid');
 const dots=document.querySelectorAll('.ig-dots span');
 
 if(igGrid && dots.length){
   igGrid.addEventListener('scroll',()=>{
-    const cardWidth=igGrid.querySelector('.ig-reel').offsetWidth+20;
+    const card=igGrid.querySelector('.ig-reel');
+    if(!card) return;
+
+    const cardWidth=card.offsetWidth+20;
     const index=Math.round(igGrid.scrollLeft/cardWidth);
+
     dots.forEach(d=>d.style.background='#d1d5db');
     if(dots[index]) dots[index].style.background='#1e3a8a';
   });
-}
-</script>
-
-<script>
-// PAGE LOADER + SOUND SYNC
-function hideLoader(){
- const loader=document.getElementById('page-loader');
- if(loader){
-  loader.style.opacity='0';
-  setTimeout(()=>{loader.style.display='none';},400);
- }
- document.body.classList.add('loaded');
-
- if(window.location.hash){
-   const target=document.querySelector(window.location.hash);
-   if(target){
-     setTimeout(()=>{
-       target.scrollIntoView({behavior:'smooth',block:'start'});
-     },120);
-   }
- }
-}
-
-// robust loader (prevents stuck if some assets delay window.load)
-(function(){
- const sound=document.getElementById('loader-sound');
- const progress=document.querySelector('.loader-progress');
- const duration=4000; // match sound
-
- function startLoader(){
-   if(sound){
-     sound.volume=0.35;
-     sound.currentTime=0;
-     sound.play().catch(()=>{});
-   }
-
-   if(progress){
-     progress.style.animationDuration=duration+'ms';
-   }
-
-   setTimeout(()=>{
-     hideLoader();
-   },duration);
- }
-
- // start when DOM ready (faster & prevents freeze)
- if(document.readyState==='loading'){
-   document.addEventListener('DOMContentLoaded',startLoader);
- }else{
-   startLoader();
- }
-
- // absolute safety fallback (never stuck)
- setTimeout(()=>{
-   hideLoader();
- },6000);
-})();
-</script>
-
-<script>
-// VIDEO PLAYER MODE (MANUAL CONTROL)
-// Clean video initialization without autoplay
-const reelVideos = document.querySelectorAll('.reel-video');
-
-reelVideos.forEach(video => {
-  video.autoplay = false;
-  video.loop = false;
-  video.muted = false;
-  video.controls = true;
-});
-</script>
-
-<script>
-// hamburger menu toggle
-const burger=document.getElementById('hamburger');
-const mobileMenu=document.getElementById('mobileMenu');
-const backdrop=document.getElementById('menu-backdrop');
-
-if(burger && mobileMenu){
- burger.addEventListener('click',()=>{
-  burger.classList.toggle('active');
-  mobileMenu.classList.toggle('open');
-  if(backdrop) backdrop.classList.toggle('show');
- });
-
- // close menu when link clicked
- mobileMenu.querySelectorAll('a').forEach(link=>{
-  link.addEventListener('click',()=>{
-   burger.classList.remove('active');
-   mobileMenu.classList.remove('open');
-   if(backdrop) backdrop.classList.remove('show');
-  });
- });
-
- // close when clicking backdrop
- if(backdrop){
-  backdrop.addEventListener('click',()=>{
-   burger.classList.remove('active');
-   mobileMenu.classList.remove('open');
-   backdrop.classList.remove('show');
-  });
- }
 }
 </script>
 
