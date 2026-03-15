@@ -159,7 +159,16 @@ nav a:hover{color:var(--accent);
 }
 
 
-.service-icon{width:92px;height:92px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.10);margin-bottom:16px;border:2px solid var(--accent);}
+.service-icon{width:92px;height:92px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.10);margin-bottom:16px;border:2px solid var(--accent);overflow:hidden;} 
+
+/* ensure icon stays inside the ring */
+.service-icon img{max-width:80%;max-height:80%;object-fit:contain;transition:transform .35s ease;}
+
+/* slightly larger icons when using icon-md (used by accessories) */
+.service-icon img.icon-md{max-width:90%;max-height:90%;}
+
+/* make grooming kit icon slightly larger but still clipped by ring */
+.service-icon img.icon-lg{max-width:88%;max-height:88%;} 
 
 .icon-sm{max-width:52px;height:auto;}
 .icon-md{max-width:60px;height:auto;}
@@ -174,7 +183,7 @@ footer{background:var(--primary);color:white;padding:45px 5% 18px;margin-top:30p
 .footer-container{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:60px;align-items:flex-start;} 
 
 .footer-brand{text-align:left;} 
-.footer-brand img{height:64px;margin-bottom:16px;} 
+.footer-brand img{height:44px;margin-bottom:16px;} 
 
 .footer-brand p{font-size:12px;line-height:1.7;opacity:.9;margin-top:10px;max-width:420px;} 
 
@@ -225,13 +234,44 @@ header{height:68px;}
 
 /* sections */
 .section{padding:60px 20px 70px;} 
-.grid{grid-template-columns:1fr;gap:26px;} 
-.card{padding:22px 22px;} 
-.card h3{font-size:18px;} 
-.card p{font-size:14px;} 
+
+/* make service cards feel more premium on mobile */
+.grid{grid-template-columns:1fr;gap:28px;} 
+
+.card{
+padding:26px 24px;
+border-radius:18px;
+}
+
+.card h3{
+font-size:18px;
+margin-top:8px;
+}
+
+.card p{
+font-size:14px;
+line-height:1.6;
+}
+
+/* improve icon presentation on mobile */
+.service-icon{
+width:100px;
+height:100px;
+margin-bottom:18px;
+}
+
+.card:hover{
+transform:translateY(-6px) scale(1.01);
+box-shadow:0 16px 40px rgba(0,0,0,.12);
+} 
 
 /* map */
 iframe{height:220px;} 
+
+/* icon behavior mobile (same rule: bigger but never leave ring) */
+.service-icon img{max-width:85%;max-height:85%;}
+.service-icon img.icon-md{max-width:92%;max-height:92%;}
+.service-icon img.icon-lg{max-width:90%;max-height:90%;}
 
 /* footer mobile */
 .footer-container{grid-template-columns:1fr;gap:40px;} 
@@ -239,6 +279,69 @@ iframe{height:220px;}
 .footer-brand p{max-width:100%;} 
 .footer-social{grid-template-columns:repeat(2,1fr);} 
 
+}
+
+/* GLOBAL MOBILE SAFETY FIX */
+body{overflow-x:hidden;}
+img{max-width:100%;height:auto;display:block;}
+
+/* HERO IMAGE FIX MOBILE */
+.hero img{max-width:380px;width:100%;height:auto;margin:auto;}
+
+/* FOOTER MOBILE FIX (prevent cut) */
+.footer-container{width:100%;padding:0 10px;box-sizing:border-box;}
+.footer-social-item{white-space:normal;}
+
+/* MAP RESPONSIVE SAFETY */
+iframe{max-width:100%;}
+
+/* REMOVE TABLET LAYOUT (DESKTOP + MOBILE ONLY) */
+@media(min-width:769px){
+.hero-container{flex-direction:row;}
+}
+
+
+/* ABOUT SECTION IMPROVEMENT */
+.about-wrap{
+max-width:720px;
+margin:auto;
+}
+
+.about-intro{
+margin-top:26px;
+font-size:17px;
+line-height:1.8;
+color:#333;
+font-weight:500;
+}
+
+.about-text{
+margin-top:14px;
+font-size:15px;
+line-height:1.8;
+color:#444;
+}
+
+.about-features{
+margin-top:28px;
+display:flex;
+flex-direction:column;
+gap:12px;
+text-align:left;
+max-width:520px;
+margin-left:auto;
+margin-right:auto;
+}
+
+.about-item{
+font-size:15px;
+color:#333;
+line-height:1.7;
+padding-left:6px;
+}
+
+.about-btn{
+margin-top:32px;
 }
 
 </style>
@@ -261,7 +364,7 @@ iframe{height:220px;}
         <a href="#about">Tentang</a>
         <div class="nav-dropdown">
           <a href="tentang.html">Profil</a>
-          <a href="visi-misi.html">Visi & Misi</a>
+          <a href="tentang.html#visi-misi">Visi & Misi</a>
         </div>
       </div>
 
@@ -294,7 +397,7 @@ iframe{height:220px;}
       <a href="#about">Tentang</a>
       <div class="nav-dropdown">
         <a href="tentang.html">Profil</a>
-        <a href="visi-misi.html">Visi & Misi</a>
+        <a href="tentang.html#visi-misi">Visi & Misi</a>
       </div>
     </div>
 
@@ -664,6 +767,7 @@ Petshop : 08.00 – 21.00 WIB<br>
 </div>
 
 </footer>
+
 <!-- ===== JAVASCRIPT ===== -->
 <script>
 
@@ -707,7 +811,7 @@ window.addEventListener('scroll',function(){
 });
 
 /* MOBILE DROPDOWN ACCORDION */
-document.querySelectorAll('#mobileMenu .nav-item > a').forEach(btn=>{
+ document.querySelectorAll('#mobileMenu .nav-item > a').forEach(btn=>{
  btn.addEventListener('click',function(e){
   const parent=this.parentElement;
   const drop=parent.querySelector('.nav-dropdown');
@@ -729,7 +833,7 @@ if(burger){
 }
 
 /* close menu after click */
-document.querySelectorAll('#mobileMenu a').forEach(link=>{
+ document.querySelectorAll('#mobileMenu a').forEach(link=>{
  link.addEventListener('click',()=>{
   burger.classList.remove('active');
   menu.classList.remove('open');
@@ -753,7 +857,7 @@ function moveReview(){
 setInterval(moveReview,5000);
 
 /* CLOSE MENU WHEN CLICK OUTSIDE */
-document.addEventListener('click',function(e){
+ document.addEventListener('click',function(e){
  const menu=document.getElementById('mobileMenu');
  const burger=document.getElementById('hamburger');
  if(!menu || !burger) return;
