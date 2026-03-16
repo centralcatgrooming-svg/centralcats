@@ -194,12 +194,17 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
  padding:6px 10px;
 }
 .footer-brand .logo-img{
- height:42px;
+ height:46px;
  width:auto;
 } 
  
 
-.footer-brand p{font-size:12px;line-height:1.7;opacity:.9;margin-top:10px;width:100%;} 
+.footer-brand p{font-size:12px;line-height:1.7;opacity:.9;margin-top:14px;width:100%;}
+
+/* optical spacing for cleaner footer hierarchy */
+.footer-brand{margin-bottom:6px;}
+.footer-contact{margin-top:4px;}
+.footer-info{margin-top:4px;} 
 
 .footer-contact{text-align:left;} 
 
@@ -209,7 +214,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
 .footer-social{margin-top:18px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px 26px;align-items:center;max-width:420px;}
 .footer-social-item{display:flex;align-items:center;gap:10px;font-size:13px;color:#fff;text-decoration:none;white-space:nowrap;}
 .footer-social-icon{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.footer-social-item:hover .footer-social-icon{background:var(--accent);} 
+.footer-social-item:hover .footer-social-icon{background:var(--accent);box-shadow:0 0 10px rgba(212,175,55,.55);} 
 .footer-social-item:hover{opacity:.8;} 
 
 .footer-bottom{text-align:center;margin-top:50px;font-size:10px;opacity:.85;border-top:1px solid rgba(255,255,255,.15);padding-top:22px;} 
