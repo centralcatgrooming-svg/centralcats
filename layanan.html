@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Treatment Kutu | Central Cat's</title>
+
+<!-- gunakan CSS yang sama dengan index supaya header tampil normal -->
+<style>
+:root{--primary:#1e3a8a;--accent:#d4af37;--light:#f3f4f6;--text:#111}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#fff;color:var(--text);display:flex;flex-direction:column;min-height:100vh}
+html{scroll-behavior:smooth}
+section{scroll-margin-top:90px}
+
+/* HEADER */
+header{background:var(--primary);height:60px;display:flex;justify-content:center;align-items:center;position:fixed;top:0;left:0;width:100%;z-index:1000;transition:all .3s ease}
+header.scrolled{background:rgba(30,58,138,.92);backdrop-filter:blur(6px);position:fixed}
+.header-inner{width:100%;max-width:1200px;height:60px;display:flex;justify-content:space-between;align-items:center;padding:0 20px}
+.logo-area{display:flex;align-items:center}
+.logo-img{height:44px;width:auto;display:block;transition:transform .35s ease, filter .35s ease}
+.logo-link:hover .logo-img{transform:scale(1.06);filter:drop-shadow(0 2px 6px rgba(0,0,0,.25))}
+.logo-link{display:flex;align-items:center;background:white;padding:0 4px;border-radius:6px;box-shadow:0 3px 8px rgba(0,0,0,.10)}
+
+/* NAV */
+nav.desktop-nav{display:flex;align-items:center;gap:4px}
+nav a{color:white;text-decoration:none;margin-left:20px;font-weight:500;position:relative;font-size:12px;padding:6px 0;display:flex;align-items:center}
+nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--accent);transition:width .25s ease;border-radius:2px}
+nav a:hover::after{width:100%}
+.nav-item{position:relative}
+.nav-dropdown{position:absolute;top:100%;left:0;background:white;border-radius:8px;box-shadow:0 10px 25px rgba(0,0,0,.15);display:none;flex-direction:column;min-width:160px;overflow:hidden;padding-top:6px}
+.nav-dropdown a{color:#111;margin:0;padding:10px 14px;font-size:12px}
+.nav-dropdown a:hover{background:#f3f4f6;color:var(--primary)}
+.nav-item:hover .nav-dropdown{display:flex}
+
+/* MOBILE NAV */
+.hamburger{display:none;cursor:pointer;flex-direction:column;gap:5px}
+.hamburger span{width:26px;height:2px;background:white}
+.mobile-nav{display:none;position:fixed;top:60px;right:-100%;width:100%;height:calc(100vh - 60px);background:#1e3a8a;flex-direction:column;padding:24px;gap:16px;transition:right .35s ease}
+.mobile-nav a{color:#fff;font-size:15px;text-decoration:none}
+.mobile-nav.open{right:0}
+
+/* CONTENT */
+.hero{background:linear-gradient(135deg,#1e3a8a,#243c94);color:white;padding:120px 5% 110px;width:100%}
+main{padding:120px 20px;max-width:1000px;margin:auto;flex:1}
+
+/* FOOTER */
+footer{background:var(--primary);color:white;padding:45px 20px 20px;margin-top:40px;border-top:3px solid var(--accent)}
+.footer-container{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:60px;align-items:flex-start}
+.footer-contact,.footer-info{max-width:360px}
+.footer-brand{text-align:left}
+.footer-brand .logo-link{width:fit-content}
+.footer-brand .logo-img{height:44px;transition:transform .35s ease, filter .35s ease}
+.footer-brand .logo-link:hover .logo-img{transform:scale(1.06);filter:drop-shadow(0 2px 6px rgba(0,0,0,.25))}
+.footer-contact{text-align:left}
+.footer-contact strong{display:block;margin-bottom:10px}
+.footer-contact div{font-size:13px}
+.footer-contact a{color:#fff;text-decoration:none;font-weight:600}
+.footer-contact hr{border:none;border-top:1px solid rgba(255,255,255,.25);margin:12px 0}
+
+/* CONTACT ICON HOVER EFFECT */
+.footer-contact svg{transition:transform .2s ease}
+.footer-contact > div:hover svg{transform:scale(1.15)}
+
+/* SOCIAL */
+.footer-social{margin-top:18px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px 26px;align-items:center;max-width:420px}
+.footer-social-item{display:flex;align-items:center;gap:10px;font-size:13px;color:#fff;text-decoration:none;white-space:nowrap}
+.footer-social-icon{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.footer-social-item:hover .footer-social-icon{background:var(--accent)}
+.footer-social-item:hover{opacity:.85}
+
+.footer-info{text-align:left;justify-self:start}
+.footer-info strong{font-size:14px;font-weight:600;display:block;margin-bottom:10px}
+
+.footer-bottom{text-align:center;margin-top:40px;font-size:11px;opacity:.85;border-top:1px solid rgba(255,255,255,.2);padding-top:18px}
+
+@media(max-width:768px){
+header{height:68px}
+.header-inner{height:68px}
+.logo-img{height:48px}
+.desktop-nav{display:none}
+.hamburger{display:flex}
+.mobile-nav{display:flex}
+.footer-container{grid-template-columns:1fr}
+main{padding:100px 20px}
+}
+</style>
+
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+
+    <div class="logo-area">
+      <a href="index.html#home" class="logo-link">
+        <img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo" class="logo-img">
+      </a>
+    </div>
+
+    <nav class="desktop-nav">
+      <a href="index.html#home">Home</a>
+
+      <div class="nav-item">
+        <a href="index.html#about">Tentang</a>
+        <div class="nav-dropdown">
+          <a href="tentang.html">Profil</a>
+          <a href="tentang.html#visi-misi">Visi & Misi</a>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        <a href="index.html#services">Layanan</a>
+        <div class="nav-dropdown">
+          <a href="layanan.html#paket-grooming">Paket Grooming</a>
+          <a href="layanan.html#treatment-kutu">Treatment Kutu</a>
+          <a href="layanan.html#cat-hotel">Cat Hotel</a>
+        </div>
+      </div>
+
+      <a href="index.html#products">Produk</a>
+      <a href="index.html#reviews">Ulasan</a>
+      <a href="index.html#location">Lokasi</a>
+
+      <a href="karir.html">Karir</a>
+
+      <div class="nav-item">
+        <a href="kerjasama.html">Kerjasama</a>
+        <div class="nav-dropdown">
+          <a href="supplier.html">Supplier</a>
+          <a href="waralaba.html">Waralaba</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+  </div>
+
+  <nav id="mobileMenu" class="mobile-nav">
+    <a href="index.html#home">Home</a>
+
+    <div class="nav-item">
+      <a href="index.html#about">Tentang</a>
+      <div class="nav-dropdown">
+        <a href="tentang.html">Profil</a>
+        <a href="tentang.html#visi-misi">Visi & Misi</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="index.html#services">Layanan</a>
+      <div class="nav-dropdown">
+        <a href="layanan.html#paket-grooming">Paket Grooming</a>
+        <a href="layanan.html#treatment-kutu">Treatment Kutu</a>
+        <a href="layanan.html#cat-hotel">Cat Hotel</a>
+      </div>
+    </div>
+
+    <a href="index.html#products">Produk</a>
+    <a href="index.html#reviews">Ulasan</a>
+    <a href="index.html#location">Lokasi</a>
+
+    <a href="karir.html">Karir</a>
+
+    <div class="nav-item">
+      <a href="kerjasama.html">Kerjasama</a>
+      <div class="nav-dropdown">
+        <a href="supplier.html">Supplier</a>
+        <a href="waralaba.html">Waralaba</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<section id="paket-grooming" style="margin-bottom:80px;">
+<h1 style="font-size:28px;color:var(--primary);margin-bottom:14px;">Paket Grooming</h1>
+<p style="max-width:720px;line-height:1.7;margin-bottom:30px;">
+Layanan grooming lengkap untuk menjaga kebersihan dan kesehatan bulu kucing.
+Perawatan dilakukan oleh groomer berpengalaman dengan produk yang aman
+untuk kulit dan bulu kucing.
+</p>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;">
+
+<div style="background:var(--light);padding:22px;border-radius:14px;">
+<h3 style="margin-bottom:8px;">Basic Grooming</h3>
+<p style="font-size:14px;line-height:1.6;">Mandi, pengeringan, pembersihan telinga, pemotongan kuku dan perawatan dasar bulu.</p>
+</div>
+
+<div style="background:var(--light);padding:22px;border-radius:14px;">
+<h3 style="margin-bottom:8px;">Complete Grooming</h3>
+<p style="font-size:14px;line-height:1.6;">Perawatan lengkap termasuk styling bulu, pembersihan menyeluruh dan finishing.</p>
+</div>
+
+<div style="background:var(--light);padding:22px;border-radius:14px;">
+<h3 style="margin-bottom:8px;">Premium Grooming</h3>
+<p style="font-size:14px;line-height:1.6;">Perawatan premium dengan shampoo khusus dan treatment tambahan untuk kesehatan bulu.</p>
+</div>
+
+</div>
+</section>
+
+<section id="treatment-kutu" style="margin-bottom:80px;">
+<h1 style="font-size:28px;color:var(--primary);margin-bottom:14px;">Treatment Kutu</h1>
+<p style="max-width:720px;line-height:1.7;margin-bottom:30px;">
+Treatment khusus untuk membantu mengatasi kutu pada kucing secara aman
+menggunakan produk anti-parasit yang diformulasikan khusus untuk hewan peliharaan.
+</p>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;">
+
+<div style="background:var(--light);padding:22px;border-radius:14px;">
+<h3 style="margin-bottom:8px;">Pembersihan Kutu</h3>
+<p style="font-size:14px;line-height:1.6;">Membersihkan kutu dan telur kutu yang menempel pada bulu dan kulit kucing.</p>
+</div>
+
+<div style="background:var(--light);padding:22px;border-radius:14px;">
+<h3 style="margin-bottom:8px;">Anti Parasite Treatment</h3>
+<p style="font-size:14px;line-height:1.6;">Penggunaan produk khusus untuk membantu membasmi kutu secara efektif.</p>
+</div>
+
+<div style="background:var(--light);padding:22px;border-radius:14px;">
+<h3 style="margin-bottom:8px;">Skin Care</h3>
+<p style="font-size:14px;line-height:1.6;">Perawatan kulit untuk membantu mengurangi iritasi akibat kutu.</p>
+</div>
+
+</div>
+</section>
+
+<section id="cat-hotel" style="margin-bottom:40px;">
+<h1 style="font-size:28px;color:var(--primary);margin-bottom:14px;">Cat Hotel</h1>
+<p style="max-width:720px;line-height:1.7;margin-bottom:30px;">
+Layanan penitipan kucing yang aman dan nyaman selama pemilik bepergian.
+Kucing akan dirawat dengan pengawasan serta kebersihan yang terjaga.
+</p>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;">
+
+<div style="background:var(--light);padding:22px;border-radius:14px;">
+<h3 style="margin-bottom:8px;">Kandang Bersih</h3>
+<p style="font-size:14px;line-height:1.6;">Area penitipan yang bersih dan nyaman untuk menjaga kesehatan kucing.</p>
+</div>
+
+<div style="background:var(--light);padding:22px;border-radius:14px;">
+<h3 style="margin-bottom:8px;">Monitoring</h3>
+<p style="font-size:14px;line-height:1.6;">Kucing dipantau secara berkala untuk memastikan kondisi tetap baik.</p>
+</div>
+
+<div style="background:var(--light);padding:22px;border-radius:14px;">
+<h3 style="margin-bottom:8px;">Perawatan Harian</h3>
+<p style="font-size:14px;line-height:1.6;">Pemberian makan dan perawatan rutin sesuai kebutuhan kucing.</p>
+</div>
+
+</div>
+</section>
+
+</main>
+
+<!-- FOOTER LOCKED - FINAL STRUCTURE DO NOT MODIFY -->
+
+<!-- ===== FOOTER ===== -->
+<footer>
+
+<div class="footer-container">
+
+<div class="footer-brand">
+
+<a href="index.html#home" class="logo-link">
+<img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo" class="logo-img">
+</a>
+
+<p style="font-size:12px;line-height:1.7;opacity:.9;margin-top:14px;">
+<strong style="font-size:14px;">Office</strong><br>
+Jl. Raya Bumi Indah Tahap 3<br>
+Ruko Union Square RMR 03<br>
+Sukamantri, Pasar Kemis<br>
+Kabupaten Tangerang, Banten 15560<br>
+Indonesia
+</p>
+
+</div>
+
+<div class="footer-contact" style="text-align:left;">
+
+<strong style="font-size:14px;display:block;margin-bottom:10px;">Hubungi Kami</strong>
+
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+  <div style="width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fbbf24" viewBox="0 0 24 24"><path d="M12 13.065 2.4 6.6A2 2 0 0 1 4 6h16a2 2 0 0 1 1.6.8L12 13.065ZM22 8.236v9.764a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.236l9.445 6.356a1 1 0 0 0 1.11 0L22 8.236Z"/></svg>
+  </div>
+  <div>
+    <div style="font-size:13px;opacity:.85;">Email</div>
+    <a href="mailto:customercare@central-cats.com" style="color:#fff;font-weight:600;text-decoration:none;font-size:13px;">customercare@central-cats.com</a>
+  </div>
+</div>
+
+<hr style="border:none;border-top:1px solid rgba(255,255,255,.25);margin:10px 0 10px 46px;">
+
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+  <div style="width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#22c55e" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.768.967-.94 1.164-.173.198-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.787-1.48-1.758-1.653-2.055-.173-.297-.018-.458.13-.606.135-.135.297-.347.446-.52.149-.173.198-.297.297-.495.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51l-.57-.01c-.198 0-.52.075-.792.371-.272.297-1.04 1.016-1.04 2.479s1.065 2.877 1.213 3.075c.149.198 2.095 3.2 5.077 4.487.71.306 1.262.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.414.248-.694.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/></svg>
+  </div>
+  <div>
+    <div style="font-size:13px;opacity:.85;">WhatsApp</div>
+    <a href="https://wa.me/6282111827798" style="color:#fff;font-weight:600;text-decoration:none;font-size:12px;">0821‑1182‑7798</a>
+  </div>
+</div>
+
+<hr style="border:none;border-top:1px solid rgba(255,255,255,.25);margin:10px 0 10px 46px;">
+
+<div style="display:flex;align-items:center;gap:12px;">
+  <div style="width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#38bdf8" viewBox="0 0 24 24"><path d="M20 2H4a2 2 0 0 0-2 2v14l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Zm-2 7H6V7h12v2Zm-4 4H6v-2h8v2Z"/></svg>
+  </div>
+  <div>
+    <div style="font-size:13px;opacity:.85;">SMS</div>
+    <span style="font-size:13px;font-weight:600;">0821‑1182‑7798</span>
+  </div>
+</div>
+
+</div>
+
+<div class="footer-info">
+
+<strong>Media Sosial</strong>
+
+<div class="footer-social">
+
+<a class="footer-social-item" href="https://www.instagram.com/centralcat_official" target="_blank" rel="noopener">
+<div class="footer-social-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M7.75 2C4.57 2 2 4.57 2 7.75v8.5C2 19.43 4.57 22 7.75 22h8.5C19.43 22 22 19.43 22 16.25v-8.5C22 4.57 19.43 2 16.25 2h-8.5zm0 2h8.5A3.75 3.75 0 0 1 20 7.75v8.5A3.75 3.75 0 0 1 16.25 20h-8.5A3.75 3.75 0 0 1 4 16.25v-8.5A3.75 3.75 0 0 1 7.75 4zm9.5 1.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
+</div>
+<span>@centralcat_official</span>
+</a>
+
+<a class="footer-social-item" href="https://www.youtube.com/@central_cats" target="_blank" rel="noopener">
+<div class="footer-social-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 0 0 .5 6.2 31.2 31.2 0 0 0 0 12a31.2 31.2 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.2 31.2 0 0 0 24 12a31.2 31.2 0 0 0-.5-5.8zM9.8 15.5v-7l6 3.5-6 3.5z"/></svg>
+</div>
+<span>@central_cats</span>
+</a>
+
+<a class="footer-social-item" href="https://www.tiktok.com/@central_cats" target="_blank" rel="noopener">
+<div class="footer-social-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M16 1a6.9 6.9 0 0 0 1.9 4.7A6.9 6.9 0 0 0 22 7v3.1a9.9 9.9 0 0 1-6-2v6.4a6.5 6.5 0 1 1-5.6-6.4v3.2a3.3 3.3 0 1 0 2.4 3.2V1h3.2z"/></svg>
+</div>
+<span>@central_cats</span>
+</a>
+
+</div>
+
+<strong style="margin-top:24px;display:block;">Informasi</strong>
+
+<p style="margin-top:10px;font-size:12px;opacity:.9;line-height:1.7;">
+Grooming : 08.00 – 18.00 WIB<br>
+Petshop : 08.00 – 21.00 WIB<br>
+<span style="color:#ffd27f;">Reservasi maksimal 16.00 WIB</span>
+</p>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+© 2026 Central Cat’s. All Rights Reserved.
+</div>
+
+</footer>
+
+<!-- MOBILE MENU SCRIPT (stable & minimal) -->
+<script>
+const burger=document.getElementById('hamburger');
+const menu=document.getElementById('mobileMenu');
+
+if(burger && menu){
+ burger.addEventListener('click',()=>{
+   burger.classList.toggle('active');
+   menu.classList.toggle('open');
+ });
+
+ // close menu after clicking a link
+ menu.querySelectorAll('a').forEach(link=>{
+   link.addEventListener('click',()=>{
+     menu.classList.remove('open');
+     burger.classList.remove('active');
+   });
+ });
+}
+</script>
+
+</body>
+</html>
