@@ -40,6 +40,7 @@
 <meta name="twitter:image" content="https://www.centralcats.id/assets/logo/logo-horizontal.png">
 
 <link rel="preload" as="image" href="/assets/logo/logo-horizontal.png">
+<link rel="preload" as="image" href="/assets/images/maskot/maskot-about.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -121,7 +122,7 @@ nav a:hover{color:var(--accent);
 
 .hero{background:linear-gradient(135deg,#1e3a8a,#243c94);color:white;padding:120px 5% 110px;width:100%;
 }
-.hero-container{max-width:1200px;width:100%;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:40px;
+.hero-container{max-width:1200px;width:100%;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:40px;contain:layout paint;
 }
 .hero-text h1{font-size:2.6rem;margin-bottom:20px;
 }
@@ -406,8 +407,13 @@ iframe{height:220px;}
 body{overflow-x:hidden;}
 img{max-width:100%;height:auto;display:block;}
 
+/* PERFORMANCE: prevent layout shift & improve rendering */
+img[loading="lazy"]{content-visibility:auto;contain-intrinsic-size:300px 300px;}
+
+
 /* HERO IMAGE FIX MOBILE */
 .hero img{max-width:360px;width:100%;height:auto;margin:auto;}
+.hero-mascot{max-width:320px;width:100%;height:auto;margin:auto;}
 
 /* FOOTER MOBILE FIX (prevent cut) */
 .footer-container{box-sizing:border-box;}
@@ -580,7 +586,7 @@ margin-top:32px;
   <div class="hero-container">
 
     <div style="flex:1;text-align:center;">
-      <img fetchpriority="high" decoding="async" src="assets/images/maskot/maskotmaskot-about-transparent.png" alt="Maskot Central Cat’s - Grooming & Petshop Tangerang" width="380" height="380" style="max-width:300px;width:100%;height:auto;">
+      <img class="hero-mascot" fetchpriority="high" loading="eager" decoding="async" src="assets/images/maskot/maskot-about.webp" alt="Maskot Central Cat’s - Grooming & Petshop Tangerang" width="380" height="380">
     </div>
 
     <div class="hero-text" style="flex:1;">
