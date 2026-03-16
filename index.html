@@ -203,7 +203,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
 
 .footer-contact{text-align:left;} 
 
-.footer-info{text-align:left;justify-self:end;} 
+.footer-info{text-align:left;justify-self:start;} 
 .footer-info strong{font-size:14px;display:block;margin-bottom:10px;} 
 
 .footer-social{margin-top:18px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px 26px;align-items:center;max-width:420px;}
@@ -873,7 +873,7 @@ Indonesia
 
 </div>
 
-<div class="footer-info" style="max-width:260px;justify-self:end;">
+<div class="footer-info" style="max-width:320px;">
 
 <strong>Media Sosial</strong>
 
@@ -994,6 +994,7 @@ if(burger){
 
 /* REVIEW SLIDER (continuous move to the right, infinite loop) */
 const reviewTrack=document.querySelector('.review-track');
+let reviewInterval; // interval declared globally to avoid scope bug
 let reviewCards=document.querySelectorAll('.review-card');
 let reviewIndex=0;
 
@@ -1024,7 +1025,7 @@ if(reviewTrack && reviewCards.length>0){
    }
  }
 
- let reviewInterval=setInterval(moveReview,6000);
+ reviewInterval=setInterval(moveReview,6000);
 }
 
 /* pause slider on hover for smoother UX */
