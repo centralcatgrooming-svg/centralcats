@@ -61,15 +61,18 @@ nav.desktop-nav{display:flex;align-items:center}
 /* ===== GLOBAL HEADER-FOOTER CONSISTENCY LOCK ===== */
 /* Do not override header/footer styles per page. Use this as single source of truth */
 @media(max-width:768px){
+header{height:68px}
+.header-inner{height:68px}
+.logo-img{height:48px}
 .desktop-nav{display:none}
-.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer}
+.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;z-index:1200}
 .hamburger span{width:26px;height:2px;background:white;border-radius:2px;transition:.3s}
 
 .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .hamburger.active span:nth-child(2){opacity:0}
 .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
 
-.mobile-nav{display:flex;position:fixed;top:60px;right:-100%;width:100%;height:calc(100vh - 60px);background:#1e3a8a;flex-direction:column;padding:30px 24px;gap:18px;transition:right .35s ease;box-shadow:-10px 0 30px rgba(0,0,0,.25)}
+.mobile-nav{display:flex;position:fixed;top:68px;right:-100%;width:100%;height:calc(100vh - 68px);background:#1e3a8a;flex-direction:column;padding:30px 24px;gap:18px;transition:right .35s ease;box-shadow:-10px 0 30px rgba(0,0,0,.25);z-index:1200}
 .mobile-nav a{margin:0;font-size:16px;color:#fff;padding:10px 0}
 .mobile-nav.open{right:0}
 
@@ -89,8 +92,6 @@ nav.desktop-nav{display:flex;align-items:center}
 #mobileMenu .nav-item{width:100%}
 
 }
-
-
 
 #menu-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.35);backdrop-filter:blur(2px);opacity:0;visibility:hidden;transition:.3s;z-index:1100}
 #menu-backdrop.show{opacity:1;visibility:visible}
@@ -127,9 +128,6 @@ nav.desktop-nav{display:flex;align-items:center}
 .card h3{font-size:20px;margin-bottom:12px;color:var(--primary);font-weight:700} @media(min-width:768px){.card h3{font-size:24px;margin-bottom:16px;}}
 .card p{font-size:14px;line-height:1.7;color:#333;max-width:460px;margin:auto} @media(min-width:768px){.card p{font-size:17px;line-height:1.85;}}
 
-
-
-
 /* content panels for text sections */
 .content-panel{background:#ffffff;border-radius:18px;padding:28px;box-shadow:0 10px 35px rgba(0,0,0,.06);} @media(min-width:768px){.content-panel{padding:48px;max-width:900px;margin:auto;}}
 
@@ -138,18 +136,9 @@ nav.desktop-nav{display:flex;align-items:center}
 
 .section-soft{background:#f9fafb}
 .section-light{background:#f3f4f6}
-footer{background:var(--primary);color:white;padding:60px 20px 24px;margin-top:40px;position:relative}
+footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:30px;border-top:3px solid var(--accent);box-shadow:0 -2px 18px rgba(212,175,55,.35);}
 
-/* GOLD LINE TOP BORDER */
-footer::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:4px;
-  background:linear-gradient(90deg,#d4af37,#f6e27a,#d4af37);
-}
+
 
 /* ensure consistent footer typography across all pages */
 footer, .footer-container, .footer-contact, .footer-info{
@@ -162,7 +151,7 @@ footer a{
 }
 
 /* footer logo same as header */
-.footer-brand .logo-link{display:inline-flex;align-items:center;background:white;padding:4px 6px;border-radius:6px;box-shadow:0 3px 8px rgba(0,0,0,.10);overflow:hidden}
+.footer-brand .logo-link{display:inline-flex;align-items:center;background:white;padding:6px 10px;border-radius:6px;box-shadow:0 3px 8px rgba(0,0,0,.10);overflow:hidden}
 .footer-brand .logo-img{height:48px;width:auto;transition:transform .3s ease;display:block}
 
 /* FOOTER SOCIAL - EXACT MATCH INDEX */
@@ -221,7 +210,17 @@ footer a{
 .footer-contact div:hover svg{
   transform:scale(1.15);
 }
-.footer-container{max-width:1200px;margin:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:60px;align-items:start;width:100%}
+.footer-container{max-width:1100px;width:100%;margin:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:60px;align-items:flex-start;}
+
+/* FOOTER TITLE CONSISTENCY (MATCH INDEX) */
+.footer-contact strong,
+.footer-info strong{
+  font-size:14px;
+  display:block;
+  margin-bottom:12px;
+  font-weight:600;
+  letter-spacing:.3px;
+}
 .footer-bottom{text-align:center;margin-top:60px;font-size:11px;opacity:.85;border-top:1px solid rgba(255,255,255,.15);padding-top:26px}
 
 /* MOBILE FOOTER IMPROVEMENT */
@@ -303,14 +302,8 @@ footer a{
 
 }
 
-
-
-
-
 /* Instagram reels layout */
 .ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:900px;margin:auto}
-
-
 
 @media(max-width:600px){
 .ig-grid{display:flex;overflow-x:auto;gap:16px;scroll-snap-type:x mandatory;padding-bottom:6px}
@@ -335,8 +328,6 @@ footer a{
 .ig-dots{display:flex}
 }
 
-
-
 /* ===== UTILITIES (REFactor: replace inline styles) ===== */
 .text-container{max-width:900px;margin:auto;text-align:left}
 .mt-40{margin:40px auto 0}
@@ -353,7 +344,6 @@ footer a{
     max-width:100%;
   }
 }
-
 
 /* ===== FINAL MOBILE UX POLISH (NON-DESTRUCTIVE) ===== */
 @media(max-width:768px){
@@ -457,6 +447,18 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   }
 
+  // MOBILE DROPDOWN ACCORDION (LOCKED BEHAVIOR)
+  document.querySelectorAll('#mobileMenu .nav-item > a').forEach(btn=>{
+    btn.addEventListener('click',function(e){
+      const parent=this.parentElement;
+      const drop=parent.querySelector('.nav-dropdown');
+      if(drop){
+        e.preventDefault();
+        drop.style.display = drop.style.display==='flex'?'none':'flex';
+      }
+    });
+  });
+
   window.addEventListener('scroll', () => {
     const header = document.querySelector('header');
     if(header){
@@ -473,34 +475,20 @@ document.addEventListener('DOMContentLoaded', function(){
 </head>
 <body>
 
-<!-- PAGE LOADER -->
-<div id="page-loader">
-<img src="assets/logo/logo-horizontal.png" alt="Central Cats Loading">
-
-<div class="loader-bar">
-<div class="loader-progress"></div>
-</div>
-
-
-
-</div>
-
-
-<!-- ===== CENTRAL CAT'S HEADER (UPGRADED SYSTEM - DO NOT MODIFY STRUCTURE) ===== -->
+<!-- HEADER LOCKED - FINAL STRUCTURE DO NOT MODIFY -->
 <header>
   <div class="header-inner">
     <div class="logo-area">
-      <a href="index.html#home" class="logo-link">
+      <a href="#home" class="logo-link">
         <img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo" class="logo-img">
       </a>
     </div>
 
-    <!-- DESKTOP MENU -->
     <nav class="desktop-nav">
-      <a href="index.html#home">Home</a>
+      <a href="#home">Home</a>
 
       <div class="nav-item">
-        <a href="tentang.html">Tentang</a>
+        <a href="#about">Tentang</a>
         <div class="nav-dropdown">
           <a href="tentang.html">Profil</a>
           <a href="tentang.html#visi-misi">Visi & Misi</a>
@@ -508,17 +496,16 @@ document.addEventListener('DOMContentLoaded', function(){
       </div>
 
       <div class="nav-item">
-        <a href="layanan.html">Layanan</a>
-        <div class="nav-dropdown">
-          <a href="layanan.html#paket-grooming">Paket Grooming</a>
-          <a href="layanan.html#treatment-kutu">Treatment Kutu</a>
-          <a href="layanan.html#cat-hotel">Cat Hotel</a>
-        </div>
+      <a href="#services">Layanan</a>
+      <div class="nav-dropdown">
+        <a href="layanan.html#paket-grooming">Paket Grooming</a>
+        <a href="layanan.html#treatment-kutu">Treatment Kutu</a>
+        <a href="layanan.html#cat-hotel">Cat Hotel</a>
       </div>
-
-      <a href="index.html#products">Produk</a>
-      <a href="index.html#reviews">Ulasan</a>
-      <a href="index.html#location">Lokasi</a>
+    </div>
+      <a href="#products">Produk</a>
+      <a href="#reviews">Ulasan</a>
+      <a href="#location">Lokasi</a>
       <a href="karir.html">Karir</a>
 
       <div class="nav-item">
@@ -530,7 +517,6 @@ document.addEventListener('DOMContentLoaded', function(){
       </div>
     </nav>
 
-    <!-- HAMBURGER -->
     <div class="hamburger" id="hamburger">
       <span></span>
       <span></span>
@@ -538,15 +524,11 @@ document.addEventListener('DOMContentLoaded', function(){
     </div>
   </div>
 
-  <!-- BACKDROP -->
-  <div id="menu-backdrop"></div>
-
-  <!-- MOBILE MENU -->
-  <nav id="mobileMenu" class="mobile-nav">
-    <a href="index.html#home">Home</a>
+<nav id="mobileMenu" class="mobile-nav">
+    <a href="#home">Home</a>
 
     <div class="nav-item">
-      <a href="tentang.html">Tentang</a>
+      <a href="#about">Tentang</a>
       <div class="nav-dropdown">
         <a href="tentang.html">Profil</a>
         <a href="tentang.html#visi-misi">Visi & Misi</a>
@@ -554,17 +536,16 @@ document.addEventListener('DOMContentLoaded', function(){
     </div>
 
     <div class="nav-item">
-      <a href="layanan.html">Layanan</a>
+      <a href="#services">Layanan</a>
       <div class="nav-dropdown">
         <a href="layanan.html#paket-grooming">Paket Grooming</a>
         <a href="layanan.html#treatment-kutu">Treatment Kutu</a>
         <a href="layanan.html#cat-hotel">Cat Hotel</a>
       </div>
     </div>
-
-    <a href="index.html#products">Produk</a>
-    <a href="index.html#reviews">Ulasan</a>
-    <a href="index.html#location">Lokasi</a>
+    <a href="#products">Produk</a>
+      <a href="#reviews">Ulasan</a>
+    <a href="#location">Lokasi</a>
     <a href="karir.html">Karir</a>
 
     <div class="nav-item">
@@ -574,36 +555,34 @@ document.addEventListener('DOMContentLoaded', function(){
         <a href="waralaba.html">Waralaba</a>
       </div>
     </div>
-  </nav>
+</nav>
 </header>
 
-<!-- PROFIL PERUSAHAAN -->
-<section class="section section-light">
+<!-- BACKDROP (MOBILE MENU) -->
+<div id="menu-backdrop"></div>
 
-<div class="content-panel text-container">
+<!-- ===== SECTION PROFIL ===== -->
+<section class="section section-soft" id="profil">
+  <div class="content-panel text-container">
+    <h2>Profil Central Cat’s</h2>
 
-<h2 style="text-align:center;">Profil Central Cat’s</h2>
+    <p>
+      Central Cat’s merupakan petshop dan layanan grooming khusus kucing yang berlokasi di Tangerang. Kami hadir untuk memberikan layanan perawatan kucing yang profesional dengan standar higienis yang baik serta perhatian penuh terhadap kenyamanan hewan peliharaan.
+    </p>
 
-<p style="margin-top:30px;font-size:16px;line-height:1.9;color:#333;">
-Central Cat’s merupakan petshop dan layanan grooming khusus kucing yang berlokasi di Tangerang. Kami hadir untuk memberikan layanan perawatan kucing yang profesional dengan standar higienis yang baik serta perhatian penuh terhadap kenyamanan hewan peliharaan.
-</p>
+    <p>
+      Kami memahami bahwa kucing merupakan bagian penting dari keluarga. Oleh karena itu setiap layanan yang kami berikan dilakukan dengan penuh perhatian oleh tim yang berpengalaman dalam menangani berbagai karakter kucing.
+    </p>
 
-<p style="margin-top:18px;font-size:16px;line-height:1.9;color:#333;">
-Kami memahami bahwa kucing merupakan bagian penting dari keluarga. Oleh karena itu setiap layanan yang kami berikan dilakukan dengan penuh perhatian oleh tim yang berpengalaman dalam menangani berbagai karakter kucing.
-</p>
+    <p>
+      Selain layanan grooming kucing, Central Cat’s juga menyediakan berbagai kebutuhan hewan peliharaan melalui petshop yang menyediakan makanan kucing, pasir kucing, vitamin, serta perlengkapan kucing berkualitas.
+    </p>
 
-<p style="margin-top:18px;font-size:16px;line-height:1.9;color:#333;">
-Selain layanan grooming kucing, Central Cat’s juga menyediakan berbagai kebutuhan hewan peliharaan melalui petshop yang menyediakan makanan kucing, pasir kucing, vitamin, serta perlengkapan kucing berkualitas.
-</p>
-
-<p style="margin-top:18px;font-size:16px;line-height:1.9;color:#333;">
-Dengan berkembangnya kebutuhan layanan perawatan hewan peliharaan, Central Cat’s terus berupaya meningkatkan kualitas layanan serta memperluas jaringan layanan agar dapat menjangkau lebih banyak pecinta kucing di wilayah Tangerang dan sekitarnya.
-</p>
-
-</div>
-
+    <p>
+      Dengan berkembangnya kebutuhan layanan perawatan hewan peliharaan, Central Cat’s terus berupaya meningkatkan kualitas layanan serta memperluas jaringan layanan agar dapat menjangkau lebih banyak pecinta kucing di wilayah Tangerang dan sekitarnya.
+    </p>
+  </div>
 </section>
-
 
 <!-- KEUNGGULAN CENTRAL CATS -->
 <section class="section section-light">
@@ -742,6 +721,8 @@ Central Cat’s menyediakan berbagai produk kebutuhan kucing berkualitas untuk m
 </section>
 
 
+<!-- FOOTER LOCKED - FINAL STRUCTURE DO NOT MODIFY -->
+
 <!-- ===== FOOTER ===== -->
 <footer>
 
@@ -749,11 +730,11 @@ Central Cat’s menyediakan berbagai produk kebutuhan kucing berkualitas untuk m
 
 <div class="footer-brand">
 
-<a href="index.html#home" class="logo-link logo-footer">
+<a href="index.html#home" class="logo-link">
 <img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo" class="logo-img">
 </a>
 
-<p style="font-size:12px;line-height:1.7;opacity:.9;margin-top:4px;">
+<p style="font-size:12px;line-height:1.7;opacity:.9;margin-top:14px;">
 <strong style="font-size:14px;">Office</strong><br>
 Jl. Raya Bumi Indah Tahap 3<br>
 Ruko Union Square RMR 03<br>
@@ -764,7 +745,7 @@ Indonesia
 
 </div>
 
-<div class="footer-contact footer-contact-box">
+<div class="footer-contact" style="text-align:left;max-width:320px;">
 
 <strong style="font-size:14px;display:block;margin-bottom:10px;">Hubungi Kami</strong>
 
@@ -778,7 +759,7 @@ Indonesia
   </div>
 </div>
 
-<hr style="border:none;border-top:1px solid rgba(255,255,255,.25);margin:12px 0;">
+<hr style="border:none;border-top:1px solid rgba(255,255,255,.25);margin:10px 0 10px 46px;">
 
 <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
   <div style="width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;">
@@ -790,7 +771,7 @@ Indonesia
   </div>
 </div>
 
-<hr style="border:none;border-top:1px solid rgba(255,255,255,.25);margin:12px 0;">
+<hr style="border:none;border-top:1px solid rgba(255,255,255,.25);margin:10px 0 10px 46px;">
 
 <div style="display:flex;align-items:center;gap:12px;">
   <div style="width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;">
@@ -804,27 +785,27 @@ Indonesia
 
 </div>
 
-<div class="footer-info footer-info-box">
+<div class="footer-info" style="max-width:320px;">
 
-<strong style="font-size:14px;display:block;margin-bottom:10px;">Media Sosial</strong>
+<strong>Media Sosial</strong>
 
 <div class="footer-social">
 
-<a class="footer-social-item" href="https://www.instagram.com/centralcat_official" target="_blank">
+<a class="footer-social-item" href="https://www.instagram.com/centralcat_official" target="_blank" rel="noopener">
 <div class="footer-social-icon">
 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M7.75 2C4.57 2 2 4.57 2 7.75v8.5C2 19.43 4.57 22 7.75 22h8.5C19.43 22 22 19.43 22 16.25v-8.5C22 4.57 19.43 2 16.25 2h-8.5zm0 2h8.5A3.75 3.75 0 0 1 20 7.75v8.5A3.75 3.75 0 0 1 16.25 20h-8.5A3.75 3.75 0 0 1 4 16.25v-8.5A3.75 3.75 0 0 1 7.75 4zm9.5 1.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
 </div>
 <span>@centralcat_official</span>
 </a>
 
-<a class="footer-social-item" href="https://www.youtube.com/@central_cats" target="_blank">
+<a class="footer-social-item" href="https://www.youtube.com/@central_cats" target="_blank" rel="noopener">
 <div class="footer-social-icon">
 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 0 0 .5 6.2 31.2 31.2 0 0 0 0 12a31.2 31.2 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.2 31.2 0 0 0 24 12a31.2 31.2 0 0 0-.5-5.8zM9.8 15.5v-7l6 3.5-6 3.5z"/></svg>
 </div>
 <span>@central_cats</span>
 </a>
 
-<a class="footer-social-item" href="https://www.tiktok.com/@central_cats" target="_blank">
+<a class="footer-social-item" href="https://www.tiktok.com/@central_cats" target="_blank" rel="noopener">
 <div class="footer-social-icon">
 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M16 1a6.9 6.9 0 0 0 1.9 4.7A6.9 6.9 0 0 0 22 7v3.1a9.9 9.9 0 0 1-6-2v6.4a6.5 6.5 0 1 1-5.6-6.4v3.2a3.3 3.3 0 1 0 2.4 3.2V1h3.2z"/></svg>
 </div>
@@ -851,50 +832,3 @@ Petshop : 08.00 – 21.00 WIB<br>
 
 </footer>
 
-<script>
-// ================= LOADER SYSTEM =================
-(function(){
-  const duration=2000;
-
-  function hideLoader(){
-    document.body.classList.add('loaded');
-  }
-
-  function startLoader(){
-    setTimeout(()=>{
-      hideLoader();
-    },duration);
-
-    // safety fallback
-    setTimeout(()=>{
-      hideLoader();
-    },3000);
-  }
-
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',startLoader);
-  }else{
-    startLoader();
-  }
-})();
-
-// ================= MOBILE SLIDER (SAFE) =================
-const igGrid=document.querySelector('.ig-grid');
-const dots=document.querySelectorAll('.ig-dots span');
-
-if(igGrid && dots.length){
-  igGrid.addEventListener('scroll',()=>{
-    const card=igGrid.querySelector('.ig-reel');
-    if(!card) return;
-
-    const cardWidth=card.offsetWidth+20;
-    const index=Math.round(igGrid.scrollLeft/cardWidth);
-
-    dots.forEach(d=>d.style.background='#d1d5db');
-    if(dots[index]) dots[index].style.background='#1e3a8a';
-  });
-}
-</script>
-
-</body>
-</html>
