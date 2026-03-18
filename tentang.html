@@ -32,12 +32,12 @@
 body{background:#fff;color:var(--text);overflow-x:hidden}
 
 /* PAGE LOADER */
-#page-loader{position:fixed;inset:0;background:#ffffff;display:flex;align-items:center;justify-content:center;z-index:5000;flex-direction:column;transition:opacity 1s ease, visibility 1s ease}
-#page-loader img{width:120px;height:auto;animation:loaderPulse 1s ease-in-out infinite;margin-bottom:28px}
+#page-loader{position:fixed;inset:0;background:#ffffff;display:flex;align-items:center;justify-content:center;z-index:5000;flex-direction:column;transition:opacity .6s ease, visibility .6s ease}
+#page-loader img{width:120px;height:auto;animation:loaderPulse 1s ease-in-out infinite;margin:0 auto 28px;display:block}
 
 /* gold progress bar */
 .loader-bar{width:220px;height:4px;background:#e5e7eb;border-radius:4px;overflow:hidden}
-.loader-progress{height:100%;width:0%;background:linear-gradient(90deg,#d4af37,#f6e27a,#d4af37);animation:loaderMove 4s ease forwards}
+.loader-progress{height:100%;width:0%;background:linear-gradient(90deg,#d4af37,#f6e27a,#d4af37);animation:loaderMove 2s ease forwards}
 
 @keyframes loaderMove{0%{width:0%}100%{width:100%}}
 @keyframes loaderPulse{0%{transform:scale(.95);opacity:.7}50%{transform:scale(1.05);opacity:1}100%{transform:scale(.95);opacity:.7}}
@@ -50,7 +50,7 @@ section{scroll-margin-top:80px}
 header{background:var(--primary);height:60px;display:flex;justify-content:center;align-items:center;position:sticky;top:0;left:0;width:100%;z-index:1000;transition:all .3s ease}
 header.scrolled{background:rgba(30,58,138,.92);backdrop-filter:blur(6px)}
 .header-inner{width:100%;max-width:1200px;height:60px;display:flex;justify-content:space-between;align-items:center;padding:0 20px}
-.logo-img{height:44px}
+.logo-img{height:52px}
 .logo-link{display:flex;align-items:center;background:white;padding:0 4px;border-radius:6px;box-shadow:0 3px 8px rgba(0,0,0,.10)}
 nav.desktop-nav{display:flex;align-items:center}
 .mobile-nav{display:none}
@@ -87,8 +87,14 @@ nav a:hover::after{width:100%}
 .nav-item:hover .nav-dropdown{display:flex}
 .hero{background:linear-gradient(135deg,#1e3a8a,#243c94);color:white;padding:110px 5%}
 .hero-container{max-width:1200px;margin:auto;display:flex;align-items:center;gap:40px}
-.section{padding:72px 5% 88px;text-align:center} @media(max-width:768px){.section{padding:56px 16px 64px;}}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px;margin-top:56px;align-items:stretch;max-width:1000px;margin-left:auto;margin-right:auto}
+.section{padding:72px 5% 88px;text-align:center}
+
+/* vertical rhythm */
+.text-container p + p{margin-top:18px}
+.card p{margin-top:10px}
+.section h2 + .grid{margin-top:48px}
+.section h2 + .text-container{margin-top:32px} @media(max-width:768px){.section{padding:56px 16px 64px;}}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px;margin-top:48px;align-items:stretch;max-width:1000px;margin-left:auto;margin-right:auto}
 
 /* 3 column layout for service values */
 .grid-3{grid-template-columns:repeat(3,1fr);max-width:1100px;gap:40px}
@@ -108,7 +114,7 @@ nav a:hover::after{width:100%}
 /* content panels for text sections */
 .content-panel{background:#ffffff;border-radius:18px;padding:28px;box-shadow:0 10px 35px rgba(0,0,0,.06);} @media(min-width:768px){.content-panel{padding:48px;max-width:900px;margin:auto;}}
 
-.section h2{font-size:28px;color:var(--primary);position:relative;display:inline-block;margin-bottom:12px}
+.section h2{font-size:28px;color:var(--primary);position:relative;display:inline-block;margin-bottom:16px}
 .section h2:after{content:"";display:block;width:60px;height:4px;background:var(--accent);margin:10px auto 0;border-radius:4px}
 
 .section-soft{background:#f9fafb}
@@ -394,9 +400,7 @@ document.addEventListener('DOMContentLoaded', function(){
 <div class="loader-progress"></div>
 </div>
 
-<audio id="loader-sound" preload="auto">
-<source src="assets/music/audiopapkin_riser_hit_sfx_001_289802.mp3" type="audio/mpeg">
-</audio>
+
 
 </div>
 
@@ -423,7 +427,7 @@ document.addEventListener('DOMContentLoaded', function(){
       </div>
 
       <div class="nav-item">
-        <a href="index.html#services">Layanan</a>
+        <a href="layanan.html">Layanan</a>
         <div class="nav-dropdown">
           <a href="layanan.html#paket-grooming">Paket Grooming</a>
           <a href="layanan.html#treatment-kutu">Treatment Kutu</a>
@@ -469,7 +473,7 @@ document.addEventListener('DOMContentLoaded', function(){
     </div>
 
     <div class="nav-item">
-      <a href="index.html#services">Layanan</a>
+      <a href="layanan.html">Layanan</a>
       <div class="nav-dropdown">
         <a href="layanan.html#paket-grooming">Paket Grooming</a>
         <a href="layanan.html#treatment-kutu">Treatment Kutu</a>
@@ -769,21 +773,13 @@ Petshop : 08.00 – 21.00 WIB<br>
 <script>
 // ================= LOADER SYSTEM =================
 (function(){
-  const loader=document.getElementById('page-loader');
-  const sound=document.getElementById('loader-sound');
-  const duration=4000; // sync with progress bar animation
+  const duration=2000;
 
   function hideLoader(){
     document.body.classList.add('loaded');
   }
 
   function startLoader(){
-    if(sound){
-      sound.volume=0.35;
-      sound.currentTime=0;
-      sound.play().catch(()=>{});
-    }
-
     setTimeout(()=>{
       hideLoader();
     },duration);
@@ -791,7 +787,7 @@ Petshop : 08.00 – 21.00 WIB<br>
     // safety fallback
     setTimeout(()=>{
       hideLoader();
-    },6000);
+    },3000);
   }
 
   if(document.readyState==='loading'){
