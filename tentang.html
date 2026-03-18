@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Central Cat’s | Petshop Terdekat & Grooming Kucing di Tangerang</title>
-<meta name="description" content="Central Cat's adalah petshop dan grooming kucing terdekat di Tangerang yang menyediakan layanan grooming profesional, treatment kutu kucing, cat hotel, serta berbagai produk kebutuhan kucing berkualitas.">
+<title>Tentang Central Cat’s | Petshop & Grooming Kucing Tangerang</title>
+<meta name="description" content="Kenal lebih dekat Central Cat’s, petshop dan layanan grooming kucing terpercaya di Tangerang dengan pelayanan profesional dan berkualitas.">
 <meta name="keywords" content="petshop tangerang, petshop terdekat, grooming kucing tangerang, grooming kucing terdekat, petshop rajeg, grooming kucing pasar kemis, cat hotel tangerang">
 <link rel="canonical" href="https://www.centralcats.id/tentang.html">
 <meta name="robots" content="index, follow">
@@ -64,7 +64,6 @@ nav.desktop-nav{display:flex;align-items:center}
 .hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer}
 .hamburger span{width:26px;height:2px;background:white;border-radius:2px;transition:.3s}
 
-/* hamburger animation */
 .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .hamburger.active span:nth-child(2){opacity:0}
 .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
@@ -73,21 +72,35 @@ nav.desktop-nav{display:flex;align-items:center}
 .mobile-nav a{margin:0;font-size:15px;color:#fff;padding:10px 0}
 .mobile-nav.open{right:0}
 
-/* backdrop for mobile menu */
+/* FIX DROPDOWN MOBILE */
+.mobile-nav .nav-dropdown{
+  display:block;
+  position:static;
+  background:transparent;
+  box-shadow:none;
+  padding-left:10px;
+}
+.mobile-nav .nav-dropdown a{
+  font-size:13px;
+  opacity:.85;
+  padding:6px 0;
+}
+
 #menu-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.35);backdrop-filter:blur(2px);opacity:0;visibility:hidden;transition:.3s;z-index:1100}
 #menu-backdrop.show{opacity:1;visibility:visible}
 }
 .desktop-nav a{color:white;text-decoration:none;margin-left:24px;font-weight:500;position:relative;font-size:13px;padding:10px 0;display:flex;align-items:center}
 .mobile-nav a{margin:0;font-size:15px;color:#fff;padding:10px 0}
-nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--accent);transition:width .25s ease;border-radius:2px}
-nav a:hover::after{width:100%}
+.desktop-nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--accent);transition:width .25s ease;border-radius:2px}
+.desktop-nav a:hover::after{width:100%}
 .nav-item{position:relative}
 .nav-dropdown{position:absolute;top:100%;left:0;background:white;border-radius:10px;box-shadow:0 14px 30px rgba(0,0,0,.18);display:none;flex-direction:column;min-width:180px;overflow:hidden;padding-top:6px}
 .nav-dropdown a{color:#111;margin:0;padding:10px 14px;font-size:12px}
 .nav-item:hover .nav-dropdown{display:flex}
 .hero{background:linear-gradient(135deg,#1e3a8a,#243c94);color:white;padding:110px 5%}
 .hero-container{max-width:1200px;margin:auto;display:flex;align-items:center;gap:40px}
-.section{padding:72px 5% 88px;text-align:center}
+.section{padding:72px 20px 88px;text-align:center}
+.section > *{max-width:1200px;margin-left:auto;margin-right:auto}
 
 /* vertical rhythm */
 .text-container p + p{margin-top:18px}
@@ -119,7 +132,7 @@ nav a:hover::after{width:100%}
 
 .section-soft{background:#f9fafb}
 .section-light{background:#f3f4f6}
-footer{background:var(--primary);color:white;padding:60px 5% 24px;margin-top:40px;position:relative}
+footer{background:var(--primary);color:white;padding:60px 20px 24px;margin-top:40px;position:relative}
 
 /* GOLD LINE TOP BORDER */
 footer::before{
@@ -143,8 +156,8 @@ footer a{
 }
 
 /* footer logo same as header */
-.footer-brand .logo-link{display:inline-flex;align-items:center;background:white;padding:0 4px;border-radius:6px;box-shadow:0 3px 8px rgba(0,0,0,.10);overflow:hidden}
-.footer-brand .logo-img{height:44px;width:auto;transition:transform .3s ease}
+.footer-brand .logo-link{display:inline-flex;align-items:center;background:white;padding:4px 6px;border-radius:6px;box-shadow:0 3px 8px rgba(0,0,0,.10);overflow:hidden}
+.footer-brand .logo-img{height:48px;width:auto;transition:transform .3s ease;display:block}
 
 /* SOCIAL FOOTER SYSTEM */
 .footer-social{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 28px;margin-top:16px}
@@ -170,7 +183,7 @@ footer a{
 .footer-contact div:hover svg{
   transform:scale(1.15);
 }
-.footer-container{max-width:1200px;margin:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:70px;align-items:start}
+.footer-container{max-width:1200px;margin:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:60px;align-items:start;width:100%}
 .footer-bottom{text-align:center;margin-top:60px;font-size:11px;opacity:.85;border-top:1px solid rgba(255,255,255,.15);padding-top:26px}
 
 /* MOBILE FOOTER IMPROVEMENT */
@@ -235,7 +248,7 @@ footer a{
   grid-template-columns:1fr 1fr;
   gap:16px 20px;
   justify-items:center;
-  max-width:260px;
+  max-width:280px;
   margin:16px auto 0;
 }
 
@@ -297,7 +310,7 @@ footer a{
 .mt-40{margin:40px auto 0}
 .text-left{text-align:left}
 .reel-box{margin:24px auto 30px;max-width:220px}
-.logo-footer{margin-bottom:6px;display:inline-flex}
+.logo-footer{margin-bottom:10px;display:inline-flex}
 .footer-contact-box{text-align:left;max-width:320px}
 .footer-info-box{max-width:260px;justify-self:end}
 
