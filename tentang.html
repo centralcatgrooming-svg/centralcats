@@ -30,6 +30,7 @@
 :root{--primary:#1e3a8a;--accent:#d4af37;--light:#f3f4f6;--text:#111}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
 body{background:#fff;color:var(--text);overflow-x:hidden}
+html{overflow-x:hidden}
 
 /* PAGE LOADER */
 #page-loader{position:fixed;inset:0;background:#ffffff;display:flex;align-items:center;justify-content:center;text-align:center;z-index:5000;flex-direction:column;transition:opacity .6s ease, visibility .6s ease;padding:0 20px}
@@ -47,10 +48,10 @@ html{scroll-behavior:smooth}
 
 /* prevent sticky header covering anchors */
 section{scroll-margin-top:80px}
-header{background:var(--primary);height:60px;display:flex;justify-content:center;align-items:center;position:sticky;top:0;left:0;width:100%;z-index:1000;transition:all .3s ease}
-header.scrolled{background:rgba(30,58,138,.92);backdrop-filter:blur(6px)}
+header{background:rgba(30,58,138,.92);height:60px;padding:0;display:flex;justify-content:center;align-items:center;position:fixed;top:0;left:0;width:100%;z-index:1000;transition:all .3s ease}
+header.scrolled{background:rgba(30,58,138,.92);backdrop-filter:blur(6px);position:fixed}
 .header-inner{width:100%;max-width:1200px;height:60px;display:flex;justify-content:space-between;align-items:center;padding:0 20px}
-.logo-img{height:52px}
+.logo-img{height:44px}
 .logo-link{display:flex;align-items:center;background:white;padding:0 4px;border-radius:6px;box-shadow:0 3px 8px rgba(0,0,0,.10)}
 nav.desktop-nav{display:flex;align-items:center}
 .mobile-nav{display:none}
@@ -68,27 +69,32 @@ nav.desktop-nav{display:flex;align-items:center}
 .hamburger.active span:nth-child(2){opacity:0}
 .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
 
-.mobile-nav{display:flex;position:fixed;top:0;right:-100%;width:100%;height:100vh;background:linear-gradient(135deg,#1e3a8a,#243c94);flex-direction:column;padding:100px 28px 40px;gap:20px;transition:right .4s ease;z-index:1200;overflow-y:auto;-webkit-overflow-scrolling:touch}
-.mobile-nav a{margin:0;font-size:18px;color:#fff;padding:12px 0;font-weight:600}
+.mobile-nav{display:flex;position:fixed;top:60px;right:-100%;width:100%;height:calc(100vh - 60px);background:#1e3a8a;flex-direction:column;padding:30px 24px;gap:18px;transition:right .35s ease;box-shadow:-10px 0 30px rgba(0,0,0,.25)}
+.mobile-nav a{margin:0;font-size:16px;color:#fff;padding:10px 0}
 .mobile-nav.open{right:0}
 
-/* FIX DROPDOWN MOBILE */
-.mobile-nav .nav-dropdown{
-  display:block;
-  position:static;
-  background:transparent;
-  box-shadow:none;
-  padding-left:10px;
+#mobileMenu .nav-dropdown{
+ position:static;
+ background:transparent;
+ box-shadow:none;
+ padding-left:12px;
+ margin-top:6px;
+ display:none;
 }
-.mobile-nav .nav-dropdown a{
-  font-size:13px;
-  opacity:.85;
-  padding:6px 0;
+#mobileMenu .nav-dropdown a{
+ color:#cbd5f5;
+ font-size:14px;
+ padding:6px 0;
 }
+#mobileMenu .nav-item{width:100%}
+
+}
+
+
 
 #menu-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.35);backdrop-filter:blur(2px);opacity:0;visibility:hidden;transition:.3s;z-index:1100}
 #menu-backdrop.show{opacity:1;visibility:visible}
-}
+
 .desktop-nav a{color:white;text-decoration:none;margin-left:24px;font-weight:500;position:relative;font-size:13px;padding:10px 0;display:flex;align-items:center}
 /* REMOVE DUPLICATE RULE (handled above in media query) */
 .desktop-nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--accent);transition:width .25s ease;border-radius:2px}
@@ -159,45 +165,48 @@ footer a{
 .footer-brand .logo-link{display:inline-flex;align-items:center;background:white;padding:4px 6px;border-radius:6px;box-shadow:0 3px 8px rgba(0,0,0,.10);overflow:hidden}
 .footer-brand .logo-img{height:48px;width:auto;transition:transform .3s ease;display:block}
 
-/* SOCIAL FOOTER SYSTEM */
+/* FOOTER SOCIAL - EXACT MATCH INDEX */
 .footer-social{
+  margin-top:18px;
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px 12px;
-  justify-items:center;
-  margin-top:16px;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px 40px;
+  align-items:center;
+  max-width:440px;
+  padding-left:6px;
 }
-
 
 .footer-social-item{
   display:flex;
-  flex-direction:column;
   align-items:center;
-  justify-content:center;
-  gap:8px;
+  gap:10px;
+  font-size:13px;
   color:#fff;
   text-decoration:none;
-  font-size:13px;
-  font-weight:500;
-  text-align:center;
+  white-space:nowrap;
 }
-.footer-social-item span{font-size:13px;font-weight:500;letter-spacing:.2px}
+
 .footer-social-icon{
-  width:42px;
-  height:42px;
+  width:34px;
+  height:34px;
   border-radius:50%;
-  background:rgba(255,255,255,.15);
+  background:rgba(255,255,255,0.15);
   display:flex;
   align-items:center;
   justify-content:center;
-  transition:.25s;
   flex-shrink:0;
 }
-.footer-social-icon svg{transition:transform .25s ease}
-.footer-social-item:hover .footer-social-icon svg{transform:scale(1.15)}
-.footer-social-item:hover .footer-social-icon{background:var(--accent);transform:scale(1.08)}
 
-/* CONTACT ICON HOVER (HUBUNGI KAMI) */
+.footer-social-item:hover .footer-social-icon{
+  background:var(--accent);
+  box-shadow:0 0 10px rgba(212,175,55,.55);
+}
+
+.footer-social-item:hover{
+  opacity:.8;
+}
+
+/* CONTACT ICON HOVER */
 .footer-contact div > div:first-child{
   overflow:hidden;
   transition:transform .25s ease, background .25s ease;
@@ -273,13 +282,7 @@ footer a{
   color:var(--accent);
 }
 
-.footer-social{
-  grid-template-columns:repeat(3,1fr);
-  gap:16px 12px;
-  justify-items:center;
-  max-width:100%;
-  margin:16px auto 0;
-}
+/* REMOVED conflicting mobile grid override to preserve original footer behavior */
 
 /* slightly larger icons */
 .footer-social-icon{
@@ -342,6 +345,14 @@ footer a{
 .logo-footer{margin-bottom:10px;display:inline-flex}
 .footer-contact-box{text-align:left;max-width:320px}
 .footer-info-box{max-width:260px;justify-self:end}
+
+@media(max-width:768px){
+  .footer-info-box{
+    justify-self:center;
+    width:100%;
+    max-width:100%;
+  }
+}
 
 
 /* ===== FINAL MOBILE UX POLISH (NON-DESTRUCTIVE) ===== */
