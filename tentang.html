@@ -13,6 +13,8 @@
 :root{--primary:#1e3a8a;--accent:#d4af37;--light:#f3f4f6;--text:#111}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
 body{background:#fff;color:var(--text)}
+html{scroll-behavior:smooth;}
+section{scroll-margin-top:80px;}
 
 /* ===== HEADER (SYNC INDEX - EXACT COPY) ===== */
 header{
@@ -85,15 +87,15 @@ nav.desktop-nav a::after{
 .nav-dropdown a:hover::before{
   content:"";
   position:absolute;
-  left:0;
-  right:0;
+  left:-16px;
+  right:-16px;
   bottom:0;
   height:2px;
   background:var(--accent);
 }
 
 nav.desktop-nav a:hover::after{width:100%}
-nav.desktop-nav a:hover{color:var(--accent)}
+nav.desktop-nav > a:hover{color:var(--accent)}
 
 .nav-item{position:relative}
 
@@ -146,6 +148,8 @@ nav.desktop-nav a:hover{color:var(--accent)}
 .mobile-nav{display:flex;position:fixed;top:68px;right:-100%;width:100%;height:calc(100vh - 68px);background:#1e3a8a;flex-direction:column;padding:30px 24px;gap:18px;transition:.3s}
 .mobile-nav.open{right:0}
 .mobile-nav a{color:#fff}
+#mobileMenu .nav-dropdown{display:none;flex-direction:column;margin-top:6px;padding-left:12px}
+#mobileMenu .nav-dropdown a{color:#cbd5f5;font-size:14px;padding:6px 0}
 }
 
 /* ===== SECTION (PREMIUM POLISH) ===== */
@@ -303,7 +307,7 @@ footer{background:var(--primary);color:#fff;padding:40px 20px}
 </header>
 
 <!-- PROFIL -->
-<section class="section">
+<section id="profil" class="section">
 <h2>Profil Central Cat’s</h2>
 <div class="text-container">
 <p>
@@ -550,6 +554,15 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   });
 
+  // CLOSE MENU WHEN CLICK OUTSIDE
+  document.addEventListener('click', function(e){
+    if(!menu || !burger) return;
+    if(!menu.contains(e.target) && !burger.contains(e.target)){
+      menu.classList.remove('open');
+      burger.classList.remove('active');
+    }
+  });
+
   // HEADER SCROLL EFFECT
   window.addEventListener('scroll', ()=>{
     const header = document.querySelector('header');
@@ -561,6 +574,7 @@ document.addEventListener('DOMContentLoaded', function(){
       }
     }
   });
+
 });
 </script>
 
