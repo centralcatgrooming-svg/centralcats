@@ -226,30 +226,57 @@ header{height:68px;}
 /* ===== SECTION (PREMIUM POLISH) ===== */
 
 /* BACKGROUND MASKOT (DESKTOP ONLY) */
+/* ===== PROFIL SPLIT LAYOUT (DESKTOP ONLY) ===== */
 @media(min-width:1024px){
+
+#profil{
+ text-align:left;
+}
+
+/* FIX: heading tetap center walau layout split */
+#profil h2{
+ text-align:center;
+}
+
+#profil .profil-wrapper{
+ display:grid;
+ grid-template-columns:1.1fr 0.9fr;
+ align-items:center;
+ gap:40px;
+ max-width:1100px;
+ margin:40px auto 0;
+}
+
+#profil .profil-text{
+ max-width:600px;
+}
+
+#profil .profil-image{
+ display:flex;
+ justify-content:flex-end;
+}
+
+#profil .profil-image img{
+ width:100%;
+ max-width:420px;
+ height:auto;
+ object-fit:contain;
+}
+}
+
+/* MOBILE BALIK NORMAL */
+@media(max-width:1023px){
+#profil .profil-wrapper{
+ display:block;
+}
+#profil .profil-image{
+ display:none;
+}
+}
+
+/* CLEAN: remove background overlay (pakai split layout saja) */
 #profil{
  position:relative;
- overflow:hidden;
-}
-
-#profil::before{
- content:"";
- position:absolute;
- inset:0;
- background:
-   url('./assets/icons/maskot-profil.webp') no-repeat right center;
- background-size:500px;
- opacity:1;
- pointer-events:none;
- z-index:0;
- /* DEBUG: kasih warna biar keliatan layernya */
- 
-}
-
-#profil > *{
- position:relative;
- z-index:1;
-}
 }
 
 .section{padding:100px 20px 80px;text-align:center}
@@ -494,6 +521,9 @@ footer{background:var(--primary);color:#fff;padding:40px 20px}
 <!-- PROFIL -->
 <section id="profil" class="section">
 <h2>Profil Central Cat’s</h2>
+<div class="profil-wrapper">
+
+<div class="profil-text">
 <div class="text-container">
 <p>
 Central Cat’s adalah petshop dan layanan grooming khusus kucing di Tangerang yang dibangun dengan satu tujuan utama: memberikan perawatan terbaik dengan standar profesional dan penuh perhatian.
@@ -504,6 +534,13 @@ Kami memahami bahwa setiap kucing bukan sekadar hewan peliharaan, tetapi bagian 
 <p>
 Selain layanan grooming, Central Cat’s juga menyediakan berbagai kebutuhan harian kucing mulai dari makanan, pasir, hingga produk perawatan berkualitas untuk menunjang kesehatan dan kenyamanan anabul Anda.
 </p>
+</div>
+</div>
+
+<div class="profil-image">
+<img src="assets/icons/maskot-profil.webp" alt="Maskot Central Cat's">
+</div>
+
 </div>
 </section>
 
