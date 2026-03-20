@@ -139,6 +139,77 @@ nav.desktop-nav > a:hover{color:var(--accent)}
 /* MOBILE */
 .hamburger{display:none}
 .mobile-nav{display:none}
+
+@media(max-width:768px){
+
+header{height:68px;}
+.header-inner{height:68px;}
+.logo-img{height:48px;}
+
+/* hamburger */
+.hamburger{
+ display:flex;
+ flex-direction:column;
+ gap:5px;
+ cursor:pointer;
+ z-index:1200;
+}
+.hamburger span{
+ width:26px;
+ height:2px;
+ background:#fff;
+ border-radius:2px;
+ transition:all .3s ease;
+}
+
+/* hamburger animation */
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);} 
+.hamburger.active span:nth-child(2){opacity:0;} 
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px);} 
+
+/* hide desktop */
+.desktop-nav{display:none;}
+
+/* mobile menu */
+.mobile-nav{
+ display:flex;
+ position:fixed;
+ top:68px;
+ right:-100%;
+ width:100%;
+ height:calc(100vh - 68px);
+ background:#1e3a8a;
+ flex-direction:column;
+ padding:30px 24px;
+ gap:18px;
+ transition:right .35s ease;
+ box-shadow:-10px 0 30px rgba(0,0,0,.25);
+}
+.mobile-nav.open{right:0;}
+.mobile-nav a{
+ color:#fff;
+ margin:0;
+ font-size:16px;
+ padding:10px 0;
+}
+
+/* dropdown mobile (accordion) */
+#mobileMenu .nav-dropdown{
+ position:static;
+ background:transparent;
+ box-shadow:none;
+ padding-left:12px;
+ margin-top:6px;
+ display:none;
+}
+#mobileMenu .nav-dropdown a{
+ color:#cbd5f5;
+ font-size:14px;
+ padding:6px 0;
+}
+
+}
+.mobile-nav{display:none}
 @media(max-width:768px){
 .header-inner{height:68px}
 .logo-img{height:48px}
@@ -190,8 +261,17 @@ nav.desktop-nav > a:hover{color:var(--accent)}
 /* FOOTER */
 footer{background:var(--primary);color:#fff;padding:40px 20px}
 .footer-container{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;align-items:flex-start}
-.footer-brand .logo-link{display:inline-flex;margin-bottom:10px}
-.footer-brand .logo-img{height:46px;width:auto;}
+.footer-brand .logo-link{
+ display:inline-flex;
+ width:fit-content;
+ padding:6px 10px;
+ margin-bottom:10px;
+}
+.footer-brand .logo-img{
+ height:46px;
+ width:auto;
+ display:block;
+}
 .footer-brand p{font-size:12px;line-height:1.7;opacity:.9;margin-top:14px}
 .footer-contact{max-width:320px;text-align:left}
 .footer-title{font-size:14px;display:block;margin-bottom:10px;font-weight:600}
@@ -248,7 +328,7 @@ footer{background:var(--primary);color:#fff;padding:40px 20px}
         </div>
       </div>
 
-      <a href="index.html#products">Produk</a>
+   <a href="index.html#products">Produk</a>
       <a href="index.html#reviews">Ulasan</a>
       <a href="index.html#location">Lokasi</a>
       <a href="karir.html">Karir</a>
@@ -466,7 +546,7 @@ Indonesia
 <hr class="footer-divider">
 
 <div class="footer-row">
-<div class="footer-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#22c55e" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.768.967-.94 1.164-.173.198-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.787-1.48-1.758-1.653-2.055-.173-.297-.018-.458.13-.606.135-.135.297-.347.446-.52.149-.173.198-.297.297-.495.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51l-.57-.01c-.198 0-.52.075-.792.371-.272.297-1.04 1.016-1.04 2.479s1.065 2.877 1.213 3.075c.149.198 2.095 3.2 5.077 4.487.71.306 1.262.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.414.248-.694.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/></svg></div>
+<div class="footer-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#22c55e" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.768.967-.94 1.164-.173.198-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.787-1.48-1.758-1.653-2.055-.173-.297-.018-.458.13-.606.135-.135.297-.347.446-.520.149-.173.198-.297.297-.495.099-.198.05-.371-.025-.520-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.500-.670-.510l-.570-.010c-.198 0-.520.075-.792.371-.272.297-1.040 1.016-1.040 2.479s1.065 2.877 1.213 3.075c.149.198 2.095 3.200 5.077 4.487.710.306 1.262.489 1.694.626.712.227 1.360.195 1.872.118.571-.085 1.758-.719 2.006-1.414.248-.694.248-1.290.173-1.414-.074-.124-.272-.198-.570-.347z"/></svg></div>
 <div>
 <div class="footer-label">WhatsApp</div>
 <a href="https://wa.me/6282111827798" class="footer-link">0821-1182-7798</a>
