@@ -176,6 +176,8 @@ nav.desktop-nav > a:hover{color:var(--accent)}
 @media(max-width:768px){
 
 header{height:68px;}
+
+/* CLEAN FIX: REMOVE DUPLICATE MOBILE CSS (WAS BREAKING DESKTOP) */
 .header-inner{
  height:68px;
  justify-content:center;
@@ -186,6 +188,7 @@ header{height:68px;}
  position:absolute;
  left:50%;
  transform:translateX(-50%);
+ z-index:1100;
 }
 
 .logo-link{
@@ -207,6 +210,8 @@ header{height:68px;}
  z-index:1200;
  position:absolute;
  right:20px;
+ top:50%;
+ transform:translateY(-50%);
 }
 
 .hamburger span{
@@ -221,7 +226,12 @@ header{height:68px;}
 .hamburger.active span:nth-child(2){opacity:0;} 
 .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px);} 
 
-.desktop-nav{display:none;}
+.desktop-nav{
+ display:none !important;
+ visibility:hidden;
+ opacity:0;
+ pointer-events:none;
+}
 
 .mobile-nav{
  display:flex;
@@ -277,7 +287,7 @@ header{height:68px;}
 /* ===== SECTION (PREMIUM POLISH - HIERARCHY UPGRADE) ===== */
 
 /* ===== VERTICAL RHYTHM (PREMIUM FLOW) ===== */
-body{padding-top:60px;} /* offset header */
+body{padding-top:68px;} /* offset header */
 
 .section{
   padding:80px 20px 60px;
