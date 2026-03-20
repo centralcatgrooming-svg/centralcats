@@ -226,9 +226,31 @@ header{height:68px;}
 /* ===== SECTION (PREMIUM POLISH - HIERARCHY UPGRADE) ===== */
 
 /* spacing antar section biar lebih lega & premium */
+/* FIX GLOBAL SPACING */
+body{padding-top:60px;} /* offset header */
+
 .section{
-  padding:110px 20px 90px;
+  padding:90px 20px 70px;
   text-align:center;
+}
+
+/* jarak antar section lebih konsisten */
+.section + .section{
+  margin-top:10px;
+}
+
+/* divider halus antar section (premium feel) */
+.section:not(#profil){
+  border-top:1px solid rgba(0,0,0,.04);
+}
+
+/* BACKGROUND ALTERNATE (BALIKIN FEEL INDEX) */
+.section:nth-child(even){
+  background:#f9fafb;
+}
+
+.section:nth-child(odd){
+  background:#ffffff;
 }
 
 /* heading lebih bernafas */
@@ -274,8 +296,35 @@ header{height:68px;}
   border-radius:18px;
   border:2px solid rgba(0,0,0,.05);
   box-shadow:0 10px 30px rgba(0,0,0,.05);
-  transition:.25s;
+  transition:all .3s ease;
   position:relative;
+}
+
+/* HOVER EFFECT (BALIKIN STYLE INDEX) */
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 40px rgba(0,0,0,.12);
+  border-color:var(--accent);
+}
+
+/* GRADIENT BORDER GLOW (SUBTLE) */
+.card{position:relative;z-index:0;}
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:18px;
+  padding:1px; /* ketebalan glow */
+  background:linear-gradient(135deg, rgba(212,175,55,0), rgba(212,175,55,.65), rgba(212,175,55,0));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity:0;
+  transition:opacity .3s ease, transform .3s ease;
+  pointer-events:none;
+}
+.card:hover::before{
+  opacity:1;
 }
 
 .card h3{
@@ -288,6 +337,19 @@ header{height:68px;}
   font-size:14px;
   line-height:1.8;
   color:#444;
+}
+
+/* GRID BASE FIX (ERROR SOURCE) */
+.grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:28px;
+}
+
+.grid-3{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:28px;
 }
 
 /* khusus KEUNGGULAN biar ga terlalu tengah */
@@ -639,7 +701,7 @@ Selain layanan grooming, Central Cat’s juga menyediakan berbagai kebutuhan har
 </div>
 
 <div class="profil-image">
-<img src="assets/icons/maskot-profil.png" alt="Maskot Central Cat's">
+<img src="assets/icons/maskot-porfil.png" alt="Maskot Central Cat's">
 </div>
 
 </div>
