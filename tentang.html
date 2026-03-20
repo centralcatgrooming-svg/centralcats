@@ -18,7 +18,6 @@ section{scroll-margin-top:80px;}
 
 /* ===== HEADER (SYNC INDEX - EXACT COPY) ===== */
 header{
-  /* SOLID karena tidak ada hero seperti index */
   background:#1e3a8a;
   height:60px;
   padding:0;
@@ -31,6 +30,15 @@ header{
   width:100%;
   z-index:1000;
   transition:all .3s ease;
+
+  /* subtle depth biar lebih hidup */
+  box-shadow:0 4px 20px rgba(0,0,0,.08);
+  backdrop-filter:saturate(120%);
+}
+
+header.scrolled{
+  background:#1e3a8a;
+  box-shadow:0 8px 30px rgba(0,0,0,.12);
 }
 
 header.scrolled{
@@ -49,7 +57,26 @@ header.scrolled{
 }
 
 .logo-img{height:44px}
-.logo-link{display:flex;align-items:center;background:white;padding:0 4px;border-radius:6px;box-shadow:0 3px 8px rgba(0,0,0,.10)}
+.logo-link{
+  display:flex;
+  align-items:center;
+  background:white;
+  padding:0 2px; /* tipis seperti index (visual 1px feel) */
+  border-radius:4px;
+  box-shadow:0 2px 6px rgba(0,0,0,.08);
+  overflow:hidden;
+}
+
+.logo-img{
+  height:44px;
+  width:auto;
+  transition:transform .35s ease;
+}
+
+/* HOVER ZOOM (HEADER) */
+.logo-link:hover .logo-img{
+  transform:scale(1.08);
+}
 
 nav.desktop-nav{display:flex;align-items:center}
 
@@ -196,6 +223,25 @@ header{height:68px;}
  gap:18px;
  transition:right .35s ease;
  box-shadow:-10px 0 30px rgba(0,0,0,.25);
+ overflow-y:auto; /* FIX: biar scroll kalau panjang */
+}
+.mobile-nav.open{right:0;}
+.mobile-nav a{
+ color:#fff;
+ margin:0;
+ font-size:16px;
+ padding:12px 0; /* lebih lega */
+}
+
+/* ACTIVE STATE MOBILE */
+.mobile-nav a.active{
+ color:var(--accent);
+ font-weight:600;
+}
+
+/* hover mobile (subtle) */
+.mobile-nav a:hover{
+ color:var(--accent);
 }
 .mobile-nav.open{right:0;}
 .mobile-nav a{
