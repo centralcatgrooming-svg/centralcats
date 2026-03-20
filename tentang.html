@@ -342,9 +342,19 @@ header{height:68px;}
 
 #profil .profil-image img{
  width:100%;
- max-width:420px;
+ max-width:520px; /* diperbesar */
  height:auto;
  object-fit:contain;
+
+ /* blend biar ga keliatan kotak */
+ opacity:1;
+
+ /* sedikit keluar kanan biar lebih hidup */
+ margin-right:-40px;
+
+ /* soft fade ke kiri */
+ -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 70%, rgba(0,0,0,0));
+ mask-image: linear-gradient(to left, rgba(0,0,0,1) 70%, rgba(0,0,0,0));
 }
 }
 
@@ -659,7 +669,7 @@ Selain layanan grooming, Central Cat’s juga menyediakan berbagai kebutuhan har
 </div>
 
 <div class="profil-image">
-<img src="assets/icons/maskot-profil.webp" alt="Maskot Central Cat's">
+<img src="assets/icons/maskot-profil.png" alt="Maskot Central Cat's">
 </div>
 
 </div>
