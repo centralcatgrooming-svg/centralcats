@@ -403,19 +403,16 @@ body{padding-top:60px;} /* offset header */
 }
 
 #profil .profil-image img{
- width:100%;
- max-width:520px; /* diperbesar */
+ width:120%; /* lebih besar dari container */
+ max-width:none; /* biar ga ke-limit */
  height:auto;
  object-fit:contain;
 
- /* blend biar ga keliatan kotak */
- opacity:1;
+ /* keluar dikit biar premium feel */
+ transform:scale(1.15);
 
- /* sedikit keluar kanan biar lebih hidup */
- margin-right:-40px;
-
- /* soft fade ke kiri */
- /* mask dihapus karena bikin gambar hilang */
+ /* geser ke kanan biar balance */
+ margin-right:-80px;
 }
 }
 
