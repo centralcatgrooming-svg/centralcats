@@ -496,15 +496,73 @@ body{padding-top:68px;} /* offset header */
 }
 }
 
-/* CLEAN: remove duplicate old section styles (FIX conflict) */
-
 @media(max-width:768px){
-.section{padding:60px 20px 70px}
-.section h2{font-size:24px}
-.grid,.grid-3{grid-template-columns:1fr}
-.text-container p{font-size:15px}
+
+/* ===== MOBILE SPACING OPTIMIZATION ===== */
+.section{
+  padding:50px 16px 55px; /* lebih rapat & modern */
 }
 
+/* jarak antar section */
+.section + .section{
+  margin-top:16px;
+}
+
+/* heading */
+.section h2{
+  font-size:22px;
+  margin-bottom:14px;
+}
+
+.section h2:after{
+  margin:10px auto 0;
+}
+
+/* text block */
+.text-container{
+  margin-top:22px;
+  padding:0 12px;
+}
+
+.text-container p{
+  font-size:15px;
+  line-height:1.75;
+}
+
+/* grid */
+.grid,
+.grid-3{
+  grid-template-columns:1fr;
+  gap:18px;
+  margin-top:28px;
+}
+
+/* card */
+.card{
+  padding:20px;
+  border-radius:14px;
+}
+
+.card h3{
+  font-size:16px;
+}
+
+.card p{
+  font-size:14px;
+}
+
+/* VISI MISI biar ga terlalu kosong */
+#visi-misi{
+  padding-top:50px;
+  padding-bottom:50px;
+}
+
+/* paragraf spacing */
+.section .text-container p + p{
+  margin-top:16px;
+}
+
+}
 /* FOOTER */
 footer{background:var(--primary);color:#fff;padding:40px 20px}
 .footer-container{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:60px;align-items:flex-start}
