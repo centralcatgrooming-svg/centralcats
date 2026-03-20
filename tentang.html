@@ -18,7 +18,8 @@ section{scroll-margin-top:80px;}
 
 /* ===== HEADER (SYNC INDEX - EXACT COPY) ===== */
 header{
-  background:rgba(30,58,138,.92);
+  /* SOLID karena tidak ada hero seperti index */
+  background:#1e3a8a;
   height:60px;
   padding:0;
   display:flex;
@@ -33,8 +34,7 @@ header{
 }
 
 header.scrolled{
-  background:rgba(30,58,138,.92);
-  backdrop-filter:blur(6px);
+  background:#1e3a8a;
   position:fixed;
 }
 
@@ -78,6 +78,10 @@ nav.desktop-nav a::after{
   border-radius:2px;
   z-index:1;
 }
+
+/* ACTIVE STATE (match index) */
+nav.desktop-nav a.active::after{width:100%;}
+nav.desktop-nav a.active{color:var(--accent);}
 
 /* DISABLE underline in dropdown */
 .nav-dropdown a::after{display:none}
@@ -134,7 +138,6 @@ nav.desktop-nav > a:hover{color:var(--accent)}
   color:#111 !important;
 }
 
-.nav-item:hover .nav-dropdown{display:flex}
 
 /* MOBILE */
 .hamburger{display:none}
@@ -144,7 +147,16 @@ nav.desktop-nav > a:hover{color:var(--accent)}
 
 header{height:68px;}
 .header-inner{height:68px;}
-.logo-img{height:48px;}
+
+/* FIX: shrink logo so hamburger tidak ketabrak */
+.logo-link{
+ padding:0 4px;
+}
+
+.logo-img{
+ height:38px;
+ width:auto;
+}
 
 /* hamburger */
 .hamburger{
@@ -209,22 +221,38 @@ header{height:68px;}
 }
 
 }
-.mobile-nav{display:none}
-@media(max-width:768px){
-.header-inner{height:68px}
-.logo-img{height:48px}
-.desktop-nav{display:none}
-.hamburger{display:flex;flex-direction:column;gap:5px}
-.hamburger span{width:26px;height:2px;background:#fff}
-.mobile-nav{display:flex;position:fixed;top:68px;right:-100%;width:100%;height:calc(100vh - 68px);background:#1e3a8a;flex-direction:column;padding:30px 24px;gap:18px;transition:.3s}
-.mobile-nav.open{right:0}
-.mobile-nav a{color:#fff}
-#mobileMenu .nav-dropdown{display:none;flex-direction:column;margin-top:6px;padding-left:12px}
-#mobileMenu .nav-dropdown a{color:#cbd5f5;font-size:14px;padding:6px 0}
-}
+
 
 /* ===== SECTION (PREMIUM POLISH) ===== */
-.section{padding:140px 20px 110px;text-align:center}
+
+/* BACKGROUND MASKOT (DESKTOP ONLY) */
+@media(min-width:1024px){
+#profil{
+ position:relative;
+ overflow:hidden;
+}
+
+#profil::before{
+ content:"";
+ position:absolute;
+ inset:0;
+ background:
+   url('./assets/icons/maskot-profil.webp') no-repeat right center;
+ background-size:500px;
+ opacity:1;
+ pointer-events:none;
+ z-index:0;
+ /* DEBUG: kasih warna biar keliatan layernya */
+ 
+}
+
+#profil > *{
+ position:relative;
+ z-index:1;
+}
+}
+
+.section{padding:100px 20px 80px;text-align:center}
 .section:nth-child(even){background:#f9fafb}
 .section h2{color:var(--primary);margin-bottom:14px;font-size:30px;font-weight:700;letter-spacing:.3px}
 .section h2:after{content:"";display:block;width:60px;height:4px;background:var(--accent);margin:10px auto 0;border-radius:4px}
@@ -249,10 +277,9 @@ header{height:68px;}
 
 
 .card p{font-size:14px;line-height:1.7;color:#444}
-.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,.12)}
 
 @media(max-width:768px){
-.section{padding:80px 16px}
+.section{padding:60px 20px 70px}
 .section h2{font-size:24px}
 .grid,.grid-3{grid-template-columns:1fr}
 .text-container p{font-size:15px}
@@ -260,12 +287,15 @@ header{height:68px;}
 
 /* FOOTER */
 footer{background:var(--primary);color:#fff;padding:40px 20px}
-.footer-container{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;align-items:flex-start}
+.footer-container{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:60px;align-items:flex-start}
 .footer-brand .logo-link{
  display:inline-flex;
  width:fit-content;
  padding:6px 10px;
  margin-bottom:10px;
+ background:white;
+ border-radius:6px;
+ box-shadow:0 3px 8px rgba(0,0,0,.10);
 }
 .footer-brand .logo-img{
  height:46px;
@@ -280,19 +310,95 @@ footer{background:var(--primary);color:#fff;padding:40px 20px}
 .footer-divider{border:none;border-top:1px solid rgba(255,255,255,.25);margin:10px 0 10px 46px}
 .footer-label{font-size:13px;opacity:.85}
 .footer-link{color:#fff;font-weight:600;text-decoration:none;font-size:13px}
-.footer-social{margin-top:18px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px 40px;max-width:440px}
+.footer-social{margin-top:18px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px 40px;max-width:440px;align-items:center;padding-left:6px}
 .footer-social-item{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-size:13px}
 .footer-social-icon{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center}
 .footer-info{max-width:260px}
 .footer-info p{margin-top:10px;font-size:12px;opacity:.9;line-height:1.7}
 .footer-bottom{text-align:center;margin-top:40px;font-size:11px;opacity:.85;border-top:1px solid rgba(255,255,255,.15);padding-top:20px}
-@media(max-width:768px){.footer-container{grid-template-columns:1fr;text-align:center}.footer-contact{text-align:left;margin:auto}.footer-info{margin:auto}}
+@media(max-width:768px){
+
+.footer-container{
+ grid-template-columns:1fr;
+ gap:28px;
+ padding:0 16px;
+ text-align:left;
+ align-items:flex-start;
+}
+
+.footer-brand{
+ display:flex;
+ flex-direction:column;
+ align-items:flex-start;
+ gap:10px;
+}
+
+.footer-brand p{
+ font-size:13px;
+ line-height:1.75;
+}
+
+.footer-contact{
+ width:100%;
+ margin:0;
+}
+
+.footer-contact .footer-title{
+ font-size:15px;
+ margin-bottom:14px;
+}
+
+.footer-row{
+ margin-bottom:14px;
+}
+
+.footer-divider{
+ margin:12px 0 12px 56px;
+ width:calc(100% - 56px);
+ opacity:.35;
+}
+
+.footer-info{
+ width:100%;
+ margin:0;
+}
+
+.footer-info .footer-title{
+ font-size:15px;
+ margin-bottom:12px;
+}
+
+.footer-social{
+ grid-template-columns:1fr;
+ gap:14px;
+ margin-top:6px;
+}
+
+.footer-social-item{
+ font-size:13px;
+}
+
+.footer-social-icon{
+ width:36px;
+ height:36px;
+}
+
+.footer-bottom{
+ margin-top:36px;
+ font-size:11px;
+ text-align:center;
+}
+
+}
 
 /* ===== VIDEO REELS (ABOUT) ===== */
 .ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1000px;margin:50px auto 0}
 .ig-reel{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:9/16;background:#fff;border:2px solid var(--accent)}
 .ig-reel video{width:100%;height:100%;object-fit:cover;display:block}
-.reel-box{max-width:220px;margin:18px auto 22px}
+.reel-box{
+ max-width:260px;
+ margin:20px auto 26px;
+}
 @media(max-width:768px){.ig-grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -312,7 +418,7 @@ footer{background:var(--primary);color:#fff;padding:40px 20px}
       <a href="index.html#home">Home</a>
 
       <div class="nav-item">
-        <a href="tentang.html">Tentang</a>
+        <a href="tentang.html" class="active">Tentang</a>
         <div class="nav-dropdown">
           <a href="tentang.html">Profil</a>
           <a href="tentang.html#visi-misi">Visi & Misi</a>
@@ -354,7 +460,7 @@ footer{background:var(--primary);color:#fff;padding:40px 20px}
     <a href="index.html#home">Home</a>
 
     <div class="nav-item">
-      <a href="tentang.html">Tentang</a>
+      <a href="tentang.html" class="active">Tentang</a>
       <div class="nav-dropdown">
         <a href="tentang.html">Profil</a>
         <a href="tentang.html#visi-misi">Visi & Misi</a>
