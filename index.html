@@ -46,6 +46,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* ================= DESKTOP BASE STYLE (GLOBAL / DEFAULT) ================= */
 :root{
   --primary:#1e3a8a;
   --accent:#d4af37;
@@ -229,7 +231,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
 .footer-contact div:hover svg{transform:scale(1.15);} 
 
 
-/* ================= MOBILE / HANDPHONE ================= */
+/* ================= MOBILE / HANDPHONE (MOBILE VIEW ONLY) ================= */
 @media(max-width:768px){
 
 header{height:68px;} 
@@ -248,8 +250,7 @@ header{height:68px;}
 /* mobile menu */
 .desktop-nav{display:none;} /* ensure desktop menu never appears on mobile */
 .mobile-nav{display:flex;position:fixed;top:68px;right:-100%;width:100%;height:calc(100vh - 68px);background:#1e3a8a;flex-direction:column;padding:30px 24px;gap:18px;transition:right .35s ease;box-shadow:-10px 0 30px rgba(0,0,0,.25);} 
-.mobile-nav a{margin:0;font-size:16px;color:#fff;padding:10px 0;} 
-
+.mobile-nav a{margin:0;font-size:16px;color:#fff;padding:10px 0;}
 /* mobile dropdown behave like accordion not desktop hover */
 #mobileMenu .nav-dropdown{
  position:static;
@@ -423,6 +424,7 @@ img[loading="lazy"]{content-visibility:auto;contain-intrinsic-size:300px 300px;}
 iframe{max-width:100%;}
 
 /* REMOVE TABLET LAYOUT (DESKTOP + MOBILE ONLY) */
+/* ================= DESKTOP FORCE LAYOUT (>=769px) ================= */
 @media(min-width:769px){
 .hero-container{flex-direction:row;}
 }
@@ -508,7 +510,6 @@ margin-top:32px;
   ]
 }
 </script>
-
 </head>
 <body>
 
@@ -521,6 +522,7 @@ margin-top:32px;
       </a>
     </div>
 
+    <!-- ================= DESKTOP NAVIGATION ================= -->
     <nav class="desktop-nav">
       <a href="#home">Home</a>
 
@@ -561,6 +563,7 @@ margin-top:32px;
     </div>
   </div>
 
+<!-- ================= MOBILE NAVIGATION ================= -->
 <nav id="mobileMenu" class="mobile-nav">
     <a href="#home">Home</a>
 
@@ -804,13 +807,7 @@ Temukan Central Cat's di Tangerang. Pilih cabang terdekat untuk mendapatkan laya
 <h3>Bumi Indah Union Square</h3>
 
 <div style="border-radius:14px;overflow:hidden;margin:15px 0;">
-<iframe
-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.384019225964!2d106.5471651!3d-6.1551806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e57088463ef1%3A0x1a510b4e0894dd99!2sCENTRAL%20CAT'S%20GROOMING%20(PETSHOP)!5e0!3m2!1sid!2sid!4v1771117820000!5m2!1sid!2sid"
-width="100%"
-height="260"
-style="border:0;"
-loading="lazy">
-</iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.384019225964!2d106.5471651!3d-6.1551806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e57088463ef1%3A0x1a510b4e0894dd99!2sCENTRAL%20CAT'S%20GROOMING%20(PETSHOP)!5e0!3m2!1sid!2sid!4v1771117820000!5m2!1sid!2sid" width="100%" height="260" style="border:0;" loading="lazy"></iframe>
 </div>
 
 <a href="https://maps.app.goo.gl/WVdBcvvDf8HKqbHn9" target="_blank" rel="noopener" class="btn">Buka di Google Maps</a>
@@ -821,13 +818,7 @@ loading="lazy">
 <h3>Rajeg Gardenia E11</h3>
 
 <div style="border-radius:14px;overflow:hidden;margin:15px 0;">
-<iframe
-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.1385255185905!2d106.527102!3d-6.112045399999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ff26fcfaf78f%3A0x51739d0883609b67!2sPetshop%20Central%20Cat's%20(Rajeg%20Gardenia)!5e0!3m2!1sid!2sid!4v1771117820976!5m2!1sid!2sid"
-width="100%"
-height="260"
-style="border:0;"
-loading="lazy">
-</iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.1385255185905!2d106.527102!3d-6.112045399999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ff26fcfaf78f%3A0x51739d0883609b67!2sPetshop%20Central%20Cat's%20(Rajeg%20Gardenia)!5e0!3m2!1sid!2sid!4v1771117820976!5m2!1sid!2sid" width="100%" height="260" style="border:0;" loading="lazy"></iframe>
 </div>
 
 <a href="https://maps.app.goo.gl/SkSzrLtkdw97RdSA9" target="_blank" rel="noopener" class="btn">Buka di Google Maps</a>
@@ -837,8 +828,6 @@ loading="lazy">
 </div>
 
 </section>
-
-<!-- FOOTER LOCKED - FINAL STRUCTURE DO NOT MODIFY -->
 
 <!-- ===== FOOTER ===== -->
 <footer>
@@ -952,6 +941,9 @@ Petshop : 08.00 – 21.00 WIB<br>
 <!-- ===== JAVASCRIPT ===== -->
 <script>
 
+/* ================= JAVASCRIPT GLOBAL (ALL DEVICES) ================= */
+
+/* ================= DESKTOP + GLOBAL EFFECT ================= */
 /* HERO PARALLAX */
 window.addEventListener('scroll',()=>{
  const hero=document.querySelector('.hero img');
@@ -991,6 +983,7 @@ window.addEventListener('scroll',function(){
   }
 });
 
+/* ================= MOBILE JS ONLY ================= */
 /* MOBILE DROPDOWN ACCORDION */
  document.querySelectorAll('#mobileMenu .nav-item > a').forEach(btn=>{
  btn.addEventListener('click',function(e){
@@ -1012,7 +1005,6 @@ if(burger){
    menu.classList.toggle('open');
  });
 }
-
 /* close menu after click */
  document.querySelectorAll('#mobileMenu a').forEach(link=>{
  link.addEventListener('click',()=>{
@@ -1027,33 +1019,29 @@ let reviewInterval; // interval declared globally to avoid scope bug
 let reviewCards=document.querySelectorAll('.review-card');
 let reviewIndex=0;
 
-if(reviewTrack && reviewCards.length>0){
+function moveReview(){
+ if(!reviewTrack) return;
+ reviewIndex++;
+ reviewTrack.style.transform=`translateX(-${reviewIndex*100}%)`;
 
- // clone first card to create seamless infinite scroll
+ if(reviewIndex===reviewCards.length-1){
+   setTimeout(()=>{
+     reviewTrack.style.transition='none';
+     reviewIndex=0;
+     reviewTrack.style.transform='translateX(0)';
+
+     setTimeout(()=>{
+       reviewTrack.style.transition='transform .8s cubic-bezier(.4,0,.2,1)';
+     },50);
+   },800);
+ }
+}
+
+if(reviewTrack && reviewCards.length>0){
  const firstClone=reviewCards[0].cloneNode(true);
  reviewTrack.appendChild(firstClone);
 
  reviewCards=document.querySelectorAll('.review-card');
-
- function moveReview(){
-   reviewIndex++;
-   reviewTrack.style.transform=`translateX(-${reviewIndex*100}%)`;
-
-   // when reaching the cloned slide, reset instantly to first
-   if(reviewIndex===reviewCards.length-1){
-     setTimeout(()=>{
-       reviewTrack.style.transition='none';
-       reviewIndex=0;
-       reviewTrack.style.transform='translateX(0)';
-
-       // re-enable transition
-       setTimeout(()=>{
-         reviewTrack.style.transition='transform .8s cubic-bezier(.4,0,.2,1)';
-       },50);
-     },800);
-   }
- }
-
  reviewInterval=setInterval(moveReview,6000);
 }
 
@@ -1069,8 +1057,6 @@ if(reviewSlider && typeof reviewInterval !== 'undefined'){
 
 /* CLOSE MENU WHEN CLICK OUTSIDE */
  document.addEventListener('click',function(e){
- const menu=document.getElementById('mobileMenu');
- const burger=document.getElementById('hamburger');
  if(!menu || !burger) return;
  if(!menu.contains(e.target) && !burger.contains(e.target)){
    menu.classList.remove('open');
