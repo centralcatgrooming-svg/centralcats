@@ -149,18 +149,20 @@ nav a:hover{color:var(--accent);}
 
 .section-subtitle{max-width:650px;margin:15px auto 0;line-height:1.6;color:#444;}
 
-.location-section .container{max-width:1100px;margin:auto;}
+/* sejajarkan dengan grid section lain (max-width 1200px) */
+.location-section .container{max-width:1200px;margin:0 auto;padding:0 20px;}
 
 /* Maps sejajar 2 kolom */
-.location-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px;}
+.location-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:48px;}
 
-.location-item{background:white;border-radius:16px;box-shadow:0 8px 25px rgba(0,0,0,.07);padding:32px 28px;text-align:left;border:1px solid #e5e7eb;}
+.location-item{background:white;border-radius:16px;box-shadow:0 8px 25px rgba(0,0,0,.07);padding:40px 36px 36px;text-align:center;border:1px solid #e5e7eb;transition:transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s cubic-bezier(.4,0,.2,1), border-color .35s ease;}
+.location-item:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 22px 50px rgba(0,0,0,.12);border-color:var(--accent);}
 
-.location-item h3{font-size:18px;color:var(--primary);margin-bottom:10px;}
+.location-item h3{font-size:19px;color:var(--primary);margin-bottom:16px;}
 
-.location-address{font-size:14px;line-height:1.8;color:#444;margin-bottom:16px;}
+.location-address{font-size:14px;line-height:1.9;color:#444;margin-bottom:24px;}
 
-.btn-location{display:inline-block;padding:10px 22px;background:var(--primary);color:white;text-decoration:none;font-weight:600;border-radius:8px;font-size:13px;transition:all .3s ease;margin-bottom:20px;}
+.btn-location{display:inline-block;padding:11px 26px;background:var(--primary);color:white;text-decoration:none;font-weight:600;border-radius:8px;font-size:13px;transition:all .3s ease;margin-bottom:28px;}
 .btn-location:hover{background:var(--accent);color:#111;transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.12);}
 
 .map-container{width:100%;border-radius:12px;overflow:hidden;border:1px solid #e5e7eb;}
@@ -494,6 +496,11 @@ iframe{max-width:100%;}
       "description": "Central Cat's adalah petshop dan grooming kucing di Tangerang yang menyediakan layanan grooming profesional, treatment kutu kucing, cat hotel, dan berbagai produk kebutuhan kucing berkualitas.",
       "telephone": "+6282111827798",
       "email": "customercare@central-cats.com",
+      "areaServed": [
+        "Kabupaten Tangerang", "Kota Tangerang", "Tangerang Selatan",
+        "Banten", "Jakarta Barat", "Jakarta"
+      ],
+      "knowsAbout": ["Grooming Kucing", "Petshop Kucing", "Cat Hotel", "Treatment Kutu Kucing", "Perawatan Hewan"],
       "sameAs": [
         "https://www.instagram.com/centralcat_official",
         "https://www.youtube.com/@central_cats",
@@ -523,7 +530,11 @@ iframe{max-width:100%;}
       },
       "telephone": "+6282111827798",
       "email": "customercare@central-cats.com",
-      "areaServed": ["Pasar Kemis", "Tangerang", "Kabupaten Tangerang"],
+      "areaServed": [
+        "Pasar Kemis", "Tangerang", "Kabupaten Tangerang",
+        "Balaraja", "Tigaraksa", "Cikupa", "Curug", "Legok",
+        "Serpong", "Tangerang Selatan", "Jakarta Barat", "Banten"
+      ],
       "parentOrganization": {
         "@id": "https://www.centralcats.id/#organization"
       },
@@ -567,7 +578,11 @@ iframe{max-width:100%;}
       },
       "telephone": "+6282111827798",
       "email": "customercare@central-cats.com",
-      "areaServed": ["Rajeg", "Tangerang", "Kabupaten Tangerang"],
+      "areaServed": [
+        "Rajeg", "Tangerang", "Kabupaten Tangerang",
+        "Kronjo", "Kemiri", "Mauk", "Sukadiri", "Kresek",
+        "Sepatan", "Teluknaga", "Kosambi", "Banten"
+      ],
       "parentOrganization": {
         "@id": "https://www.centralcats.id/#organization"
       },
@@ -1007,7 +1022,7 @@ iframe{max-width:100%;}
         </div>
         <div>
           <div style="font-size:13px;opacity:.85;">Email</div>
-          <a href="mailto:customercare@central-cats.com" style="color:#fff;font-weight:600;text-decoration:none;font-size:13px;">customercare@central-cats.com</a>
+          <a href="/cdn-cgi/l/email-protection#2744525453484a425544465542674442495355464b0a444653540944484a" style="color:#fff;font-weight:600;text-decoration:none;font-size:13px;"><span class="__cf_email__" data-cfemail="f5968086819a98908796948790b596909b81879499d896948186db969a98">[email&#160;protected]</span></a>
         </div>
       </div>
 
@@ -1098,7 +1113,7 @@ iframe{max-width:100%;}
 </footer>
 
 <!-- ===== JAVASCRIPT ===== -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 
 /* ================= SCROLL HANDLER (merged for performance) ================= */
 const header = document.querySelector('header');
@@ -1314,16 +1329,15 @@ document.querySelectorAll('.faq-bubble-q').forEach(btn => {
 });
 
 /* ================= CONSOLE MESSAGE ================= */
-const ccLogo = `
-   /\\_/\\
-  ( o.o )   Central Cat's
-   > ^ <    Petshop & Grooming Tangerang
-`;
-console.log("%c" + ccLogo, "color:#d4af37;font-weight:bold;font-size:14px;");
+console.log(
+  "%c  /\\_/\\\n ( o.o )   Central Cat's\n  > ^ <    Petshop & Grooming Tangerang",
+  "color:#d4af37;font-weight:bold;font-size:13px;line-height:1.8;"
+);
+console.log("%c━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━", "color:#d4af37;font-size:10px;");
 console.log("%cHai 👋, kelihatannya kamu membuka Developer Tools.", "color:#60a5fa;font-size:14px;font-weight:600;");
-console.log("%c⚠️ Harap berhati‑hati saat menempelkan kode di sini.", "color:#f59e0b;font-size:13px;");
-console.log("%cJika seseorang menyuruhmu menempelkan sesuatu di console, bisa jadi itu penipuan.", "color:#ef4444;font-size:13px;");
-console.log("%cCentral Cat's Website • https://www.centralcats.id", "color:#22c55e;font-size:13px;");
+console.log("%c⚠️  Harap berhati‑hati saat menempelkan kode di sini.", "color:#f59e0b;font-size:13px;");
+console.log("%cJika seseorang menyuruhmu menempelkan sesuatu di console,\nbisa jadi itu adalah penipuan (Social Engineering Attack).", "color:#ef4444;font-size:13px;");
+console.log("%cCentral Cat's Website  •  https://www.centralcats.id", "color:#22c55e;font-size:13px;font-weight:600;");
 
 </script>
 <!-- ===== FAQ POPUP BUBBLE ===== -->
@@ -1399,15 +1413,4 @@ console.log("%cCentral Cat's Website • https://www.centralcats.id", "color:#22
         <svg class="faq-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
       </button>
       <div class="faq-bubble-a">
-        <div class="faq-bubble-text">✂️ <strong>Grooming</strong>: 08.00–18.00 WIB (reservasi maks. 16.00)<br>🛒 <strong>Petshop</strong>: 08.00–21.00 WIB<br>Buka setiap hari, Senin–Minggu.</div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- chat bubble tail -->
-  <div class="faq-popup-tail"></div>
-</div>
-
-</body>
-</html>
+        <div class="faq-bubble-text">✂️ <strong>Grooming</strong>
