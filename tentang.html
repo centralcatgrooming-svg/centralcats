@@ -180,14 +180,24 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
 @media(max-width:768px){
 
   header{height:68px;background:var(--primary);}
-  .header-inner{height:68px;position:relative;justify-content:center;}
-  .logo-area{position:absolute;left:50%;transform:translateX(-50%);}
-  .hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;z-index:1200;margin-left:auto;}
+  .header-inner{height:68px;position:relative;justify-content:center;padding:0 20px;}
+
+  /* logo tengah */
+  .logo-area{position:absolute;left:50%;transform:translateX(-50%);z-index:1;}
+
+  /* hamburger pojok kanan absolute */
+  .hamburger{
+    display:flex;flex-direction:column;gap:5px;cursor:pointer;z-index:1200;
+    position:absolute;right:20px;top:50%;transform:translateY(-50%);
+  }
   .hamburger span{width:26px;height:2px;background:white;border-radius:2px;transition:all .3s ease;}
   .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
   .hamburger.active span:nth-child(2){opacity:0;}
   .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px);}
-  .desktop-nav{display:none;}
+
+  /* sembunyikan desktop nav secara paksa */
+  .desktop-nav{display:none !important;}
+
   .mobile-nav{display:flex;position:fixed;top:68px;right:-100%;width:100%;height:calc(100vh - 68px);background:#1e3a8a;flex-direction:column;padding:30px 24px;gap:18px;transition:right .35s ease;box-shadow:-10px 0 30px rgba(0,0,0,.25);}
   .mobile-nav a{margin:0;font-size:16px;color:#fff;padding:10px 0;}
   #mobileMenu .nav-dropdown{position:static;background:transparent;box-shadow:none;padding-left:12px;margin-top:6px;display:none;}
@@ -195,7 +205,8 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
   #mobileMenu .nav-item{width:100%;}
   .mobile-nav.open{right:0;}
 
-  body{padding-top:68px;}
+  body{padding-top:68px;overflow-x:hidden;}
+  img{max-width:100%;height:auto;display:block;}
   .section{padding:55px 16px 60px;}
   .section h2{font-size:22px;}
   .grid,.grid-3{grid-template-columns:1fr;gap:18px;padding:0 4px;}
@@ -213,9 +224,6 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
 
   .faq-popup{bottom:0;right:0;left:0;width:100%;border-radius:20px 20px 0 0;max-height:75vh;}
   .faq-popup-tail{display:none;}
-
-  body{overflow-x:hidden;}
-  img{max-width:100%;height:auto;display:block;}
 }
 
 @media(min-width:769px){
