@@ -599,6 +599,170 @@ iframe{max-width:100%;}
   .cc-btn { padding: 13px 24px; font-size: 14px; }
 }
 
+/* ============================================ */
+/* FASE 1: Hero Section                         */
+/* ============================================ */
+
+.cc-hero {
+  /* padding-top accommodates fixed header (60–68px) + breathing room */
+  padding: 96px 0 64px;
+  background: var(--cream);
+  color: var(--ink);
+}
+
+.cc-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.cc-hero-text {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 560px;
+}
+
+.cc-hero-text .cc-eyebrow {
+  margin-bottom: 14px;
+}
+
+.cc-hero-title {
+  font-size: 2rem;
+  line-height: 1.15;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 16px;
+}
+
+.cc-hero-title em {
+  color: var(--coral-deep);
+}
+
+.cc-hero-title-accent {
+  display: block;
+  margin-top: 8px;
+  font-family: 'Fraunces', serif;
+  font-size: 0.7em;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.cc-hero-lead {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0 0 24px;
+}
+
+.cc-hero-lead strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.cc-hero-rating {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: var(--paper);
+  border: 1px solid var(--cream-deep);
+  border-radius: 100px;
+  padding: 8px 18px;
+  margin: 0 auto 28px;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.cc-stars {
+  color: var(--gold);
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.cc-rating-text {
+  color: var(--ink-soft);
+}
+
+.cc-rating-text strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.cc-hero-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cc-hero-cta .cc-btn {
+  /* enforce minimum touch target on mobile */
+  min-height: 48px;
+}
+
+.cc-hero-visual {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.cc-hero-frame {
+  width: clamp(220px, 70%, 320px);
+  aspect-ratio: 1 / 1;
+  background: var(--coral-soft);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.cc-hero-frame img {
+  /* leave breathing room; beats existing .hero img specificity via source order */
+  width: 88%;
+  height: auto;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .cc-hero {
+    padding: 120px 0 100px;
+  }
+
+  .cc-hero-grid {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 60px;
+  }
+
+  .cc-hero-text {
+    text-align: left;
+    margin: 0;
+    max-width: none;
+  }
+
+  .cc-hero-title {
+    font-size: 3rem;
+  }
+
+  .cc-hero-lead {
+    font-size: 18px;
+  }
+
+  .cc-hero-rating {
+    margin: 0 0 32px;
+  }
+
+  .cc-hero-cta {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .cc-hero-frame {
+    width: clamp(280px, 100%, 420px);
+  }
+}
+
 </style>
 
 <!-- SEO STRUCTURED DATA: LocalBusiness -->
@@ -880,21 +1044,48 @@ iframe{max-width:100%;}
 </header>
 
 <!-- ===== HERO ===== -->
-<section class="hero" id="home">
-  <div class="hero-container">
+<section class="hero cc-hero cc-section" id="home">
+  <div class="cc-container cc-hero-grid">
 
-    <div style="flex:1;text-align:center;">
-      <img class="hero-mascot" fetchpriority="high" loading="eager" decoding="async"
-        src="assets/images/maskot/maskot-about.webp"
-        alt="Maskot Central Cat's - Grooming & Petshop Tangerang"
-        width="380" height="380">
+    <div class="cc-hero-text">
+      <span class="cc-eyebrow">Petshop &amp; Grooming Kucing Tangerang</span>
+      <h1 class="cc-hero-title">
+        Perawatan <em>penuh kasih</em> untuk anabul
+        <span class="cc-hero-title-accent">di Pasar Kemis &amp; Rajeg</span>
+      </h1>
+      <p class="cc-hero-lead">
+        Layanan <strong>mandi kucing</strong> dan <strong>grooming kucing profesional</strong> di Tangerang dengan standar higienis dan groomer bersertifikat.
+      </p>
+
+      <div class="cc-hero-rating">
+        <span class="cc-stars" aria-label="Rating Google 4.9 dari 5">★★★★★</span>
+        <span class="cc-rating-text">
+          <strong>4.9</strong> di Google · <strong>500+</strong> ulasan
+        </span>
+        <!-- TODO: VERIFY rating &amp; jumlah ulasan dari Google Maps -->
+      </div>
+
+      <div class="cc-hero-cta">
+        <a href="https://app.centralcats.id/booking"
+           class="cc-btn cc-btn-primary"
+           rel="noopener">Booking Sekarang</a>
+        <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat%27s%2C%20saya%20mau%20konsultasi"
+           class="cc-btn cc-btn-ghost"
+           rel="noopener">Chat WhatsApp</a>
+      </div>
     </div>
 
-    <div class="hero-text" style="flex:1;">
-      <h1>Grooming Kucing & Petshop<br><span style="color:var(--accent);">Terpercaya di Tangerang</span></h1>
-      <p>Central Cat's menyediakan layanan <strong>mandi kucing</strong> dan <strong>grooming kucing profesional</strong> di Tangerang — melayani area Pasar Kemis, Rajeg, dan sekitarnya. Petshop lengkap dengan standar higienis dan perawatan penuh kasih.</p>
-      <!-- BUG FIX: tombol CTA hero sebelumnya ada tapi kosong/tidak tampil -->
-      <a href="#services" class="btn">Lihat Layanan Kami</a>
+    <div class="cc-hero-visual">
+      <div class="cc-hero-frame">
+        <img class="hero-mascot cc-hero-mascot"
+             fetchpriority="high"
+             loading="eager"
+             decoding="async"
+             src="assets/images/maskot/maskot-about.webp"
+             alt="Maskot Central Cat's - Grooming &amp; Petshop Tangerang"
+             width="380"
+             height="380">
+      </div>
     </div>
 
   </div>
