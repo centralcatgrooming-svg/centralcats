@@ -272,6 +272,10 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
   flex-direction:column;
   gap:8px;
   flex:1;
+  /* unlock overflow-y in column flex: default min-height:auto would
+     force body to grow to content size, defeating overflow:auto */
+  min-height:0;
+  -webkit-overflow-scrolling:touch;
 }
 .faq-popup-body::-webkit-scrollbar{width:4px;}
 .faq-popup-body::-webkit-scrollbar-track{background:transparent;}
@@ -1733,4 +1737,13 @@ console.log("%cCentral Cat's Website  •  https://www.centralcats.id", "color:#
         <svg class="faq-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
       </button>
       <div class="faq-bubble-a">
-        <div class="faq-bubble-text">✂️ <strong>Grooming</strong>
+        <div class="faq-bubble-text">✂️ <strong>Grooming</strong>: 08.00–18.00 WIB (reservasi maks. 16.00)<br>🛒 <strong>Petshop</strong>: 08.00–21.00 WIB<br>Buka setiap hari, Senin–Minggu.</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
