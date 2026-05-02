@@ -267,6 +267,24 @@ mengisi data ngarang — tunggu user supply data real.
 | Trust strip — rating Google (default: 4.9★)           | 🟡 Verify      |
 | Trust strip — jumlah ulasan (default: 500+)           | 🟡 Verify      |
 
+### Strategi Tampilan Harga (FINAL — verified 2026-05-02)
+
+- **Format wajib di markup:** `Mulai dari Rp XXk` (pakai suffix `k`,
+  bukan format full `Rp XX.XXX`). Lebih readable untuk scanning di
+  mobile.
+  - ✅ "Mulai dari Rp 75k"
+  - ❌ "Mulai dari Rp 75.000"
+- **Per fase:**
+  - **FASE 5 (Layanan):** 3 layanan dengan "Mulai dari Rp XXk" —
+    Grooming, Treatment Kutu, Cat Hotel.
+  - **FASE 6 (Paket):** 3 tier (Basic, Premium, Treatment) dengan
+    "Mulai dari Rp XXk" per tier.
+- **Pricelist detail lengkap** ada di form
+  `app.centralcats.id/booking` — website hanya menampilkan harga
+  indikatif "starting from".
+- **Harga aktual masih placeholder** (lihat tabel di atas) sampai user
+  supply data real sebelum FASE 5/6.
+
 ---
 
 ## 9. Workflow & Komunikasi
@@ -327,23 +345,26 @@ mengisi data ngarang — tunggu user supply data real.
 
 ### Mapping CTA per Section
 
-| Section          | Primary CTA                            | Secondary CTA                     |
-|------------------|----------------------------------------|-----------------------------------|
-| Hero             | "Booking via Form" (coral solid)       | "Chat WhatsApp" (ghost)           |
-| Services 3 cards | "Booking [Nama Layanan]" → form        | "Tanya via WhatsApp" (link kecil) |
-| Paket 3 tier     | "Pilih Paket [Tier]" → form            | (single CTA per card)             |
-| Floating FAB     | —                                      | WhatsApp (instant chat, 24/7 feel)|
+| Section          | Primary Label              | Primary href                   | Secondary CTA                     |
+|------------------|----------------------------|--------------------------------|-----------------------------------|
+| Hero             | "Booking via Form"         | `app.centralcats.id/booking`   | "Chat WhatsApp" (ghost)           |
+| Services 3 cards | "Booking [Nama Layanan]"   | `app.centralcats.id/booking`   | "Tanya via WhatsApp" (link kecil) |
+| Paket 3 tier     | "Pilih Paket [Tier]"       | `app.centralcats.id/booking`   | (single CTA per card)             |
+| Floating FAB     | —                          | —                              | WhatsApp (instant chat, 24/7 feel)|
 
-### Catatan Implementasi
-- **Belum confirmed** apakah form support query parameter untuk pre-fill
-  jenis layanan (mis. `?service=grooming`, `?service=cat-hotel`,
-  `?package=premium`).
-- **Kalau confirmed support:** href CTA per section pakai parameter
-  spesifik supaya UX form lebih mulus (bidang sudah terisi).
-- **Kalau tidak support:** semua CTA → form generic
-  (`https://app.centralcats.id/booking`), user pilih layanan di form.
-- **Action item:** verifikasi dengan tim sebelum FASE 1 (Hero) atau
-  FASE 5 (Services) — keputusan ini menentukan markup `href`.
+### Catatan Implementasi (FINAL — verified 2026-05-02)
+- **Form booking di `app.centralcats.id/booking` adalah generic single
+  form** — sudah include pricelist + semua layanan. **Tidak support**
+  query parameter spesifik per layanan.
+- **UTM tracking: tidak dipakai.** Alasan: simplicity > tracking
+  granularity per section. Semua CTA pakai href plain URL identik.
+- **Konsekuensi untuk markup:**
+  - Semua Primary CTA `href` = `https://app.centralcats.id/booking`
+    (persis identik, tanpa parameter, tanpa UTM).
+  - Button **label** boleh bervariasi per section (mis. "Booking
+    Grooming", "Pilih Paket Premium") supaya konteks jelas, tapi
+    destinasi sama.
+  - User memilih layanan/paket di form setelah landing.
 
 ---
 
@@ -454,8 +475,5 @@ Aturan untuk semua CSS yang ditambah ke inline `<style>` di `index.html`.
 
 ---
 
-_Last updated: 2026-05-02 — FASE 0 selesai (commit `3b5dcaf`): Google Fonts
-+ `cc-*` base styles ter-inject di `index.html`. CLAUDE.md diperluas dengan
-booking form URL, Section 11 (CTA Strategy), Section 12 (Known Issues),
-Section 13 (Responsive Standards), Section 14 (CSS Code Quality). Siap
-eksekusi FASE 1 (Hero replace)._
+_Last updated: 2026-05-02 — Decisions finalized: form generic +
+harga indikatif (k suffix). Siap eksekusi FASE 1 (Hero replace)._
