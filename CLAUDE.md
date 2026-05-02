@@ -18,6 +18,8 @@
   (Grooming 08.00–18.00, reservasi maksimal 16.00)
 - **WhatsApp:** 0821-1182-7798 (`+6282111827798`)
 - **Email:** customercare@central-cats.com
+- **Form booking online:** https://app.centralcats.id/booking
+  (subdomain `app.*` — kemungkinan terhubung ke sistem POS internal)
 
 ### Catatan Penting
 Website ini **sudah ranking page one Google** untuk keyword utama. Semua
@@ -313,5 +315,147 @@ mengisi data ngarang — tunggu user supply data real.
 
 ---
 
-_Last updated: 2026-05-02 — orphan `assets/css/style.css` & `assets/js/main.js`
-dihapus, namespace `.cc-*` aman, siap eksekusi FASE 0._
+## 11. Strategi CTA & Konversi
+
+### Channel Konversi (Dual)
+- **PRIMARY — Form Booking:** https://app.centralcats.id/booking
+  Terstruktur, masuk ke sistem POS. Default untuk semua action utama
+  (booking layanan, pilih paket, dst).
+- **SECONDARY — WhatsApp:** https://wa.me/6282111827798
+  Chat langsung, fleksibel. Untuk tanya-tanya & pelanggan yang prefer
+  percakapan personal.
+
+### Mapping CTA per Section
+
+| Section          | Primary CTA                            | Secondary CTA                     |
+|------------------|----------------------------------------|-----------------------------------|
+| Hero             | "Booking via Form" (coral solid)       | "Chat WhatsApp" (ghost)           |
+| Services 3 cards | "Booking [Nama Layanan]" → form        | "Tanya via WhatsApp" (link kecil) |
+| Paket 3 tier     | "Pilih Paket [Tier]" → form            | (single CTA per card)             |
+| Floating FAB     | —                                      | WhatsApp (instant chat, 24/7 feel)|
+
+### Catatan Implementasi
+- **Belum confirmed** apakah form support query parameter untuk pre-fill
+  jenis layanan (mis. `?service=grooming`, `?service=cat-hotel`,
+  `?package=premium`).
+- **Kalau confirmed support:** href CTA per section pakai parameter
+  spesifik supaya UX form lebih mulus (bidang sudah terisi).
+- **Kalau tidak support:** semua CTA → form generic
+  (`https://app.centralcats.id/booking`), user pilih layanan di form.
+- **Action item:** verifikasi dengan tim sebelum FASE 1 (Hero) atau
+  FASE 5 (Services) — keputusan ini menentukan markup `href`.
+
+---
+
+## 12. Known Issues
+
+Bug & technical debt yang **tidak masuk scope redesign konten saat ini**.
+Akan dibahas terpisah setelah FASE 1–7 selesai.
+
+### `email-decode.min.js` → 404 di production
+
+- **Symptom:** console error 404 untuk
+  `/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js`
+  (di-reference dari `index.html` baris 1125, auto-inject Cloudflare).
+- **Penyebab kemungkinan:** site tidak lagi pakai Cloudflare proxy /
+  konfigurasi Cloudflare berubah, tapi markup masih reference script
+  legacy.
+- **Status:** deferred, dibahas setelah redesign konten selesai.
+- **Solusi calon:**
+  - (a) Aktifkan ulang Cloudflare email obfuscation di dashboard, atau
+  - (b) Hapus `<script src=".../email-decode.min.js">` dari markup +
+    obfuscate email manual di footer (mis. JS encode atau gunakan
+    `<a href="mailto:...">` dengan span entity).
+- **Scope override note:** hapus script ini = sentuh inline JS area
+  (locked dalam scope sekarang). Setelah FASE 7 selesai, area ini bisa
+  dibuka untuk fix.
+
+---
+
+## 13. Responsive Design Standards
+
+Aturan permanen untuk semua section yang di-redesign.
+
+### Breakpoints Standard
+
+| Tier    | Range            | Wajib uji di         |
+|---------|------------------|----------------------|
+| Mobile  | 320px – 480px    | 320, 375, 414        |
+| Tablet  | 481px – 1023px   | 768                  |
+| Desktop | 1024px ke atas   | 1024, 1280, 1440     |
+
+### Approach
+- **Mobile-first CSS:** tulis base style untuk mobile, lalu
+  `@media (min-width: ...)` untuk tablet & desktop. **Jangan sebaliknya**
+  (max-width-down).
+- Setiap section baru WAJIB punya minimal 2 breakpoint: base (mobile)
+  + `@media (min-width: 768px)` untuk desktop.
+- **Touch target minimal 44×44px** untuk semua tombol/link interaktif
+  di mobile.
+- **Font size body minimal 15–16px** di mobile (jangan lebih kecil).
+- **Test wajib sebelum commit per fase:** 3 viewport minimum — 320px,
+  768px, 1280px.
+
+### Yang DILARANG
+- Fixed width tanpa fallback (mis. `width: 1240px` tanpa `max-width`).
+- Horizontal scroll di mobile (tidak boleh ada `overflow-x` yang bocor).
+- Nested grid yang break di < 768px tanpa fallback ke single column.
+- Image tanpa `max-width: 100%`.
+
+---
+
+## 14. CSS Code Quality Standards
+
+Aturan untuk semua CSS yang ditambah ke inline `<style>` di `index.html`.
+
+### Organization
+- Setiap fase WAJIB diawali separator komentar tiga baris dengan format
+  `/* === FASE [N]: [Section Name] === */` di tengah, supaya pencarian
+  cepat per fase.
+- **Urutan rule per section:** layout → typography → color → spacing →
+  state (hover/focus) → responsive.
+- Group selector related berdekatan (mis. semua `.cc-hero-*` dalam satu
+  blok berurutan, jangan terpencar).
+
+### Naming
+- Konsisten pakai prefix `.cc-*` (locked sejak FASE 0).
+- **BEM-ish:** `.cc-block`, `.cc-block__element`, `.cc-block--modifier`
+  (modifier hanya kalau diperlukan).
+- **Hindari deep nesting selector** — max 2 level.
+  - ✅ `.cc-card .cc-card-title`
+  - ❌ `.cc-section .cc-card .cc-row .cc-col h3`
+
+### Properties
+- Pakai CSS custom properties (`var(--coral)`, `var(--ink)`, dst) untuk
+  semua warna — **jangan hardcode hex value** lagi setelah FASE 0.
+- **Spacing:** `rem`/`em` untuk text-related (font-size, line-height,
+  margin antar paragraf), `px` untuk fixed UI element (border, gap kecil,
+  shadow offset).
+- **Shorthand** kalau memungkinkan (`margin: 24px 0` lebih ringkas dari
+  `margin-top` + `margin-bottom` terpisah).
+
+### Forbidden
+- `!important` (kecuali untuk override third-party — wajib dikomentari
+  alasan di samping).
+- **Inline `style="..."` di markup** kecuali untuk dynamic value yang
+  tidak praktis di-CSS (mis. JS-driven transform).
+- **Magic numbers tanpa komentar** (mis. `top: 137px` tanpa penjelasan
+  kenapa 137 — kalau berkaitan header height, sebut: `/* match header
+  height + safety */`).
+- **Duplikasi rule** yang bisa di-DRY ke utility class atau variable.
+
+### Mandatory Verification per Fase
+- Cek total baris CSS bertambah masuk akal vs scope (1 section baru
+  ≈ 80–150 baris CSS, bukan 500 — kalau lebih, audit ulang apakah ada
+  over-engineering).
+- Tidak ada selector orphan (dideklare tapi tidak dipakai di markup).
+- Tidak ada rule yang konflik dengan section lain — cek DevTools
+  Computed → strikethrough indicator pada properti yang dioverride.
+
+---
+
+_Last updated: 2026-05-02 — FASE 0 selesai (commit `3b5dcaf`): Google Fonts
++ `cc-*` base styles ter-inject di `index.html`. CLAUDE.md diperluas dengan
+booking form URL, Section 11 (CTA Strategy), Section 12 (Known Issues),
+Section 13 (Responsive Standards), Section 14 (CSS Code Quality). Siap
+eksekusi FASE 1 (Hero replace)._
