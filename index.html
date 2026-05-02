@@ -44,6 +44,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Plus+Jakarta+Sans:wght@300..800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -477,6 +478,125 @@ iframe{max-width:100%;}
 /* BUG FIX: media query ini sebelumnya bersarang di dalam media query mobile */
 @media(min-width:769px){
 .hero-container{flex-direction:row;}
+}
+
+/* ===== REDESIGN V2 — cc-* namespace ===== */
+
+:root {
+  --cream:       #F7F1E5;
+  --cream-deep:  #EFE6D2;
+  --paper:       #FFFCF5;
+  --ink:         #1F1810;
+  --ink-soft:    #524539;
+  --ink-muted:   #8B7E6E;
+  --coral:       #E07856;
+  --coral-deep:  #B8512E;
+  --coral-soft:  #FAD6C7;
+  --sage:        #6F8A6B;
+  --sage-soft:   #D9E3D5;
+  --gold:        #C9962F;
+}
+
+.cc-section { scroll-margin-top: 90px; }
+
+.cc-section,
+.cc-section p,
+.cc-section span,
+.cc-section a,
+.cc-section li,
+.cc-section button,
+.cc-section input,
+.cc-section label,
+.cc-section strong,
+.cc-section em,
+.cc-section small {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.cc-section h1,
+.cc-section h2,
+.cc-section h3,
+.cc-section h4,
+.cc-section h5,
+.cc-section h6,
+.cc-display {
+  font-family: 'Fraunces', serif;
+}
+
+.cc-section h1 em,
+.cc-section h2 em,
+.cc-section h3 em,
+.cc-section h4 em,
+.cc-section h5 em,
+.cc-section h6 em,
+.cc-display em {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: inherit;
+}
+
+.cc-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cc-eyebrow {
+  display: inline-block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--coral-deep);
+}
+
+.cc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 100px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  line-height: 1;
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+}
+.cc-btn:hover { transform: translateY(-2px); }
+
+.cc-btn-primary {
+  background: var(--coral);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(224, 120, 86, 0.25);
+}
+.cc-btn-primary:hover {
+  background: var(--coral-deep);
+  color: #fff;
+  box-shadow: 0 12px 26px rgba(184, 81, 46, 0.30);
+}
+
+.cc-btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--cream-deep);
+}
+.cc-btn-ghost:hover {
+  background: var(--paper);
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+@media (max-width: 768px) {
+  .cc-section { scroll-margin-top: 80px; }
+  .cc-container { padding: 0 20px; }
+  .cc-btn { padding: 13px 24px; font-size: 14px; }
 }
 
 </style>
