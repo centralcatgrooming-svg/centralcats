@@ -475,5 +475,67 @@ Aturan untuk semua CSS yang ditambah ke inline `<style>` di `index.html`.
 
 ---
 
-_Last updated: 2026-05-02 — Decisions finalized: form generic +
-harga indikatif (k suffix). Siap eksekusi FASE 1 (Hero replace)._
+_Last updated: 2026-05-05 — FASE 0 + FASE 1 selesai, decision pending
+revert/retain. Lihat Session Log di bawah._
+
+---
+
+## 15. Session Log — 2026-05-05
+
+### Status akhir
+- **Branch:** `redesign/v2-content-layanan`
+- **Commits ahead of main:** 6
+- **Last commit:** `5ffddb1` (fix: relocate FAQ popup markup before script tag)
+- **Remote backup:** pushed ke `origin/redesign/v2-content-layanan`
+- **Production (main):** untouched, masih baseline lama
+
+### Yang sudah dikerjakan (chronological)
+1. **FASE 0** — Inject Google Fonts (Fraunces + Plus Jakarta Sans) +
+   CSS variables `--cream/--coral/--sage/--ink` + class `.cc-*` base
+   styles. Selector global `*{font-family:'Poppins'}` dipertahankan
+   (override via specificity).
+2. **FASE 1** — Replace hero section dengan `cc-hero` (cream theme,
+   coral accent, organic mascot frame). **DECISION PENDING REVERT.**
+3. **Alignment 3 halaman** — Header/footer/design system synced
+   antara `index.html`, `tentang.html`, `layanan.html`.
+4. **Bug fix FAQ popup body scroll** — Flexbox column `min-height:0`
+   untuk unlock `overflow-y:auto`.
+5. **Bug fix FAQ popup DOM order** — Move `<div id="faqOverlay">`
+   dan `<div id="faqPopup">` markup ke posisi sebelum `<script>` tag
+   di `index.html` dan `layanan.html`. Sebelumnya `getElementById`
+   return `null` karena script jalan sebelum markup ada di DOM.
+   `tentang.html` sudah benar, dipakai sebagai reference pattern.
+6. **Bug fix index.html truncation** — Q6 + closing tags yang hilang
+   saat recovery, sudah dipulihkan.
+
+### Decision pending dari user
+- **User feedback:** cream palette "warna AI murahan", tidak suka.
+  User prefer hero navy lama.
+- **Belum revert hero v2** — menunggu konsep arah baru.
+- **Konsep alternatif yang aku tawarkan:** navy (`#1e3a8a`) + gold
+  (`#d4af37`) tetap sebagai brand color, polish layout density +
+  typography hierarchy + trust signal + maskot variant per section.
+  **BUKAN ganti palette.** Tunggu user konfirm arah.
+
+### Bug pending
+- **Console error di browser** — user lapor, belum diidentifikasi
+  symptom-nya. Resume next session: minta user paste console output
+  / screenshot.
+- **Cloudflare email-decode 404** — known issue, deferred (lihat
+  Section 12 di file ini). Akan dibahas setelah redesign selesai.
+
+### Next session resume point
+1. Tanya user console error specific apa (cabut log dulu).
+2. Decide salah satu:
+   - **Revert FASE 0 + FASE 1:** `git revert bb8c9a8 3b5dcaf` (atau
+     cherry-pick selective parts — bug fixes FAQ popup tetap retain).
+   - **Retain:** lanjut explore arah konsep baru sesuai brief user
+     (navy + gold tetap, polish layout/typography/density).
+3. Jika revert dipilih: re-evaluate apakah CLAUDE.md Section 4
+   (design system locked) perlu diupdate balik ke navy/gold palette.
+
+### File yang perlu diperhatikan
+- `index.html` — 1750 lines, hero v2 cream applied, FAQ popup fixed.
+- `tentang.html` — 848 lines, fonts + cc-* base injected, FAQ ref.
+- `layanan.html` — 1000 lines, alignment + cc-* base + FAQ fixed.
+- `CLAUDE.md` — file ini, comprehensive context.
