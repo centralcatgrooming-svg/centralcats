@@ -6,6 +6,7 @@
 <title>Tentang Central Cat's | Profil Petshop & Grooming Kucing Tangerang</title>
 <meta name="description" content="Kenali lebih dalam Central Cat's — petshop dan grooming kucing profesional di Tangerang. Visi, misi, profil, dan komitmen kami untuk setiap anabul.">
 <meta name="keywords" content="tentang central cats, profil petshop tangerang, grooming kucing tangerang, visi misi petshop, central cats tangerang">
+<link rel="canonical" href="https://www.centralcats.id/tentang.html">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#1e3a8a">
 
@@ -44,7 +45,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-
 /* ================= BASE ================= */
 :root{
   --primary:#1e3a8a;
@@ -57,29 +57,21 @@ body{background:#fff;color:var(--text);padding-top:68px;}
 html{scroll-behavior:smooth;}
 section{scroll-margin-top:80px;}
 
-/* ================= HEADER (IDENTIK INDEX) ================= */
-header{background:transparent;height:60px;padding:0;display:flex;justify-content:center;align-items:center;position:absolute;top:0;left:0;width:100%;z-index:1000;transition:all .3s ease;}
-header.scrolled{background:rgba(30,58,138,.92);backdrop-filter:blur(6px);position:fixed;}
-
-/* pada sub-page header selalu solid karena tidak ada hero transparan */
-header{background:var(--primary);position:fixed;}
-
+/* ================= HEADER ================= */
+header{background:var(--primary);height:60px;padding:0;display:flex;justify-content:center;align-items:center;position:fixed;top:0;left:0;width:100%;z-index:1000;transition:all .3s ease;}
 .header-inner{width:100%;max-width:1200px;height:60px;display:flex;justify-content:space-between;align-items:center;padding:0 20px;}
 .logo-area{display:flex;align-items:center;}
 .logo-img{height:44px;width:auto;display:block;transition:transform .35s ease, filter .35s ease;}
 .logo-link{display:flex;align-items:center;background:white;padding:0 4px;border-radius:6px;box-shadow:0 3px 8px rgba(0,0,0,.10);}
 .logo-link:hover .logo-img{transform:scale(1.06);filter:drop-shadow(0 2px 6px rgba(0,0,0,.25));}
-
 nav.desktop-nav{display:flex;align-items:center;}
 .mobile-nav{display:none;}
 .hamburger{display:none;}
-
 nav a{color:white;text-decoration:none;margin-left:20px;font-weight:500;transition:.3s ease;position:relative;font-size:12px;padding:6px 0;display:flex;align-items:center;}
 nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--accent);transition:width .25s ease;border-radius:2px;}
 nav a.active::after{width:100%;}
 nav a:hover::after{width:100%;}
 nav a:hover{color:var(--accent);}
-
 .nav-item{position:relative;}
 .nav-dropdown{position:absolute;top:100%;left:0;background:white;border-radius:8px;box-shadow:0 10px 25px rgba(0,0,0,.15);display:none;flex-direction:column;min-width:160px;overflow:hidden;padding-top:6px;z-index:3000;}
 .nav-dropdown a{color:#111;margin:0;padding:10px 14px;font-size:12px;}
@@ -91,10 +83,8 @@ nav a:hover{color:var(--accent);}
 .section{padding:80px 20px 70px;text-align:center;}
 .section:nth-child(even){background:#f9fafb;}
 .section:nth-child(odd){background:#ffffff;}
-
 .section h2{font-size:2rem;font-weight:700;color:var(--primary);letter-spacing:.3px;position:relative;display:inline-block;margin-bottom:10px;}
 .section h2::after{content:"";display:block;width:60px;height:4px;background:var(--accent);margin:12px auto 0;border-radius:4px;}
-
 .text-container{max-width:760px;margin:30px auto 0;text-align:left;padding:0 20px;}
 .text-container p{font-size:16px;line-height:1.9;color:#333;}
 .text-container p+p{margin-top:18px;}
@@ -102,18 +92,17 @@ nav a:hover{color:var(--accent);}
 /* ================= CARDS ================= */
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:30px;max-width:1200px;margin:44px auto 0;padding:0 20px;}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;max-width:1200px;margin:44px auto 0;padding:0 20px;}
-
 .card{background:#f3f4f6;padding:26px 28px;border-radius:16px;box-shadow:0 8px 25px rgba(0,0,0,.05);transition:transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s ease, border-color .35s ease;display:flex;flex-direction:column;align-items:center;text-align:center;border:1px solid transparent;position:relative;overflow:hidden;}
 .card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 22px 50px rgba(0,0,0,.14);border-color:var(--accent);}
 .card h3{color:var(--primary);font-size:20px;margin:10px 0 6px;}
 .card p{font-size:15px;line-height:1.65;color:#333;margin-top:14px;max-width:260px;}
 
-/* ================= PROFIL SPLIT (DESKTOP) ================= */
+/* ================= PROFIL SPLIT ================= */
 @media(min-width:1024px){
-  #profil .profil-wrapper{display:grid;grid-template-columns:1.1fr 0.9fr;align-items:center;gap:40px;max-width:1200px;margin:40px auto 0;padding:0 20px;text-align:left;}
+  #profil .profil-wrapper{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;max-width:1200px;margin:40px auto 0;padding:0 20px;text-align:left;}
   #profil h2{text-align:center;}
-  #profil .profil-image{display:flex;justify-content:flex-end;}
-  #profil .profil-image img{width:110%;max-width:none;height:auto;object-fit:contain;transform:scale(1.1);margin-right:-60px;}
+  #profil .profil-image{display:flex;justify-content:center;}
+  #profil .profil-image img{width:100%;max-width:480px;height:auto;object-fit:contain;}
 }
 @media(max-width:1023px){
   #profil .profil-wrapper{display:block;}
@@ -121,13 +110,19 @@ nav a:hover{color:var(--accent);}
   #profil .text-container{margin:28px auto 0;}
 }
 
-/* ================= VIDEO REELS ================= */
-.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;max-width:1200px;margin:44px auto 0;padding:0 20px;}
-.ig-reel{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:9/16;background:#f3f4f6;border:2px solid var(--accent);}
-.ig-reel video{width:100%;height:100%;object-fit:cover;display:block;}
-.reel-box{max-width:100%;margin:16px 0 20px;}
-
-/* ================= FOOTER (IDENTIK INDEX) ================= */
+/* Gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;margin:36px auto 0;}
+.gallery-item{border-radius:16px;overflow:hidden;box-shadow:0 8px 25px rgba(0,0,0,.08);aspect-ratio:3/4;transition:transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s cubic-bezier(.4,0,.2,1), border-color .35s ease;border:1px solid transparent;}
+.gallery-item:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 22px 50px rgba(0,0,0,.14);border-color:var(--accent);}
+.gallery-item a{display:block;width:100%;height:100%;}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
+.gallery-item:hover img{transform:scale(1.08);}
+/* Stats card */
+.stats-card{background:white;border-radius:14px;padding:20px 10px;box-shadow:0 4px 16px rgba(0,0,0,.07);border:1px solid #e5e7eb;text-align:center;transition:transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s cubic-bezier(.4,0,.2,1), border-color .35s ease;}
+.stats-card:hover{transform:translateY(-6px) scale(1.04);box-shadow:0 16px 40px rgba(30,58,138,.14);border-color:var(--accent);}
+.stats-card-icon{font-size:28px;margin-bottom:6px;}
+.stats-card-number{font-size:22px;font-weight:700;color:var(--primary);}
+.stats-card-label{font-size:12px;color:#666;margin-top:4px;}
 footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0;border-top:3px solid var(--accent);box-shadow:0 -2px 18px rgba(212,175,55,.35);}
 .footer-container{max-width:1100px;width:100%;margin:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:60px;align-items:flex-start;}
 .footer-brand{text-align:left;}
@@ -146,73 +141,76 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
 .footer-contact svg{transition:transform .2s ease;}
 .footer-contact div:hover svg{transform:scale(1.15);}
 
-/* ================= FAQ POPUP BUBBLE ================= */
-.faq-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:2000;backdrop-filter:blur(2px);animation:fadeIn .2s ease;}
+/* ================= FAQ POPUP - WHATSAPP CHAT STYLE ================= */
+.faq-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,.4);z-index:2000;backdrop-filter:blur(3px);}
 .faq-overlay.show{display:block;}
-.faq-popup{display:none;position:fixed;bottom:30px;right:30px;width:360px;max-height:540px;background:#fff;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.22);z-index:2100;flex-direction:column;overflow:hidden;animation:popUp .3s cubic-bezier(.34,1.56,.64,1);}
+.faq-popup{display:none;position:fixed;bottom:28px;right:28px;width:360px;height:520px;background:#dfe7ec;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.22);z-index:2100;flex-direction:column;overflow:hidden;animation:popUp .3s cubic-bezier(.34,1.56,.64,1);}
 .faq-popup.show{display:flex;}
 @keyframes popUp{from{opacity:0;transform:translateY(20px) scale(.95);}to{opacity:1;transform:translateY(0) scale(1);}}
-@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-.faq-popup-header{background:linear-gradient(135deg,#1e3a8a,#2d4fa3);padding:16px 18px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
-.faq-popup-title{display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:600;}
-.faq-popup-close{background:rgba(255,255,255,.15);border:none;border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s;}
+.faq-popup-header{background:linear-gradient(135deg,#1e3a8a,#1e5fa8);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.faq-chat-agent{display:flex;align-items:center;gap:10px;}
+.faq-agent-avatar{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:20px;border:2px solid rgba(255,255,255,.4);}
+.faq-agent-name{color:#fff;font-size:13px;font-weight:700;}
+.faq-agent-status{color:rgba(255,255,255,.75);font-size:11px;margin-top:1px;}
+.faq-popup-close{background:rgba(255,255,255,.15);border:none;border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:white;font-size:14px;transition:background .2s;}
 .faq-popup-close:hover{background:rgba(255,255,255,.3);}
-.faq-popup-body{overflow-y:auto;padding:12px 14px 16px;display:flex;flex-direction:column;gap:8px;flex:1;}
-.faq-popup-body::-webkit-scrollbar{width:4px;}
-.faq-popup-body::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:4px;}
-.faq-bubble-item{border-radius:12px;overflow:hidden;border:1px solid #e5e7eb;}
-.faq-bubble-q{width:100%;background:#f8fafc;border:none;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:13px;font-weight:600;color:var(--primary);text-align:left;cursor:pointer;font-family:'Poppins',sans-serif;transition:background .2s;line-height:1.45;}
-.faq-bubble-q:hover{background:#eef2ff;}
-.faq-bubble-item.open .faq-bubble-q{background:#eef2ff;border-bottom:1px solid #e5e7eb;}
-.faq-arrow{flex-shrink:0;color:var(--accent);transition:transform .3s ease;}
-.faq-bubble-item.open .faq-arrow{transform:rotate(180deg);}
-.faq-bubble-a{max-height:0;overflow:hidden;transition:max-height .35s ease;background:#fff;}
-.faq-bubble-item.open .faq-bubble-a{max-height:300px;}
-.faq-bubble-text{padding:10px 14px 12px;font-size:12.5px;line-height:1.75;color:#444;border-left:3px solid var(--accent);margin:8px 10px;background:#fffbef;border-radius:0 8px 8px 0;}
-.faq-bubble-text strong{color:#111;}
-.faq-bubble-text a{color:var(--primary);font-weight:600;text-decoration:none;}
-.faq-popup-tail{position:absolute;bottom:-10px;right:40px;width:20px;height:10px;overflow:hidden;}
-.faq-popup-tail::before{content:"";position:absolute;top:-10px;left:0;width:20px;height:20px;background:#fff;transform:rotate(45deg);box-shadow:2px 2px 6px rgba(0,0,0,.1);}
+.faq-chat-body{flex:1;overflow-y:auto;padding:14px 12px;display:flex;flex-direction:column;gap:6px;}
+.faq-chat-body::-webkit-scrollbar{width:4px;}
+.faq-chat-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15);border-radius:4px;}
+.faq-date-divider{text-align:center;margin:4px 0 8px;}
+.faq-date-divider span{background:rgba(225,245,254,.85);color:#546e7a;font-size:11px;padding:3px 10px;border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,.08);}
+.faq-msg-bot{display:flex;align-items:flex-end;gap:6px;align-self:flex-start;max-width:88%;}
+.faq-msg-bot-avatar{width:28px;height:28px;border-radius:50%;background:#1e3a8a;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;margin-bottom:2px;}
+.faq-bubble-bot{background:white;color:#111;padding:8px 12px;border-radius:0 12px 12px 12px;font-size:13px;line-height:1.6;box-shadow:0 1px 3px rgba(0,0,0,.1);position:relative;}
+.faq-bubble-bot::before{content:"";position:absolute;left:-6px;top:0;border-top:6px solid white;border-left:6px solid transparent;}
+.faq-bubble-bot a{color:#1e3a8a;font-weight:600;text-decoration:none;}
+.faq-bubble-bot a:hover{text-decoration:underline;}
+.faq-bubble-bot strong{color:#1e3a8a;}
+.faq-bubble-time{font-size:10px;color:#8696a0;text-align:right;margin-top:3px;}
+.faq-msg-user{display:flex;justify-content:flex-end;align-self:flex-end;max-width:88%;}
+.faq-bubble-user{background:#d9fdd3;color:#111;padding:8px 12px;border-radius:12px 0 12px 12px;font-size:13px;line-height:1.6;box-shadow:0 1px 3px rgba(0,0,0,.1);position:relative;}
+.faq-bubble-user::after{content:"";position:absolute;right:-6px;top:0;border-top:6px solid #d9fdd3;border-right:6px solid transparent;}
+.faq-typing{display:flex;align-items:center;gap:4px;padding:10px 14px;background:white;border-radius:0 12px 12px 12px;width:fit-content;box-shadow:0 1px 3px rgba(0,0,0,.1);}
+.faq-typing span{width:7px;height:7px;border-radius:50%;background:#90a4ae;animation:typing 1.2s infinite;}
+.faq-typing span:nth-child(2){animation-delay:.2s;}
+.faq-typing span:nth-child(3){animation-delay:.4s;}
+@keyframes typing{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-5px);}}
+.faq-quick-replies{background:white;padding:10px 10px 12px;display:flex;flex-wrap:wrap;gap:8px;border-top:1px solid #e5e7eb;flex-shrink:0;}
+.faq-chip{background:#f0f4ff;border:1px solid #c7d2fe;color:#1e3a8a;padding:7px 13px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;transition:all .2s ease;white-space:nowrap;}
+.faq-chip:hover{background:#1e3a8a;color:white;border-color:#1e3a8a;transform:translateY(-1px);}
+.faq-chip:active{transform:translateY(0);}
 #faqTrigger:hover > div:first-child{background:rgba(212,175,55,.4) !important;}
 
 /* ================= MOBILE ================= */
 @media(max-width:768px){
-
-  header{height:68px;background:var(--primary);}
+  .faq-popup{bottom:0;right:0;left:0;width:100%;height:75vh;border-radius:20px 20px 0 0;}
+  .faq-chip{white-space:normal;font-size:11px;padding:6px 11px;}
+  .faq-quick-replies{gap:6px;padding:8px 8px 10px;}
+  header{height:68px;}
   .header-inner{height:68px;position:relative;justify-content:center;padding:0 20px;}
-
-  /* logo tengah */
   .logo-area{position:absolute;left:50%;transform:translateX(-50%);z-index:1;}
-
-  /* hamburger pojok kanan absolute */
-  .hamburger{
-    display:flex;flex-direction:column;gap:5px;cursor:pointer;z-index:1200;
-    position:absolute;right:20px;top:50%;transform:translateY(-50%);
-  }
+  .hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;z-index:1200;position:absolute;right:20px;top:50%;transform:translateY(-50%);}
   .hamburger span{width:26px;height:2px;background:white;border-radius:2px;transition:all .3s ease;}
   .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
   .hamburger.active span:nth-child(2){opacity:0;}
   .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px);}
-
-  /* sembunyikan desktop nav secara paksa */
   .desktop-nav{display:none !important;}
-
   .mobile-nav{display:flex;position:fixed;top:68px;right:-100%;width:100%;height:calc(100vh - 68px);background:#1e3a8a;flex-direction:column;padding:30px 24px;gap:18px;transition:right .35s ease;box-shadow:-10px 0 30px rgba(0,0,0,.25);}
   .mobile-nav a{margin:0;font-size:16px;color:#fff;padding:10px 0;}
   #mobileMenu .nav-dropdown{position:static;background:transparent;box-shadow:none;padding-left:12px;margin-top:6px;display:none;}
   #mobileMenu .nav-dropdown a{color:#cbd5f5;font-size:14px;padding:6px 0;}
   #mobileMenu .nav-item{width:100%;}
   .mobile-nav.open{right:0;}
-
   body{padding-top:68px;overflow-x:hidden;}
   img{max-width:100%;height:auto;display:block;}
   .section{padding:55px 16px 60px;}
   .section h2{font-size:22px;}
   .grid,.grid-3,.ig-grid{grid-template-columns:1fr;gap:20px;padding:0 4px;}
+  .stats-grid{grid-template-columns:repeat(2,1fr) !important;}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
   .card{padding:22px 20px;}
   .card p{max-width:100%;}
   .text-container{padding:0 4px;}
-
   .footer-container{grid-template-columns:1fr;gap:28px;padding:0 16px;}
   .footer-brand{text-align:left;display:flex;flex-direction:column;align-items:flex-start;gap:10px;}
   .footer-contact{width:100%;}
@@ -220,15 +218,10 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
   .footer-social{grid-template-columns:1fr;gap:14px;margin-top:6px;}
   .footer-social-item{white-space:normal;}
   .footer-bottom{margin-top:36px;font-size:11px;}
-
-  .faq-popup{bottom:0;right:0;left:0;width:100%;border-radius:20px 20px 0 0;max-height:75vh;}
-  .faq-popup-tail{display:none;}
 }
-
 @media(min-width:769px){
   .header-inner{justify-content:space-between;}
 }
-
 </style>
 
 <!-- SEO STRUCTURED DATA: AboutPage -->
@@ -244,10 +237,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
     "@id": "https://www.centralcats.id/#organization",
     "name": "Central Cat's",
     "url": "https://www.centralcats.id/",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.centralcats.id/assets/logo/logo-horizontal.png"
-    }
+    "logo": {"@type": "ImageObject","url": "https://www.centralcats.id/assets/logo/logo-horizontal.png"}
   },
   "breadcrumb": {
     "@type": "BreadcrumbList",
@@ -261,7 +251,6 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
 </head>
 <body>
 
-<!-- ===== HEADER (IDENTIK INDEX) ===== -->
 <header>
   <div class="header-inner">
     <div class="logo-area">
@@ -272,15 +261,13 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
 
     <nav class="desktop-nav">
       <a href="index.html#home">Home</a>
-
       <div class="nav-item">
         <a href="tentang.html" class="active">Tentang</a>
         <div class="nav-dropdown">
           <a href="tentang.html">Profil</a>
-          <a href="tentang.html#visi-misi">Visi & Misi</a>
+          <a href="tentang.html#visi-misi">Visi &amp; Misi</a>
         </div>
       </div>
-
       <div class="nav-item">
         <a href="layanan.html">Layanan</a>
         <div class="nav-dropdown">
@@ -289,12 +276,11 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
           <a href="layanan.html#cat-hotel">Cat Hotel</a>
         </div>
       </div>
-
       <a href="index.html#products">Produk</a>
       <a href="index.html#reviews">Ulasan</a>
       <a href="index.html#location">Lokasi</a>
+      <a href="toko.html">Toko Online</a>
       <a href="karir.html">Karir</a>
-
       <div class="nav-item">
         <a href="kerjasama.html">Kerjasama</a>
         <div class="nav-dropdown">
@@ -311,15 +297,13 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
 
   <nav id="mobileMenu" class="mobile-nav">
     <a href="index.html#home">Home</a>
-
     <div class="nav-item">
       <a href="tentang.html" class="active">Tentang</a>
       <div class="nav-dropdown">
         <a href="tentang.html">Profil</a>
-        <a href="tentang.html#visi-misi">Visi & Misi</a>
+        <a href="tentang.html#visi-misi">Visi &amp; Misi</a>
       </div>
     </div>
-
     <div class="nav-item">
       <a href="layanan.html">Layanan</a>
       <div class="nav-dropdown">
@@ -328,12 +312,11 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
         <a href="layanan.html#cat-hotel">Cat Hotel</a>
       </div>
     </div>
-
     <a href="index.html#products">Produk</a>
     <a href="index.html#reviews">Ulasan</a>
     <a href="index.html#location">Lokasi</a>
+    <a href="toko.html">Toko Online</a>
     <a href="karir.html">Karir</a>
-
     <div class="nav-item">
       <a href="kerjasama.html">Kerjasama</a>
       <div class="nav-dropdown">
@@ -348,7 +331,6 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
 <section id="profil" class="section">
   <h2>Profil Central Cat's</h2>
   <div class="profil-wrapper">
-
     <div class="profil-text">
       <div class="text-container">
         <p>Central Cat's adalah petshop dan layanan grooming khusus kucing di Tangerang yang dibangun dengan satu tujuan utama: memberikan perawatan terbaik dengan standar profesional dan penuh perhatian.</p>
@@ -356,11 +338,35 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
         <p>Selain layanan grooming, Central Cat's juga menyediakan berbagai kebutuhan harian kucing mulai dari makanan, pasir, hingga produk perawatan berkualitas untuk menunjang kesehatan dan kenyamanan anabul Anda.</p>
       </div>
     </div>
-
     <div class="profil-image">
       <img src="assets/icons/maskot-porfil.png" alt="Maskot Central Cat's - Petshop & Grooming Tangerang">
     </div>
+  </div>
+</section>
 
+<!-- ===== STATS ===== -->
+<section class="section" style="padding-top:50px;padding-bottom:50px;">
+  <div class="stats-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:720px;margin:0 auto;">
+    <div class="stats-card">
+      <div class="stats-card-icon">🗓️</div>
+      <div class="stats-card-number">2020</div>
+      <div class="stats-card-label">Berdiri Sejak</div>
+    </div>
+    <div class="stats-card">
+      <div class="stats-card-icon">😺</div>
+      <div class="stats-card-number">500+</div>
+      <div class="stats-card-label">Pelanggan Puas</div>
+    </div>
+    <div class="stats-card">
+      <div class="stats-card-icon">📍</div>
+      <div class="stats-card-number">2</div>
+      <div class="stats-card-label">Cabang Aktif</div>
+    </div>
+    <div class="stats-card">
+      <div class="stats-card-icon">✂️</div>
+      <div class="stats-card-number">100%</div>
+      <div class="stats-card-label">Groomer Bersertifikat</div>
+    </div>
   </div>
 </section>
 
@@ -368,45 +374,37 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
 <section class="section">
   <h2>Mengapa Memilih Central Cat's</h2>
   <div class="grid">
-
     <div class="card">
       <h3>Groomer Berpengalaman</h3>
       <p>Ditangani oleh tim yang terbiasa menghadapi berbagai karakter kucing, sehingga proses grooming lebih aman dan minim stres.</p>
     </div>
-
     <div class="card">
       <h3>Perawatan Higienis</h3>
       <p>Seluruh proses dilakukan dengan standar kebersihan tinggi menggunakan peralatan dan produk yang terjaga kualitasnya.</p>
     </div>
-
     <div class="card">
       <h3>Produk Berkualitas</h3>
       <p>Kami hanya menyediakan produk pilihan yang telah teruji untuk menjaga kesehatan kulit, bulu, dan daya tahan tubuh kucing.</p>
     </div>
-
     <div class="card">
       <h3>Layanan Terpercaya</h3>
       <p>Kami mengutamakan kenyamanan pelanggan dan anabul melalui pelayanan yang ramah, transparan, dan profesional.</p>
     </div>
-
   </div>
 </section>
 
 <!-- ===== VISI MISI ===== -->
 <section id="visi-misi" class="section">
-  <h2>Visi & Misi</h2>
+  <h2>Visi &amp; Misi</h2>
   <div class="grid">
-
     <div class="card" style="text-align:left;">
       <h3>Visi</h3>
       <p>Menjadi petshop dan layanan grooming kucing terpercaya di Tangerang dengan standar perawatan profesional dan kualitas layanan yang konsisten.</p>
     </div>
-
     <div class="card" style="text-align:left;">
       <h3>Misi</h3>
       <p>Memberikan layanan grooming yang higienis dan aman, menyediakan produk berkualitas, serta memastikan setiap kucing mendapatkan perawatan terbaik dengan penuh perhatian.</p>
     </div>
-
   </div>
 </section>
 
@@ -419,49 +417,31 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
   </div>
 </section>
 
-<!-- ===== NILAI LAYANAN (VIDEO) ===== -->
+<!-- ===== GALERI ===== -->
 <section class="section">
-  <h2>Nilai Layanan Kami</h2>
-
-  <div class="ig-grid">
-
-    <div class="card">
-      <h3>Perawatan Profesional</h3>
-      <div class="ig-reel reel-box">
-        <video controls preload="metadata" playsinline loading="lazy">
-          <source src="assets/video/grooming/perawatan-profesional.mp4" type="video/mp4">
-        </video>
-      </div>
-      <p>Setiap layanan grooming dilakukan oleh tenaga berpengalaman dengan standar kebersihan tinggi untuk menjaga kesehatan kulit dan bulu kucing.</p>
+  <h2>Anabul Pelanggan Kami</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <a href="https://www.instagram.com/central.catgrooming/" target="_blank" rel="noopener">
+        <img src="assets/icons/groom-cream-before.webp" alt="Kucing Central Cat's">
+      </a>
     </div>
-
-    <div class="card">
-      <h3>Kenyamanan Kucing</h3>
-      <div class="ig-reel reel-box">
-        <video controls preload="metadata" playsinline loading="lazy">
-          <source src="assets/video/grooming/kenyamanan_kucing.mp4" type="video/mp4">
-        </video>
-      </div>
-      <p>Kami memastikan setiap kucing mendapatkan perlakuan yang lembut dan penuh perhatian agar tetap merasa nyaman selama proses perawatan.</p>
+    <div class="gallery-item">
+      <a href="https://www.instagram.com/central.catgrooming/" target="_blank" rel="noopener">
+        <img src="assets/icons/groom-orange-before.webp" alt="Kucing Central Cat's">
+      </a>
     </div>
-
-    <div class="card">
-      <h3>Produk Berkualitas</h3>
-      <div class="ig-reel reel-box">
-        <video controls preload="metadata" playsinline loading="lazy">
-          <source src="assets/video/grooming/Produk-Berkualitas.mp4" type="video/mp4">
-        </video>
-      </div>
-      <p>Central Cat's menyediakan berbagai produk kebutuhan kucing berkualitas untuk menunjang kesehatan dan kesejahteraan hewan peliharaan.</p>
+    <div class="gallery-item">
+      <a href="https://www.instagram.com/central.catgrooming/" target="_blank" rel="noopener">
+        <img src="assets/icons/groom-white-before.webp" alt="Kucing Central Cat's">
+      </a>
     </div>
-
   </div>
 </section>
 
-<!-- ===== FOOTER (IDENTIK INDEX) ===== -->
+<!-- ===== FOOTER ===== -->
 <footer>
   <div class="footer-container">
-
     <div class="footer-brand">
       <a href="index.html#home" class="logo-link">
         <img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo" class="logo-img">
@@ -469,8 +449,8 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
       <p style="font-size:12px;line-height:1.7;opacity:.9;margin-top:14px;">
         <strong style="font-size:14px;">Office</strong><br>
         Jl. Raya Bumi Indah Tahap 3<br>
-        Ruko Union Square RMR 03<br>
-        Sukamantri, Pasar Kemis<br>
+        Ruko Union Square RMR 03,<br>
+        Sukamantri, Kec. Ps. Kemis,<br>
         Kabupaten Tangerang, Banten 15560<br>
         Indonesia
       </p>
@@ -478,7 +458,6 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
 
     <div class="footer-contact" style="text-align:left;max-width:320px;">
       <strong style="font-size:14px;display:block;margin-bottom:10px;">Hubungi Kami</strong>
-
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
         <div style="width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fbbf24" viewBox="0 0 24 24"><path d="M12 13.065 2.4 6.6A2 2 0 0 1 4 6h16a2 2 0 0 1 1.6.8L12 13.065ZM22 8.236v9.764a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.236l9.445 6.356a1 1 0 0 0 1.11 0L22 8.236Z"/></svg>
@@ -488,9 +467,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
           <a href="mailto:customercare@central-cats.com" style="color:#fff;font-weight:600;text-decoration:none;font-size:13px;">customercare@central-cats.com</a>
         </div>
       </div>
-
       <hr style="border:none;border-top:1px solid rgba(255,255,255,.25);margin:10px 0 10px 46px;">
-
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
         <div style="width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;">
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#22c55e" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.768.967-.94 1.164-.173.198-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.787-1.48-1.758-1.653-2.055-.173-.297-.018-.458.13-.606.135-.135.297-.347.446-.52.149-.173.198-.297.297-.495.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51l-.57-.01c-.198 0-.52.075-.792.371-.272.297-1.04 1.016-1.04 2.479s1.065 2.877 1.213 3.075c.149.198 2.095 3.2 5.077 4.487.71.306 1.262.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.414.248-.694.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/></svg>
@@ -500,9 +477,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
           <a href="https://wa.me/6282111827798" style="color:#fff;font-weight:600;text-decoration:none;font-size:12px;">0821‑1182‑7798</a>
         </div>
       </div>
-
       <hr style="border:none;border-top:1px solid rgba(255,255,255,.25);margin:10px 0 10px 46px;">
-
       <div style="display:flex;align-items:center;gap:12px;">
         <div style="width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#38bdf8" viewBox="0 0 24 24"><path d="M20 2H4a2 2 0 0 0-2 2v14l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Zm-2 7H6V7h12v2Zm-4 4H6v-2h8v2Z"/></svg>
@@ -512,10 +487,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
           <span style="font-size:13px;font-weight:600;">0821‑1182‑7798</span>
         </div>
       </div>
-
       <hr style="border:none;border-top:1px solid rgba(255,255,255,.25);margin:10px 0 10px 46px;">
-
-      <!-- FAQ TRIGGER -->
       <div id="faqTrigger" style="display:flex;align-items:center;gap:12px;cursor:pointer;" title="Pertanyaan Umum (FAQ)">
         <div style="width:44px;height:44px;border-radius:50%;background:rgba(212,175,55,0.25);display:flex;align-items:center;justify-content:center;border:1px solid rgba(212,175,55,.5);transition:background .2s ease;">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#d4af37" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>
@@ -525,36 +497,30 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
           <span style="font-size:13px;font-weight:600;color:#d4af37;">Pertanyaan Umum</span>
         </div>
       </div>
-
     </div>
 
     <div class="footer-info" style="max-width:320px;">
       <strong>Media Sosial</strong>
       <div class="footer-social">
-
         <a class="footer-social-item" href="https://www.instagram.com/centralcat_official" target="_blank" rel="noopener">
           <div class="footer-social-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M7.75 2C4.57 2 2 4.57 2 7.75v8.5C2 19.43 4.57 22 7.75 22h8.5C19.43 22 22 19.43 22 16.25v-8.5C22 4.57 19.43 2 16.25 2h-8.5zm0 2h8.5A3.75 3.75 0 0 1 20 7.75v8.5A3.75 3.75 0 0 1 16.25 20h-8.5A3.75 3.75 0 0 1 4 16.25v-8.5A3.75 3.75 0 0 1 7.75 4zm9.5 1.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
           </div>
           <span>@centralcat_official</span>
         </a>
-
         <a class="footer-social-item" href="https://www.youtube.com/@central_cats" target="_blank" rel="noopener">
           <div class="footer-social-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 0 0 .5 6.2 31.2 31.2 0 0 0 0 12a31.2 31.2 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.2 31.2 0 0 0 24 12a31.2 31.2 0 0 0-.5-5.8zM9.8 15.5v-7l6 3.5-6 3.5z"/></svg>
           </div>
           <span>@central_cats</span>
         </a>
-
         <a class="footer-social-item" href="https://www.tiktok.com/@central_cats" target="_blank" rel="noopener">
           <div class="footer-social-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M16 1a6.9 6.9 0 0 0 1.9 4.7A6.9 6.9 0 0 0 22 7v3.1a9.9 9.9 0 0 1-6-2v6.4a6.5 6.5 0 1 1-5.6-6.4v3.2a3.3 3.3 0 1 0 2.4 3.2V1h3.2z"/></svg>
           </div>
           <span>@central_cats</span>
         </a>
-
       </div>
-
       <strong style="margin-top:24px;display:block;">Informasi</strong>
       <p style="margin-top:10px;font-size:12px;opacity:.9;line-height:1.7;">
         Grooming : 08.00 – 18.00 WIB<br>
@@ -562,167 +528,140 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
         <span style="color:#ffd27f;">Reservasi maksimal 16.00 WIB</span>
       </p>
     </div>
-
   </div>
-
-  <div class="footer-bottom">
-    © 2026 Central Cat's. All Rights Reserved.
-  </div>
+  <div class="footer-bottom">© 2026 Central Cat's. All Rights Reserved.</div>
 </footer>
 
-<!-- ===== FAQ POPUP BUBBLE (IDENTIK INDEX) ===== -->
+<!-- FAQ POPUP - WHATSAPP CHAT STYLE -->
 <div id="faqOverlay" class="faq-overlay"></div>
-
 <div id="faqPopup" class="faq-popup" role="dialog" aria-modal="true" aria-label="FAQ Central Cat's">
   <div class="faq-popup-header">
-    <div class="faq-popup-title">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#d4af37" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>
-      <span>Pertanyaan Umum (FAQ)</span>
+    <div class="faq-chat-agent">
+      <div class="faq-agent-avatar">🐱</div>
+      <div>
+        <div class="faq-agent-name">Meow Bot — Central Cat's</div>
+        <div class="faq-agent-status">● Online sekarang</div>
+      </div>
     </div>
-    <button id="faqClose" class="faq-popup-close" aria-label="Tutup FAQ">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7A1 1 0 0 0 5.7 7.11L10.59 12 5.7 16.89a1 1 0 1 0 1.41 1.41L12 13.41l4.89 4.89a1 1 0 0 0 1.41-1.41L13.41 12l4.89-4.89a1 1 0 0 0 0-1.4z"/></svg>
-    </button>
+    <button id="faqClose" class="faq-popup-close" aria-label="Tutup FAQ">✕</button>
   </div>
-
-  <div class="faq-popup-body">
-    <div class="faq-bubble-item">
-      <button class="faq-bubble-q"><span>Berapa biaya grooming kucing di Central Cat's?</span><svg class="faq-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
-      <div class="faq-bubble-a"><div class="faq-bubble-text">Biaya grooming bervariasi tergantung jenis layanan & ukuran kucing. Hubungi kami via <a href="https://wa.me/6282111827798">WhatsApp 0821-1182-7798</a> untuk info harga terbaru.</div></div>
-    </div>
-    <div class="faq-bubble-item">
-      <button class="faq-bubble-q"><span>Di mana lokasi Central Cat's di Tangerang?</span><svg class="faq-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
-      <div class="faq-bubble-a"><div class="faq-bubble-text">📍 <strong>Pasar Kemis</strong> — Bumi Indah RMR 03, Kec. Pasar Kemis<br>📍 <strong>Rajeg</strong> — Rajeg Gardenia E11, Kec. Rajeg<br>Buka setiap hari 08.00–21.00 WIB.</div></div>
-    </div>
-    <div class="faq-bubble-item">
-      <button class="faq-bubble-q"><span>Apa saja yang termasuk dalam layanan mandi kucing?</span><svg class="faq-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
-      <div class="faq-bubble-a"><div class="faq-bubble-text">Mandi dengan shampoo khusus, pengeringan bulu, penyisiran, potong kuku, pembersihan telinga, dan perawatan dasar lainnya.</div></div>
-    </div>
-    <div class="faq-bubble-item">
-      <button class="faq-bubble-q"><span>Apakah semua ras kucing bisa di-grooming?</span><svg class="faq-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
-      <div class="faq-bubble-a"><div class="faq-bubble-text">Ya! Kami melayani semua ras — domestik, Persia, Anggora, Maine Coon, Scottish Fold, Ragdoll, dan lainnya.</div></div>
-    </div>
-    <div class="faq-bubble-item">
-      <button class="faq-bubble-q"><span>Apakah ada layanan antar jemput kucing?</span><svg class="faq-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
-      <div class="faq-bubble-a"><div class="faq-bubble-text">Untuk info layanan home service & antar jemput, hubungi kami di <a href="https://wa.me/6282111827798">WhatsApp 0821-1182-7798</a>.</div></div>
-    </div>
-    <div class="faq-bubble-item">
-      <button class="faq-bubble-q"><span>Jam berapa Central Cat's buka?</span><svg class="faq-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
-      <div class="faq-bubble-a"><div class="faq-bubble-text">✂️ <strong>Grooming</strong>: 08.00–18.00 WIB (reservasi maks. 16.00)<br>🛒 <strong>Petshop</strong>: 08.00–21.00 WIB<br>Buka setiap hari, Senin–Minggu.</div></div>
+  <div class="faq-chat-body" id="faqChatBody">
+    <div class="faq-date-divider"><span>Hari ini</span></div>
+    <div class="faq-msg-bot">
+      <div class="faq-msg-bot-avatar">🐱</div>
+      <div>
+        <div class="faq-bubble-bot">Halo! 👋 Selamat datang di <strong>Central Cat's</strong>.<br>Ada yang bisa aku bantu? Pilih topik di bawah ya! 😸</div>
+        <div class="faq-bubble-time">Baru saja</div>
+      </div>
     </div>
   </div>
-
-  <div class="faq-popup-tail"></div>
+  <div class="faq-quick-replies" id="faqQuickReplies">
+    <button class="faq-chip" data-q="Berapa biaya grooming kucing?" data-a="Biaya grooming mulai dari <strong>Rp 100.000 – Rp 200.000</strong> tergantung paket & ukuran kucing. Hubungi via <a href='https://wa.me/6282111827798'>WhatsApp 0821-1182-7798</a> untuk info terbaru! 💰">💰 Biaya Grooming</button>
+    <button class="faq-chip" data-q="Di mana lokasi Central Cat's?" data-a="📍 <strong>Pasar Kemis</strong> — Bumi Indah RMR 03<br>📍 <strong>Rajeg</strong> — Rajeg Gardenia E11<br>Buka setiap hari 08.00–21.00 WIB!">📍 Lokasi Cabang</button>
+    <button class="faq-chip" data-q="Apa saja layanan grooming kucing?" data-a="Layanan grooming meliputi: mandi shampoo khusus, pengeringan, penyisiran, potong kuku, pembersihan telinga, dan perawatan dasar lainnya 🛁">🛁 Layanan Grooming</button>
+    <button class="faq-chip" data-q="Apakah semua ras kucing bisa grooming?" data-a="Ya tentu! 😺 Kami melayani semua ras — Domestik, Persia, Anggora, Maine Coon, Scottish Fold, Ragdoll, dan lainnya!">🐾 Semua Ras Kucing?</button>
+    <button class="faq-chip" data-q="Apakah ada layanan antar jemput?" data-a="Untuk info home service & antar jemput, silakan hubungi kami langsung via <a href='https://wa.me/6282111827798'>WhatsApp 0821-1182-7798</a> 🚗">🚗 Antar Jemput</button>
+    <button class="faq-chip" data-q="Jam berapa Central Cat's buka?" data-a="✂️ <strong>Grooming</strong>: 08.00–18.00 WIB (reservasi maks 16.00 WIB)<br>🛒 <strong>Petshop</strong>: 08.00–21.00 WIB<br>Buka setiap hari Senin–Minggu! 🎉">🕐 Jam Operasional</button>
+    <button class="faq-chip" data-q="Mau booking grooming kucing 🛁" data-a="Yay! Siap membantu anabulmu tampil kece! ✂️🐾<br><br>Klik tombol di bawah untuk isi form booking grooming:<br><br><a href='https://app.centralcats.id/booking' target='_blank' style='display:inline-block;margin-top:4px;background:#1e3a8a;color:white;padding:8px 18px;border-radius:20px;font-weight:600;font-size:12px;text-decoration:none;'>📅 Booking Grooming Sekarang</a>">✂️ Booking Grooming</button>
+    <button class="faq-chip" data-q="Mau booking Cat Hotel 🏨" data-a="Titipkan anabulmu di Cat Hotel Central Cat's — aman, nyaman, dan dipantau setiap saat! 🐱🏨<br><br>Klik tombol di bawah untuk isi form booking Cat Hotel:<br><br><a href='https://app.centralcats.id/booking' target='_blank' style='display:inline-block;margin-top:4px;background:#1e3a8a;color:white;padding:8px 18px;border-radius:20px;font-weight:600;font-size:12px;text-decoration:none;'>📅 Booking Cat Hotel Sekarang</a>">🏨 Booking Cat Hotel</button>
+  </div>
 </div>
 
-<!-- ===== JAVASCRIPT (IDENTIK INDEX) ===== -->
 <script>
-
-/* ================= SCROLL HANDLER ================= */
+/* ================= HEADER SCROLL ================= */
 const header = document.querySelector('header');
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('nav a[href^="#"]');
-const isMobile = () => window.innerWidth <= 768;
-
 window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY;
-  if (scrollY > 40) { header.classList.add('scrolled'); }
-  else { header.classList.remove('scrolled'); }
-  let current = "";
-  sections.forEach(s => { if (scrollY >= s.offsetTop - 120) current = s.getAttribute('id'); });
-  navLinks.forEach(a => {
-    a.classList.remove('active');
-    if (a.getAttribute('href') === "#" + current) a.classList.add('active');
-  });
-}, { passive: true });
+  header.classList.toggle('scrolled', window.scrollY > 40);
+}, {passive:true});
 
-/* ================= MOBILE DROPDOWN ACCORDION ================= */
+/* ================= MOBILE DROPDOWN ================= */
 document.querySelectorAll('#mobileMenu .nav-item > a').forEach(btn => {
-  btn.addEventListener('click', function (e) {
+  btn.addEventListener('click', function(e) {
     const drop = this.parentElement.querySelector('.nav-dropdown');
-    if (!drop) return;
-    const href = this.getAttribute('href') || '';
-    if (href.startsWith('#')) {
-      drop.style.display = drop.style.display === 'flex' ? 'none' : 'flex';
-    } else {
-      e.preventDefault();
-      drop.style.display = drop.style.display === 'flex' ? 'none' : 'flex';
-    }
+    if(!drop) return;
+    if(!this.getAttribute('href').startsWith('#')) e.preventDefault();
+    drop.style.display = drop.style.display === 'flex' ? 'none' : 'flex';
   });
 });
 
 /* ================= HAMBURGER ================= */
 const burger = document.getElementById('hamburger');
-const menu = document.getElementById('mobileMenu');
-
-if (burger && menu) {
+const menu   = document.getElementById('mobileMenu');
+if(burger && menu){
   burger.addEventListener('click', () => {
     burger.classList.toggle('active');
     menu.classList.toggle('open');
   });
 }
-
 document.querySelectorAll('#mobileMenu a').forEach(link => {
-  link.addEventListener('click', function (e) {
+  link.addEventListener('click', function(e) {
     const href = this.getAttribute('href') || '';
-    const b = document.getElementById('hamburger');
-    const m = document.getElementById('mobileMenu');
-    if (href.startsWith('#')) {
+    if(burger) burger.classList.remove('active');
+    if(menu) menu.classList.remove('open');
+    if(href.startsWith('#')){
       e.preventDefault();
-      if (b) b.classList.remove('active');
-      if (m) m.classList.remove('open');
-      const target = document.querySelector(href);
-      if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 350);
-    } else {
-      if (b) b.classList.remove('active');
-      if (m) m.classList.remove('open');
+      const t = document.querySelector(href);
+      if(t) setTimeout(() => t.scrollIntoView({behavior:'smooth',block:'start'}), 350);
     }
   });
 });
-
-document.addEventListener('click', function (e) {
-  const m = document.getElementById('mobileMenu');
-  const b = document.getElementById('hamburger');
-  if (!m || !b) return;
-  if (!m.contains(e.target) && !b.contains(e.target)) {
-    m.classList.remove('open');
-    b.classList.remove('active');
+document.addEventListener('click', e => {
+  if(menu && burger && !menu.contains(e.target) && !burger.contains(e.target)){
+    menu.classList.remove('open');
+    burger.classList.remove('active');
   }
 });
 
 /* ================= FAQ POPUP ================= */
-const faqTrigger = document.getElementById('faqTrigger');
-const faqPopup   = document.getElementById('faqPopup');
-const faqOverlay = document.getElementById('faqOverlay');
-const faqClose   = document.getElementById('faqClose');
+const faqTrigger  = document.getElementById('faqTrigger');
+const faqPopup    = document.getElementById('faqPopup');
+const faqOverlay  = document.getElementById('faqOverlay');
+const faqClose    = document.getElementById('faqClose');
+const faqChatBody = document.getElementById('faqChatBody');
 
-function openFaq() { faqPopup.classList.add('show'); faqOverlay.classList.add('show'); }
-function closeFaq() { faqPopup.classList.remove('show'); faqOverlay.classList.remove('show'); }
+const openFaq  = () => { faqPopup.classList.add('show'); faqOverlay.classList.add('show'); };
+const closeFaq = () => { faqPopup.classList.remove('show'); faqOverlay.classList.remove('show'); };
 
-if (faqTrigger) faqTrigger.addEventListener('click', openFaq);
-if (faqClose)   faqClose.addEventListener('click', closeFaq);
-if (faqOverlay) faqOverlay.addEventListener('click', closeFaq);
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeFaq(); });
+if(faqTrigger) faqTrigger.addEventListener('click', openFaq);
+if(faqClose)   faqClose.addEventListener('click', closeFaq);
+if(faqOverlay) faqOverlay.addEventListener('click', closeFaq);
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeFaq(); });
 
-document.querySelectorAll('.faq-bubble-q').forEach(btn => {
-  btn.addEventListener('click', function () {
-    const item = this.closest('.faq-bubble-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-bubble-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
+function getNow(){
+  return new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
+}
+function scrollChat(){ if(faqChatBody) faqChatBody.scrollTop = faqChatBody.scrollHeight; }
+
+document.querySelectorAll('.faq-chip').forEach(chip => {
+  chip.addEventListener('click', function(){
+    const q = this.dataset.q;
+    const a = this.dataset.a;
+    const t = getNow();
+    const userMsg = document.createElement('div');
+    userMsg.className = 'faq-msg-user';
+    userMsg.innerHTML = `<div><div class="faq-bubble-user">${q}</div><div class="faq-bubble-time" style="text-align:right;">${t}</div></div>`;
+    faqChatBody.appendChild(userMsg);
+    scrollChat();
+    const typing = document.createElement('div');
+    typing.className = 'faq-msg-bot';
+    typing.id = 'faqTyping';
+    typing.innerHTML = `<div class="faq-msg-bot-avatar">🐱</div><div class="faq-typing"><span></span><span></span><span></span></div>`;
+    faqChatBody.appendChild(typing);
+    scrollChat();
+    setTimeout(() => {
+      typing.remove();
+      const botMsg = document.createElement('div');
+      botMsg.className = 'faq-msg-bot';
+      botMsg.innerHTML = `<div class="faq-msg-bot-avatar">🐱</div><div><div class="faq-bubble-bot">${a}</div><div class="faq-bubble-time">${t}</div></div>`;
+      faqChatBody.appendChild(botMsg);
+      scrollChat();
+    }, 900);
   });
 });
 
-/* ================= CONSOLE MESSAGE ================= */
-console.log(
-  "%c  /\\_/\\\n ( o.o )   Central Cat's\n  > ^ <    Petshop & Grooming Tangerang",
-  "color:#d4af37;font-weight:bold;font-size:13px;line-height:1.8;"
-);
-console.log("%c━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━", "color:#d4af37;font-size:10px;");
-console.log("%cHai 👋, kelihatannya kamu membuka Developer Tools.", "color:#60a5fa;font-size:14px;font-weight:600;");
-console.log("%c⚠️  Harap berhati‑hati saat menempelkan kode di sini.", "color:#f59e0b;font-size:13px;");
-console.log("%cJika seseorang menyuruhmu menempelkan sesuatu di console,\nbisa jadi itu adalah penipuan (Social Engineering Attack).", "color:#ef4444;font-size:13px;");
-console.log("%cCentral Cat's Website  •  https://www.centralcats.id", "color:#22c55e;font-size:13px;font-weight:600;");
-
+/* ================= CONSOLE ================= */
+console.log("%c  /\\_/\\\n ( o.o )   Central Cat's\n  > ^ <    Petshop & Grooming Tangerang","color:#d4af37;font-weight:bold;font-size:13px;line-height:1.8;");
+console.log("%cCentral Cat's Website  •  https://www.centralcats.id","color:#22c55e;font-size:13px;font-weight:600;");
 </script>
 </body>
 </html>
