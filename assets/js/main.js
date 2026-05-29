@@ -5,6 +5,17 @@
    Di-load sebelum </body> -> DOM di atasnya sudah ada. Semua akses dijaga.
    Dipakai oleh: karir.html, kerjasama.html (percobaan).
 ============================================================= */
+/* ================= CONSOLE MESSAGE ================= */
+console.log(
+  "%c  /\\_/\\\n ( o.o )   Central Cat's\n  > ^ <    Petshop & Grooming Tangerang",
+  "color:#d4af37;font-weight:bold;font-size:13px;line-height:1.8;"
+);
+console.log("%c━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━", "color:#d4af37;font-size:10px;");
+console.log("%cHai 👋, kelihatannya kamu membuka Developer Tools.", "color:#60a5fa;font-size:14px;font-weight:600;");
+console.log("%c⚠️  Harap berhati‑hati saat menempelkan kode di sini.", "color:#f59e0b;font-size:13px;");
+console.log("%cJika seseorang menyuruhmu menempelkan sesuatu di console,\nbisa jadi itu adalah penipuan (Social Engineering Attack).", "color:#ef4444;font-size:13px;");
+console.log("%cCentral Cat's Website  •  https://www.centralcats.id", "color:#22c55e;font-size:13px;font-weight:600;");
+
 const burger = document.getElementById('hamburger');
 const menu = document.getElementById('mobileMenu');
 if(burger && menu){
