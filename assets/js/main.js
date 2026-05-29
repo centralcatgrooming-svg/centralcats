@@ -1,187 +1,76 @@
-/* =========================================
-   CENTRAL CAT’S MAIN JS
-   Premium Clean Production Version
-========================================= */
-
-document.addEventListener("DOMContentLoaded", function () {
-
-  /* =========================================
-     PREMIUM HEADER MOBILE MENU
-  ========================================= */
-
-  const hamburger = document.getElementById("ccHamburger");
-  const nav = document.querySelector(".cc-nav");
-
-  if (hamburger && nav) {
-    hamburger.addEventListener("click", () => {
-      nav.classList.toggle("active");
-    });
-  }
-
-  /* MOBILE DROPDOWN TOGGLE */
-  const dropdownLinks = document.querySelectorAll(".cc-dropdown > a");
-
-  dropdownLinks.forEach(link => {
-    link.addEventListener("click", function (e) {
-      if (window.innerWidth <= 992) {
-        e.preventDefault();
-        this.parentElement.classList.toggle("open");
-      }
-    });
+/* =============================================================
+   Central Cat's — assets/js/main.js  (shared interactions, percobaan TAHAP 3-B)
+   Inti 7/7: hamburger toggle, dropdown mobile, FAQ chat popup, getNow().
+   + scroll-header handler (null-safe; no-op di halaman tanpa CSS .scrolled).
+   Di-load sebelum </body> -> DOM di atasnya sudah ada. Semua akses dijaga.
+   Dipakai oleh: karir.html, kerjasama.html (percobaan).
+============================================================= */
+const burger = document.getElementById('hamburger');
+const menu = document.getElementById('mobileMenu');
+if(burger && menu){
+  burger.addEventListener('click', () => { burger.classList.toggle('active'); menu.classList.toggle('open'); });
+}
+document.querySelectorAll('#mobileMenu .nav-item > a').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const drop = this.parentElement.querySelector('.nav-dropdown');
+    if(!drop) return;
+    if(!this.getAttribute('href').startsWith('#')) e.preventDefault();
+    drop.style.display = drop.style.display === 'flex' ? 'none' : 'flex';
   });
-
-  /* =========================================
-     TRUST STRIP ANIMATION (SAFE)
-  ========================================= */
-
-  const trustItems = document.querySelectorAll(".trust-item");
-
-  if (trustItems.length > 0) {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-        }
-      });
-    }, { threshold: 0.2 });
-
-    trustItems.forEach(item => observer.observe(item));
-  }
-
-  /* =========================================
-     CHAT ASSISTANT (UNIFIED)
-  ========================================= */
-
-  const ccTrigger = document.getElementById("ccTrigger");
-  const ccPanel = document.getElementById("ccPanel");
-  const ccClose = document.getElementById("ccClose");
-  const ccChat = document.getElementById("ccChat");
-  const ccInput = document.getElementById("ccName");
-  const ccStart = document.getElementById("ccStart");
-
-  if (ccTrigger && ccPanel) {
-
-    let step = "name";
-    let userData = {};
-
-    ccTrigger.addEventListener("click", () => {
-      ccPanel.style.display = "flex";
-      ccTrigger.style.display = "none";
-      if (ccInput) ccInput.focus();
-    });
-
-    if (ccClose) {
-      ccClose.addEventListener("click", () => {
-        ccPanel.style.display = "none";
-        ccTrigger.style.display = "flex";
-      });
-    }
-
-    if (ccInput) {
-      ccInput.addEventListener("input", () => {
-        if (ccStart) ccStart.disabled = !ccInput.value.trim();
-      });
-
-      ccInput.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" && ccStart && !ccStart.disabled) {
-          e.preventDefault();
-          ccStart.click();
-        }
-      });
-    }
-
-    if (ccStart) {
-      ccStart.addEventListener("click", () => {
-        const val = ccInput.value.trim();
-        if (!val) return;
-
-        addMessage(val, "user");
-        ccInput.value = "";
-        ccStart.disabled = true;
-
-        if (step === "name") {
-          userData.name = val;
-          step = "menu";
-          botReply(`Terima kasih ${val}. Silakan pilih layanan:`);
-          setTimeout(showServiceOptions, 600);
-        } else if (step === "phone") {
-          userData.phone = val;
-          finishBooking();
-        }
-      });
-    }
-
-    function showServiceOptions() {
-      const services = [
-        "Daily Grooming",
-        "Grooming Jamur",
-        "Beauty Grooming",
-        "Lion Cut",
-        "Cat Hotel"
-      ];
-
-      services.forEach(service => {
-        const btn = document.createElement("button");
-        btn.className = "cc-msg cc-bot";
-        btn.textContent = service;
-        btn.style.cursor = "pointer";
-
-        btn.onclick = () => {
-          addMessage(service, "user");
-          userData.service = service;
-          step = "phone";
-          botReply("Mohon nomor WhatsApp aktif Anda.");
-        };
-
-        ccChat.appendChild(btn);
-      });
-
-      ccChat.scrollTop = ccChat.scrollHeight;
-    }
-
-    function finishBooking() {
-      botReply("Kami siapkan detail reservasi Anda...");
-
-      const message =
-        `Halo Central Cat’s,%0A` +
-        `Nama: ${userData.name}%0A` +
-        `Layanan: ${userData.service}%0A` +
-        `No WA: ${userData.phone}%0A` +
-        `Saya ingin melakukan reservasi.`;
-
-      setTimeout(() => {
-        window.open(
-          `https://wa.me/6282111827798?text=${message}`,
-          "_blank"
-        );
-        resetChat();
-      }, 800);
-    }
-
-    function addMessage(text, type) {
-      const msg = document.createElement("div");
-      msg.className = "cc-msg " + (type === "bot" ? "cc-bot" : "cc-user");
-      msg.textContent = text;
-      ccChat.appendChild(msg);
-      ccChat.scrollTop = ccChat.scrollHeight;
-    }
-
-    function botReply(text) {
-      setTimeout(() => addMessage(text, "bot"), 400);
-    }
-
-    function resetChat() {
-      ccChat.innerHTML = "";
-      step = "name";
-      userData = {};
-      startConversation();
-    }
-
-    function startConversation() {
-      botReply("Selamat datang di Central Cat’s. Boleh tahu nama Anda?");
-    }
-
-    startConversation();
-  }
-
 });
+document.querySelectorAll('#mobileMenu a').forEach(link => {
+  link.addEventListener('click', function() {
+    if(burger) burger.classList.remove('active');
+    if(menu) menu.classList.remove('open');
+  });
+});
+document.addEventListener('click', e => {
+  if(menu && burger && !menu.contains(e.target) && !burger.contains(e.target)){
+    menu.classList.remove('open'); burger.classList.remove('active');
+  }
+});
+const faqTrigger = document.getElementById('faqTrigger');
+const faqPopup   = document.getElementById('faqPopup');
+const faqOverlay = document.getElementById('faqOverlay');
+const faqClose   = document.getElementById('faqClose');
+const faqChatBody = document.getElementById('faqChatBody');
+const openFaq  = () => { faqPopup.classList.add('show'); faqOverlay.classList.add('show'); };
+const closeFaq = () => { faqPopup.classList.remove('show'); faqOverlay.classList.remove('show'); };
+if(faqTrigger) faqTrigger.addEventListener('click', openFaq);
+if(faqClose)   faqClose.addEventListener('click', closeFaq);
+if(faqOverlay) faqOverlay.addEventListener('click', closeFaq);
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeFaq(); });
+function getNow(){ return new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'}); }
+document.querySelectorAll('.faq-chip').forEach(chip => {
+  chip.addEventListener('click', function(){
+    const q = this.dataset.q, a = this.dataset.a, t = getNow();
+    const userMsg = document.createElement('div');
+    userMsg.className = 'faq-msg-user';
+    userMsg.innerHTML = `<div><div class="faq-bubble-user">${q}</div><div class="faq-bubble-time" style="text-align:right;">${t}</div></div>`;
+    faqChatBody.appendChild(userMsg);
+    faqChatBody.scrollTop = faqChatBody.scrollHeight;
+    const typing = document.createElement('div');
+    typing.className = 'faq-msg-bot';
+    typing.innerHTML = `<div class="faq-msg-bot-avatar">🐱</div><div class="faq-typing"><span></span><span></span><span></span></div>`;
+    faqChatBody.appendChild(typing);
+    faqChatBody.scrollTop = faqChatBody.scrollHeight;
+    setTimeout(() => {
+      typing.remove();
+      const botMsg = document.createElement('div');
+      botMsg.className = 'faq-msg-bot';
+      botMsg.innerHTML = `<div class="faq-msg-bot-avatar">🐱</div><div><div class="faq-bubble-bot">${a}</div><div class="faq-bubble-time">${t}</div></div>`;
+      faqChatBody.appendChild(botMsg);
+      faqChatBody.scrollTop = faqChatBody.scrollHeight;
+    }, 900);
+  });
+});
+
+/* scroll header: tambah/lepas .scrolled (null-safe).
+   karir/kerjasama TIDAK punya rule header.scrolled -> efek visual NOL. */
+const _hdr = document.querySelector('header');
+if (_hdr) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) _hdr.classList.add('scrolled');
+    else _hdr.classList.remove('scrolled');
+  }, { passive: true });
+}

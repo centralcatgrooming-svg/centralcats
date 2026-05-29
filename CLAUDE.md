@@ -1,0 +1,53 @@
+# CLAUDE.md — Panduan Repo Central Cat's
+
+## Tentang
+Website **statis** Central Cat's (petshop & grooming kucing, Tangerang).
+Domain: **www.centralcats.id** — di-deploy via **GitHub Pages dari branch `main`, folder root**.
+⚠️ **Situs ini SUDAH page-one Google.** Struktur & konten yang memengaruhi SEO tidak boleh berubah tanpa pertimbangan.
+
+## Ekosistem (penting — sering disalahpahami)
+Central Cat's punya 3 properti di subdomain berbeda:
+- centralcats.id — website ini (company profile). Repo INI.
+- app.centralcats.id — POS, sudah dibangun. BUKAN bagian repo ini.
+- shop.centralcats.id — toko online, AKAN dibangun. BUKAN bagian repo ini.
+
+`toko.html` di repo ini = halaman placeholder "Segera Hadir", JEMBATAN sementara
+yang nanti mengarah ke shop.centralcats.id. JANGAN hapus, JANGAN isi dengan toko
+sungguhan — toko dibangun terpisah di subdomain. Halaman karir/kerjasama/toko =
+placeholder "Segera Hadir" yang sengaja belum diisi konten; biarkan apa adanya.
+
+Sebelum menyimpulkan suatu halaman ada/tidak: selalu cek `git ls-tree -r origin/main`
+— branch lokal bisa tertinggal dari produksi.
+
+## Stack & Struktur
+- HTML + CSS/JS. Tidak ada build tool, package manager, framework, atau CI.
+- 7 halaman konten: `index.html`, `tentang.html`, `layanan.html`, `karir.html`, `kerjasama.html`, `toko.html`, `syarat.html`.
+- Config: `CNAME`, `robots.txt`, `sitemap.xml`, `assets/icons/site.webmanifest`, `google4120ad7b9c49fdb9.html` (verifikasi GSC).
+- Aset di `assets/` (icons, images, logo, video, music).
+- Path aset pakai **absolut dari root** (`/assets/...`) karena GitHub Pages dari root.
+- File ber-**CRLF** (autocrlf). Pertahankan CRLF saat mengedit HTML.
+
+## Refactor CSS/JS bersama (TAHAP 3 — sedang berjalan)
+- `assets/css/main.css` — 54 rule **universal (identik di 7/7 halaman)**: reset, `:root`, nav/dropdown, footer-social, blok FAQ popup, `@keyframes`.
+- `assets/js/main.js` — inti interaksi 7/7: hamburger, dropdown mobile, FAQ chat popup, `getNow()`, scroll-header (null-safe).
+- Aturan ekstraksi (WAJIB demi tampilan identik):
+  - Hanya migrasikan rule **top-level yang identik di 7/7**. Rule drift & **seluruh `@media` tetap inline** per halaman (mencegah urutan cascade terbalik).
+  - CSS unik per-halaman tetap inline.
+  - `<link main.css>` ditempatkan **sebelum** `<style>` inline sisa.
+  - Setiap halaman: verifikasi **lossless** — `(main.css) ∪ (inline-sisa) == rule asli halaman` (tanpa hilang/dobel/berubah).
+
+### Status Tahap 3
+- ✅ **karir.html + kerjasama.html — SELESAI** (pakai main.css + main.js bersama, lossless verified, browser OK).
+- ⏳ Sisa: **toko + syarat**, lalu **layanan**, **tentang**, dan **index (TERAKHIR — paling berisiko: 90 rule unik, JS terkaya, hero transparan, halaman utama SEO)**.
+
+## Larangan (PENTING)
+- **JANGAN push ke `main`** tanpa persetujuan eksplisit. Kerja di branch fitur; commit ≠ push.
+- **JANGAN ubah struktur/konten/SEO** (judul, meta, heading, link, structured data) tanpa pertimbangan — situs page-one.
+- **JANGAN tulis skrip generator yang rapuh** ("semoga jalan"). Gunakan assertion fail-fast, tampilkan isi/diff & tunggu persetujuan sebelum menulis, satu file pada satu waktu lalu verifikasi.
+- **JANGAN refactor dengan memindah rule `@media`** ke file bersama bila membalik urutan cascade — @media tetap inline.
+- **JANGAN hapus/ubah pesan sambutan Console** (ASCII art "Central Cat's" + peringatan keamanan anti-social-engineering) di `index.html` (sekitar baris **1148–1156**). Ini fitur perlindungan pengunjung yang disengaja. Saat refactor index nanti, kode `console.log` ini **TETAP inline di index.html, jangan dipindah ke main.js** (ini unik index, bukan JS bersama).
+
+## Catatan lain
+- Email kontak resmi: **admin@central-cats.com**.
+- GA4 terpasang di semua halaman: **G-SGYPJC015Y**.
+- `supplier`/`waralaba` bukan file — anchor `#supplier`/`#waralaba` di dalam `kerjasama.html`.
