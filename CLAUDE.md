@@ -39,14 +39,16 @@ Sebelum menyimpulkan suatu halaman ada/tidak: selalu cek `git ls-tree -r origin/
 ### Status Tahap 3
 - ✅ **karir.html + kerjasama.html — SELESAI** (pakai main.css + main.js bersama, lossless verified, browser OK).
 - ✅ **toko.html + syarat.html — SELESAI** (main.css + main.js bersama; 53 rule lossless + 1 box-shadow hover medsos diselaraskan ke index; footer legal DJKI syarat tetap inline; browser OK).
-- ⏳ Sisa: **layanan**, **tentang**, dan **index (TERAKHIR — paling berisiko: 90 rule unik, JS terkaya, hero transparan, halaman utama SEO)**.
+- ✅ **layanan.html — SELESAI** (54 rule lossless 0 drift; interaksi → main.js; CSS unik [hero-banner, .layanan-section, .card, footer-contact hover] tetap inline; SEO/JSON-LD/h1/h2 utuh; console.log inline dihapus, pakai pesan keamanan main.js).
+- ✅ **Pesan console keamanan dipindah ke main.js** (standar semua halaman yang load main.js).
+- ⏳ Sisa: **tentang**, dan **index (TERAKHIR — paling berisiko: 90 rule unik, JS terkaya, hero transparan, halaman utama SEO; saat itu hapus console.log inline index)**.
 
 ## Larangan (PENTING)
 - **JANGAN push ke `main`** tanpa persetujuan eksplisit. Kerja di branch fitur; commit ≠ push.
 - **JANGAN ubah struktur/konten/SEO** (judul, meta, heading, link, structured data) tanpa pertimbangan — situs page-one.
 - **JANGAN tulis skrip generator yang rapuh** ("semoga jalan"). Gunakan assertion fail-fast, tampilkan isi/diff & tunggu persetujuan sebelum menulis, satu file pada satu waktu lalu verifikasi.
 - **JANGAN refactor dengan memindah rule `@media`** ke file bersama bila membalik urutan cascade — @media tetap inline.
-- **JANGAN hapus/ubah pesan sambutan Console** (ASCII art "Central Cat's" + peringatan keamanan anti-social-engineering) di `index.html` (sekitar baris **1148–1156**). Ini fitur perlindungan pengunjung yang disengaja. Saat refactor index nanti, kode `console.log` ini **TETAP inline di index.html, jangan dipindah ke main.js** (ini unik index, bukan JS bersama).
+- **Pesan console keamanan = STANDAR semua halaman via `main.js`.** ASCII art "Central Cat's" + 5 peringatan anti-social-engineering (sumber kebenaran: blok di `index.html`) sudah dipindah ke `assets/js/main.js` (6 `console.log`), jadi setiap halaman yang load main.js otomatis menampilkannya. Ini fitur perlindungan pengunjung yang disengaja — **jangan hapus/ubah** isinya. **Saat refactor index nanti: HAPUS 6 `console.log` inline di `index.html` (sekitar baris 1147–1156)** agar tidak dobel dengan main.js (index akan load main.js).
 - **Header & footer kiblatnya ke `index.html`** (rancangan asli). Halaman lain yang beda = drift → **luruskan ke index**. Kalau ada ambiguitas (mis. index punya rule tak relevan untuk halaman itu), **bahas dengan pemilik dulu, jangan otomatis ikut**.
 
 ## Catatan lain
