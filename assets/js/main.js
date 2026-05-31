@@ -1,9 +1,9 @@
 /* =============================================================
-   Central Cat's — assets/js/main.js  (shared interactions, percobaan TAHAP 3-B)
-   Inti 7/7: hamburger toggle, dropdown mobile, FAQ chat popup, getNow().
-   + scroll-header handler (null-safe; no-op di halaman tanpa CSS .scrolled).
-   Di-load sebelum </body> -> DOM di atasnya sudah ada. Semua akses dijaga.
-   Dipakai oleh: karir.html, kerjasama.html (percobaan).
+   Central Cat's — assets/js/main.js  (shared interactions, dipakai 7/7 halaman)
+   Inti: guard .js (entrance) + console keamanan; hamburger + drawer mobile
+   (openMenu/closeMenu + overlay .mobile-overlay dinamis); dropdown mobile; FAQ
+   chat popup (getNow); scroll-header (.scrolled null-safe); IntersectionObserver
+   fade-section (_fadeObserver). Di-load sebelum </body>; semua akses null-safe.
 ============================================================= */
 /* entrance animation guard: tandai JS aktif supaya .fade-section hanya tersembunyi bila JS jalan (tanpa .js -> konten tampil normal, no LCP/SEO risk) */
 document.documentElement.classList.add('js');
@@ -43,7 +43,7 @@ if(burger && menu){
 }
 if(_menuOverlay) _menuOverlay.addEventListener('click', closeMenu);
 document.querySelectorAll('#mobileMenu .nav-item > a').forEach(btn => {
-  btn.addEventListener('click', function(e) {
+  btn.addEventListener('click', function() {
     const drop = this.parentElement.querySelector('.nav-dropdown');
     if(!drop) return;
     drop.style.display = drop.style.display === 'flex' ? 'none' : 'flex';

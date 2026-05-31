@@ -60,6 +60,6 @@ nav a:hover{color:var(--accent);}
 /* entrance animation: fade + slide-up. opacity:0 di-scope ke .js (di-set main.js) -> tanpa JS konten tampil normal (no LCP/SEO risk). Hanya transform+opacity -> no CLS. Tambah class "fade-section" ke elemen BELOW-FOLD; JANGAN ke hero/h1 (LCP). */
 .js .fade-section{opacity:0;transform:translateY(40px);transition:opacity .8s ease, transform .8s ease;}
 .js .fade-section.show{opacity:1;transform:none;}
-/* mobile drawer overlay (di-toggle main.js bersama .mobile-nav.open). top:68px = di bawah header mobile; z-index 1400 < drawer 1500. */
-.mobile-overlay{position:fixed;top:68px;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:opacity .35s ease;z-index:1400;}
+/* mobile drawer overlay (di-toggle main.js bersama .mobile-nav.open). top:68px = di bawah header mobile; z-index 990 < header(1000); right:var(--drawer-w) = overlay hanya di area halaman, drawer bebas. */
+.mobile-overlay{position:fixed;top:68px;left:0;right:var(--drawer-w);bottom:0;background:rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:opacity .35s ease;z-index:990;}
 .mobile-overlay.show{opacity:1;visibility:visible;}
