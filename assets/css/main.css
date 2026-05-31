@@ -61,6 +61,19 @@ nav a:hover{color:var(--accent);}
 .faq-quick-replies{background:white;padding:10px 10px 12px;display:flex;flex-wrap:wrap;gap:8px;border-top:1px solid #e5e7eb;flex-shrink:0;}
 .faq-chip{background:#f0f4ff;border:1px solid #c7d2fe;color:#1e3a8a;padding:7px 13px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;transition:all .2s ease;white-space:nowrap;}
 .faq-chip:hover{background:#1e3a8a;color:white;border-color:#1e3a8a;transform:translateY(-1px);}
+/* FAQ top-level (diangkat dari inline index = sumber tunggal 7/7; @media tetap inline per halaman) */
+.faq-popup{display:none;position:fixed;bottom:28px;right:28px;width:360px;height:520px;background:#ece5dd;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.22);z-index:2100;flex-direction:column;overflow:hidden;animation:popUp .3s cubic-bezier(.34,1.56,.64,1);}
+.faq-chat-body{flex:1;overflow-y:auto;padding:14px 12px;display:flex;flex-direction:column;gap:6px;background:#dfe7ec url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8d5da' fill-opacity='0.3'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+.faq-chat-body::-webkit-scrollbar{width:4px;}
+.faq-chat-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15);border-radius:4px;}
+.faq-date-divider span{background:rgba(225,245,254,.85);color:#546e7a;font-size:11px;padding:3px 10px;border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,.08);}
+.faq-bubble-bot{background:white;color:#111;padding:8px 12px;border-radius:0 12px 12px 12px;font-size:13px;line-height:1.6;box-shadow:0 1px 3px rgba(0,0,0,.1);position:relative;}
+.faq-bubble-bot::before{content:"";position:absolute;left:-6px;top:0;border-top:6px solid white;border-left:6px solid transparent;}
+.faq-bubble-bot a:hover{text-decoration:underline;}
+.faq-bubble-user{background:#d9fdd3;color:#111;padding:8px 12px;border-radius:12px 0 12px 12px;font-size:13px;line-height:1.6;box-shadow:0 1px 3px rgba(0,0,0,.1);position:relative;}
+.faq-bubble-user::after{content:"";position:absolute;right:-6px;top:0;border-top:6px solid #d9fdd3;border-right:6px solid transparent;}
+.faq-typing{display:flex;align-items:center;gap:4px;padding:10px 14px;background:white;border-radius:0 12px 12px 12px;width:fit-content;box-shadow:0 1px 3px rgba(0,0,0,.1);}
+.faq-chip:active{transform:translateY(0);}
 #faqTrigger:hover > div:first-child{background:rgba(212,175,55,.4) !important;}
 /* entrance animation: fade + slide-up. opacity:0 di-scope ke .js (di-set main.js) -> tanpa JS konten tampil normal (no LCP/SEO risk). Hanya transform+opacity -> no CLS. Tambah class "fade-section" ke elemen BELOW-FOLD; JANGAN ke hero/h1 (LCP). */
 .js .fade-section{opacity:0;transform:translateY(40px);transition:opacity .8s ease, transform .8s ease;}

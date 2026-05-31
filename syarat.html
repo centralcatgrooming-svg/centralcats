@@ -38,12 +38,6 @@ header{background:var(--primary);height:60px;display:flex;justify-content:center
 .btn-wa{display:inline-block;padding:12px 28px;background:transparent;color:#25d366;border:2px solid #25d366;font-weight:600;border-radius:10px;text-decoration:none;font-size:14px;transition:all .3s ease;}
 .btn-wa:hover{background:#25d366;color:white;transform:translateY(-2px);box-shadow:0 8px 20px rgba(37,211,102,.25);}
 footer{background:var(--primary);color:white;padding:45px 20px 18px;border-top:3px solid var(--accent);box-shadow:0 -2px 18px rgba(212,175,55,.35);}
-.faq-popup{display:none;position:fixed;bottom:28px;right:28px;width:360px;height:520px;background:#dfe7ec;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.22);z-index:2100;flex-direction:column;overflow:hidden;animation:popUp .3s cubic-bezier(.34,1.56,.64,1);}
-.faq-chat-body{flex:1;overflow-y:auto;padding:14px 12px;display:flex;flex-direction:column;gap:6px;}
-.faq-date-divider span{background:rgba(225,245,254,.85);color:#546e7a;font-size:11px;padding:3px 10px;border-radius:8px;}
-.faq-bubble-bot{background:white;color:#111;padding:8px 12px;border-radius:0 12px 12px 12px;font-size:13px;line-height:1.6;box-shadow:0 1px 3px rgba(0,0,0,.1);}
-.faq-bubble-user{background:#d9fdd3;color:#111;padding:8px 12px;border-radius:12px 0 12px 12px;font-size:13px;line-height:1.6;box-shadow:0 1px 3px rgba(0,0,0,.1);}
-.faq-typing{display:flex;align-items:center;gap:4px;padding:10px 14px;background:white;border-radius:0 12px 12px 12px;width:fit-content;}
 @media(max-width:768px){
   header{height:68px;}
   .header-inner{height:68px;position:relative;justify-content:center;padding:0 20px;}
@@ -67,7 +61,8 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;border-top:3
   .footer-social-item{white-space:normal;}
   .footer-bottom{margin-top:36px;font-size:11px;}
   .faq-popup{bottom:0;right:0;left:0;width:100%;height:75vh;border-radius:20px 20px 0 0;}
-  .faq-chip{white-space:normal;font-size:11px;}
+  .faq-chip{white-space:normal;font-size:11px;padding:6px 11px;}
+  .faq-quick-replies{gap:6px;padding:8px 8px 10px;overflow-y:auto;max-height:130px;}
 }
 @media(min-width:769px){.header-inner{justify-content:space-between;}}
 </style>
