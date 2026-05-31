@@ -36,6 +36,8 @@ nav a:hover{color:var(--accent);}
 .footer-divider{border:none;border-top:1px solid rgba(255,255,255,.25);margin:10px 0 10px 46px;}
 .footer-label{font-size:13px;opacity:.85;}
 .footer-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.footer-contact svg{transition:transform .2s ease;}
+.footer-contact div:hover svg{transform:scale(1.15);}
 .faq-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,.4);z-index:2000;backdrop-filter:blur(3px);}
 .faq-overlay.show{display:block;}
 .faq-popup.show{display:flex;}
