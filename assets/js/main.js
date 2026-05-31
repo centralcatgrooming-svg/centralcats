@@ -21,9 +21,27 @@ console.log("%cCentral Cat's Website  •  https://www.centralcats.id", "color:#
 
 const burger = document.getElementById('hamburger');
 const menu = document.getElementById('mobileMenu');
-if(burger && menu){
-  burger.addEventListener('click', () => { burger.classList.toggle('active'); menu.classList.toggle('open'); });
+/* overlay drawer mobile: dibuat dinamis (tanpa edit markup 7 halaman) */
+let _menuOverlay = null;
+if(menu){
+  _menuOverlay = document.createElement('div');
+  _menuOverlay.className = 'mobile-overlay';
+  document.body.appendChild(_menuOverlay);
 }
+function openMenu(){
+  if(burger) burger.classList.add('active');
+  if(menu) menu.classList.add('open');
+  if(_menuOverlay) _menuOverlay.classList.add('show');
+}
+function closeMenu(){
+  if(burger) burger.classList.remove('active');
+  if(menu) menu.classList.remove('open');
+  if(_menuOverlay) _menuOverlay.classList.remove('show');
+}
+if(burger && menu){
+  burger.addEventListener('click', () => { menu.classList.contains('open') ? closeMenu() : openMenu(); });
+}
+if(_menuOverlay) _menuOverlay.addEventListener('click', closeMenu);
 document.querySelectorAll('#mobileMenu .nav-item > a').forEach(btn => {
   btn.addEventListener('click', function(e) {
     const drop = this.parentElement.querySelector('.nav-dropdown');
@@ -32,14 +50,11 @@ document.querySelectorAll('#mobileMenu .nav-item > a').forEach(btn => {
   });
 });
 document.querySelectorAll('#mobileMenu a').forEach(link => {
-  link.addEventListener('click', function() {
-    if(burger) burger.classList.remove('active');
-    if(menu) menu.classList.remove('open');
-  });
+  link.addEventListener('click', closeMenu);
 });
 document.addEventListener('click', e => {
   if(menu && burger && !menu.contains(e.target) && !burger.contains(e.target)){
-    menu.classList.remove('open'); burger.classList.remove('active');
+    closeMenu();
   }
 });
 const faqTrigger = document.getElementById('faqTrigger');
