@@ -19,6 +19,15 @@ placeholder "Segera Hadir" yang sengaja belum diisi konten; biarkan apa adanya.
 Sebelum menyimpulkan suatu halaman ada/tidak: selalu cek `git ls-tree -r origin/main`
 — branch lokal bisa tertinggal dari produksi.
 
+## Navigasi header (SERAGAM 7/7 — transisi landing→multi-halaman)
+Nav header **identik di 7 halaman**: Home · Tentang · Layanan · Lokasi · Toko Online · Karir · Kerjasama.
+- **Tentang → `tentang.html`**, **Layanan → `layanan.html`** (link halaman, bukan anchor section).
+- **Produk & Ulasan SUDAH DIBUANG dari nav** (dulu `#products`/`#reviews`). Section `#products`/`#reviews` di body index **tetap ada** — hanya entri nav-nya yang dihapus.
+- **Home & Lokasi** menunjuk homepage: di **index** pakai `#home`/`#location` (same-page anchor); di **6 halaman lain** pakai `index.html#home`/`index.html#location` (cross-page, valid). Beda href ini **benar per-konteks**, bukan drift.
+- **`class="active"`** statik menandai halaman aktif tiap halaman (kecuali syarat — dicapai via link footer). Jangan hapus.
+- **Scrollspy index DIBUANG** (dulu blok JS yang memindah `.active` saat scroll). `nav a:hover::after` (garis hover) & `nav a.active::after` (penanda statik) **tetap** di main.css.
+- Tombol hero index `#services` ("Lihat Layanan Kami") **tetap anchor** (same-page CTA) — bukan nav.
+
 ## Stack & Struktur
 - HTML + CSS/JS. Tidak ada build tool, package manager, framework, atau CI.
 - 7 halaman konten: `index.html`, `tentang.html`, `layanan.html`, `karir.html`, `kerjasama.html`, `toko.html`, `syarat.html`.
