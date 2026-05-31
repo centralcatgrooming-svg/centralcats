@@ -341,22 +341,20 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
     <nav class="desktop-nav">
       <a href="#home">Home</a>
       <div class="nav-item">
-        <a href="#about">Tentang</a>
+        <a href="tentang.html">Tentang</a>
         <div class="nav-dropdown">
           <a href="tentang.html">Profil</a>
           <a href="tentang.html#visi-misi">Visi &amp; Misi</a>
         </div>
       </div>
       <div class="nav-item">
-        <a href="#services">Layanan</a>
+        <a href="layanan.html">Layanan</a>
         <div class="nav-dropdown">
           <a href="layanan.html#paket-grooming">Paket Grooming</a>
           <a href="layanan.html#treatment-kutu">Treatment Kutu</a>
           <a href="layanan.html#cat-hotel">Cat Hotel</a>
         </div>
       </div>
-      <a href="#products">Produk</a>
-      <a href="#reviews">Ulasan</a>
       <a href="#location">Lokasi</a>
       <a href="toko.html">Toko Online</a>
       <a href="karir.html">Karir</a>
@@ -377,22 +375,20 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
   <nav id="mobileMenu" class="mobile-nav">
     <a href="#home">Home</a>
     <div class="nav-item">
-      <a href="#about">Tentang</a>
+      <a href="tentang.html">Tentang</a>
       <div class="nav-dropdown">
         <a href="tentang.html">Profil</a>
         <a href="tentang.html#visi-misi">Visi &amp; Misi</a>
       </div>
     </div>
     <div class="nav-item">
-      <a href="#services">Layanan</a>
+      <a href="layanan.html">Layanan</a>
       <div class="nav-dropdown">
         <a href="layanan.html#paket-grooming">Paket Grooming</a>
         <a href="layanan.html#treatment-kutu">Treatment Kutu</a>
         <a href="layanan.html#cat-hotel">Cat Hotel</a>
       </div>
     </div>
-    <a href="#products">Produk</a>
-    <a href="#reviews">Ulasan</a>
     <a href="#location">Lokasi</a>
     <a href="toko.html">Toko Online</a>
     <a href="karir.html">Karir</a>
@@ -843,8 +839,6 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
 <script>
 const header = document.querySelector('header');
 const heroImg = document.querySelector('.hero img');
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('nav a[href^="#"]');
 const isMobile = () => window.innerWidth <= 768;
 
 window.addEventListener('scroll', () => {
@@ -852,14 +846,6 @@ window.addEventListener('scroll', () => {
   if (scrollY > 40) header.classList.add('scrolled');
   else header.classList.remove('scrolled');
   if (heroImg && !isMobile()) heroImg.style.transform = `translateY(${scrollY * 0.15}px)`;
-  let current = "";
-  sections.forEach(section => {
-    if (scrollY >= section.offsetTop - 120) current = section.getAttribute('id');
-  });
-  navLinks.forEach(a => {
-    a.classList.remove('active');
-    if (a.getAttribute('href') === "#" + current) a.classList.add('active');
-  });
 }, { passive: true });
 
 window.addEventListener('resize', () => {
