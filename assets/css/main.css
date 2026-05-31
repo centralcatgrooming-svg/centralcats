@@ -57,3 +57,6 @@ nav a:hover{color:var(--accent);}
 .faq-chip{background:#f0f4ff;border:1px solid #c7d2fe;color:#1e3a8a;padding:7px 13px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;transition:all .2s ease;white-space:nowrap;}
 .faq-chip:hover{background:#1e3a8a;color:white;border-color:#1e3a8a;transform:translateY(-1px);}
 #faqTrigger:hover > div:first-child{background:rgba(212,175,55,.4) !important;}
+/* entrance animation: fade + slide-up. opacity:0 di-scope ke .js (di-set main.js) -> tanpa JS konten tampil normal (no LCP/SEO risk). Hanya transform+opacity -> no CLS. Tambah class "fade-section" ke elemen BELOW-FOLD; JANGAN ke hero/h1 (LCP). */
+.js .fade-section{opacity:0;transform:translateY(40px);transition:opacity .8s ease, transform .8s ease;}
+.js .fade-section.show{opacity:1;transform:none;}

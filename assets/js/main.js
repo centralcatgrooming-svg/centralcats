@@ -5,6 +5,9 @@
    Di-load sebelum </body> -> DOM di atasnya sudah ada. Semua akses dijaga.
    Dipakai oleh: karir.html, kerjasama.html (percobaan).
 ============================================================= */
+/* entrance animation guard: tandai JS aktif supaya .fade-section hanya tersembunyi bila JS jalan (tanpa .js -> konten tampil normal, no LCP/SEO risk) */
+document.documentElement.classList.add('js');
+
 /* ================= CONSOLE MESSAGE ================= */
 console.log(
   "%c  /\\_/\\\n ( o.o )   Central Cat's\n  > ^ <    Petshop & Grooming Tangerang",
@@ -85,3 +88,9 @@ if (_hdr) {
     else _hdr.classList.remove('scrolled');
   }, { passive: true });
 }
+
+/* entrance fade+slide-up: tambah .show saat elemen .fade-section masuk viewport (null-safe; no-op bila halaman tak punya .fade-section) */
+const _fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-section').forEach(el => _fadeObserver.observe(el));
