@@ -112,8 +112,6 @@
 <style>
 body{background:#fff;color:var(--text);}
 section{scroll-margin-top:90px;}
-.fade-section{opacity:0;transform:translateY(40px);transition:opacity .8s ease, transform .8s ease;}
-.fade-section.show{opacity:1;transform:translateY(0);}
 header{background:transparent;height:60px;padding:0;display:flex;justify-content:center;align-items:center;position:absolute;top:0;left:0;width:100%;z-index:1000;transition:all .3s ease;}
 header.scrolled{background:rgba(30,58,138,.92);backdrop-filter:blur(6px);position:fixed;}
 .logo-img{height:44px;width:auto;display:block;transition:transform .35s ease, filter .35s ease;}
@@ -418,7 +416,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
   </div>
 </section>
 
-<section id="about" class="section section-light">
+<section id="about" class="section section-light fade-section">
   <div style="max-width:800px;margin:auto;text-align:center;">
 
     <h2>Tentang Central Cat's</h2>
@@ -465,7 +463,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
   </div>
 </section>
 
-<section class="section section-soft" id="services">
+<section class="section section-soft fade-section" id="services">
   <h2>Layanan Grooming Kucing di Tangerang</h2>
   <p style="max-width:700px;margin:15px auto 0;line-height:1.6;color:#444;">
     Layanan <strong>grooming kucing profesional</strong> dan <strong>mandi kucing di Tangerang</strong> dengan standar higienis, aman, dan penuh perhatian.
@@ -503,7 +501,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
 </section>
 
 <!-- ===== NILAI LAYANAN (VIDEO) ===== -->
-<section class="section section-soft" id="nilai-layanan">
+<section class="section section-soft fade-section" id="nilai-layanan">
   <h2>Nilai Layanan Kami</h2>
   <p style="max-width:650px;margin:15px auto 0;line-height:1.6;color:#444;">
     Lihat sendiri bagaimana Central Cat's merawat anabul dengan standar profesional dan penuh kasih sayang.
@@ -539,7 +537,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
   </div>
 </section>
 
-<section class="section section-soft" id="products">
+<section class="section section-soft fade-section" id="products">
   <h2>Produk Petshop</h2>
   <p style="max-width:700px;margin:15px auto 0;line-height:1.6;color:#444;">
     Central Cat's menyediakan berbagai kebutuhan hewan peliharaan berkualitas untuk menunjang kesehatan, kenyamanan, dan kebahagiaan anabul Anda setiap hari.
@@ -572,7 +570,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
   </div>
 </section>
 
-<section class="section section-light" id="reviews">
+<section class="section section-light fade-section" id="reviews">
   <h2>Ulasan Pelanggan</h2>
   <p style="max-width:650px;margin:15px auto 0;line-height:1.6;color:#444;">
     Kepuasan dan kenyamanan anabul menjadi prioritas utama dalam setiap layanan kami.
@@ -632,7 +630,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
 
 </section>
 
-<section id="location" class="location-section">
+<section id="location" class="location-section fade-section">
   <div class="container">
     <h2>Kunjungi Central Cat's</h2>
     <p class="section-subtitle">Datang langsung ke cabang terdekat untuk layanan petshop &amp; grooming kucing terbaik.</p>
@@ -942,11 +940,7 @@ if (mobileMenu) {
   });
 }
 
-/* Fade sections */
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
-}, {threshold: 0.1});
-document.querySelectorAll('.fade-section').forEach(el => observer.observe(el));
+/* fade-in sections: dipindah ke main.js (shared 7/7) */
 </script>
 <script src="/assets/js/main.js"></script>
 
