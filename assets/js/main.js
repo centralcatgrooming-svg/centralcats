@@ -108,3 +108,6 @@ const _fadeObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-section').forEach(el => _fadeObserver.observe(el));
+
+/* footer: tahun otomatis (HTML berisi fallback 2026 bila JS mati); null-safe */
+var _y = document.getElementById('year'); if(_y) _y.textContent = new Date().getFullYear();
