@@ -74,6 +74,25 @@ Bukan bagian ekstraksi CSS/JS; jangan dicampur ke commit refactor.
 - **(a) Tipografi situs terasa flat** — tinjau hierarki font di **SEMUA halaman**: `h1` & `h2` sama-sama `2rem`, body seragam. Pertimbangkan skala/berat yang lebih berjenjang. ⚠️ Hati-hati: situs page-one — uji dampak visual & jangan ubah konten/heading text.
 - **(b) Logo `<img>` belum punya `width`/`height`** di `tentang.html` & halaman lain; **index sudah punya** (`width="200" height="44"` di header & footer). Selaraskan ke index untuk cegah CLS (layout shift). Perubahan HTML kecil, di luar scope ekstraksi.
 
+## Roadmap (rencana, belum dikerjakan — bahas fresh tiap proyek)
+- Ekosistem subdomain (keluarga centralcats, BUKAN PBN — saling taut natural):
+  centralcats.id (profil, ini) · app.centralcats.id (POS, ada) ·
+  shop.centralcats.id (toko online, AKAN dibangun) · blog (AKAN dibangun).
+- Blog: static site generator (mis. Astro/11ty/Hugo — putuskan nanti), berita
+  kucing/hewan. Index tampilkan ~5 berita terbaru (potongan/teaser) → "read more"
+  ke artikel blog. Tetap statis (cocok GitHub Pages). Keputusan arsitektur (integrasi
+  build vs situs statis sekarang) dibahas terpisah.
+- toko.html = placeholder, nanti diarahkan ke shop.centralcats.id (jangan isi toko
+  sungguhan).
+- Strategi SEO ke #1 (urutan): fondasi (SELESAI: on-page A, perf A+, struktur rapi)
+  → perbaikan/perkaya KONTEN → backlink (Tautan=F, penahan terbesar). Target ganda:
+  keyword luas "grooming kucing tangerang" (untuk home service) + keyword lokal
+  "pasar kemis/rajeg" (toko fisik).
+- PRINSIP DIJAGA: JANGAN sentuh meta/canonical/heading/JSON-LD (baseline SEO,
+  dikalibrasi & dipantau owner di Search Console). Boleh perkaya isi konten asalkan
+  jangkar SEO tak digeser. Backlink HARUS natural/eksternal — JANGAN skema PBN/tukar
+  link antar domain sendiri.
+
 ## Catatan lain
 - Email kontak resmi: **admin@central-cats.com**.
 - GA4 terpasang di semua halaman: **G-SGYPJC015Y**.
