@@ -40,8 +40,9 @@ Sebelum menyimpulkan suatu halaman ada/tidak: selalu cek `git ls-tree -r origin/
 - ✅ **karir.html + kerjasama.html — SELESAI** (pakai main.css + main.js bersama, lossless verified, browser OK).
 - ✅ **toko.html + syarat.html — SELESAI** (main.css + main.js bersama; 53 rule lossless + 1 box-shadow hover medsos diselaraskan ke index; footer legal DJKI syarat tetap inline; browser OK).
 - ✅ **layanan.html — SELESAI** (54 rule lossless 0 drift; interaksi → main.js; CSS unik [hero-banner, .layanan-section, .card, footer-contact hover] tetap inline; SEO/JSON-LD/h1/h2 utuh; console.log inline dihapus, pakai pesan keamanan main.js).
+- ✅ **tentang.html — SELESAI** (54 rule lossless 0 drift; interaksi → main.js; CSS unik [galeri, stats-card, profil-split @media, footer-contact hover] tetap inline; 2 console.log inline dihapus → pesan keamanan dari main.js; SEO/JSON-LD AboutPage/h1 "Profil Central Cat's"/4 h2 utuh; browser OK).
 - ✅ **Pesan console keamanan dipindah ke main.js** (standar semua halaman yang load main.js).
-- ⏳ Sisa: **tentang**, dan **index (TERAKHIR — paling berisiko: 90 rule unik, JS terkaya, hero transparan, halaman utama SEO; saat itu hapus console.log inline index)**.
+- ⏳ Sisa: **HANYA index (TERAKHIR — paling berisiko: 90 rule unik, JS terkaya/slider, hero transparan, halaman utama SEO; saat itu hapus 6 console.log inline index)**. 6/7 halaman selesai.
 
 ## Larangan (PENTING)
 - **JANGAN push ke `main`** tanpa persetujuan eksplisit. Kerja di branch fitur; commit ≠ push.
@@ -50,6 +51,11 @@ Sebelum menyimpulkan suatu halaman ada/tidak: selalu cek `git ls-tree -r origin/
 - **JANGAN refactor dengan memindah rule `@media`** ke file bersama bila membalik urutan cascade — @media tetap inline.
 - **Pesan console keamanan = STANDAR semua halaman via `main.js`.** ASCII art "Central Cat's" + 5 peringatan anti-social-engineering (sumber kebenaran: blok di `index.html`) sudah dipindah ke `assets/js/main.js` (6 `console.log`), jadi setiap halaman yang load main.js otomatis menampilkannya. Ini fitur perlindungan pengunjung yang disengaja — **jangan hapus/ubah** isinya. **Saat refactor index nanti: HAPUS 6 `console.log` inline di `index.html` (sekitar baris 1147–1156)** agar tidak dobel dengan main.js (index akan load main.js).
 - **Header & footer kiblatnya ke `index.html`** (rancangan asli). Halaman lain yang beda = drift → **luruskan ke index**. Kalau ada ambiguitas (mis. index punya rule tak relevan untuk halaman itu), **bahas dengan pemilik dulu, jangan otomatis ikut**.
+
+## Item polish tertunda (dikerjakan SETELAH refactor Tahap 3 selesai, terpisah)
+Bukan bagian ekstraksi CSS/JS; jangan dicampur ke commit refactor.
+- **(a) Tipografi situs terasa flat** — tinjau hierarki font di **SEMUA halaman**: `h1` & `h2` sama-sama `2rem`, body seragam. Pertimbangkan skala/berat yang lebih berjenjang. ⚠️ Hati-hati: situs page-one — uji dampak visual & jangan ubah konten/heading text.
+- **(b) Logo `<img>` belum punya `width`/`height`** di `tentang.html` & halaman lain; **index sudah punya** (`width="200" height="44"` di header & footer). Selaraskan ke index untuk cegah CLS (layout shift). Perubahan HTML kecil, di luar scope ekstraksi.
 
 ## Catatan lain
 - Email kontak resmi: **admin@central-cats.com**.
