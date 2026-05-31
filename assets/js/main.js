@@ -28,7 +28,6 @@ document.querySelectorAll('#mobileMenu .nav-item > a').forEach(btn => {
   btn.addEventListener('click', function(e) {
     const drop = this.parentElement.querySelector('.nav-dropdown');
     if(!drop) return;
-    if(!this.getAttribute('href').startsWith('#')) e.preventDefault();
     drop.style.display = drop.style.display === 'flex' ? 'none' : 'flex';
   });
 });
