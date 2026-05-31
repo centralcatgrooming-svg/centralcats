@@ -31,6 +31,11 @@ nav a:hover{color:var(--accent);}
 .footer-social-item:hover .footer-social-icon{background:var(--accent);box-shadow:0 0 10px rgba(212,175,55,.55);}
 .footer-social-item:hover{opacity:.8;}
 .footer-bottom{text-align:center;margin-top:50px;font-size:10px;opacity:.85;border-top:1px solid rgba(255,255,255,.15);padding-top:22px;}
+/* footer kontak: 4 class ekstrak dari inline footer (nilai copy byte). Hanya elemen footer; ikon FAQ emas TETAP inline (varian beda). */
+.footer-ico{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;}
+.footer-divider{border:none;border-top:1px solid rgba(255,255,255,.25);margin:10px 0 10px 46px;}
+.footer-label{font-size:13px;opacity:.85;}
+.footer-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
 .faq-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,.4);z-index:2000;backdrop-filter:blur(3px);}
 .faq-overlay.show{display:block;}
 .faq-popup.show{display:flex;}
