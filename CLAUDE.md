@@ -28,6 +28,13 @@ Nav header **identik di 7 halaman**: Home · Tentang · Layanan · Lokasi · Tok
 - **Scrollspy index DIBUANG** (dulu blok JS yang memindah `.active` saat scroll). `nav a:hover::after` (garis hover) & `nav a.active::after` (penanda statik) **tetap** di main.css.
 - Tombol hero index `#services` ("Lihat Layanan Kami") **tetap anchor** (same-page CTA) — bukan nav.
 
+## Animasi & UX mobile (shared via main.css + main.js)
+- **(a) Animasi entrance fade+slide-up** — `.fade-section` (di main.css, **di-scope `.js`** yang di-set main.js → tanpa JS konten tampil normal, no LCP/SEO risk). `IntersectionObserver` (`_fadeObserver`) di main.js menambah `.show` saat masuk viewport. Hanya `transform`+`opacity` → **no CLS**. Dipasang di elemen **below-fold** (section/h2); **hero/h1 pertama tiap halaman DIKECUALIKAN** (LCP). karir/toko tanpa fade (placeholder LCP-only).
+- **(b) Nav mobile parent navigasi** — handler `#mobileMenu .nav-item > a` di main.js **tanpa `preventDefault`** lagi → tap Tentang/Layanan/Kerjasama di hamburger **pindah ke halaman** (sub-item dropdown mobile dikorbankan, Opsi 1).
+- **(c) Drawer nav mobile** — `.mobile-nav` (di `@media(max-width:768px)` inline 7 halaman) = drawer **`width:var(--drawer-w)` (default 50%, setel di main.css `:root`)** slide dari kanan via `transform:translateX(100%→0)`, `position:fixed` (halaman diam). **Overlay** `.mobile-overlay` dibuat **dinamis di main.js** (tanpa edit markup) + helper `openMenu()/closeMenu()` sinkronkan `.open`(drawer)+`.show`(overlay)+`.active`(hamburger); klik overlay/link/luar = tutup. z-index: overlay 1400 < drawer 1500.
+- **Logo mobile pojok kiri** — `.logo-area` di `@media` 7 halaman = `position:absolute;left:20px` (dulu center). **Desktop logo (main.css) tak berubah** (kiri-natural via space-between). Hamburger tetap kanan.
+- ⚠️ **Dikecualikan desktop**: semua di atas hanya ubah `@media(max-width:768px)` inline atau JS null-safe; rule desktop di main.css tak disentuh.
+
 ## Stack & Struktur
 - HTML + CSS/JS. Tidak ada build tool, package manager, framework, atau CI.
 - 7 halaman konten: `index.html`, `tentang.html`, `layanan.html`, `karir.html`, `kerjasama.html`, `toko.html`, `syarat.html`.
