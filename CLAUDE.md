@@ -24,7 +24,7 @@ Nav header **identik di 7 halaman**: Home · Tentang · Layanan · Lokasi · Tok
 - **Tentang → `tentang.html`**, **Layanan → `layanan.html`** (link halaman, bukan anchor section).
 - **Produk & Ulasan SUDAH DIBUANG dari nav** (dulu `#products`/`#reviews`). Section `#products`/`#reviews` di body index **tetap ada** — hanya entri nav-nya yang dihapus.
 - **Home & Lokasi** menunjuk homepage: di **index** pakai `#home`/`#location` (same-page anchor); di **6 halaman lain** pakai `index.html#home`/`index.html#location` (cross-page, valid). Beda href ini **benar per-konteks**, bukan drift.
-- **`class="active"`** statik menandai halaman aktif tiap halaman (kecuali syarat — dicapai via link footer). Jangan hapus.
+- **`class="active"`** statik menandai halaman aktif tiap halaman (kecuali syarat — tak ada entri nav; dicapai via link `Syarat & Ketentuan` di footer-bottom yang kini ada di 7/7, lihat TAHAP 4). Jangan hapus.
 - **Scrollspy index DIBUANG** (dulu blok JS yang memindah `.active` saat scroll). `nav a:hover::after` (garis hover) & `nav a.active::after` (penanda statik) **tetap** di main.css.
 - Tombol hero index `#services` ("Lihat Layanan Kami") **tetap anchor** (same-page CTA) — bukan nav.
 
@@ -44,7 +44,7 @@ Nav header **identik di 7 halaman**: Home · Tentang · Layanan · Lokasi · Tok
 - File ber-**CRLF** (autocrlf). Pertahankan CRLF saat mengedit HTML.
 
 ## Refactor CSS/JS bersama (TAHAP 3 — sedang berjalan)
-- `assets/css/main.css` — 54 rule **universal (identik di 7/7 halaman)**: reset, `:root`, nav/dropdown, footer-social, blok FAQ popup, `@keyframes`.
+- `assets/css/main.css` — rule **universal (identik di 7/7 halaman)**: reset, `:root`, nav/dropdown, footer-social, **4 class footer-contact** (`.footer-ico/-divider/-label/-row` — lihat TAHAP 4), **blok FAQ popup LENGKAP** (top-level diangkat dari index — lihat TAHAP 4), `@keyframes`. (Dulu 54 rule; kini +4 footer +12 FAQ.)
 - `assets/js/main.js` — inti interaksi 7/7: hamburger, dropdown mobile, FAQ chat popup, `getNow()`, scroll-header (null-safe).
 - Aturan ekstraksi (WAJIB demi tampilan identik):
   - Hanya migrasikan rule **top-level yang identik di 7/7**. Rule drift & **seluruh `@media` tetap inline** per halaman (mencegah urutan cascade terbalik).
@@ -60,6 +60,14 @@ Nav header **identik di 7 halaman**: Home · Tentang · Layanan · Lokasi · Tok
 - ✅ **index.html — SELESAI** (hybrid penuh, halaman terakhir & paling berisiko). CSS: adopsi main.css, 54 rule lossless **0 drift** via tokenizer **brace-aware** (memisah baris glued `#faqTrigger:hover{...}@media(max-width:768px){`); CSS unik (~87: hero transparan, slider/review-dot, location, reel/stats, faq-unik) + 2 `@media` tetap inline. JS-penuh: load main.js, **hapus** blok C(dropdown)/D(hamburger)/G(click-outside)/I(FAQ incl getNow)/K(6 console.log), **keep** A(scroll+parallax+scrollspy)/B(resize)/E(mobile-smooth)/F(slider)/H(touch-swipe)/J(fade-observer). **R1 const-clash=0** (tak ada deklarasi top-level kembar dgn main.js); slider/parallax/scrollspy/fade utuh; 2 JSON-LD (LocalBusiness @graph + FAQPage)/h1/6 h2/width-height **byte-identik**; browser OK (console 6 pesan dari main.js, no SyntaxError).
 - ✅ **Pesan console keamanan dipindah ke main.js** (standar semua halaman yang load main.js).
 - 🎉 **TAHAP 3 SELESAI — 7/7 halaman** memakai main.css + main.js bersama (lossless verified, browser OK).
+
+## TAHAP 4 — Footer & FAQ ke sumber tunggal (SELESAI di branch `fix/tahap-1-konten-seo`, pushed; BELUM di `main`)
+Lanjutan Tahap 3, pola sama (kiblat = **index**, lossless/render-identik, **@media tetap inline**, per-halaman + verifikasi browser). Cek cascade dulu sebelum tiap pemindahan.
+- **(a) Footer inline-style → 4 class** (di main.css): `.footer-ico` (lingkaran 44px **putih** ×3/hal), `.footer-divider` (`<hr>` ×3), `.footer-label` (label Email/WA/SMS/FAQ ×4), `.footer-row` (baris kontak Email/WA, `+margin-bottom:10px` ×2). Diterapkan **7/7** (−12 inline/hal). ⚠️ **Varian SENGAJA tetap inline**: baris SMS (gap tanpa margin-bottom), `#faqTrigger` (cursor:pointer), **ikon FAQ EMAS** (`rgba(212,175,55,.25)`+border — beda dari putih). 4 elemen yg dikonversi tak punya selector penyaing (hover-svg `.footer-contact div:hover svg` menarget `svg`, bukan div) → render identik.
+- **(b) Facebook ditambah ke `.footer-social` 7/7** — item ke-4 **SETELAH TikTok** (grid jadi 2×2: IG·YT / TikTok·FB). `href=https://www.facebook.com/Centralcatsofficial/`, `<span>Central Cats Official</span>`, path SVG `fill="white" viewBox="0 0 24 24"` (match 3 ikon lain). Format whitespace **ikut tiap halaman** (index/tentang multiline, 5 lainnya single-line).
+- **(c) footer-bottom SERAGAM 7/7** — `© <span id="year">2026</span> Central Cat's. All Rights Reserved. · <a href="syarat.html" …>Syarat & Ketentuan</a>`. **Link Syarat kini di SEMUA halaman** (dulu cuma self-link di syarat → **perbaiki halaman yatim**). **DJKI dilepas dari footer-bottom syarat** (tetap ada di **body poin 7 "Hak Kekayaan Intelektual"** — `IDM001047956`; jangan hapus). **Tahun otomatis**: fallback `2026` di HTML + main.js null-safe `var _y=getElementById('year'); if(_y) _y.textContent=new Date().getFullYear();`.
+- **(d) FAQ CSS → main.css sumber tunggal 7/7** — 12 rule FAQ **top-level** (`.faq-popup` #ece5dd / `.faq-chat-body`+**doodle SVG** / `::-webkit-scrollbar(-thumb)` / `.faq-date-divider span` / `.faq-bubble-bot`(+`::before` ekor) / `.faq-bubble-user`(+`::after` ekor) / `.faq-typing` / `.faq-chip:active`) **diangkat byte-exact dari inline index → main.css**, inline top-level dihapus dari **7/7** (−130 baris). **@media FAQ TETAP inline** tapi **diseragamkan ke index**: `.faq-chip` `+padding:6px 11px`, tambah `.faq-quick-replies{…overflow-y:auto;max-height:130px}`. Dulu **4 varian drift** (index full · tentang/layanan medium · karir/kerjasama/toko/syarat polos) → kini **identik 7/7** (popup krem #ece5dd + doodle + ekor balon WA-style + scrollbar). Render index tak berubah (rule identik). ⚠️ `#dfe7ec` = warna **`.faq-chat-body`** (area pesan, dominan, BENAR); `#ece5dd` cuma trim `.faq-popup`.
+- 📌 **Konten chip FAQ (8 di index/tentang/layanan vs 4 di karir/kerjasama/toko/syarat) BELUM diseragamkan** — itu konten/markup (+ toko dkk punya **harga eksplisit "Rp 100–200k"** yg index tak punya), **keputusan owner**, di luar scope konsolidasi CSS ini.
 
 ## Larangan (PENTING)
 - **JANGAN push ke `main`** tanpa persetujuan eksplisit. Kerja di branch fitur; commit ≠ push.
