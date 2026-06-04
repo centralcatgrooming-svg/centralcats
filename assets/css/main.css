@@ -5,6 +5,7 @@
 ============================================================= */
 :root{--primary:#1e3a8a;--accent:#d4af37;--light:#f3f4f6;--text:#111;--drawer-w:50%;}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+h1,h2,h3{font-family:'Fraunces',Georgia,'Times New Roman',serif;}
 html{scroll-behavior:smooth;}
 .header-inner{width:100%;max-width:1200px;height:60px;display:flex;justify-content:space-between;align-items:center;padding:0 20px;}
 .logo-area{display:flex;align-items:center;}

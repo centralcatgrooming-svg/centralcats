@@ -19,14 +19,15 @@ placeholder "Segera Hadir" yang sengaja belum diisi konten; biarkan apa adanya.
 Sebelum menyimpulkan suatu halaman ada/tidak: selalu cek `git ls-tree -r origin/main`
 — branch lokal bisa tertinggal dari produksi.
 
-## Navigasi header (SERAGAM 7/7 — transisi landing→multi-halaman)
-Nav header **identik di 7 halaman**: Home · Tentang · Layanan · Lokasi · Toko Online · Karir · Kerjasama.
-- **Tentang → `tentang.html`**, **Layanan → `layanan.html`** (link halaman, bukan anchor section).
+## Navigasi header (SERAGAM 8/8 — transisi landing→multi-halaman)
+Nav header **identik di 8 halaman**: Home · Tentang · Layanan · Lokasi · Toko Online · Karir · Kerjasama.
+- **Tentang → `tentang.html`**, **Layanan → `layanan.html`**, **Lokasi → `lokasi.html`** (link halaman, bukan anchor section — Lokasi jadi halaman di TAHAP 5).
 - **Produk & Ulasan SUDAH DIBUANG dari nav** (dulu `#products`/`#reviews`). Section `#products`/`#reviews` di body index **tetap ada** — hanya entri nav-nya yang dihapus.
-- **Home & Lokasi** menunjuk homepage: di **index** pakai `#home`/`#location` (same-page anchor); di **6 halaman lain** pakai `index.html#home`/`index.html#location` (cross-page, valid). Beda href ini **benar per-konteks**, bukan drift.
+- **Home** menunjuk homepage: di **index** pakai `#home` (same-page anchor); di **7 halaman lain** pakai `index.html#home` (cross-page, valid). Beda href ini **benar per-konteks**, bukan drift.
+- **Lokasi → `lokasi.html`** di **8/8** (dulu `#location`/`index.html#location` ke section homepage; kini halaman sendiri — lihat TAHAP 5). `#location` di index kini **section RINGKAS** (alamat singkat 2 cabang + tombol "Lihat Lokasi & Peta" → lokasi.html); maps penuh pindah ke lokasi.html.
 - **`class="active"`** statik menandai halaman aktif tiap halaman (kecuali syarat — tak ada entri nav; dicapai via link `Syarat & Ketentuan` di footer-bottom yang kini ada di 7/7, lihat TAHAP 4). Jangan hapus.
 - **Scrollspy index DIBUANG** (dulu blok JS yang memindah `.active` saat scroll). `nav a:hover::after` (garis hover) & `nav a.active::after` (penanda statik) **tetap** di main.css.
-- Tombol hero index `#services` ("Lihat Layanan Kami") **tetap anchor** (same-page CTA) — bukan nav.
+- Tombol hero index: dulu anchor `#services` ("Lihat Layanan Kami"). **TAHAP 5**: diganti CTA ganda `📅 Booking Sekarang` (→ app.centralcats.id/booking) + `✂️ Lihat Paket Grooming` (→ `layanan.html#paket-grooming`) + baris trust.
 
 ## Animasi & UX mobile (shared via main.css + main.js)
 - **(a) Animasi entrance fade+slide-up** — `.fade-section` (di main.css, **di-scope `.js`** yang di-set main.js → tanpa JS konten tampil normal, no LCP/SEO risk). `IntersectionObserver` (`_fadeObserver`) di main.js menambah `.show` saat masuk viewport. Hanya `transform`+`opacity` → **no CLS**. Dipasang di elemen **below-fold** (section/h2); **hero/h1 pertama tiap halaman DIKECUALIKAN** (LCP). karir/toko tanpa fade (placeholder LCP-only).
@@ -37,7 +38,7 @@ Nav header **identik di 7 halaman**: Home · Tentang · Layanan · Lokasi · Tok
 
 ## Stack & Struktur
 - HTML + CSS/JS. Tidak ada build tool, package manager, framework, atau CI.
-- 7 halaman konten: `index.html`, `tentang.html`, `layanan.html`, `karir.html`, `kerjasama.html`, `toko.html`, `syarat.html`.
+- 8 halaman konten: `index.html`, `tentang.html`, `layanan.html`, `lokasi.html`, `karir.html`, `kerjasama.html`, `toko.html`, `syarat.html`.
 - Config: `CNAME`, `robots.txt`, `sitemap.xml`, `assets/icons/site.webmanifest`, `google4120ad7b9c49fdb9.html` (verifikasi GSC).
 - Aset di `assets/` (icons, images, logo, video, music).
 - Path aset pakai **absolut dari root** (`/assets/...`) karena GitHub Pages dari root.
@@ -61,7 +62,7 @@ Nav header **identik di 7 halaman**: Home · Tentang · Layanan · Lokasi · Tok
 - ✅ **Pesan console keamanan dipindah ke main.js** (standar semua halaman yang load main.js).
 - 🎉 **TAHAP 3 SELESAI — 7/7 halaman** memakai main.css + main.js bersama (lossless verified, browser OK).
 
-## TAHAP 4 — Footer & FAQ ke sumber tunggal (SELESAI di branch `fix/tahap-1-konten-seo`, pushed; BELUM di `main`)
+## TAHAP 4 — Footer & FAQ ke sumber tunggal (SELESAI & SUDAH di `origin/main` produksi — branch `fix/tahap-1-konten-seo` == `origin/main`, commit `bc33029`)
 Lanjutan Tahap 3, pola sama (kiblat = **index**, lossless/render-identik, **@media tetap inline**, per-halaman + verifikasi browser). Cek cascade dulu sebelum tiap pemindahan.
 - **(a) Footer inline-style → 4 class** (di main.css): `.footer-ico` (lingkaran 44px **putih** ×3/hal), `.footer-divider` (`<hr>` ×3), `.footer-label` (label Email/WA/SMS/FAQ ×4), `.footer-row` (baris kontak Email/WA, `+margin-bottom:10px` ×2). Diterapkan **7/7** (−12 inline/hal). ⚠️ **Varian SENGAJA tetap inline**: baris SMS (gap tanpa margin-bottom), `#faqTrigger` (cursor:pointer), **ikon FAQ EMAS** (`rgba(212,175,55,.25)`+border — beda dari putih). 4 elemen yg dikonversi tak punya selector penyaing (hover-svg `.footer-contact div:hover svg` menarget `svg`, bukan div) → render identik.
 - **(b) Facebook ditambah ke `.footer-social` 7/7** — item ke-4 **SETELAH TikTok** (grid jadi 2×2: IG·YT / TikTok·FB). `href=https://www.facebook.com/Centralcatsofficial/`, `<span>Central Cats Official</span>`, path SVG `fill="white" viewBox="0 0 24 24"` (match 3 ikon lain). Format whitespace **ikut tiap halaman** (index/tentang multiline, 5 lainnya single-line).
@@ -69,6 +70,15 @@ Lanjutan Tahap 3, pola sama (kiblat = **index**, lossless/render-identik, **@med
 - **(d) FAQ CSS → main.css sumber tunggal 7/7** — 12 rule FAQ **top-level** (`.faq-popup` #ece5dd / `.faq-chat-body`+**doodle SVG** / `::-webkit-scrollbar(-thumb)` / `.faq-date-divider span` / `.faq-bubble-bot`(+`::before` ekor) / `.faq-bubble-user`(+`::after` ekor) / `.faq-typing` / `.faq-chip:active`) **diangkat byte-exact dari inline index → main.css**, inline top-level dihapus dari **7/7** (−130 baris). **@media FAQ TETAP inline** tapi **diseragamkan ke index**: `.faq-chip` `+padding:6px 11px`, tambah `.faq-quick-replies{…overflow-y:auto;max-height:130px}`. Dulu **4 varian drift** (index full · tentang/layanan medium · karir/kerjasama/toko/syarat polos) → kini **identik 7/7** (popup krem #ece5dd + doodle + ekor balon WA-style + scrollbar). Render index tak berubah (rule identik). ⚠️ `#dfe7ec` = warna **`.faq-chat-body`** (area pesan, dominan, BENAR); `#ece5dd` cuma trim `.faq-popup`.
 - **(e) Hover-zoom ikon kontak footer → main.css (universal 7/7)** — `.footer-contact svg{transition:transform .2s ease}` + `.footer-contact div:hover svg{transform:scale(1.15)}`. Dulu hanya index/tentang/layanan; kini diangkat ke main.css, inline 3 halaman itu dihapus → ikon Email/WA/SMS/FAQ membesar saat hover di **semua halaman**.
 - **(f) Konten FAQ diseragamkan ke index 7/7 (Opsi A, owner approved)** — karir/kerjasama/toko/syarat: **4 → 8 chip** byte-identik index + **sapaan bot awal** disamakan. ⚠️ Konsekuensi Opsi A: jawaban "Biaya" kini versi index (vague) → **harga eksplisit "Rp 100–200k" DIHILANGKAN** dari placeholder (disetujui owner). FAQ kini **identik 7/7** (CSS via main.css + chip + sapaan).
+
+## TAHAP 5 — Konten marketing index + halaman Lokasi + performa mobil + privasi email (branch `fix/tahap-1-konten-seo`)
+Kiblat tetap index; jangkar SEO (title/meta/canonical/teks h1+h2/JSON-LD) **TIDAK digeser**; CRLF dijaga; @media tetap inline.
+- **(a) Index lebih "marketing"**: hero **CTA ganda** (Booking + Lihat Paket Grooming → `layanan.html#paket-grooming`) + baris trust "⭐4.9 · 500+ · buka tiap hari"; **section baru `#keunggulan` "Kenapa Central Cat's?"** (4 benefit: Antar-Jemput/Home service, Groomer Bersertifikat, Higienis & Aman, Buka Setiap Hari — h2 baru, klaim didukung ulasan asli); **grid 4 KPI dihapus dari index** (duplikat `tentang.html`); **irama background** diselang-seling (about light→keunggulan soft→services light→nilai soft→products light→reviews soft); CSS yatim `.stats-card*` dibersihkan.
+- **(b) Tipografi**: Fraunces (heading) + Poppins (body) site-wide — lihat polish (a).
+- **(c) Fix video reel index**: `.reel-box` `aspect-ratio:3/4`→`9/16` (+`max-width:300px;margin:14px auto`) — ke-3 video sumber **portrait 9:16** (sebelumnya ke-crop & terasa melebihi layar HP).
+- **(d) Halaman BARU `lokasi.html`** (disalin dari karir → header/footer/FAQ identik): head SEO lokal + **JSON-LD LocalBusiness 2 cabang**, h1 "Lokasi & Cabang Central Cat's" + 2 cabang (h2) + maps + section "Area Layanan & Antar-Jemput". Nav "Lokasi" → `lokasi.html` **8/8** (active di lokasi.html). `#location` index **diringkas** (maps pindah; alamat singkat + tombol). **sitemap.xml** + entri lokasi.html (priority 0.8). ⚠️ JSON-LD 2 cabang **tetap juga di index** (entitas sama `@id`).
+- **(e) Performa mobil** (aman SEO): video index `preload="metadata"→"none"`; Google Fonts **non-render-blocking** (preload + `media="print" onload` + `<noscript>`) 8/8; `main.js` `defer` 8/8; **hapus ±6.4 MB aset MATI** (`logo/logo.png` 4MB + 6 maskot PNG tak-direferensi; `logo-horizontal.png` & `maskot-about.webp` dipertahankan). Catatan: skor PSI baru berubah **setelah deploy**; win terbesar = 2 embed Maps keluar dari index.
+- **(f) Privasi email (anti-scraper)**: email footer (8/8) + body syarat → `.js-email` + `data-u`/`data-d`, dirakit `main.js`. JSON-LD `"email"` **sengaja tetap plaintext** (SEO). ⚠️ **Inline `style=""` (±250×) SENGAJA DILEWATI** — nilai ranking nol, risiko regresi tinggi, bertentangan arsitektur (sekadar checkbox audit generik).
 
 ## Larangan (PENTING)
 - **JANGAN push ke `main`** tanpa persetujuan eksplisit. Kerja di branch fitur; commit ≠ push.
@@ -80,7 +90,7 @@ Lanjutan Tahap 3, pola sama (kiblat = **index**, lossless/render-identik, **@med
 
 ## Item polish tertunda (dikerjakan SETELAH refactor Tahap 3 selesai, terpisah)
 Bukan bagian ekstraksi CSS/JS; jangan dicampur ke commit refactor.
-- **(a) Tipografi situs terasa flat** — tinjau hierarki font di **SEMUA halaman**: `h1` & `h2` sama-sama `2rem`, body seragam. Pertimbangkan skala/berat yang lebih berjenjang. ⚠️ Hati-hati: situs page-one — uji dampak visual & jangan ubah konten/heading text.
+- ✅ **(a) Tipografi — DITANGANI di TAHAP 5**: heading **Fraunces** (serif) + body **Poppins** site-wide (rule `h1,h2,h3` di main.css + `<link>` Fraunces 8/8, non-render-blocking); h1 index 2.6→3rem. Teks heading TIDAK diubah.
 - **(b) Logo `<img>` belum punya `width`/`height`** di `tentang.html` & halaman lain; **index sudah punya** (`width="200" height="44"` di header & footer). Selaraskan ke index untuk cegah CLS (layout shift). Perubahan HTML kecil, di luar scope ekstraksi.
 
 ## Roadmap (rencana, belum dikerjakan — bahas fresh tiap proyek)
@@ -103,6 +113,6 @@ Bukan bagian ekstraksi CSS/JS; jangan dicampur ke commit refactor.
   link antar domain sendiri.
 
 ## Catatan lain
-- Email kontak resmi: **admin@central-cats.com**.
+- Email kontak resmi: **admin@central-cats.com**. ⚠️ Di HTML terlihat **di-obfuscate** anti-scraper (`.js-email` + `data-u`/`data-d`, dirakit `main.js`; tanpa JS tampil "admin [at] central-cats.com"). **JSON-LD `"email"` SENGAJA tetap plaintext** (SEO/structured data — jangan obfuscate). Lihat TAHAP 5.
 - GA4 terpasang di semua halaman: **G-SGYPJC015Y**.
 - `supplier`/`waralaba` bukan file — anchor `#supplier`/`#waralaba` di dalam `kerjasama.html`.

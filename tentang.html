@@ -42,7 +42,9 @@
 <link rel="preload" as="image" href="/assets/logo/logo-horizontal.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Poppins:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Poppins:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Poppins:wght@400;600;700&display=swap"></noscript>
 
 <link rel="stylesheet" href="/assets/css/main.css">
 <style>
@@ -210,7 +212,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
           <a href="layanan.html#cat-hotel">Cat Hotel</a>
         </div>
       </div>
-      <a href="index.html#location">Lokasi</a>
+      <a href="lokasi.html">Lokasi</a>
       <a href="toko.html">Toko Online</a>
       <a href="karir.html">Karir</a>
       <div class="nav-item">
@@ -244,7 +246,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
         <a href="layanan.html#cat-hotel">Cat Hotel</a>
       </div>
     </div>
-    <a href="index.html#location">Lokasi</a>
+    <a href="lokasi.html">Lokasi</a>
     <a href="toko.html">Toko Online</a>
     <a href="karir.html">Karir</a>
     <div class="nav-item">
@@ -394,7 +396,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
         </div>
         <div>
           <div class="footer-label">Email</div>
-          <a href="mailto:admin@central-cats.com" style="color:#fff;font-weight:600;text-decoration:none;font-size:13px;">admin@central-cats.com</a>
+          <a class="js-email" data-u="admin" data-d="central-cats.com" href="#" style="color:#fff;font-weight:600;text-decoration:none;font-size:13px;">admin [at] central-cats.com</a>
         </div>
       </div>
       <hr class="footer-divider">
@@ -503,6 +505,6 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
   </div>
 </div>
 
-<script src="/assets/js/main.js"></script>
+<script defer src="/assets/js/main.js"></script>
 </body>
 </html>
