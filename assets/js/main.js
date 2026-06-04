@@ -111,3 +111,12 @@ document.querySelectorAll('.fade-section').forEach(el => _fadeObserver.observe(e
 
 /* footer: tahun otomatis (HTML berisi fallback 2026 bila JS mati); null-safe */
 var _y = document.getElementById('year'); if(_y) _y.textContent = new Date().getFullYear();
+
+/* email anti-scraper: rakit alamat dari data-u/data-d (tak ada email mentah di HTML); set mailto bila elemen <a>. null-safe */
+document.querySelectorAll('.js-email').forEach(function(el){
+  var u = el.getAttribute('data-u'), d = el.getAttribute('data-d');
+  if(!u || !d) return;
+  var addr = u + '@' + d;
+  el.textContent = addr;
+  if(el.tagName === 'A') el.setAttribute('href', 'mailto:' + addr);
+});

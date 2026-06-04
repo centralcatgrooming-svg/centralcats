@@ -37,7 +37,9 @@
 <link rel="preload" as="image" href="/assets/images/maskot/maskot-about.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap&font-display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Poppins:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Poppins:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Poppins:wght@400;600;700&display=swap"></noscript>
 
 <!-- SEO STRUCTURED DATA: LocalBusiness -->
 <script type="application/ld+json">
@@ -118,10 +120,15 @@ header.scrolled{background:rgba(30,58,138,.92);backdrop-filter:blur(6px);positio
 .nav-dropdown{position:absolute;top:100%;left:0;background:white;border-radius:8px;box-shadow:0 10px 25px rgba(0,0,0,.15);display:none;flex-direction:column;min-width:160px;overflow:hidden;padding-top:6px;}
 .hero{background:linear-gradient(135deg,#1e3a8a,#243c94);color:white;padding:120px 5% 110px;width:100%;}
 .hero-container{max-width:1200px;width:100%;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:40px;contain:layout paint;}
-.hero-text h1{font-size:2.6rem;margin-bottom:20px;}
+.hero-text h1{font-size:3rem;line-height:1.15;margin-bottom:20px;letter-spacing:.3px;}
 .hero-text p{margin-bottom:25px;opacity:.9;}
 .btn{display:inline-block;padding:12px 26px;background:var(--accent);color:#111;text-decoration:none;font-weight:600;border-radius:10px;transition:all .3s ease;}
 .btn:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(0,0,0,.12);}
+.btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.6);}
+.btn-ghost:hover{background:#fff;color:var(--primary);border-color:#fff;box-shadow:0 10px 20px rgba(0,0,0,.18);}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:18px;}
+.hero-trust{font-size:13px;opacity:.92;margin-top:2px;}
+.hero-trust strong{color:var(--accent);}
 .section{padding:70px 20px 80px;text-align:center;width:100%;}
 .section h2{font-size:2.2rem;font-weight:700;color:var(--primary);letter-spacing:.5px;position:relative;display:inline-block;}
 .section h2::after{content:"";display:block;width:60px;height:4px;background:var(--accent);margin:12px auto 0;border-radius:4px;}
@@ -165,20 +172,13 @@ header.scrolled{background:rgba(30,58,138,.92);backdrop-filter:blur(6px);positio
 .review-dot.active{background:var(--primary);width:24px;border-radius:4px;}
 /* Video / Reel section */
 .ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;width:100%;max-width:1200px;margin-left:auto;margin-right:auto;padding:0 20px;}
-.reel-box{width:100%;aspect-ratio:3/4;border-radius:14px;overflow:hidden;background:#000;margin:14px 0;}
+.reel-box{width:100%;max-width:300px;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:#000;margin:14px auto;}
 .reel-box video{width:100%;height:100%;object-fit:cover;display:block;}
 .ig-grid .card{padding:22px 22px 26px;}
 .ig-grid .card h3{font-size:17px;margin-bottom:4px;}
 .ig-grid .card p{font-size:14px;line-height:1.65;color:#444;margin-top:10px;max-width:100%;}
-.stats-card{background:white;border-radius:14px;padding:20px 10px;box-shadow:0 4px 16px rgba(0,0,0,.07);border:1px solid #e5e7eb;text-align:center;transition:transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s cubic-bezier(.4,0,.2,1), border-color .35s ease;}
-.stats-card:hover{transform:translateY(-6px) scale(1.04);box-shadow:0 16px 40px rgba(30,58,138,.14);border-color:var(--accent);}
-.stats-card-icon{font-size:28px;margin-bottom:6px;}
-.stats-card-number{font-size:22px;font-weight:700;color:var(--primary);}
-.stats-card-label{font-size:12px;color:#666;margin-top:4px;}
 .btn-location{display:inline-block;padding:11px 26px;background:var(--primary);color:white;text-decoration:none;font-weight:600;border-radius:8px;font-size:13px;transition:all .3s ease;margin-bottom:28px;}
 .btn-location:hover{background:var(--accent);color:#111;transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.12);}
-.map-container{width:100%;padding:0 20px 20px;box-sizing:border-box;}
-.map-container iframe{width:100%;height:280px;border:none;display:block;border-radius:12px;overflow:hidden;}
 footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:30px;border-top:3px solid var(--accent);box-shadow:0 -2px 18px rgba(212,175,55,.35);}
 .footer-brand{text-align:left;}
 .footer-brand p{font-size:12px;line-height:1.7;opacity:.9;margin-top:14px;width:100%;}
@@ -234,10 +234,6 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
   .location-section{padding:60px 20px 70px;}
   .location-grid{grid-template-columns:1fr;}
   .location-info{padding:24px 18px 20px;}
-  .map-container{padding:0 14px 16px;}
-  .map-container iframe{height:220px;}
-  /* Stats bar mobile */
-  #about .stats-grid{grid-template-columns:repeat(2,1fr) !important;}
 }
 @media(min-width:769px){
   .hero-container{flex-direction:row;}
@@ -279,7 +275,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
           <a href="layanan.html#cat-hotel">Cat Hotel</a>
         </div>
       </div>
-      <a href="#location">Lokasi</a>
+      <a href="lokasi.html">Lokasi</a>
       <a href="toko.html">Toko Online</a>
       <a href="karir.html">Karir</a>
       <div class="nav-item">
@@ -313,7 +309,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
         <a href="layanan.html#cat-hotel">Cat Hotel</a>
       </div>
     </div>
-    <a href="#location">Lokasi</a>
+    <a href="lokasi.html">Lokasi</a>
     <a href="toko.html">Toko Online</a>
     <a href="karir.html">Karir</a>
     <div class="nav-item">
@@ -337,7 +333,11 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
     <div class="hero-text" style="flex:1;">
       <h1>Grooming Kucing &amp; Petshop<br><span style="color:var(--accent);">Terpercaya di Tangerang</span></h1>
       <p>Central Cat's menyediakan layanan <strong>mandi kucing</strong> dan <strong>grooming kucing profesional</strong> di Tangerang — melayani area Pasar Kemis, Rajeg, dan sekitarnya. Petshop lengkap dengan standar higienis dan perawatan penuh kasih.</p>
-      <a href="#services" class="btn">Lihat Layanan Kami</a>
+      <div class="hero-cta">
+        <a href="https://app.centralcats.id/booking" target="_blank" rel="noopener" class="btn">📅 Booking Sekarang</a>
+        <a href="layanan.html#paket-grooming" class="btn btn-ghost">✂️ Lihat Paket Grooming</a>
+      </div>
+      <p class="hero-trust">⭐ <strong>4.9</strong> di Google · 500+ pelanggan puas · Buka tiap hari 08.00–21.00</p>
     </div>
   </div>
 </section>
@@ -355,41 +355,41 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
       Dengan standar layanan yang terjaga dan tim groomer bersertifikat yang peduli terhadap kesejahteraan kucing, kami menghadirkan grooming profesional, treatment kesehatan bulu & kulit, cat hotel, hingga produk petshop berkualitas untuk kebutuhan harian anabul kamu.
     </p>
 
-    <!-- Stats Bar -->
-    <div class="stats-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px;max-width:720px;margin-left:auto;margin-right:auto;">
-
-      <div class="stats-card">
-        <div class="stats-card-icon">🗓️</div>
-        <div class="stats-card-number">2020</div>
-        <div class="stats-card-label">Berdiri Sejak</div>
-      </div>
-
-      <div class="stats-card">
-        <div class="stats-card-icon">😺</div>
-        <div class="stats-card-number">500+</div>
-        <div class="stats-card-label">Pelanggan Puas</div>
-      </div>
-
-      <div class="stats-card">
-        <div class="stats-card-icon">📍</div>
-        <div class="stats-card-number">2</div>
-        <div class="stats-card-label">Cabang Aktif</div>
-      </div>
-
-      <div class="stats-card">
-        <div class="stats-card-icon">✂️</div>
-        <div class="stats-card-number">100%</div>
-        <div class="stats-card-label">Groomer Bersertifikat</div>
-      </div>
-
-    </div>
-
-    <a href="tentang.html" class="btn" style="margin-top:36px;display:inline-block;">Baca Selengkapnya</a>
+    <a href="tentang.html" class="btn" style="margin-top:30px;display:inline-block;">Baca Selengkapnya</a>
 
   </div>
 </section>
 
-<section class="section section-soft fade-section" id="services">
+<section class="section section-soft fade-section" id="keunggulan">
+  <h2>Kenapa Central Cat's?</h2>
+  <p style="max-width:700px;margin:15px auto 0;line-height:1.6;color:#444;">
+    Lebih dari sekadar grooming — anabul kamu kami rawat seperti keluarga, dengan kemudahan yang bikin tenang.
+  </p>
+  <div class="grid" style="margin-top:40px;">
+    <div class="card">
+      <div class="service-icon"><span style="font-size:40px;line-height:1;">🚗</span></div>
+      <h3>Antar-Jemput Anabul</h3>
+      <p>Sibuk? Tenang. <strong>Home service &amp; antar-jemput kucing</strong> area Pasar Kemis, Rajeg &amp; sekitarnya — dijemput, dirawat, diantar pulang wangi.</p>
+    </div>
+    <div class="card">
+      <div class="service-icon"><span style="font-size:40px;line-height:1;">✂️</span></div>
+      <h3>Groomer Bersertifikat</h3>
+      <p>Tangan ahli yang sabar &amp; lembut. Kucing yang sering berontak di salon lain pun jadi tenang dan nurut bersama tim kami.</p>
+    </div>
+    <div class="card">
+      <div class="service-icon"><span style="font-size:40px;line-height:1;">🛁</span></div>
+      <h3>Higienis &amp; Aman</h3>
+      <p>Shampoo khusus kucing, peralatan bersih, dan prosedur yang menjaga kesehatan kulit serta bulu — minim stres, penuh kasih.</p>
+    </div>
+    <div class="card">
+      <div class="service-icon"><span style="font-size:40px;line-height:1;">🗓️</span></div>
+      <h3>Buka Setiap Hari</h3>
+      <p>Senin–Minggu, 08.00–21.00 WIB. Booking online praktis lewat aplikasi atau cukup chat WhatsApp — langsung dibalas.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-light fade-section" id="services">
   <h2>Layanan Grooming Kucing di Tangerang</h2>
   <p style="max-width:700px;margin:15px auto 0;line-height:1.6;color:#444;">
     Layanan <strong>grooming kucing profesional</strong> dan <strong>mandi kucing di Tangerang</strong> dengan standar higienis, aman, dan penuh perhatian.
@@ -436,7 +436,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
     <div class="card">
       <h3>Perawatan Profesional</h3>
       <div class="ig-reel reel-box">
-        <video controls preload="metadata" playsinline loading="lazy">
+        <video controls preload="none" playsinline loading="lazy">
           <source src="assets/video/grooming/perawatan-profesional.mp4" type="video/mp4">
         </video>
       </div>
@@ -445,7 +445,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
     <div class="card">
       <h3>Kenyamanan Kucing</h3>
       <div class="ig-reel reel-box">
-        <video controls preload="metadata" playsinline loading="lazy">
+        <video controls preload="none" playsinline loading="lazy">
           <source src="assets/video/grooming/kenyamanan_kucing.mp4" type="video/mp4">
         </video>
       </div>
@@ -454,7 +454,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
     <div class="card">
       <h3>Produk Berkualitas</h3>
       <div class="ig-reel reel-box">
-        <video controls preload="metadata" playsinline loading="lazy">
+        <video controls preload="none" playsinline loading="lazy">
           <source src="assets/video/grooming/Produk-Berkualitas.mp4" type="video/mp4">
         </video>
       </div>
@@ -463,7 +463,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
   </div>
 </section>
 
-<section class="section section-soft fade-section" id="products">
+<section class="section section-light fade-section" id="products">
   <h2>Produk Petshop</h2>
   <p style="max-width:700px;margin:15px auto 0;line-height:1.6;color:#444;">
     Central Cat's menyediakan berbagai kebutuhan hewan peliharaan berkualitas untuk menunjang kesehatan, kenyamanan, dan kebahagiaan anabul Anda setiap hari.
@@ -496,7 +496,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
   </div>
 </section>
 
-<section class="section section-light fade-section" id="reviews">
+<section class="section section-soft fade-section" id="reviews">
   <h2>Ulasan Pelanggan</h2>
   <p style="max-width:650px;margin:15px auto 0;line-height:1.6;color:#444;">
     Kepuasan dan kenyamanan anabul menjadi prioritas utama dalam setiap layanan kami.
@@ -559,7 +559,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
 <section id="location" class="location-section fade-section">
   <div class="container">
     <h2>Kunjungi Central Cat's</h2>
-    <p class="section-subtitle">Datang langsung ke cabang terdekat untuk layanan petshop &amp; grooming kucing terbaik.</p>
+    <p class="section-subtitle">2 cabang di Tangerang — Pasar Kemis &amp; Rajeg. Datang langsung untuk layanan petshop &amp; grooming kucing terbaik.</p>
     <div class="location-grid">
       <div class="location-item">
         <div class="location-info">
@@ -570,10 +570,6 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
             Kabupaten Tangerang, Banten 15540<br>
             🕒 Buka setiap hari: 08.00 – 21.00 WIB
           </p>
-          <a href="https://maps.app.goo.gl/XxemPDiMrQMjcGun9" target="_blank" rel="noopener" class="btn-location">Lihat di Google Maps</a>
-        </div>
-        <div class="map-container">
-          <iframe src="https://www.google.com/maps?q=-6.1120454,106.527102&z=17&output=embed" width="100%" height="280" loading="lazy" title="Peta Central Cat's Rajeg Gardenia"></iframe>
         </div>
       </div>
       <div class="location-item">
@@ -585,13 +581,10 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
             Kabupaten Tangerang, Banten 15560<br>
             🕒 Buka setiap hari: 08.00 – 21.00 WIB
           </p>
-          <a href="https://maps.app.goo.gl/SupXwMugkm5wF5jc7" target="_blank" rel="noopener" class="btn-location">Lihat di Google Maps</a>
-        </div>
-        <div class="map-container">
-          <iframe src="https://www.google.com/maps?q=-6.1551806,106.5497454&z=17&output=embed" width="100%" height="280" loading="lazy" title="Peta Central Cat's Bumi Indah"></iframe>
         </div>
       </div>
     </div>
+    <a href="lokasi.html" class="btn-location" style="margin-top:8px;">📍 Lihat Lokasi &amp; Peta Lengkap →</a>
   </div>
 </section>
 
@@ -619,7 +612,7 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
         </div>
         <div>
           <div class="footer-label">Email</div>
-          <a href="mailto:admin@central-cats.com" style="color:#fff;font-weight:600;text-decoration:none;font-size:13px;">admin@central-cats.com</a>
+          <a class="js-email" data-u="admin" data-d="central-cats.com" href="#" style="color:#fff;font-weight:600;text-decoration:none;font-size:13px;">admin [at] central-cats.com</a>
         </div>
       </div>
       <hr class="footer-divider">
@@ -873,7 +866,7 @@ if (mobileMenu) {
 }
 
 </script>
-<script src="/assets/js/main.js"></script>
+<script defer src="/assets/js/main.js"></script>
 
 </body>
 </html>
