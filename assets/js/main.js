@@ -120,3 +120,12 @@ document.querySelectorAll('.js-email').forEach(function(el){
   el.textContent = addr;
   if(el.tagName === 'A') el.setAttribute('href', 'mailto:' + addr);
 });
+
+/* tombol mailto tersembunyi: set href mailto (+subject opsional) TANPA menampilkan alamat (label tombol tetap). null-safe */
+document.querySelectorAll('.js-mailto').forEach(function(el){
+  var u = el.getAttribute('data-u'), d = el.getAttribute('data-d');
+  if(!u || !d) return;
+  var href = 'mailto:' + u + '@' + d;
+  var s = el.getAttribute('data-subj'); if(s) href += '?subject=' + encodeURIComponent(s);
+  el.setAttribute('href', href);
+});
