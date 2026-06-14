@@ -247,6 +247,40 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
   gtag('js', new Date());
   gtag('config', 'G-SGYPJC015Y');
 </script>
+
+<style>
+  .cc-blog{max-width:1120px;margin:0 auto;padding:64px 20px;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#1f2937}
+  .cc-blog__head{text-align:center;margin-bottom:40px}
+  .cc-blog__eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;font-weight:700;color:#1e3a8a;margin:0 0 8px}
+  .cc-blog__title{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;margin:0 0 10px;color:#0f1f4b}
+  .cc-blog__sub{margin:0;color:#6b7280}
+  .cc-blog__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+  .cc-card{background:#fff;border:1px solid #eef0f4;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;
+    box-shadow:0 1px 2px rgba(15,31,75,.04);transition:transform .18s ease,box-shadow .18s ease}
+  .cc-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(30,58,138,.12)}
+  .cc-card__thumb{aspect-ratio:16/9;background:#eef2ff;object-fit:cover;width:100%;display:block}
+  .cc-card__body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .cc-card__cat{align-self:flex-start;font-size:.72rem;font-weight:700;color:#1e3a8a;background:#eef2ff;
+    padding:4px 10px;border-radius:999px;text-transform:uppercase;letter-spacing:.04em}
+  .cc-card__title{font-size:1.08rem;font-weight:700;line-height:1.35;margin:0;color:#0f1f4b}
+  .cc-card__title a{color:inherit;text-decoration:none}
+  .cc-card__title a:hover{color:#1e3a8a}
+  .cc-card__excerpt{font-size:.92rem;color:#6b7280;line-height:1.55;margin:0;flex:1}
+  .cc-card__date{font-size:.8rem;color:#9aa1ad;margin-top:4px}
+  .cc-state{grid-column:1/-1;text-align:center;padding:48px 16px;color:#6b7280}
+  .cc-state__emoji{font-size:2rem;display:block;margin-bottom:8px}
+  .cc-skel{background:#fff;border:1px solid #eef0f4;border-radius:18px;overflow:hidden}
+  .cc-skel__thumb{aspect-ratio:16/9;background:linear-gradient(90deg,#eef2ff,#f6f8ff,#eef2ff);background-size:200% 100%;animation:ccpulse 1.2s infinite}
+  .cc-skel__body{padding:18px 20px}
+  .cc-skel__line{height:12px;border-radius:6px;background:#eef2ff;margin:8px 0;animation:ccpulse 1.2s infinite}
+  .cc-skel__line.w70{width:70%}.cc-skel__line.w90{width:90%}
+  @keyframes ccpulse{0%{background-position:200% 0}100%{background-position:-200% 0}}
+  .cc-blog__more{text-align:center;margin-top:40px}
+  .cc-blog__btn{display:inline-block;background:#1e3a8a;color:#fff;font-weight:700;text-decoration:none;
+    padding:12px 26px;border-radius:999px;transition:background .15s ease}
+  .cc-blog__btn:hover{background:#162d6b}
+  @media (prefers-reduced-motion:reduce){.cc-card,.cc-skel__thumb,.cc-skel__line{transition:none;animation:none}}
+</style>
 </head>
 <body>
 
@@ -588,6 +622,18 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
   </div>
 </section>
 
+<section id="artikel" class="cc-blog">
+  <div class="cc-blog__head">
+    <p class="cc-blog__eyebrow">Dari Blog</p>
+    <h2 class="cc-blog__title">Artikel Terbaru untuk Anabul</h2>
+    <p class="cc-blog__sub">Berita, tips kesehatan, dan panduan merawat hewan peliharaan.</p>
+  </div>
+  <div id="cc-blog-grid" class="cc-blog__grid" aria-live="polite"></div>
+  <div class="cc-blog__more">
+    <a href="https://blog.centralcats.id" class="cc-blog__btn">Lihat Semua Artikel →</a>
+  </div>
+</section>
+
 <footer>
   <div class="footer-container">
     <div class="footer-brand">
@@ -867,6 +913,56 @@ if (mobileMenu) {
 
 </script>
 <script defer src="/assets/js/main.js"></script>
+
+<script>
+(function () {
+  var FEED = "https://blog.centralcats.id/index.json";
+  var DEMO = false;   // set false setelah blog online
+  var LIMIT = 6;
+  var grid = document.getElementById("cc-blog-grid");
+  function esc(s){ var d=document.createElement("div"); d.textContent=s||""; return d.innerHTML; }
+  function render(items){
+    if(!items || !items.length){
+      grid.innerHTML = '<div class="cc-state"><span class="cc-state__emoji">🐾</span>'+
+        'Belum ada artikel. Tulis artikel pertamamu, lalu akan muncul di sini otomatis.</div>'; return;
+    }
+    grid.innerHTML = items.slice(0, LIMIT).map(function(p){
+      var thumb = p.image ? '<img class="cc-card__thumb" src="'+esc(p.image)+'" alt="" loading="lazy">'
+                          : '<div class="cc-card__thumb"></div>';
+      return '<article class="cc-card">'+ thumb +
+        '<div class="cc-card__body">'+
+          '<span class="cc-card__cat">'+ esc(p.category) +'</span>'+
+          '<h3 class="cc-card__title"><a href="'+ esc(p.url) +'">'+ esc(p.title) +'</a></h3>'+
+          '<p class="cc-card__excerpt">'+ esc(p.summary) +'</p>'+
+          '<span class="cc-card__date">'+ esc(p.dateText || p.date) +'</span>'+
+        '</div></article>';
+    }).join("");
+  }
+  function skeleton(){
+    var c = '<div class="cc-skel"><div class="cc-skel__thumb"></div><div class="cc-skel__body">'+
+      '<div class="cc-skel__line w70"></div><div class="cc-skel__line w90"></div>'+
+      '<div class="cc-skel__line w70"></div></div></div>';
+    grid.innerHTML = c+c+c;
+  }
+  var demo = [
+    {title:"5 Tanda Bulu Kucing yang Sehat",category:"Kesehatan Kucing",dateText:"12 Juni 2026",
+     summary:"Bulu berkilau bukan cuma soal penampilan—ini cermin kesehatan kulit anabul.",url:"#",image:""},
+    {title:"Tren Cat Hotel: Kenapa Makin Diminati",category:"Tren & Lifestyle",dateText:"10 Juni 2026",
+     summary:"Penitipan kucing tumbuh pesat. Apa yang dicari pemilik anabul saat liburan?",url:"#",image:""},
+    {title:"Memulai Usaha Petshop: 4 Hal Penting",category:"Peluang Usaha",dateText:"8 Juni 2026",
+     summary:"Panduan ringkas memulai petshop, dari lokasi hingga supplier.",url:"#",image:""}
+  ];
+  skeleton();
+  fetch(FEED, {cache:"no-store"})
+    .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+    .then(render)
+    .catch(function(){
+      if(DEMO) render(demo);
+      else grid.innerHTML = '<div class="cc-state"><span class="cc-state__emoji">😿</span>'+
+        'Gagal memuat artikel. Coba muat ulang sebentar lagi.</div>';
+    });
+})();
+</script>
 
 </body>
 </html>
