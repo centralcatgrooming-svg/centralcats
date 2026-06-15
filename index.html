@@ -624,7 +624,6 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
 
 <section id="artikel" class="cc-blog">
   <div class="cc-blog__head">
-    <p class="cc-blog__eyebrow">Dari Blog</p>
     <h2 class="cc-blog__title">Artikel Terbaru untuk Anabul</h2>
     <p class="cc-blog__sub">Berita, tips kesehatan, dan panduan merawat hewan peliharaan.</p>
   </div>
@@ -927,7 +926,7 @@ if (mobileMenu) {
         'Belum ada artikel. Tulis artikel pertamamu, lalu akan muncul di sini otomatis.</div>'; return;
     }
     grid.innerHTML = items.slice(0, LIMIT).map(function(p){
-      var thumb = p.image ? '<img class="cc-card__thumb" src="'+esc(p.image)+'" alt="" loading="lazy">'
+      var thumb = p.image ? '<img class="cc-card__thumb" src="'+esc(p.image)+'" alt="" loading="lazy" decoding="async">'
                           : '<div class="cc-card__thumb"></div>';
       return '<article class="cc-card">'+ thumb +
         '<div class="cc-card__body">'+
@@ -935,6 +934,7 @@ if (mobileMenu) {
           '<h3 class="cc-card__title"><a href="'+ esc(p.url) +'">'+ esc(p.title) +'</a></h3>'+
           '<p class="cc-card__excerpt">'+ esc(p.summary) +'</p>'+
           '<span class="cc-card__date">'+ esc(p.dateText || p.date) +'</span>'+
+          '<a class="cc-card__more" href="'+ esc(p.url) +'" style="display:inline-block;margin-top:10px;color:#1e3a8a;font-weight:600;text-decoration:none;">Baca selengkapnya →</a>'+
         '</div></article>';
     }).join("");
   }
@@ -953,7 +953,7 @@ if (mobileMenu) {
      summary:"Panduan ringkas memulai petshop, dari lokasi hingga supplier.",url:"#",image:""}
   ];
   skeleton();
-  fetch(FEED, {cache:"no-store"})
+  fetch(FEED + "?t=" + Date.now(), {cache:"no-store"})
     .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
     .then(render)
     .catch(function(){
