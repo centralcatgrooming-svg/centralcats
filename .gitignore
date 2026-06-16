@@ -1,0 +1,15 @@
+# OS junk
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# Temp / kerja lokal (mis. screenshot verifikasi)
+.perf-tmp/
+*.tmp
+*.log
