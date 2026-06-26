@@ -919,6 +919,7 @@ if (mobileMenu) {
   var LIMIT = 6;
   var grid = document.getElementById("cc-blog-grid");
   function esc(s){ var d=document.createElement("div"); d.textContent=s||""; return d.innerHTML; }
+  function safeUrl(u){ u=String(u||""); return /^(https?:|\/|#)/i.test(u) ? u.replace(/"/g,"%22") : "#"; }
   function render(items){
     if(!items || !items.length){
       grid.innerHTML = '<div class="cc-state"><span class="cc-state__emoji">🐾</span>'+
@@ -930,10 +931,10 @@ if (mobileMenu) {
       return '<article class="cc-card">'+ thumb +
         '<div class="cc-card__body">'+
           '<span class="cc-card__cat">'+ esc(p.category) +'</span>'+
-          '<h3 class="cc-card__title"><a href="'+ esc(p.url) +'">'+ esc(p.title) +'</a></h3>'+
+          '<h3 class="cc-card__title"><a href="'+ esc(safeUrl(p.url)) +'">'+ esc(p.title) +'</a></h3>'+
           '<p class="cc-card__excerpt">'+ esc(p.summary) +'</p>'+
           '<span class="cc-card__date">'+ esc(p.dateText || p.date) +'</span>'+
-          '<a class="cc-card__more" href="'+ esc(p.url) +'" style="display:inline-block;margin-top:10px;color:#1e3a8a;font-weight:600;text-decoration:none;">Baca selengkapnya →</a>'+
+          '<a class="cc-card__more" href="'+ esc(safeUrl(p.url)) +'" style="display:inline-block;margin-top:10px;color:#1e3a8a;font-weight:600;text-decoration:none;">Baca selengkapnya →</a>'+
         '</div></article>';
     }).join("");
   }
