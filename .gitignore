@@ -13,3 +13,7 @@ Desktop.ini
 .perf-tmp/
 *.tmp
 *.log
+
+# Catatan kerja lokal AI-agent (jangan masuk repo — repo publik)
+AGENTS.md
+CLAUDE.md
