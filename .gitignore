@@ -14,6 +14,10 @@ Desktop.ini
 *.tmp
 *.log
 
+# Dependensi tes (vitest). Situs TIDAK butuh ini untuk jalan —
+# GitHub Pages tetap men-deploy file statis dari root apa adanya.
+node_modules/
+
 # Catatan kerja lokal AI-agent (jangan masuk repo — repo publik)
 AGENTS.md
 CLAUDE.md
