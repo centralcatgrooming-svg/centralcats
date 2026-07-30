@@ -51,6 +51,14 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "WebSite",
+      "@id": "https://www.centralcats.id/#website",
+      "url": "https://www.centralcats.id/",
+      "name": "Central Cat's",
+      "inLanguage": "id-ID",
+      "publisher": {"@id": "https://www.centralcats.id/#organization"}
+    },
+    {
       "@type": "Organization",
       "@id": "https://www.centralcats.id/#organization",
       "name": "Central Cat's",
@@ -72,11 +80,13 @@
       "description": "Petshop dan grooming kucing profesional di Pasar Kemis, Kabupaten Tangerang.",
       "address": {"@type": "PostalAddress","streetAddress": "Jl. Raya Bumi Indah Tahap 3, Ruko Union Square RMR 03","addressLocality": "Pasar Kemis","addressRegion": "Banten","postalCode": "15560","addressCountry": "ID"},
       "geo": {"@type": "GeoCoordinates","latitude": -6.1551806,"longitude": 106.5497454},
+      "hasMap": "https://maps.app.goo.gl/SupXwMugkm5wF5jc7",
+      "areaServed": ["Pasar Kemis","Kabupaten Tangerang"],
       "telephone": "+6282111827798",
       "email": "admin@central-cats.com",
       "parentOrganization": {"@id": "https://www.centralcats.id/#organization"},
       "openingHoursSpecification": [{"@type": "OpeningHoursSpecification","dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens": "08:00","closes": "21:00"}],
-      "hasOfferCatalog": {"@type": "OfferCatalog","name": "Layanan Central Cat's","itemListElement": [{"@type": "Offer","itemOffered": {"@type": "Service","name": "Grooming Kucing"},"price": "100000","priceCurrency": "IDR"},{"@type": "Offer","itemOffered": {"@type": "Service","name": "Treatment Kutu Kucing"},"price": "370000","priceCurrency": "IDR"},{"@type": "Offer","itemOffered": {"@type": "Service","name": "Cat Hotel"},"price": "75000","priceCurrency": "IDR"}]},
+      "hasOfferCatalog": {"@type": "OfferCatalog","name": "Layanan Central Cat's","itemListElement": [{"@type": "Offer","itemOffered": {"@type": "Service","name": "Grooming Kucing","hoursAvailable": {"@type": "OpeningHoursSpecification","dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens": "08:00","closes": "18:00"}},"price": "100000","priceCurrency": "IDR"},{"@type": "Offer","itemOffered": {"@type": "Service","name": "Treatment Kutu Kucing","hoursAvailable": {"@type": "OpeningHoursSpecification","dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens": "08:00","closes": "18:00"}},"price": "370000","priceCurrency": "IDR"},{"@type": "Offer","itemOffered": {"@type": "Service","name": "Cat Hotel"},"price": "75000","priceCurrency": "IDR"}]},
       "priceRange": "Rp 75.000 – Rp 370.000"
     },
     {
@@ -88,11 +98,13 @@
       "description": "Petshop dan grooming kucing profesional di Rajeg, Kabupaten Tangerang.",
       "address": {"@type": "PostalAddress","streetAddress": "Ruko Gardenia E11, Jl. Raya Rajeg Mulya","addressLocality": "Rajeg Mulya, Kec. Rajeg","addressRegion": "Banten","postalCode": "15540","addressCountry": "ID"},
       "geo": {"@type": "GeoCoordinates","latitude": -6.1120454,"longitude": 106.527102},
+      "hasMap": "https://maps.app.goo.gl/XxemPDiMrQMjcGun9",
+      "areaServed": ["Rajeg","Kabupaten Tangerang"],
       "telephone": "+6282111827798",
       "email": "admin@central-cats.com",
       "parentOrganization": {"@id": "https://www.centralcats.id/#organization"},
       "openingHoursSpecification": [{"@type": "OpeningHoursSpecification","dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens": "08:00","closes": "21:00"}],
-      "hasOfferCatalog": {"@type": "OfferCatalog","name": "Layanan Central Cat's","itemListElement": [{"@type": "Offer","itemOffered": {"@type": "Service","name": "Grooming Kucing"},"price": "100000","priceCurrency": "IDR"},{"@type": "Offer","itemOffered": {"@type": "Service","name": "Treatment Kutu Kucing"},"price": "370000","priceCurrency": "IDR"},{"@type": "Offer","itemOffered": {"@type": "Service","name": "Cat Hotel"},"price": "75000","priceCurrency": "IDR"}]},
+      "hasOfferCatalog": {"@type": "OfferCatalog","name": "Layanan Central Cat's","itemListElement": [{"@type": "Offer","itemOffered": {"@type": "Service","name": "Grooming Kucing","hoursAvailable": {"@type": "OpeningHoursSpecification","dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens": "08:00","closes": "18:00"}},"price": "100000","priceCurrency": "IDR"},{"@type": "Offer","itemOffered": {"@type": "Service","name": "Treatment Kutu Kucing","hoursAvailable": {"@type": "OpeningHoursSpecification","dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens": "08:00","closes": "18:00"}},"price": "370000","priceCurrency": "IDR"},{"@type": "Offer","itemOffered": {"@type": "Service","name": "Cat Hotel"},"price": "75000","priceCurrency": "IDR"}]},
       "priceRange": "Rp 75.000 – Rp 370.000"
     }
   ]

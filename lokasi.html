@@ -32,6 +32,29 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "WebSite",
+      "@id": "https://www.centralcats.id/#website",
+      "url": "https://www.centralcats.id/",
+      "name": "Central Cat's",
+      "inLanguage": "id-ID",
+      "publisher": {"@id": "https://www.centralcats.id/#organization"}
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.centralcats.id/lokasi.html#webpage",
+      "url": "https://www.centralcats.id/lokasi.html",
+      "name": "Lokasi & Cabang Central Cat's",
+      "inLanguage": "id-ID",
+      "isPartOf": {"@id": "https://www.centralcats.id/#website"},
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type":"ListItem","position":1,"name":"Home","item":"https://www.centralcats.id/"},
+          {"@type":"ListItem","position":2,"name":"Lokasi","item":"https://www.centralcats.id/lokasi.html"}
+        ]
+      }
+    },
+    {
       "@type": "Organization",
       "@id": "https://www.centralcats.id/#organization",
       "name": "Central Cat's",
@@ -50,6 +73,8 @@
       "description": "Petshop dan grooming kucing profesional di Pasar Kemis, Kabupaten Tangerang.",
       "address": {"@type": "PostalAddress","streetAddress": "Jl. Raya Bumi Indah Tahap 3, Ruko Union Square RMR 03","addressLocality": "Pasar Kemis","addressRegion": "Banten","postalCode": "15560","addressCountry": "ID"},
       "geo": {"@type": "GeoCoordinates","latitude": -6.1551806,"longitude": 106.5497454},
+      "hasMap": "https://maps.app.goo.gl/SupXwMugkm5wF5jc7",
+      "areaServed": ["Pasar Kemis","Kabupaten Tangerang"],
       "telephone": "+6282111827798",
       "email": "admin@central-cats.com",
       "parentOrganization": {"@id": "https://www.centralcats.id/#organization"},
@@ -65,6 +90,8 @@
       "description": "Petshop dan grooming kucing profesional di Rajeg, Kabupaten Tangerang.",
       "address": {"@type": "PostalAddress","streetAddress": "Ruko Gardenia E11, Jl. Raya Rajeg Mulya","addressLocality": "Rajeg Mulya, Kec. Rajeg","addressRegion": "Banten","postalCode": "15540","addressCountry": "ID"},
       "geo": {"@type": "GeoCoordinates","latitude": -6.1120454,"longitude": 106.527102},
+      "hasMap": "https://maps.app.goo.gl/XxemPDiMrQMjcGun9",
+      "areaServed": ["Rajeg","Kabupaten Tangerang"],
       "telephone": "+6282111827798",
       "email": "admin@central-cats.com",
       "parentOrganization": {"@id": "https://www.centralcats.id/#organization"},
