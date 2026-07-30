@@ -18,6 +18,10 @@ Desktop.ini
 # Alat kerja, bukan aset situs — kartunya sendiri (share-card.jpg) tetap masuk.
 *-pratinjau-260.png
 
+# Bytecode Python dari tools/ (repo di-deploy apa adanya; ini tak boleh ikut)
+__pycache__/
+*.pyc
+
 # Dependensi tes (vitest). Situs TIDAK butuh ini untuk jalan —
 # GitHub Pages tetap men-deploy file statis dari root apa adanya.
 node_modules/
