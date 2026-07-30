@@ -1,0 +1,184 @@
+# IndexNow — beri tahu Bing (dan mesin pencari peserta IndexNow lain) bahwa
+# halaman berubah, tanpa menunggu crawl terjadwal.
+#
+# Alur: push ke main -> tunggu GitHub Pages selesai deploy -> POST daftar URL
+# yang berubah ke api.indexnow.org.
+#
+# Urutan itu penting. Ping sebelum Pages deploy = crawler datang, melihat versi
+# LAMA, lalu pergi. Efeknya lebih buruk daripada tidak ping sama sekali.
+#
+# Key publik: 1be0ad3d95434fad8450f13b5ce9d03733a7392f
+# Disajikan di https://www.centralcats.id/1be0ad3d95434fad8450f13b5ce9d03733a7392f.txt
+# Key IndexNow MEMANG publik menurut desain protokolnya — bukan secret,
+# jadi sengaja ditulis apa adanya di sini, bukan di GitHub Secrets.
+
+name: IndexNow
+
+on:
+  push:
+    branches: [main]
+    # Hanya 8 halaman konten. File verifikasi mesin pencari, aset, dan tes
+    # tidak perlu memicu ping.
+    paths:
+      - 'index.html'
+      - 'tentang.html'
+      - 'layanan.html'
+      - 'lokasi.html'
+      - 'karir.html'
+      - 'kerjasama.html'
+      - 'toko.html'
+      - 'syarat.html'
+  workflow_dispatch:
+    inputs:
+      semua:
+        description: 'Submit seluruh 8 halaman (abaikan deteksi perubahan)'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  pages: read
+
+# Jangan ping paralel kalau ada beberapa push beruntun; biarkan antre supaya
+# yang terakhir mencerminkan kondisi live paling baru.
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+env:
+  BASE: https://www.centralcats.id/
+  HOST: www.centralcats.id
+  KEY: 1be0ad3d95434fad8450f13b5ce9d03733a7392f
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # butuh riwayat untuk diff antar commit
+
+      - name: Tentukan URL yang berubah
+        id: urls
+        env:
+          SEBELUM: ${{ github.event.before }}
+          SEKARANG: ${{ github.sha }}
+          PAKSA_SEMUA: ${{ github.event_name == 'workflow_dispatch' && inputs.semua }}
+        run: |
+          set -euo pipefail
+          HALAMAN="index.html tentang.html layanan.html lokasi.html karir.html kerjasama.html toko.html syarat.html"
+
+          if [ "$PAKSA_SEMUA" = "true" ]; then
+            echo "Mode manual: submit semua halaman."
+            BERUBAH="$HALAMAN"
+          elif [ -z "${SEBELUM:-}" ] || [ "$SEBELUM" = "0000000000000000000000000000000000000000" ] \
+               || ! git cat-file -e "$SEBELUM^{commit}" 2>/dev/null; then
+            # Push pertama / force-push / riwayat dangkal: tidak bisa diff, kirim semua.
+            echo "Basis diff tidak tersedia ($SEBELUM). Fallback: submit semua halaman."
+            BERUBAH="$HALAMAN"
+          else
+            BERUBAH=$(git diff --name-only --diff-filter=d "$SEBELUM" "$SEKARANG" || true)
+          fi
+
+          # Saring: hanya 8 halaman konten yang diakui. Menghalau file HTML lain
+          # (mis. berkas verifikasi Google) supaya tidak ikut disubmit.
+          TERPILIH=""
+          for f in $BERUBAH; do
+            for h in $HALAMAN; do
+              if [ "$f" = "$h" ]; then TERPILIH="$TERPILIH $f"; fi
+            done
+          done
+
+          if [ -z "$(echo "$TERPILIH" | tr -d ' ')" ]; then
+            echo "Tidak ada halaman konten yang berubah — tidak ada yang di-ping."
+            echo "kosong=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # index.html dipetakan ke URL akar, samakan dengan canonical & sitemap.
+          DAFTAR=""
+          for f in $TERPILIH; do
+            if [ "$f" = "index.html" ]; then u="$BASE"; else u="$BASE$f"; fi
+            DAFTAR="$DAFTAR$u"$'\n'
+          done
+
+          echo "URL yang akan disubmit:"
+          echo "$DAFTAR"
+          echo "kosong=false" >> "$GITHUB_OUTPUT"
+          {
+            echo "daftar<<EOF"
+            echo "$DAFTAR"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Tunggu GitHub Pages selesai deploy
+        if: steps.urls.outputs.kosong == 'false' && github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          SEKARANG: ${{ github.sha }}
+        run: |
+          set -uo pipefail
+          # Maksimal ~5 menit. Kalau API Pages tak bisa dibaca (mis. izin berubah),
+          # jangan gagalkan job — mundur ke jeda tetap lalu tetap ping.
+          for i in $(seq 1 20); do
+            RESP=$(gh api "repos/$REPO/pages/builds/latest" 2>/dev/null || echo '')
+            if [ -z "$RESP" ]; then
+              echo "API Pages tidak terbaca; fallback jeda 90 detik."
+              sleep 90
+              exit 0
+            fi
+            STATUS=$(echo "$RESP" | jq -r '.status // ""')
+            COMMIT=$(echo "$RESP" | jq -r '.commit // ""')
+            echo "percobaan $i: status=$STATUS commit=${COMMIT:0:7} (target ${SEKARANG:0:7})"
+            if [ "$COMMIT" = "$SEKARANG" ] && [ "$STATUS" = "built" ]; then
+              echo "Pages sudah live untuk commit ini."
+              exit 0
+            fi
+            if [ "$COMMIT" = "$SEKARANG" ] && [ "$STATUS" = "errored" ]; then
+              echo "::error::Build Pages gagal untuk commit ini — ping dibatalkan."
+              exit 1
+            fi
+            sleep 15
+          done
+          echo "::warning::Timeout menunggu Pages. Tetap lanjut ping."
+
+      - name: Ping IndexNow
+        if: steps.urls.outputs.kosong == 'false'
+        env:
+          DAFTAR: ${{ steps.urls.outputs.daftar }}
+        run: |
+          set -euo pipefail
+          MUATAN=$(jq -n \
+            --arg host "$HOST" \
+            --arg key "$KEY" \
+            --arg keyLocation "$BASE$KEY.txt" \
+            --argjson urlList "$(printf '%s' "$DAFTAR" | jq -R . | jq -s 'map(select(length > 0))')" \
+            '{host:$host, key:$key, keyLocation:$keyLocation, urlList:$urlList}')
+
+          echo "Payload:"; echo "$MUATAN" | jq .
+
+          KODE=$(curl -sS -o /tmp/indexnow.out -w '%{http_code}' \
+            -X POST 'https://api.indexnow.org/IndexNow' \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            --data "$MUATAN")
+
+          echo "HTTP $KODE"
+          cat /tmp/indexnow.out || true
+          echo
+
+          case "$KODE" in
+            200|202)
+              # 200 = diterima, 202 = diterima tapi key masih diverifikasi.
+              echo "✅ Berhasil disubmit."
+              ;;
+            429)
+              echo "::warning::Kena rate limit IndexNow (429). Tidak fatal — abaikan."
+              ;;
+            *)
+              # 400 payload salah, 403 key tidak cocok dengan file di root,
+              # 422 URL tidak sesuai host. Semuanya salah konfigurasi kita.
+              echo "::error::IndexNow menolak (HTTP $KODE). Cek key file di root & daftar URL."
+              exit 1
+              ;;
+          esac
