@@ -14,6 +14,10 @@ Desktop.ini
 *.tmp
 *.log
 
+# Pratinjau 260px yang dihasilkan tools/og-card.py untuk uji keterbacaan.
+# Alat kerja, bukan aset situs — kartunya sendiri (share-card.jpg) tetap masuk.
+*-pratinjau-260.png
+
 # Dependensi tes (vitest). Situs TIDAK butuh ini untuk jalan —
 # GitHub Pages tetap men-deploy file statis dari root apa adanya.
 node_modules/
