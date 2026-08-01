@@ -5,12 +5,16 @@ Situs ini statis tanpa build step; skrip ini TIDAK dijalankan saat deploy.
 Jalankan manual hanya ketika kartu share perlu dibuat ulang, lalu commit
 hasilnya. Kebutuhan: Pillow (`python -m pip install pillow`).
 
-    python tools/og-card.py                                  # grafis
+    python tools/og-card.py                                  # maskot
+    python tools/og-card.py --layout grafis                  # badge lingkaran
     python tools/og-card.py --foto assets/images/toko/x.jpg  # otomatis
     python tools/og-card.py --foto f.jpg --layout split --anchor 0
     python tools/og-card.py --judul "Cat Hotel|Tangerang" --out /tmp/coba.jpg
 
-Tiga tata letak:
+Empat tata letak:
+  maskot  DEFAULT tanpa foto — maskot berdiri di kanan, teks di kiri.
+          Siluetnya khas dan tetap kebaca di 260 px; badge lingkaran
+          justru mengecil jadi bulatan tak terbaca di lebar itu.
   grafis  badge lingkaran di kanan, teks di kiri. Tanpa foto.
   penuh   foto memenuhi kanvas + scrim gelap di kiri, teks di atasnya.
           Dipilih otomatis untuk foto LANSKAP (rasio >= 1,5).
@@ -31,7 +35,7 @@ import pathlib
 import sys
 
 try:
-    from PIL import Image, ImageDraw, ImageFont
+    from PIL import Image, ImageDraw, ImageFilter, ImageFont
 except ImportError:
     sys.exit("Pillow belum terpasang. Jalankan: python -m pip install pillow")
 
@@ -44,6 +48,7 @@ PUTIH = (255, 255, 255)
 ABU = (226, 232, 240)
 
 BADGE = REPO / "assets/logo/badge-512.webp"
+MASKOT = REPO / "assets/images/maskot/maskot-sapa-transparent.png"
 KELUAR = REPO / "assets/og/share-card.jpg"
 
 # Poppins (font situs) dimuat dari Google Fonts saat runtime, jadi tidak
@@ -97,6 +102,34 @@ def cover_crop(im, tw, th, anchor_y=0.0):
     return im.resize((tw, th), Image.LANCZOS), upscale
 
 
+def pangkas_alpha(im, ambang=8):
+    """Buang bingkai transparan di sekeliling subjek.
+
+    PNG maskot punya padding kosong ~90 px di kiri/kanan. Tanpa dipangkas,
+    tinggi yang kita minta terpakai untuk ruang kosong dan kucingnya jadi
+    kekecilan. Ambang 8 mengabaikan fringe anti-alias yang nyaris tembus
+    pandang (getbbox() polos menganggapnya isi).
+    """
+    if im.mode != "RGBA":
+        return im
+    mask = im.split()[3].point(lambda v: 255 if v > ambang else 0)
+    bb = mask.getbbox()
+    return im.crop(bb) if bb else im
+
+
+def sorot(w, h, cx, cy, r, terang=26, blur=90):
+    """Lingkaran navy lebih terang di belakang maskot — sekadar pemisah.
+
+    Bukan bayangan pijak: maskotnya berpose melompat (ada garis gerak di
+    kaki), jadi elips gelap di bawah sepatu justru bikin dia terbaca sedang
+    berdiri di atas garis emas footer.
+    """
+    ov = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    ImageDraw.Draw(ov).ellipse([cx - r, cy - r, cx + r, cy + r],
+                               fill=(255, 255, 255, terang))
+    return ov.filter(ImageFilter.GaussianBlur(blur))
+
+
 def scrim(w, h, lebar_pudar=980, dasar=248, kurva=1.05):
     """Overlay gelap kiri->kanan supaya teks putih terbaca di atas foto.
 
@@ -135,7 +168,7 @@ def muat_pas(path, maks, baris, batas):
 
 def pilih_layout(args):
     if not args.foto:
-        return "grafis"
+        return args.layout or "maskot"
     if args.layout:
         return args.layout
     im = Image.open(args.foto)
@@ -150,7 +183,29 @@ def buat(args):
     baris = args.judul.split("|")
     layout = pilih_layout(args)
 
-    if layout == "grafis":
+    if layout == "maskot":
+        kanvas = gradien(W, H)
+        mpath = pathlib.Path(args.maskot)
+        if not mpath.exists():
+            sys.exit(f"Aset maskot hilang: {mpath}")
+        mas = pangkas_alpha(Image.open(mpath).convert("RGBA"))
+        TINGGI = 486                     # 1,12x dari sumber 433 px — masih tajam
+        if TINGGI > mas.height * 1.25:
+            print(f"  ! PERINGATAN: maskot di-upscale {TINGGI / mas.height:.2f}x "
+                  "dari sumber — sediakan PNG sisi panjang >= 800 px.")
+        s = TINGGI / mas.height
+        mas = mas.resize((round(mas.width * s), TINGGI), Image.LANCZOS)
+        # 18 px di atas garis emas footer: garis itu digambar TERAKHIR, jadi
+        # kalau maskot dipepetkan ke H-7 ujung sepatunya kepotong garis.
+        mx, my = W - 96 - mas.width, H - 25 - TINGGI
+        kanvas = Image.alpha_composite(
+            kanvas.convert("RGBA"),
+            sorot(W, H, mx + mas.width // 2, my + TINGGI // 2,
+                  round(TINGGI * 0.52))).convert("RGB")
+        kanvas.paste(mas, (mx, my), mas)
+        X, maks, batas = 84, 76, mx - 84 - 44
+
+    elif layout == "grafis":
         kanvas = gradien(W, H)
         if not BADGE.exists():
             sys.exit(f"Aset badge hilang: {BADGE}")
@@ -218,8 +273,10 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--foto", help="path foto; lanskap sisi panjang >= 1600 px paling ideal")
-    p.add_argument("--layout", choices=["grafis", "penuh", "split"],
-                   help="paksa tata letak (default: otomatis dari rasio foto)")
+    p.add_argument("--layout", choices=["maskot", "grafis", "penuh", "split"],
+                   help="paksa tata letak (default: maskot; dgn --foto otomatis dari rasio)")
+    p.add_argument("--maskot", default=str(MASKOT),
+                   help="PNG maskot transparan untuk tata letak 'maskot'")
     p.add_argument("--anchor", type=float, default=0.0,
                    help="bias potongan vertikal 0=atas .. 1=bawah (default: 0)")
     p.add_argument("--judul", default="Grooming Kucing|Tangerang",
