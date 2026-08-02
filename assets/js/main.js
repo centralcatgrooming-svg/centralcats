@@ -8,6 +8,11 @@
 /* entrance animation guard: tandai JS aktif supaya .fade-section hanya tersembunyi bila JS jalan (tanpa .js -> konten tampil normal, no LCP/SEO risk) */
 document.documentElement.classList.add('js');
 
+/* iOS Safari tidak menyalakan :active kecuali ada listener sentuh terpasang.
+   Listener kosong ini cukup membangunkannya, tanpa mengubah perilaku apa pun.
+   Dipakai umpan balik tekan yang menggantikan :hover di perangkat sentuh. */
+document.addEventListener('touchstart', function(){}, {passive:true});
+
 /* ================= CONSOLE MESSAGE ================= */
 console.log(
   "%c  /\\_/\\\n ( o.o )   Central Cat's\n  > ^ <    Petshop & Grooming Tangerang",

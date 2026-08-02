@@ -78,13 +78,22 @@ header{background:var(--primary);height:60px;display:flex;justify-content:center
 /* ================= CARDS ================= */
 .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px;}
 .card{background:var(--light);padding:26px 24px;border-radius:16px;box-shadow:0 8px 25px rgba(0,0,0,.05);transition:transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s ease, border-color .35s ease;border:1px solid transparent;display:flex;flex-direction:column;}
-.card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 22px 50px rgba(0,0,0,.14);border-color:var(--accent);}
+/* Hover HANYA untuk perangkat berpointer (2026-08-02). Di layar sentuh :hover
+   menyala saat jari menempel lalu NYANGKUT sampai elemen lain disentuh --
+   kartu tertinggal terangkat, nav tertinggal emas. @media(hover:hover)
+   mematikan itu di perangkat sentuh; mouse & trackpad laptop tetap lolos,
+   jadi tampilan desktop TIDAK berubah. Pasangannya :active = umpan balik saat
+   ditekan, tanpa media query, jalan di sentuh maupun mouse.
+   Ini media query KAPABILITAS, bukan dimensi -- tidak ikut menentukan layout,
+   jadi tidak bisa membalik cascade mobile. Lihat tests/konvensi.test.js. */
+@media(hover:hover){.card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 22px 50px rgba(0,0,0,.14);border-color:var(--accent);}}
 .card h3{color:var(--primary);font-size:17px;font-weight:700;margin-bottom:10px;}
 .card p{font-size:14px;line-height:1.7;color:#444;flex:1;}
 
 /* ================= BOOKING BTN ================= */
 .btn-booking{display:inline-block;margin-top:36px;padding:11px 28px;background:transparent;color:var(--primary);border:2px solid var(--primary);font-weight:600;border-radius:10px;text-decoration:none;font-size:13px;transition:all .3s ease;}
-.btn-booking:hover{background:var(--primary);color:white;transform:translateY(-2px);box-shadow:0 8px 20px rgba(30,58,138,.2);}
+@media(hover:hover){.btn-booking:hover{background:var(--primary);color:white;transform:translateY(-2px);box-shadow:0 8px 20px rgba(30,58,138,.2);}}
+.btn-booking:active{background:var(--primary);color:white;transform:scale(.97);}
 
 /* ================= FOOTER ================= */
 footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0;border-top:3px solid var(--accent);box-shadow:0 -2px 18px rgba(212,175,55,.35);}

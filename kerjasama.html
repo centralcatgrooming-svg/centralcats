@@ -56,7 +56,16 @@ header{background:var(--primary);height:60px;display:flex;justify-content:center
 .coming-soon-box p{font-size:15px;line-height:1.8;color:#555;margin-bottom:32px;}
 .coming-soon-divider{width:60px;height:4px;background:var(--accent);border-radius:4px;margin:20px auto;}
 .btn-wa{display:inline-block;padding:12px 28px;background:transparent;color:#25d366;border:2px solid #25d366;font-weight:600;border-radius:10px;text-decoration:none;font-size:14px;transition:all .3s ease;}
-.btn-wa:hover{background:#25d366;color:white;transform:translateY(-2px);box-shadow:0 8px 20px rgba(37,211,102,.25);}
+/* Hover HANYA untuk perangkat berpointer (2026-08-02). Di layar sentuh :hover
+   menyala saat jari menempel lalu NYANGKUT sampai elemen lain disentuh --
+   kartu tertinggal terangkat, nav tertinggal emas. @media(hover:hover)
+   mematikan itu di perangkat sentuh; mouse & trackpad laptop tetap lolos,
+   jadi tampilan desktop TIDAK berubah. Pasangannya :active = umpan balik saat
+   ditekan, tanpa media query, jalan di sentuh maupun mouse.
+   Ini media query KAPABILITAS, bukan dimensi -- tidak ikut menentukan layout,
+   jadi tidak bisa membalik cascade mobile. Lihat tests/konvensi.test.js. */
+@media(hover:hover){.btn-wa:hover{background:#25d366;color:white;transform:translateY(-2px);box-shadow:0 8px 20px rgba(37,211,102,.25);}}
+.btn-wa:active{background:#25d366;color:white;transform:scale(.97);}
 
 /* SUPPLIER PROGRAM */
 .supplier-section{padding:75px 0;border-bottom:1px solid #e5e7eb;}
@@ -69,7 +78,7 @@ header{background:var(--primary);height:60px;display:flex;justify-content:center
 .supplier-sub{font-size:1.2rem;font-weight:600;color:var(--primary);text-align:center;margin:46px 0 22px;}
 .benefit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:760px;margin:0 auto;}
 .benefit-card{background:#fff;border:1px solid #eef0f4;border-radius:14px;padding:24px 22px;text-align:left;box-shadow:0 6px 18px rgba(30,58,138,.06);transition:transform .25s ease,box-shadow .25s ease;}
-.benefit-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(30,58,138,.12);}
+@media(hover:hover){.benefit-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(30,58,138,.12);}}
 .benefit-card .b-ico{font-size:30px;margin-bottom:10px;}
 .benefit-card .b-title{font-family:'Fraunces',serif;font-size:15px;font-weight:700;color:var(--primary);margin-bottom:6px;}
 .benefit-card p{font-size:13px;line-height:1.6;color:#666;}
@@ -88,9 +97,11 @@ header{background:var(--primary);height:60px;display:flex;justify-content:center
 .supplier-cta p{color:#dbe2f5;font-size:14px;line-height:1.7;max-width:460px;margin:0 auto 22px;}
 .supplier-cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
 .btn-supplier{display:inline-block;padding:14px 32px;background:var(--accent);color:#1e3a8a;font-weight:700;border-radius:12px;text-decoration:none;font-size:15px;transition:all .3s ease;box-shadow:0 8px 20px rgba(212,175,55,.35);}
-.btn-supplier:hover{transform:translateY(-3px);background:#e6c75a;box-shadow:0 12px 26px rgba(212,175,55,.45);}
+@media(hover:hover){.btn-supplier:hover{transform:translateY(-3px);background:#e6c75a;box-shadow:0 12px 26px rgba(212,175,55,.45);}}
+.btn-supplier:active{background:#e6c75a;transform:scale(.97);}
 .btn-supplier-ghost{display:inline-block;padding:14px 30px;background:transparent;color:#fff;border:2px solid rgba(255,255,255,.55);font-weight:600;border-radius:12px;text-decoration:none;font-size:15px;transition:all .3s ease;}
-.btn-supplier-ghost:hover{transform:translateY(-3px);border-color:#fff;background:rgba(255,255,255,.1);}
+@media(hover:hover){.btn-supplier-ghost:hover{transform:translateY(-3px);border-color:#fff;background:rgba(255,255,255,.1);}}
+.btn-supplier-ghost:active{border-color:#fff;background:rgba(255,255,255,.1);transform:scale(.97);}
 
 /* FOOTER */
 footer{background:var(--primary);color:white;padding:45px 20px 18px;border-top:3px solid var(--accent);box-shadow:0 -2px 18px rgba(212,175,55,.35);}

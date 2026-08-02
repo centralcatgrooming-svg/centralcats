@@ -14,12 +14,34 @@ describe('CRLF dipertahankan', () => {
   })
 })
 
-describe('Aturan cascade: @media TIDAK boleh pindah ke main.css', () => {
-  // Memindahkan @media ke file bersama membalik urutan cascade dan
-  // menghancurkan tampilan mobile. Komentar dibuang dulu supaya kata
-  // "@media" di dalam catatan tidak salah dihitung.
-  it('main.css bebas dari rule @media', () => {
-    expect(stripCssComments(read('assets/css/main.css'))).not.toContain('@media')
+describe('Aturan cascade: @media dimensi TIDAK boleh pindah ke main.css', () => {
+  // Bug aslinya spesifik: @media berbasis LEBAR VIEWPORT di file bersama
+  // membalik urutan cascade (main.css dimuat SEBELUM <style> inline halaman,
+  // dan media query tidak menambah specificity) -> tampilan mobile hancur.
+  //
+  // Yang dilarang karena itu adalah media query DIMENSI, bukan semua @media.
+  // Media query KAPABILITAS (hover/pointer/prefers-*) tidak ikut menentukan
+  // layout sama sekali, jadi tidak bisa memicu bug yang sama. Dipakai sejak
+  // 2026-08-02 untuk mematikan efek :hover di perangkat sentuh — di sana
+  // :hover nyangkut sampai elemen lain disentuh.
+  //
+  // Komentar dibuang dulu supaya kata "@media" di dalam catatan tidak
+  // salah dihitung.
+  const css = () => stripCssComments(read('assets/css/main.css'))
+  const DIMENSI = /@media[^{]*\b(?:min-|max-)?(?:width|height|aspect-ratio|orientation|resolution)\b/gi
+
+  it('main.css bebas dari @media berbasis dimensi viewport', () => {
+    const nakal = css().match(DIMENSI)
+    expect(nakal, `@media dimensi di main.css membalik cascade mobile: ${nakal}`).toBeNull()
+  })
+
+  it('setiap @media di main.css adalah media query kapabilitas', () => {
+    // Jaring pengaman: fitur baru yang tak dikenal ditolak, bukan diam-diam
+    // lolos hanya karena bukan dimensi.
+    for (const q of css().match(/@media[^{]*/g) || []) {
+      expect(q.trim(), `@media tak dikenal di main.css: ${q.trim()}`)
+        .toMatch(/\b(?:hover|any-hover|pointer|any-pointer|prefers-[a-z-]+)\b/)
+    }
   })
 })
 

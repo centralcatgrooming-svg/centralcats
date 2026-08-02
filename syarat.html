@@ -50,7 +50,16 @@ header{background:var(--primary);height:60px;display:flex;justify-content:center
 .coming-soon-box p{font-size:15px;line-height:1.8;color:#555;margin-bottom:32px;}
 .divider{width:60px;height:4px;background:var(--accent);border-radius:4px;margin:20px auto;}
 .btn-wa{display:inline-block;padding:12px 28px;background:transparent;color:#25d366;border:2px solid #25d366;font-weight:600;border-radius:10px;text-decoration:none;font-size:14px;transition:all .3s ease;}
-.btn-wa:hover{background:#25d366;color:white;transform:translateY(-2px);box-shadow:0 8px 20px rgba(37,211,102,.25);}
+/* Hover HANYA untuk perangkat berpointer (2026-08-02). Di layar sentuh :hover
+   menyala saat jari menempel lalu NYANGKUT sampai elemen lain disentuh --
+   kartu tertinggal terangkat, nav tertinggal emas. @media(hover:hover)
+   mematikan itu di perangkat sentuh; mouse & trackpad laptop tetap lolos,
+   jadi tampilan desktop TIDAK berubah. Pasangannya :active = umpan balik saat
+   ditekan, tanpa media query, jalan di sentuh maupun mouse.
+   Ini media query KAPABILITAS, bukan dimensi -- tidak ikut menentukan layout,
+   jadi tidak bisa membalik cascade mobile. Lihat tests/konvensi.test.js. */
+@media(hover:hover){.btn-wa:hover{background:#25d366;color:white;transform:translateY(-2px);box-shadow:0 8px 20px rgba(37,211,102,.25);}}
+.btn-wa:active{background:#25d366;color:white;transform:scale(.97);}
 footer{background:var(--primary);color:white;padding:45px 20px 18px;border-top:3px solid var(--accent);box-shadow:0 -2px 18px rgba(212,175,55,.35);}
 @media(max-width:768px){
   header{height:68px;}
