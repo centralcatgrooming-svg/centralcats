@@ -243,6 +243,10 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:3
   .hero img{max-width:260px;}
   .hero-text h1{font-size:1.8rem;}
   .hero-text p{font-size:14px;}
+  /* .hero-container sudah text-align:center, tapi .hero-cta itu flex
+     container -- text-align tidak mengatur item flex, jadi tombolnya
+     tetap rata kiri tanpa justify-content. */
+  .hero-cta{justify-content:center;}
   .section{padding:60px 20px 70px;}
   .grid{grid-template-columns:1fr;gap:28px;}
   .ig-grid{grid-template-columns:1fr;gap:24px;}
