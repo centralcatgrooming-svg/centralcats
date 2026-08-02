@@ -102,6 +102,11 @@ header{background:var(--primary);height:60px;padding:0;display:flex;justify-cont
 .gallery-item a{display:block;width:100%;height:100%;}
 .gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
 .gallery-item:hover img{transform:scale(1.08);}
+.gallery-note{max-width:760px;margin:24px auto 0;padding:0 20px;text-align:center;font-size:15px;line-height:1.7;color:#555;}
+.gallery-note span{display:block;margin-bottom:10px;}
+.gallery-note a{display:inline-flex;align-items:center;gap:7px;color:var(--primary);font-weight:600;text-decoration:none;border-bottom:1px solid var(--accent);transition:color .3s ease;}
+.gallery-note a:hover{color:var(--accent);}
+.gallery-note svg{width:17px;height:17px;fill:currentColor;flex:none;}
 /* Stats card */
 .stats-card{background:white;border-radius:14px;padding:20px 10px;box-shadow:0 4px 16px rgba(0,0,0,.07);border:1px solid #e5e7eb;text-align:center;transition:transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s cubic-bezier(.4,0,.2,1), border-color .35s ease;}
 .stats-card:hover{transform:translateY(-6px) scale(1.04);box-shadow:0 16px 40px rgba(30,58,138,.14);border-color:var(--accent);}
@@ -378,6 +383,10 @@ footer{background:var(--primary);color:white;padding:45px 20px 18px;margin-top:0
       </a>
     </div>
   </div>
+  <p class="gallery-note">
+    <span>Dokumentasi grooming anabul pelanggan kami perbarui setiap hari di Instagram khusus grooming</span>
+    <a href="https://www.instagram.com/central.catgrooming/" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.75 2C4.57 2 2 4.57 2 7.75v8.5C2 19.43 4.57 22 7.75 22h8.5C19.43 22 22 19.43 22 16.25v-8.5C22 4.57 19.43 2 16.25 2h-8.5zm0 2h8.5A3.75 3.75 0 0 1 20 7.75v8.5A3.75 3.75 0 0 1 16.25 20h-8.5A3.75 3.75 0 0 1 4 16.25v-8.5A3.75 3.75 0 0 1 7.75 4zm9.5 1.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>@central.catgrooming</a>
+  </p>
 </section>
 
 <!-- ===== FOOTER ===== -->
