@@ -128,9 +128,7 @@ header{background:var(--header-solid);height:60px;display:flex;justify-content:c
 .nav-dropdown a::after{display:none;}
 
 /* LOCATION */
-.location-section{padding:70px 20px 80px;text-align:center;background:var(--surface-soft);flex:1;}
-.location-section h1{font-size:2.2rem;font-weight:700;color:var(--primary);letter-spacing:.5px;position:relative;display:inline-block;}
-.location-section h1::after{content:"";display:block;width:60px;height:4px;background:var(--accent);margin:12px auto 0;border-radius:4px;}
+.location-section{padding:0 20px 80px;text-align:center;background:var(--surface-soft);flex:1;}
 .section-subtitle{max-width:680px;margin:18px auto 0;line-height:1.7;color:var(--text-soft);}
 .location-section .container{max-width:1200px;margin:0 auto;padding:0 20px;}
 .location-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:48px;}
@@ -189,9 +187,11 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
      lewat urutan, bukan lewat !important -- <style> inline dimuat setelahnya. */
   .theme-toggle-header{display:none;}
   .theme-toggle-drawer{display:inline-flex;}
+  .page-hero{padding:60px 20px 36px;}
+  .page-hero h1{font-size:1.5rem;}
+  .page-hero p{font-size:14px;}
   .location-grid{grid-template-columns:1fr;gap:24px;}
   .location-section{padding:60px 20px 70px;}
-  .location-section h1{font-size:1.6rem;}
   .area-layanan h2{font-size:1.4rem;}
   .location-info{padding:24px 18px 20px;}
   .map-container{padding:0 14px 16px;}
@@ -302,11 +302,15 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
   </nav>
 </header>
 
+<!-- ===== HERO JUDUL ===== -->
+<section class="page-hero">
+  <h1>Lokasi &amp; Cabang Central Cat's</h1>
+  <p>Petshop &amp; grooming kucing Central Cat's hadir di <strong>2 cabang</strong> area Tangerang — Pasar Kemis &amp; Rajeg. Datang langsung ke cabang terdekat, atau hubungi kami untuk layanan antar-jemput anabul.</p>
+</section>
+
 <!-- ===== LOKASI ===== -->
 <section class="location-section" id="lokasi">
   <div class="container">
-    <h1>Lokasi &amp; Cabang Central Cat's</h1>
-    <p class="section-subtitle">Petshop &amp; grooming kucing Central Cat's hadir di <strong>2 cabang</strong> area Tangerang — Pasar Kemis &amp; Rajeg. Datang langsung ke cabang terdekat, atau hubungi kami untuk layanan antar-jemput anabul.</p>
     <div class="location-grid">
       <div class="location-item">
         <div class="location-info">

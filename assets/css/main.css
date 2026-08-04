@@ -15,7 +15,7 @@
   --hero-from:#1e3a8a;--hero-to:#243c94;
   --header-scrolled:rgba(30,58,138,.92);--header-scrolled-solid:rgba(30,58,138,.97);
   --header-solid:#1e3a8a;--footer-bg:#1e3a8a;--logo-plate:#fff;
-  --banner-from:#1a3a8f;--banner-to:#1e4db7;--badge-fg:#b8860b;
+  --badge-fg:#b8860b;
   --cream-bg:#faf9f5;--cream-border:#f0ebda;
   --chip-bg:#eef2ff;--chip-border:#c7d2fe;
   --faq-bg:#ece5dd;--faq-chat-bg:#dfe7ec;--faq-bot-bg:#fff;--faq-user-bg:#d9fdd3;
@@ -55,7 +55,7 @@
     --hero-from:#141d3f;--hero-to:#182450;
     --header-scrolled:rgba(14,19,32,.92);--header-scrolled-solid:rgba(14,19,32,.97);
     --header-solid:#131a2a;--footer-bg:#101728;--logo-plate:#e9ecf2;
-    --banner-from:#152046;--banner-to:#1b2c66;--badge-fg:#e2c25c;
+    --badge-fg:#e2c25c;
     --cream-bg:#1d2130;--cream-border:#2f3446;
     --chip-bg:#232e4a;--chip-border:#35426a;
     --faq-bg:#101b21;--faq-chat-bg:#0d171d;--faq-bot-bg:#1f2c33;--faq-user-bg:#005c4b;
@@ -72,7 +72,7 @@
   --hero-from:#141d3f;--hero-to:#182450;
   --header-scrolled:rgba(14,19,32,.92);--header-scrolled-solid:rgba(14,19,32,.97);
   --header-solid:#131a2a;--footer-bg:#101728;--logo-plate:#e9ecf2;
-  --banner-from:#152046;--banner-to:#1b2c66;--badge-fg:#e2c25c;
+  --badge-fg:#e2c25c;
   --cream-bg:#1d2130;--cream-border:#2f3446;
   --chip-bg:#232e4a;--chip-border:#35426a;
   --faq-bg:#101b21;--faq-chat-bg:#0d171d;--faq-bot-bg:#1f2c33;--faq-user-bg:#005c4b;
@@ -204,3 +204,27 @@ nav a:active{color:var(--accent);}
 /* mobile drawer overlay (di-toggle main.js bersama .mobile-nav.open). top:68px = di bawah header mobile; z-index 990 < header(1000); right:var(--drawer-w) = overlay hanya di area halaman, drawer bebas. */
 .mobile-overlay{position:fixed;top:68px;left:0;right:var(--drawer-w);bottom:0;background:rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:opacity .35s ease;z-index:990;}
 .mobile-overlay.show{opacity:1;visibility:visible;}
+
+/* =============================================================
+   HERO JUDUL HALAMAN (2026-08-04)
+   Satu pola untuk halaman non-index. Sebelumnya ada 4 pola berbeda:
+   banner bergradien (layanan), judul-di-seksi (tentang/lokasi), judul
+   telanjang (syarat/kerjasama), dan coming-soon terpusat (karir/toko) --
+   dengan 3 ukuran h1 desktop (2.8/2.2/1.9rem), 2 ukuran mobile
+   (1.6/1.5rem), 2 mekanisme aksen emas (::after 60px vs <div> 50px),
+   dan 3 jarak judul dari atas (138/163/260px).
+
+   index.html SENGAJA dikecualikan -- hero-nya identitas beranda.
+
+   tentang.html juga tidak dikonversi walau ikut pola ini: nilainya sudah
+   identik lewat .section h1 miliknya sendiri, sementara latar seksinya
+   bergantung :nth-child -- menyisipkan satu elemen membalik parity SEMUA
+   seksi di halaman itu. Tidak sepadan untuk kerapian kode semata.
+
+   Ukuran mobile ada di @media inline tiap halaman (CLAUDE.md sec.2).
+============================================================= */
+.page-hero{background:var(--surface-soft);padding:70px 20px 44px;text-align:center;width:100%;}
+.page-hero h1{font-size:2.2rem;font-weight:700;color:var(--primary);letter-spacing:.3px;display:inline-block;margin:0;}
+.page-hero h1 span{color:var(--accent);}
+.page-hero h1::after{content:"";display:block;width:60px;height:4px;background:var(--accent);margin:12px auto 0;border-radius:4px;}
+.page-hero p{max-width:700px;margin:18px auto 0;line-height:1.7;font-size:15px;color:var(--text-soft);}

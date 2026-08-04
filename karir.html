@@ -55,10 +55,7 @@ header{background:var(--header-solid);height:60px;display:flex;justify-content:c
 .coming-soon-box{max-width:560px;}
 .coming-soon-icon{font-size:72px;margin-bottom:24px;animation:bounce 2s infinite;}
 @keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
-.coming-soon-box h1{font-size:1.9rem;font-weight:700;color:var(--primary);margin-bottom:14px;}
-.coming-soon-box h1 span{color:var(--accent);}
 .coming-soon-box p{font-size:15px;line-height:1.8;color:var(--text-mid);margin-bottom:32px;}
-.coming-soon-divider{width:60px;height:4px;background:var(--accent);border-radius:4px;margin:20px auto;}
 .btn-wa{display:inline-block;padding:12px 28px;background:transparent;color:#25d366;border:2px solid #25d366;font-weight:600;border-radius:10px;text-decoration:none;font-size:14px;transition:all .3s ease;}
 /* Hover HANYA untuk perangkat berpointer (2026-08-02). Di layar sentuh :hover
    menyala saat jari menempel lalu NYANGKUT sampai elemen lain disentuh --
@@ -101,8 +98,10 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
      lewat urutan, bukan lewat !important -- <style> inline dimuat setelahnya. */
   .theme-toggle-header{display:none;}
   .theme-toggle-drawer{display:inline-flex;}
+  .page-hero{padding:60px 20px 36px;}
+  .page-hero h1{font-size:1.5rem;}
+  .page-hero p{font-size:14px;}
   .coming-soon-icon{font-size:54px;}
-  .coming-soon-box h1{font-size:1.5rem;}
   .footer-container{grid-template-columns:1fr;gap:28px;padding:0 16px;}
   .footer-social{grid-template-columns:1fr;gap:14px;margin-top:6px;}
   .footer-social-item{white-space:normal;}
@@ -208,12 +207,15 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
   </nav>
 </header>
 
+<!-- ===== HERO JUDUL ===== -->
+<section class="page-hero">
+  <h1>Karir di Central Cat's <span>Segera Hadir</span></h1>
+</section>
+
 <!-- ===== COMING SOON ===== -->
 <div class="coming-soon">
   <div class="coming-soon-box">
     <div class="coming-soon-icon">🚧</div>
-    <h1>Karir di Central Cat's <span>Segera Hadir</span></h1>
-    <div class="coming-soon-divider"></div>
     <p>Kami sedang menyiapkan informasi <strong>lowongan kerja</strong> di <strong>Central Cat's Tangerang</strong> — petshop dan grooming kucing profesional di Pasar Kemis dan Rajeg. Pantau terus!</p>
     <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat%27s%2C%20saya%20tertarik%20untuk%20bergabung%20sebagai%20tim%20kalian.%20Apakah%20ada%20lowongan%20yang%20tersedia%3F" target="_blank" rel="noopener" class="btn-wa">💬 Tanya Lowongan via WhatsApp</a>
   </div>
