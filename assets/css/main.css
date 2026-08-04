@@ -3,7 +3,7 @@
    HANYA rule identik di 7/7 halaman. @media dibiarkan inline per halaman dulu.
    Dipakai oleh: karir.html, kerjasama.html (percobaan).
 ============================================================= */
-:root{--primary:#1e3a8a;--accent:#d4af37;--light:#f3f4f6;--text:#111;--drawer-w:50%;}
+:root{color-scheme:only light;--primary:#1e3a8a;--accent:#d4af37;--light:#f3f4f6;--text:#111;--drawer-w:50%;}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 h1,h2,h3{font-family:'Fraunces',Georgia,'Times New Roman',serif;}
 html{scroll-behavior:smooth;}
