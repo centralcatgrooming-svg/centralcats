@@ -24,6 +24,49 @@ console.log("%c⚠️  Harap berhati‑hati saat menempelkan kode di sini.", "co
 console.log("%cJika seseorang menyuruhmu menempelkan sesuatu di console,\nbisa jadi itu adalah penipuan (Social Engineering Attack).", "color:#ef4444;font-size:13px;");
 console.log("%cCentral Cat's Website  •  https://www.centralcats.id", "color:#22c55e;font-size:13px;font-weight:600;");
 
+/* ================= TEMA GELAP / TERANG (2026-08-04) =================
+   Default MENGIKUTI OS lewat @media(prefers-color-scheme) di main.css --
+   tanpa JS pun mode gelap tetap jalan. Begitu pengguna menekan tombol,
+   pilihannya disimpan di localStorage dan dipasang sebagai atribut data-theme
+   di <html>, yang menang atas OS. Atribut itu dipasang lebih awal oleh script
+   anti-kedip di <head> supaya tidak ada kedipan terang sebelum CSS jalan.
+   Null-safe: halaman tanpa #themeToggle (belum ditokenkan) tidak terpengaruh. */
+(function(){
+  var root = document.documentElement;
+  var btns = document.querySelectorAll('.theme-toggle');
+  var mq   = window.matchMedia('(prefers-color-scheme: dark)');
+  function aktif(){
+    var manual = root.getAttribute('data-theme');
+    if(manual === 'dark' || manual === 'light') return manual;
+    return mq.matches ? 'dark' : 'light';
+  }
+  function sinkron(){
+    var gelap = aktif() === 'dark';
+    var label = gelap ? 'Ganti ke mode terang' : 'Ganti ke mode gelap';
+    var teks  = gelap ? 'Mode Terang' : 'Mode Gelap';
+    for(var i = 0; i < btns.length; i++){
+      btns[i].setAttribute('aria-label', label);
+      btns[i].setAttribute('title', label);
+      btns[i].setAttribute('aria-pressed', gelap ? 'true' : 'false');
+      var t = btns[i].querySelector('.theme-toggle-label');
+      if(t) t.textContent = teks;
+    }
+  }
+  for(var i = 0; i < btns.length; i++){
+    btns[i].addEventListener('click', function(){
+      var next = aktif() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try{ localStorage.setItem('cc-theme', next); }catch(e){}
+      sinkron();
+    });
+  }
+  /* OS ganti tema di tengah sesi: label tombol ikut menyesuaikan selama
+     pengguna belum memilih manual. addEventListener dijaga -- Safari lama
+     hanya punya addListener, di sana label sekadar tidak ikut berubah. */
+  if(mq.addEventListener) mq.addEventListener('change', sinkron);
+  sinkron();
+})();
+
 const burger = document.getElementById('hamburger');
 const menu = document.getElementById('mobileMenu');
 /* overlay drawer mobile: dibuat dinamis (tanpa edit markup 7 halaman) */
