@@ -1,9 +1,10 @@
 /* =============================================================
-   Central Cat's — assets/js/main.js  (shared interactions, dipakai 7/7 halaman)
-   Inti: guard .js (entrance) + console keamanan; hamburger + drawer mobile
+   Central Cat's — assets/js/main.js  (shared interactions, dipakai 8/8 halaman)
+   Inti: guard .js (entrance) + console keamanan; toggle tema (data-theme +
+   localStorage, mengikat SEMUA .theme-toggle); hamburger + drawer mobile
    (openMenu/closeMenu + overlay .mobile-overlay dinamis); dropdown mobile; FAQ
    chat popup (getNow); scroll-header (.scrolled null-safe); IntersectionObserver
-   fade-section (_fadeObserver). Di-load sebelum </body>; semua akses null-safe.
+   fade-section (_fadeObserver). Di-load defer sebelum </body>; akses null-safe.
 ============================================================= */
 /* entrance animation guard: tandai JS aktif supaya .fade-section hanya tersembunyi bila JS jalan (tanpa .js -> konten tampil normal, no LCP/SEO risk) */
 document.documentElement.classList.add('js');
