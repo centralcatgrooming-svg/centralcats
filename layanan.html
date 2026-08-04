@@ -60,7 +60,7 @@
 <link rel="stylesheet" href="/assets/css/main.css">
 <style>
 /* ================= BASE ================= */
-body{background:var(--bg);color:var(--text);}
+body{background:var(--bg);color:var(--text);padding-top:68px;}
 section{scroll-margin-top:90px;}
 
 /* ================= HEADER ================= */
@@ -68,11 +68,6 @@ header{background:var(--header-solid);height:60px;display:flex;justify-content:c
 .logo-img{height:44px;width:auto;display:block;transition:transform .35s ease, filter .35s ease;}
 .nav-dropdown{position:absolute;top:100%;left:0;background:var(--surface-raised);border-radius:8px;box-shadow:0 10px 25px rgba(0,0,0,.15);display:none;flex-direction:column;min-width:160px;overflow:hidden;padding-top:6px;z-index:3000;}
 .nav-dropdown a::after{display:none;}
-
-/* ================= HERO DECOR (latar halus + spotlight kucing) ================= */
-.hero-banner{overflow:hidden;}
-.hero-inner::before{content:"";position:absolute;right:-50px;bottom:-110px;width:560px;height:560px;background:radial-gradient(circle at center,rgba(255,255,255,.22) 0%,rgba(255,255,255,.07) 40%,transparent 68%);z-index:0;pointer-events:none;}
-.hero-inner::after{content:"";position:absolute;top:-120px;left:-80px;width:320px;height:320px;background:radial-gradient(circle,rgba(212,175,55,.18) 0%,transparent 70%);z-index:0;pointer-events:none;}
 
 /* ================= LAYANAN SECTIONS ================= */
 .layanan-section{padding:70px 20px 80px;max-width:1200px;margin:0 auto;text-align:center;}
@@ -110,7 +105,7 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;margin-top
 
 /* ================= MOBILE ================= */
 @media(max-width:768px){
-  body{padding-top:0;}
+  body{padding-top:68px;}
   header{height:68px;}
   .header-inner{height:68px;position:relative;justify-content:center;padding:0 20px;}
   .logo-area{position:absolute;left:20px;z-index:1;}
@@ -131,13 +126,10 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;margin-top
      lewat urutan, bukan lewat !important -- <style> inline dimuat setelahnya. */
   .theme-toggle-header{display:none;}
   .theme-toggle-drawer{display:inline-flex;}
+  .page-hero{padding:60px 20px 36px;}
+  .page-hero h1{font-size:1.5rem;}
+  .page-hero p{font-size:14px;}
   .card-grid{grid-template-columns:1fr;}
-  .hero-banner{height:280px !important;}
-  .hero-banner-title{font-size:1.7rem !important;line-height:1.25 !important;}
-  .hero-banner-subtitle{display:none !important;}
-  .hero-inner{padding:0 20px !important;}
-  .hero-inner > img{display:none !important;}
-  .hero-inner > div:first-child{max-width:100% !important;z-index:2;}
   .layanan-section{padding:60px 20px 70px;}
   .layanan-section h2{font-size:1.4rem;}
   .footer-container{grid-template-columns:1fr;gap:28px;padding:0 16px;}
@@ -271,19 +263,10 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;margin-top
   </nav>
 </header>
 
-<!-- ===== HERO BANNER ===== -->
-<div class="hero-banner" style="width:100%;height:420px;background:linear-gradient(135deg,var(--banner-from) 0%,var(--banner-to) 100%);position:relative;">
-  <div class="hero-inner" style="max-width:1200px;margin:0 auto;height:100%;position:relative;display:flex;align-items:center;padding:0 40px;">
-    <!-- Teks kiri -->
-    <div style="position:relative;z-index:2;max-width:52%;">
-      <p class="hero-banner-subtitle" style="color:var(--accent);font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:12px;">Central Cat's — Tangerang</p>
-      <h1 class="hero-banner-title" style="color:white;font-size:2.8rem;font-weight:700;line-height:1.15;">Paket Grooming<br><span style="color:var(--accent);">Kucing Profesional</span></h1>
-      <div style="width:50px;height:4px;background:var(--accent);border-radius:4px;margin-top:16px;"></div>
-    </div>
-    <!-- Kucing kanan (transparan) -->
-    <img src="assets/icons/kucing_putih-removebg-preview.png" alt="Grooming Kucing Central Cat's Tangerang" style="position:absolute;bottom:0;right:0;max-height:92%;max-width:44%;width:auto;height:auto;object-fit:contain;display:block;filter:drop-shadow(-4px 8px 16px rgba(0,0,0,.25));transition:transform .4s ease;z-index:1;" onmouseenter="this.style.transform='scale(1.03)'" onmouseleave="this.style.transform=''">
-  </div>
-</div>
+<!-- ===== HERO JUDUL ===== -->
+<section class="page-hero">
+  <h1>Paket Grooming <span>Kucing Profesional</span></h1>
+</section>
 
 <!-- ===== PAKET GROOMING ===== -->
 <section id="paket-grooming" class="layanan-section fade-section">
