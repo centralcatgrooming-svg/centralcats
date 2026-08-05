@@ -112,6 +112,8 @@
 :root[data-theme="light"] .theme-ico-moon{display:block;}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 h1,h2,h3{font-family:'Fraunces',Georgia,'Times New Roman',serif;}
+/* Nama legal PT di footer — font brand Archivo (senada situs Ecoplast, PT sama) */
+.pt-name{font-family:'Archivo','Poppins',sans-serif;letter-spacing:.2px;}
 html{scroll-behavior:smooth;}
 .header-inner{width:100%;max-width:1200px;height:60px;display:flex;justify-content:space-between;align-items:center;padding:0 20px;}
 .logo-area{display:flex;align-items:center;}
