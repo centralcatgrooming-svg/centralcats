@@ -1,0 +1,15 @@
+# Normalkan semua file teks ke LF (Unix). Lihat tests/konvensi.test.js.
+* text=auto eol=lf
+
+# File biner: jangan disentuh line ending-nya.
+*.webp binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.mp4  binary
+*.webm binary
+*.woff  binary
+*.woff2 binary
+*.pdf  binary

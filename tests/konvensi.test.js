@@ -5,12 +5,15 @@ import { existsSync } from 'node:fs'
 import { join } from 'node:path'
 import { PAGES, ROOT, read, readRaw, stripCssComments } from './helpers.js'
 
-describe('CRLF dipertahankan', () => {
-  it.each([...PAGES, 'sitemap.xml', 'robots.txt'])('%s tidak punya LF telanjang', (f) => {
+describe('LF dipertahankan', () => {
+  // Konvensi repo = LF murni (Unix). Sebelumnya test ini mewajibkan CRLF, tapi
+  // seluruh file sudah LF (tooling/editor otomatis menyimpan LF), jadi konvensi
+  // dibalik ke LF agar sinkron dengan kenyataan & tidak kambuh. Pasangannya:
+  // .gitattributes (eol=lf) yang menormalkan line ending di sisi Git.
+  it.each([...PAGES, 'sitemap.xml', 'robots.txt'])('%s pakai LF murni (tanpa CRLF)', (f) => {
     const buf = readRaw(f)
     const crlf = (buf.toString('binary').match(/\r\n/g) || []).length
-    const lf = (buf.toString('binary').match(/\n/g) || []).length
-    expect(lf - crlf, `${f} tercampur LF — editor/tool mengubah line ending`).toBe(0)
+    expect(crlf, `${f} mengandung CRLF — normalkan ke LF`).toBe(0)
   })
 })
 
