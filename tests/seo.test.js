@@ -98,6 +98,6 @@ describe('Structured data', () => {
 
   // Email di JSON-LD SENGAJA plaintext (SEO) walau di body di-obfuscate.
   it('email JSON-LD tetap plaintext', () => {
-    expect(pages['index.html']).toContain('admin@central-cats.com')
+    expect(pages['index.html']).toContain('centralcatgrooming@gmail.com')
   })
 })

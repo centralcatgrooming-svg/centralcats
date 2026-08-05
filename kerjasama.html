@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kerjasama | Supplier & Waralaba Central Cat's Tangerang</title>
-<meta name="description" content="Program kerjasama Central Cat's Tangerang — peluang supplier produk petshop kucing dan waralaba grooming kucing di Pasar Kemis dan Rajeg. Segera hadir.">
+<meta name="description" content="Program kerjasama Central Cat's Tangerang — pendaftaran mitra supplier produk petshop kucing dibuka sekarang, plus peluang waralaba grooming kucing di Pasar Kemis & Rajeg.">
 <link rel="canonical" href="https://www.centralcats.id/kerjasama.html">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#1e3a8a" media="(prefers-color-scheme: light)">
@@ -25,7 +25,7 @@
 <meta property="og:locale" content="id_ID">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Kerjasama | Supplier & Waralaba Central Cat's Tangerang">
-<meta property="og:description" content="Program kerjasama Central Cat's Tangerang — peluang supplier produk petshop kucing dan waralaba grooming kucing di Pasar Kemis dan Rajeg. Segera hadir.">
+<meta property="og:description" content="Program kerjasama Central Cat's Tangerang — pendaftaran mitra supplier produk petshop kucing dibuka sekarang, plus peluang waralaba grooming kucing di Pasar Kemis & Rajeg.">
 <meta property="og:url" content="https://www.centralcats.id/kerjasama.html">
 <meta property="og:image" content="https://www.centralcats.id/assets/og/share-card.jpg">
 <meta property="og:image:type" content="image/jpeg">
@@ -50,16 +50,15 @@ header{background:var(--header-solid);height:60px;display:flex;justify-content:c
 .nav-dropdown{position:absolute;top:100%;left:0;background:var(--surface-raised);border-radius:8px;box-shadow:0 10px 25px rgba(0,0,0,.15);display:none;flex-direction:column;min-width:160px;overflow:hidden;padding-top:6px;z-index:3000;}
 .nav-dropdown a::after{display:none;}
 
-/* COMING SOON */
-.coming-soon{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 20px;text-align:center;}
-.coming-soon-box{max-width:560px;}
-.coming-soon-icon{font-size:72px;margin-bottom:24px;animation:bounce 2s infinite;}
+/* WARALABA — SEGERA HADIR */
 @keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
-.coming-soon-box h1{font-size:1.9rem;font-weight:700;color:var(--primary);margin-bottom:14px;}
-.coming-soon-box h1 span{color:var(--accent);}
 .kerja-wrap{padding:0 20px 80px;}
-.coming-soon-box p{font-size:15px;line-height:1.8;color:var(--text-mid);margin-bottom:32px;}
-.coming-soon-divider{width:60px;height:4px;background:var(--accent);border-radius:4px;margin:20px auto;}
+.soon{text-align:center;padding:75px 0;}
+.soon-icon{font-size:64px;margin-bottom:20px;animation:bounce 2s infinite .3s;}
+.soon h2{font-size:1.8rem;font-weight:700;color:var(--primary);margin-bottom:12px;}
+.soon h2 span{color:var(--accent);}
+.soon-divider{width:50px;height:4px;background:var(--accent);border-radius:4px;margin:16px auto;}
+.soon-lead{font-size:15px;line-height:1.8;color:var(--text-mid);max-width:500px;margin:0 auto 28px;}
 .btn-wa{display:inline-block;padding:12px 28px;background:transparent;color:#25d366;border:2px solid #25d366;font-weight:600;border-radius:10px;text-decoration:none;font-size:14px;transition:all .3s ease;}
 /* Hover HANYA untuk perangkat berpointer (2026-08-02). Di layar sentuh :hover
    menyala saat jari menempel lalu NYANGKUT sampai elemen lain disentuh --
@@ -141,8 +140,8 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
   .page-hero{padding:60px 20px 36px;}
   .page-hero h1{font-size:1.5rem;}
   .page-hero p{font-size:14px;}
-  .coming-soon-icon{font-size:54px;}
-  .coming-soon-box h1{font-size:1.5rem;}
+  .soon-icon{font-size:54px;}
+  .soon h2{font-size:1.4rem;}
   .kerja-wrap{padding:60px 20px 70px;}
   .supplier-section{padding:60px 0;}
   #waralaba{padding:60px 0 !important;}
@@ -159,7 +158,22 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
   .faq-quick-replies{gap:6px;padding:8px 8px 10px;overflow-y:auto;max-height:130px;}
 }
 @media(min-width:769px){.header-inner{justify-content:space-between;}}
+/* Hormati preferensi kurangi-gerak (aksesibilitas) */
+@media(prefers-reduced-motion:reduce){
+  .soon-icon{animation:none;}
+  .fade-section{opacity:1 !important;transform:none !important;}
+}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://www.centralcats.id/"},
+    {"@type":"ListItem","position":2,"name":"Kerjasama","item":"https://www.centralcats.id/kerjasama.html"}
+  ]
+}
+</script>
 <!-- Google Analytics GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SGYPJC015Y"></script>
 <script>
@@ -259,6 +273,7 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
 <!-- ===== HERO JUDUL ===== -->
 <section class="page-hero">
   <h1>Kerjasama Central Cat's Tangerang</h1>
+  <p>Peluang kemitraan supplier produk petshop &amp; waralaba grooming kucing bersama Central Cat's.</p>
 </section>
 
 <div class="kerja-wrap" style="flex:1;max-width:1200px;margin:0 auto;width:100%;">
@@ -267,7 +282,7 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
   <section id="supplier" class="supplier-section fade-section">
     <div class="supplier-head">
       <span class="supplier-badge">Mitra Supplier</span>
-      <div class="s-icon">📦</div>
+      <div class="s-icon" aria-hidden="true">📦</div>
       <h2>Supplier Produk Petshop Kucing</h2>
       <div class="supplier-divider"></div>
       <p class="lead">Central Cat's membuka kerja sama dengan brand &amp; distributor produk kucing untuk memperkuat etalase petshop kami di <strong>Tangerang</strong>. Bergabunglah dengan jaringan yang terus berkembang.</p>
@@ -276,22 +291,22 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
     <h3 class="supplier-sub">Kenapa Bermitra dengan Kami?</h3>
     <div class="benefit-grid">
       <div class="benefit-card">
-        <div class="b-ico">🏬</div>
+        <div class="b-ico" aria-hidden="true">🏬</div>
         <div class="b-title">2 Cabang Aktif</div>
         <p>Pasar Kemis &amp; Rajeg, dengan traffic pelanggan grooming setiap hari.</p>
       </div>
       <div class="benefit-card">
-        <div class="b-ico">🚗</div>
+        <div class="b-ico" aria-hidden="true">🚗</div>
         <div class="b-title">Home Service &amp; Antar-Jemput</div>
         <p>Jangkauan pelanggan lebih luas hingga ke rumah-rumah.</p>
       </div>
       <div class="benefit-card">
-        <div class="b-ico">💻</div>
+        <div class="b-ico" aria-hidden="true">💻</div>
         <div class="b-title">Sistem POS &amp; Katalog Digital</div>
         <p>Stok &amp; penjualan tercatat rapi, siap integrasi data produkmu.</p>
       </div>
       <div class="benefit-card">
-        <div class="b-ico">📣</div>
+        <div class="b-ico" aria-hidden="true">📣</div>
         <div class="b-title">Aktif Sosmed &amp; Komunitas</div>
         <p>Produkmu ikut terekspos ke audiens dan komunitas pecinta kucing kami.</p>
       </div>
@@ -299,10 +314,10 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
 
     <h3 class="supplier-sub">Kriteria Supplier</h3>
     <div class="criteria-list">
-      <div class="criteria-item"><span class="c-check">✓</span><p><strong>Produk original</strong> dengan izin edar resmi (jika diwajibkan).</p></div>
-      <div class="criteria-item"><span class="c-check">✓</span><p><strong>Masa simpan minimal 12 bulan</strong> untuk makanan &amp; obat.</p></div>
-      <div class="criteria-item"><span class="c-check">✓</span><p><strong>Price list &amp; foto produk digital</strong> untuk katalog dan POS.</p></div>
-      <div class="criteria-item"><span class="c-check">✓</span><p><strong>Packing aman</strong> &amp; pengiriman tepat waktu sesuai pesanan.</p></div>
+      <div class="criteria-item"><span class="c-check" aria-hidden="true">✓</span><p><strong>Produk original</strong> dengan izin edar resmi (jika diwajibkan).</p></div>
+      <div class="criteria-item"><span class="c-check" aria-hidden="true">✓</span><p><strong>Masa simpan minimal 12 bulan</strong> untuk makanan &amp; obat.</p></div>
+      <div class="criteria-item"><span class="c-check" aria-hidden="true">✓</span><p><strong>Price list &amp; foto produk digital</strong> untuk katalog dan POS.</p></div>
+      <div class="criteria-item"><span class="c-check" aria-hidden="true">✓</span><p><strong>Packing aman</strong> &amp; pengiriman tepat waktu sesuai pesanan.</p></div>
     </div>
 
     <h3 class="supplier-sub">Cara Bergabung</h3>
@@ -324,11 +339,11 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
   </section>
 
   <!-- WARALABA -->
-  <section id="waralaba" class="fade-section" style="text-align:center;padding:75px 0;">
-    <div style="font-size:64px;margin-bottom:20px;animation:bounce 2s infinite;animation-delay:.3s;">🏪</div>
-    <h2 style="font-size:1.8rem;font-weight:700;color:var(--primary);margin-bottom:12px;">Waralaba Grooming Kucing Tangerang <span style="color:var(--accent);">Segera Hadir</span></h2>
-    <div style="width:50px;height:4px;background:var(--accent);border-radius:4px;margin:16px auto;"></div>
-    <p style="font-size:15px;line-height:1.8;color:var(--text-mid);max-width:500px;margin:0 auto 28px;">Kami sedang menyiapkan program <strong>waralaba grooming kucing</strong> untuk Anda yang ingin membuka cabang <strong>Central Cat's</strong> di kota Anda. Pantau terus!</p>
+  <section id="waralaba" class="soon fade-section">
+    <div class="soon-icon" aria-hidden="true">🏪</div>
+    <h2>Waralaba Grooming Kucing Tangerang <span>Segera Hadir</span></h2>
+    <div class="soon-divider"></div>
+    <p class="soon-lead">Kami sedang menyiapkan program <strong>waralaba grooming kucing</strong> untuk Anda yang ingin membuka cabang <strong>Central Cat's</strong> di kota Anda. Pantau terus!</p>
     <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat%27s%2C%20saya%20tertarik%20untuk%20membuka%20cabang%20waralaba%20Central%20Cat%27s.%20Boleh%20saya%20tahu%20informasi%20lebih%20lanjut%3F" target="_blank" rel="noopener" class="btn-wa">💬 Tanya Program Waralaba via WhatsApp</a>
   </section>
 
@@ -356,7 +371,7 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
         </div>
         <div>
           <div class="footer-label">Email</div>
-          <a class="js-email" data-u="admin" data-d="central-cats.com" href="#" style="color:#fff;font-weight:600;text-decoration:none;font-size:13px;">admin [at] central-cats.com</a>
+          <a class="js-email" data-u="centralcatgrooming" data-d="gmail.com" href="#" style="color:#fff;font-weight:600;text-decoration:none;font-size:13px;">centralcatgrooming [at] gmail.com</a>
         </div>
       </div>
       <hr class="footer-divider">
