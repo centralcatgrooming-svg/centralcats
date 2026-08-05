@@ -76,14 +76,15 @@
     {
       "@type": "PetStore",
       "@id": "https://www.centralcats.id/#branch-bumiindah",
-      "name": "Central Cat's - Bumi Indah",
+      "name": "CENTRAL CAT'S GROOMING (PETSHOP)",
       "url": "https://www.centralcats.id/lokasi.html",
       "image": "https://www.centralcats.id/assets/images/toko/bumi-indah-storefront.jpg",
-      "description": "Petshop dan grooming kucing profesional di Pasar Kemis, Kabupaten Tangerang.",
+      "description": "Toko utama petshop dan grooming kucing profesional di Pasar Kemis, Kabupaten Tangerang.",
       "address": {"@type": "PostalAddress","streetAddress": "Jl. Raya Bumi Indah Tahap 3, Ruko Union Square RMR 03","addressLocality": "Pasar Kemis","addressRegion": "Banten","postalCode": "15560","addressCountry": "ID"},
       "geo": {"@type": "GeoCoordinates","latitude": -6.1551806,"longitude": 106.5497454},
       "hasMap": "https://maps.app.goo.gl/SupXwMugkm5wF5jc7",
-      "areaServed": ["Kota Tangerang","Kabupaten Tangerang","Karawaci","Pasar Kemis","Rajeg","Cikupa","Curug","Balaraja"],
+      "sameAs": ["https://maps.app.goo.gl/SupXwMugkm5wF5jc7"],
+      "areaServed": ["Pasar Kemis","Rajeg","Kabupaten Tangerang"],
       "telephone": "+6282111827798",
       "email": "centralcatgrooming@gmail.com",
       "parentOrganization": {"@id": "https://www.centralcats.id/#organization"},
@@ -93,19 +94,30 @@
     {
       "@type": "PetStore",
       "@id": "https://www.centralcats.id/#branch-rajeg",
-      "name": "Central Cat's - Rajeg Gardenia",
+      "name": "Petshop Central Cat's (Rajeg Gardenia)",
       "url": "https://www.centralcats.id/lokasi.html",
       "image": "https://www.centralcats.id/assets/images/toko/rajeg-storefront.jpg",
-      "description": "Petshop dan grooming kucing profesional di Rajeg, Kabupaten Tangerang.",
+      "description": "Cabang petshop dan grooming kucing profesional di Rajeg, Kabupaten Tangerang.",
       "address": {"@type": "PostalAddress","streetAddress": "Ruko Gardenia E11, Jl. Raya Rajeg Mulya","addressLocality": "Rajeg Mulya, Kec. Rajeg","addressRegion": "Banten","postalCode": "15540","addressCountry": "ID"},
       "geo": {"@type": "GeoCoordinates","latitude": -6.1120454,"longitude": 106.527102},
       "hasMap": "https://maps.app.goo.gl/XxemPDiMrQMjcGun9",
-      "areaServed": ["Kota Tangerang","Kabupaten Tangerang","Karawaci","Pasar Kemis","Rajeg","Cikupa","Curug","Balaraja"],
+      "sameAs": ["https://maps.app.goo.gl/XxemPDiMrQMjcGun9"],
+      "areaServed": ["Pasar Kemis","Rajeg","Kabupaten Tangerang"],
       "telephone": "+6282111827798",
       "email": "centralcatgrooming@gmail.com",
       "parentOrganization": {"@id": "https://www.centralcats.id/#organization"},
       "openingHoursSpecification": [{"@type": "OpeningHoursSpecification","dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens": "08:00","closes": "21:00"}],
       "priceRange": "Rp 75.000 – Rp 370.000"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.centralcats.id/#homeservice",
+      "serviceType": "Grooming Kucing",
+      "name": "Home Service Grooming Kucing Tangerang",
+      "description": "Grooming kucing panggilan — groomer datang langsung ke rumah, menjangkau area lebih luas di Kota & Kabupaten Tangerang.",
+      "provider": {"@id": "https://www.centralcats.id/#organization"},
+      "areaServed": ["Kota Tangerang","Kabupaten Tangerang"],
+      "availableChannel": {"@type": "ServiceChannel","serviceUrl": "https://app.centralcats.id/booking","servicePhone": "+6282111827798"}
     }
   ]
 }
@@ -345,8 +357,8 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
     </div>
 
     <div class="area-layanan">
-      <h2>Area Layanan &amp; Antar-Jemput Kucing se-Tangerang</h2>
-      <p>Selain melayani di kedua cabang, Central Cat's menyediakan <strong>home service &amp; antar-jemput kucing</strong> untuk seluruh <strong>Kota &amp; Kabupaten Tangerang</strong> — meliputi Pasar Kemis, Rajeg, Karawaci, Cibodas, Cikupa, Curug, Balaraja, dan sekitarnya. Rumah kamu jauh dari cabang? Tenang, anabul tetap bisa kami jemput, di-grooming, lalu diantar pulang. Hubungi kami via WhatsApp untuk memastikan jangkauan area &amp; jadwal penjemputan.</p>
+      <h2>Antar-Jemput &amp; Home Service Grooming Kucing</h2>
+      <p><strong>Antar-jemput</strong> tersedia untuk area di sekitar cabang (Pasar Kemis, Rajeg &amp; sekitarnya). Mau lebih praktis? <strong>Home service</strong> — groomer datang langsung ke rumah — menjangkau lebih luas, se-Kota &amp; Kabupaten Tangerang. Chat WhatsApp untuk memastikan jangkauan &amp; jadwal untuk lokasi kamu.</p>
       <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat%27s%2C%20saya%20mau%20tanya%20area%20layanan%20antar-jemput%20kucing" target="_blank" rel="noopener" class="btn-wa">💬 Tanya Antar-Jemput via WhatsApp</a>
     </div>
   </div>
