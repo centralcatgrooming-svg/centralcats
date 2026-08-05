@@ -90,6 +90,10 @@ header{background:var(--header-solid);height:60px;display:flex;justify-content:c
 @media(hover:hover){.card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 22px 50px rgba(0,0,0,.14);border-color:var(--accent);}}
 .card h3{color:var(--primary);font-size:17px;font-weight:700;margin-bottom:10px;}
 .card p{font-size:14px;line-height:1.7;color:var(--text-soft);flex:1;}
+/* Badge ikon layanan (senada .service-icon di index) */
+.svc-badge{width:84px;height:84px;background:var(--surface-raised);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.10);margin:0 auto 18px;border:2px solid var(--accent);overflow:hidden;}
+.svc-badge img{max-width:80%;max-height:80%;object-fit:contain;transition:transform .35s ease;}
+@media(hover:hover){.card:hover .svc-badge img{transform:scale(1.08);}}
 
 /* ================= BOOKING BTN ================= */
 .btn-booking{display:inline-block;margin-top:36px;padding:11px 28px;background:transparent;color:var(--primary);border:2px solid var(--primary);font-weight:600;border-radius:10px;text-decoration:none;font-size:13px;transition:all .3s ease;}
@@ -274,14 +278,17 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;margin-top
   <p>Layanan <strong>grooming kucing profesional</strong> di Tangerang untuk menjaga kebersihan dan kesehatan bulu kucing. Dilakukan oleh groomer berpengalaman menggunakan produk yang aman untuk kulit dan bulu kucing.</p>
   <div class="card-grid">
     <div class="card">
+      <div class="svc-badge"><img loading="lazy" decoding="async" src="assets/icons/maskot-mandi-transparent.webp" alt="Grooming kucing Central Cat's" width="54" height="80"></div>
       <h3>🛁 Daily Grooming</h3>
       <p>Mandi dengan shampoo khusus, pengeringan, pembersihan telinga, pemotongan kuku, dan perawatan dasar bulu harian.</p>
     </div>
     <div class="card">
+      <div class="svc-badge"><img loading="lazy" decoding="async" src="assets/icons/maskot-mandi-transparent.webp" alt="Grooming kucing anti-jamur Central Cat's" width="54" height="80"></div>
       <h3>🍄 Anti-Fungal Bath</h3>
       <p>Mandi khusus menggunakan shampoo anti-jamur untuk membantu mengatasi infeksi jamur pada kulit dan bulu kucing.</p>
     </div>
     <div class="card">
+      <div class="svc-badge"><img loading="lazy" decoding="async" src="assets/icons/maskot-mandi-transparent.webp" alt="Beauty grooming kucing Central Cat's" width="54" height="80"></div>
       <h3>✨ Beauty Grooming</h3>
       <p>Perawatan lengkap dengan styling bulu, finishing premium, dan sentuhan estetik agar kucing tampil cantik maksimal.</p>
     </div>
