@@ -122,7 +122,7 @@
   ]
 }
 </script>
-<link rel="preload" as="image" href="/assets/logo/logo-horizontal.png">
+<link rel="preload" as="image" href="/assets/logo/logo-horizontal.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Poppins:wght@400;600;700&family=Archivo:wght@700&display=swap">
@@ -132,6 +132,10 @@
 <link rel="stylesheet" href="/assets/css/main.css">
 <style>
 body{background:var(--bg);color:var(--text);padding-top:68px;min-height:100vh;display:flex;flex-direction:column;}
+/* <main> (landmark a11y) kini duduk di antara body dan konten, jadi flex:1 yang
+   dulu diterima .location-section langsung dari body harus diteruskan lewat
+   sini -- tanpa ini footer naik dan sisa layar kosong di halaman pendek. */
+main{flex:1;display:flex;flex-direction:column;}
 
 /* HEADER */
 header{background:var(--header-solid);height:60px;display:flex;justify-content:center;align-items:center;position:fixed;top:0;left:0;width:100%;z-index:1000;}
@@ -234,7 +238,7 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
   <div class="header-inner">
     <div class="logo-area">
       <a href="index.html#home" class="logo-link">
-        <img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo" class="logo-img">
+        <img src="assets/logo/logo-horizontal.webp" alt="Central Cat's Logo" class="logo-img" width="320" height="132">
       </a>
     </div>
     <nav class="desktop-nav">
@@ -314,6 +318,8 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
   </nav>
 </header>
 
+<main>
+
 <!-- ===== HERO JUDUL ===== -->
 <section class="page-hero">
   <h1>Lokasi &amp; Cabang Central Cat's</h1>
@@ -364,12 +370,13 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
   </div>
 </section>
 
+</main>
 <!-- ===== FOOTER ===== -->
 <footer>
   <div class="footer-container">
     <div class="footer-brand">
       <a href="index.html#home" class="logo-link">
-        <img src="assets/logo/logo-horizontal.png" alt="Central Cat's Logo" class="logo-img">
+        <img src="assets/logo/logo-horizontal.webp" alt="Central Cat's Logo" class="logo-img" width="320" height="132">
       </a>
       <p style="font-size:13px;line-height:1.7;opacity:.9;margin-top:14px;">
         <strong class="pt-name" style="font-size:15px;">PT. Mencoba Bertahan Hidup</strong><br>
