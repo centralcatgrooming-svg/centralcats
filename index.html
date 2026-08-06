@@ -354,7 +354,9 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;margin-top
   @media(hover:hover){.cc-card__title a:hover{color:var(--primary)}}
   .cc-card__title a:active{color:var(--primary)}
   .cc-card__excerpt{font-size:.92rem;color:var(--text-dim);line-height:1.55;margin:0;flex:1}
-  .cc-card__date{font-size:.8rem;color:var(--text-faint);margin-top:4px}
+  /* --text-dim, bukan --text-faint: #9aa1ad di atas --surface-raised putih cuma
+     2,6:1 (butuh 4,5:1 untuk .8rem). Lighthouse a11y menandai 6 kartu feed. */
+  .cc-card__date{font-size:.8rem;color:var(--text-dim);margin-top:4px}
   .cc-state{grid-column:1/-1;text-align:center;padding:48px 16px;color:var(--text-dim)}
   .cc-state__emoji{font-size:2rem;display:block;margin-bottom:8px}
   .cc-skel{background:var(--surface-raised);border:1px solid var(--border-soft);border-radius:18px;overflow:hidden}
