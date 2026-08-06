@@ -132,6 +132,10 @@
 <link rel="stylesheet" href="/assets/css/main.css">
 <style>
 body{background:var(--bg);color:var(--text);padding-top:68px;min-height:100vh;display:flex;flex-direction:column;}
+/* <main> (landmark a11y) kini duduk di antara body dan konten, jadi flex:1 yang
+   dulu diterima .location-section langsung dari body harus diteruskan lewat
+   sini -- tanpa ini footer naik dan sisa layar kosong di halaman pendek. */
+main{flex:1;display:flex;flex-direction:column;}
 
 /* HEADER */
 header{background:var(--header-solid);height:60px;display:flex;justify-content:center;align-items:center;position:fixed;top:0;left:0;width:100%;z-index:1000;}
@@ -314,6 +318,8 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
   </nav>
 </header>
 
+<main>
+
 <!-- ===== HERO JUDUL ===== -->
 <section class="page-hero">
   <h1>Lokasi &amp; Cabang Central Cat's</h1>
@@ -364,6 +370,7 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
   </div>
 </section>
 
+</main>
 <!-- ===== FOOTER ===== -->
 <footer>
   <div class="footer-container">

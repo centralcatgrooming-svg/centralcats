@@ -71,8 +71,13 @@ header{background:var(--header-solid);height:60px;padding:0;display:flex;justify
 
 /* ================= CONTENT SECTIONS ================= */
 .section{padding:70px 20px 80px;text-align:center;}
-.section:nth-child(even){background:var(--surface-soft);}
-.section:nth-child(odd){background:var(--bg);}
+/* Parity dihitung dari <main>, BUKAN <body>: sejak seksi dibungkus <main>
+   (landmark a11y), <header> bukan lagi saudara sebelumnya -> selang-seling latar
+   bergeser satu. even/odd sengaja ditukar supaya tampilannya persis seperti
+   sebelum dibungkus. Menyisipkan elemen apa pun sebagai anak <main> akan
+   membalik semuanya lagi. */
+.section:nth-child(odd){background:var(--surface-soft);}
+.section:nth-child(even){background:var(--bg);}
 .section h1{font-size:2.2rem;font-weight:700;color:var(--primary);letter-spacing:.3px;position:relative;display:inline-block;margin-bottom:10px;}
 .section h2{font-size:1.8rem;font-weight:700;color:var(--primary);letter-spacing:.3px;position:relative;display:inline-block;margin-bottom:10px;}
 .section h1::after,.section h2::after{content:"";display:block;width:60px;height:4px;background:var(--accent);margin:12px auto 0;border-radius:4px;}
@@ -310,6 +315,8 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;margin-top
   </nav>
 </header>
 
+<main>
+
 <!-- ===== PROFIL ===== -->
 <section id="profil" class="section">
   <h1>Profil Central Cat's</h1>
@@ -426,6 +433,7 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;margin-top
   </p>
 </section>
 
+</main>
 <!-- ===== FOOTER ===== -->
 <footer>
   <div class="footer-container">
