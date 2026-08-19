@@ -29,3 +29,10 @@ node_modules/
 # Catatan kerja lokal AI-agent (jangan masuk repo — repo publik)
 AGENTS.md
 CLAUDE.md
+
+# Rahasia — repo ini PUBLIK. Satu .env yang ter-commit langsung terbaca
+# seluruh internet, dan riwayat git tak bisa dibersihkan diam-diam.
+# Per 19 Agu 2026 belum pernah ada .env di sini; ini PAGAR, bukan tambalan.
+.env
+.env.*
+!.env.example
