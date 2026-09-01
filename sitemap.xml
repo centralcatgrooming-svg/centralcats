@@ -1,10 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 
 <url>
 <loc>https://www.centralcats.id/</loc>
-<lastmod>2026-08-06</lastmod>
+<lastmod>2026-09-01</lastmod>
 <priority>1.0</priority>
+<video:video>
+<video:thumbnail_loc>https://www.centralcats.id/assets/video/grooming/perawatan-profesional-poster.jpg</video:thumbnail_loc>
+<video:title>Perawatan Grooming Kucing Profesional — Central Cat's Tangerang</video:title>
+<video:description>Setiap layanan grooming dilakukan oleh tenaga berpengalaman dengan standar kebersihan tinggi untuk menjaga kesehatan kulit dan bulu kucing.</video:description>
+<video:content_loc>https://www.centralcats.id/assets/video/grooming/perawatan-profesional.mp4</video:content_loc>
+<video:duration>44</video:duration>
+<video:publication_date>2026-08-04</video:publication_date>
+<video:family_friendly>yes</video:family_friendly>
+</video:video>
+<video:video>
+<video:thumbnail_loc>https://www.centralcats.id/assets/video/grooming/kenyamanan_kucing-poster.jpg</video:thumbnail_loc>
+<video:title>Kenyamanan Kucing Saat Grooming — Central Cat's Tangerang</video:title>
+<video:description>Kami memastikan setiap kucing mendapatkan perlakuan yang lembut dan penuh perhatian agar tetap merasa nyaman selama proses perawatan.</video:description>
+<video:content_loc>https://www.centralcats.id/assets/video/grooming/kenyamanan_kucing.mp4</video:content_loc>
+<video:duration>30</video:duration>
+<video:publication_date>2026-08-04</video:publication_date>
+<video:family_friendly>yes</video:family_friendly>
+</video:video>
+<video:video>
+<video:thumbnail_loc>https://www.centralcats.id/assets/video/grooming/Produk-Berkualitas-poster.jpg</video:thumbnail_loc>
+<video:title>Produk Petshop Kucing Berkualitas — Central Cat's Tangerang</video:title>
+<video:description>Central Cat's menyediakan berbagai produk kebutuhan kucing berkualitas untuk menunjang kesehatan dan kesejahteraan hewan peliharaan.</video:description>
+<video:content_loc>https://www.centralcats.id/assets/video/grooming/Produk-Berkualitas.mp4</video:content_loc>
+<video:duration>21</video:duration>
+<video:publication_date>2026-08-04</video:publication_date>
+<video:family_friendly>yes</video:family_friendly>
+</video:video>
 </url>
 
 <url>
@@ -21,31 +49,31 @@
 
 <url>
 <loc>https://www.centralcats.id/lokasi.html</loc>
-<lastmod>2026-08-06</lastmod>
+<lastmod>2026-09-01</lastmod>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://www.centralcats.id/karir.html</loc>
-<lastmod>2026-08-06</lastmod>
+<lastmod>2026-09-01</lastmod>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>https://www.centralcats.id/kerjasama.html</loc>
-<lastmod>2026-08-06</lastmod>
+<lastmod>2026-09-01</lastmod>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>https://www.centralcats.id/toko.html</loc>
-<lastmod>2026-08-06</lastmod>
+<lastmod>2026-09-01</lastmod>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://www.centralcats.id/syarat.html</loc>
-<lastmod>2026-08-06</lastmod>
+<lastmod>2026-09-01</lastmod>
 <priority>0.5</priority>
 </url>
 
