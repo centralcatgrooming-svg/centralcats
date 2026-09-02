@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Ketentuan Kerja Sama Supplier — Central Cat's</title>
+<!--
+  DRAF dokumen resmi Ketentuan Kerja Sama Supplier.
+
+  Berkas ini SUMBER CETAK, bukan halaman situs. Sengaja ditaruh di assets/
+  supaya TIDAK ikut terhitung sebagai halaman ke-9: PAGES di tests/helpers.js
+  adalah sumber kebenaran tunggal, dan menambah halaman root tanpa memperbarui
+  PAGES + sitemap.xml membuat suite tes merah.
+  Karena itu pula ia diberi noindex - dokumen ini diunduh, bukan dirayapi.
+
+  Cara menghasilkan PDF: buka di browser -> Ctrl+P -> "Save as PDF" -> A4.
+  Simpan hasilnya sebagai assets/dokumen/ketentuan-supplier-v1.pdf, lalu
+  tautkan dari CTA di kerjasama.html.
+
+  BLOK BERTANDA "PERLU DIISI" = keputusan dagang Boss. Angkanya sengaja
+  DIKOSONGKAN, bukan ditebak: tempo bayar, retur, dan minimum order mengikat
+  secara komersial, dan menebaknya berarti menerbitkan janji yang tak pernah
+  disepakati siapa pun.
+-->
+<style>
+  :root{
+    --primary:#1e3a8a; --accent:#d4af37; --ink:#111; --muted:#555;
+    --line:#d8dbe3; --soft:#f6f7fa; --warn-bg:#fff8e1; --warn-line:#e0b400;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; padding:24px 16px 64px;
+    font-family:'Times New Roman',Times,serif;
+    color:var(--ink); background:#e9ecf1; line-height:1.6; font-size:12pt;
+  }
+  .sheet{
+    max-width:210mm; margin:0 auto; background:#fff; padding:18mm 20mm 20mm;
+    box-shadow:0 2px 18px rgba(0,0,0,.12);
+  }
+
+  /* ---------- KOP ---------- */
+  .kop{display:flex; gap:16px; align-items:flex-start; border-bottom:3px double var(--primary); padding-bottom:12px}
+  .kop img{width:150px; height:auto; flex:0 0 auto}
+  .kop-teks{flex:1; min-width:0}
+  .kop-teks h1{margin:0 0 2px; font-size:17pt; color:var(--primary); letter-spacing:.3px}
+  .kop-teks .unit{margin:0 0 6px; font-size:10.5pt; font-weight:bold; color:var(--accent); letter-spacing:1.2px; text-transform:uppercase}
+  .kop-teks p{margin:0; font-size:9.5pt; color:var(--muted); line-height:1.45}
+
+  /* ---------- JUDUL ---------- */
+  .judul{text-align:center; margin:22px 0 4px}
+  .judul h2{margin:0; font-size:14pt; letter-spacing:.5px; text-transform:uppercase; text-decoration:underline; text-underline-offset:4px}
+  .judul .nomor{margin:6px 0 0; font-size:10.5pt; color:var(--muted)}
+
+  table.meta{width:100%; border-collapse:collapse; margin:16px 0 22px; font-size:10pt}
+  table.meta td{border:1px solid var(--line); padding:5px 9px}
+  table.meta td:nth-child(odd){background:var(--soft); font-weight:bold; width:22%}
+
+  h3{font-size:11.5pt; margin:20px 0 6px; color:var(--primary); text-transform:uppercase; letter-spacing:.3px}
+  p{margin:0 0 9px; text-align:justify}
+  ol,ul{margin:0 0 9px; padding-left:22px}
+  li{margin-bottom:5px; text-align:justify}
+  ol.pasal{counter-reset:none}
+
+  .isi table{width:100%; border-collapse:collapse; margin:6px 0 12px; font-size:10.5pt}
+  .isi table th,.isi table td{border:1px solid var(--line); padding:6px 9px; text-align:left; vertical-align:top}
+  .isi table th{background:var(--soft)}
+
+  /* ---------- BLOK PERLU DIISI ---------- */
+  .isi-boss{
+    background:var(--warn-bg); border:1px solid var(--warn-line); border-left:5px solid var(--warn-line);
+    padding:10px 14px; margin:8px 0 14px; font-size:10.5pt;
+  }
+  .isi-boss .tag{
+    display:inline-block; background:var(--warn-line); color:#fff; font-size:8.5pt; font-weight:bold;
+    letter-spacing:.6px; padding:2px 8px; border-radius:3px; margin-bottom:6px; font-family:Arial,sans-serif;
+  }
+  .isi-boss p:last-child{margin-bottom:0}
+  .isian{display:inline-block; min-width:90px; border-bottom:1px dotted #999}
+
+  /* ---------- TANDA TANGAN ---------- */
+  .ttd{display:flex; gap:40px; margin-top:34px; page-break-inside:avoid}
+  .ttd div{flex:1; text-align:center; font-size:10.5pt}
+  .ttd .ruang{height:70px}
+  .ttd .garis{border-top:1px solid var(--ink); padding-top:4px}
+
+  .catatan-kaki{margin-top:26px; padding-top:10px; border-top:1px solid var(--line); font-size:9pt; color:var(--muted)}
+
+  /* ---------- TOMBOL (layar saja) ---------- */
+  .bar{max-width:210mm; margin:0 auto 14px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+       font-family:Arial,Helvetica,sans-serif; font-size:11px}
+  .bar button{
+    background:var(--primary); color:#fff; border:0; border-radius:6px; padding:9px 16px;
+    font-size:13px; font-weight:bold; cursor:pointer;
+  }
+  .bar span{color:#41485a}
+
+  @media print{
+    body{background:#fff; padding:0; font-size:11pt}
+    .sheet{box-shadow:none; max-width:none; padding:0; margin:0}
+    .bar{display:none !important}
+    h3{page-break-after:avoid}
+    .isi-boss{background:#fff8e1 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+    @page{size:A4; margin:16mm 15mm}
+  }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <button type="button" onclick="window.print()">🖨️ Cetak / Simpan sebagai PDF</button>
+  <span>Cetak ke <strong>A4</strong>. Blok kuning = perlu diisi sebelum dokumen diterbitkan.</span>
+</div>
+
+<div class="sheet">
+
+  <!-- ===== KOP PERUSAHAAN ===== -->
+  <header class="kop">
+    <img src="../logo/logo-horizontal.png" alt="Logo Central Cat's">
+    <div class="kop-teks">
+      <h1>PT. MENCOBA BERTAHAN HIDUP</h1>
+      <p class="unit">Central Cat's — Petshop &amp; Grooming Kucing</p>
+      <p>
+        Kantor Pusat: Kp. Tobat, Desa Sentul Jaya, Kec. Balaraja,<br>
+        Kab. Tangerang, Banten 15610<br>
+        WhatsApp 0821-1182-7798 &nbsp;·&nbsp; centralcatgrooming@gmail.com &nbsp;·&nbsp; www.centralcats.id
+      </p>
+    </div>
+  </header>
+
+  <!-- ===== JUDUL ===== -->
+  <div class="judul">
+    <h2>Ketentuan Kerja Sama Supplier</h2>
+    <p class="nomor">Nomor: <span class="isian">&nbsp;</span>/CCS-SUP/<span class="isian">&nbsp;</span>/2026</p>
+  </div>
+
+  <table class="meta">
+    <tr><td>Versi Dokumen</td><td>1.0 (draf)</td><td>Berlaku Sejak</td><td><span class="isian">&nbsp;</span></td></tr>
+    <tr><td>Diterbitkan Oleh</td><td>PT. Mencoba Bertahan Hidup</td><td>Ditinjau Ulang</td><td>Setiap 12 bulan</td></tr>
+  </table>
+
+  <div class="isi">
+
+    <h3>Pasal 1 — Ruang Lingkup dan Pengertian</h3>
+    <ol>
+      <li><strong>Perusahaan</strong> adalah PT. Mencoba Bertahan Hidup, yang menjalankan usaha petshop dan grooming kucing dengan merek dagang <strong>Central Cat's</strong>.</li>
+      <li><strong>Supplier</strong> adalah perorangan atau badan usaha yang memasok produk kepada Perusahaan.</li>
+      <li>Ketentuan ini mengatur persyaratan, tata cara, dan kewajiban dalam kerja sama pemasokan produk ke seluruh gerai Central Cat's, yaitu cabang <strong>Bumi Indah (Pasar Kemis)</strong> dan <strong>Rajeg Gardenia</strong>, termasuk penjualan melalui toko daring Perusahaan.</li>
+      <li>Ketentuan ini bersifat umum dan menjadi dasar bagi kesepakatan tertulis yang dibuat kemudian antara Perusahaan dan Supplier.</li>
+    </ol>
+
+    <h3>Pasal 2 — Persyaratan Supplier</h3>
+    <ol>
+      <li>Supplier memiliki identitas usaha yang jelas dan dapat dihubungi pada jam kerja.</li>
+      <li>Supplier berbadan usaha wajib menyerahkan salinan dokumen legalitas usaha yang masih berlaku.</li>
+      <li>Supplier menunjuk satu orang penanggung jawab sebagai narahubung utama.</li>
+      <li>Supplier menjamin bahwa produk yang dipasok bukan barang tiruan, bukan barang selundupan, dan tidak melanggar hak kekayaan intelektual pihak mana pun.</li>
+    </ol>
+
+    <h3>Pasal 3 — Persyaratan Produk</h3>
+    <p>Produk yang dipasok wajib memenuhi seluruh ketentuan berikut:</p>
+    <table>
+      <tr><th style="width:32%">Ketentuan</th><th>Penjelasan</th></tr>
+      <tr><td>Produk original</td><td>Asli dari produsen atau distributor resmi, disertai izin edar resmi apabila jenis produknya mewajibkan.</td></tr>
+      <tr><td>Masa simpan minimal 12 bulan</td><td>Untuk makanan dan obat, terhitung sejak tanggal barang diterima Perusahaan.</td></tr>
+      <tr><td>Price list &amp; foto produk digital</td><td>Diserahkan dalam bentuk berkas digital untuk keperluan katalog dan sistem kasir Perusahaan.</td></tr>
+      <tr><td>Kemasan aman</td><td>Kemasan utuh, bersih, tidak penyok, tidak bocor, dan layak jual.</td></tr>
+    </table>
+    <p>Perusahaan berhak menolak produk yang tidak memenuhi ketentuan di atas pada saat penerimaan barang.</p>
+
+    <h3>Pasal 4 — Harga dan Daftar Harga</h3>
+    <ol>
+      <li>Harga yang disepakati adalah harga yang tercantum dalam daftar harga (<em>price list</em>) resmi Supplier yang berlaku pada saat pemesanan.</li>
+      <li>Perubahan harga wajib diberitahukan secara tertulis sekurang-kurangnya <span class="isian">&nbsp;</span> hari sebelum berlaku, dan tidak berlaku surut atas pesanan yang telah dikirim.</li>
+      <li>Harga sudah termasuk atau belum termasuk pajak sebagaimana dinyatakan tegas dalam daftar harga.</li>
+    </ol>
+
+    <div class="isi-boss">
+      <span class="tag">PERLU DIISI</span>
+      <p><strong>Berapa hari pemberitahuan perubahan harga?</strong> Lazimnya 14–30 hari. Angka ini menentukan apakah Perusahaan bisa menyesuaikan harga jual sebelum harga beli naik.</p>
+    </div>
+
+    <h3>Pasal 5 — Pemesanan dan Pengiriman</h3>
+    <ol>
+      <li>Pemesanan dilakukan melalui Purchase Order (PO) resmi Perusahaan. Pengiriman tanpa PO dapat ditolak.</li>
+      <li>Barang dikirim ke alamat gerai yang tercantum dalam PO, pada hari dan jam operasional gerai.</li>
+      <li>Setiap pengiriman disertai surat jalan dan/atau faktur yang mencantumkan nama produk, jumlah, nomor batch, dan tanggal kedaluwarsa.</li>
+      <li>Keterlambatan pengiriman wajib diberitahukan sebelum tanggal jatuh tempo pengiriman.</li>
+    </ol>
+
+    <div class="isi-boss">
+      <span class="tag">PERLU DIISI</span>
+      <p><strong>Minimum order</strong> — apakah ada nilai atau jumlah minimum per pengiriman? Dan <strong>siapa menanggung ongkos kirim</strong>: Supplier, Perusahaan, atau gratis di atas nilai tertentu?</p>
+    </div>
+
+    <h3>Pasal 6 — Penerimaan dan Pemeriksaan Barang</h3>
+    <ol>
+      <li>Barang diperiksa pada saat diterima, meliputi kesesuaian jenis, jumlah, kondisi kemasan, dan tanggal kedaluwarsa.</li>
+      <li>Barang yang tidak sesuai dapat ditolak seketika dan menjadi tanggung jawab Supplier.</li>
+      <li>Penerimaan barang dicatat dalam sistem Perusahaan dan menjadi dasar penagihan.</li>
+    </ol>
+
+    <h3>Pasal 7 — Pembayaran</h3>
+    <div class="isi-boss">
+      <span class="tag">PERLU DIISI — PASAL INTI</span>
+      <p><strong>Sistem kerja sama:</strong> beli putus, konsinyasi (titip jual), atau keduanya tergantung produk?</p>
+      <p><strong>Tempo pembayaran:</strong> tunai saat terima, atau tempo <span class="isian">&nbsp;</span> hari sejak barang diterima / sejak faktur diterima?</p>
+      <p><strong>Cara pembayaran:</strong> transfer bank atas nama PT. Mencoba Bertahan Hidup — perlu ditetapkan rekening dan syarat bukti pembayarannya.</p>
+      <p style="margin-top:8px"><em>Pasal ini sengaja dikosongkan. Menuliskan angka yang belum disepakati sama dengan menerbitkan janji pembayaran yang mengikat Perusahaan.</em></p>
+    </div>
+
+    <h3>Pasal 8 — Retur dan Klaim</h3>
+    <div class="isi-boss">
+      <span class="tag">PERLU DIISI — PASAL INTI</span>
+      <p><strong>Barang rusak dari pabrik / cacat kemasan:</strong> boleh diretur? Batas waktunya berapa hari sejak diterima?</p>
+      <p><strong>Barang mendekati atau lewat kedaluwarsa:</strong> boleh ditukar? Berapa lama sebelum tanggal kedaluwarsa?</p>
+      <p><strong>Barang tidak laku:</strong> boleh dikembalikan atau menjadi risiko Perusahaan?</p>
+      <p style="margin-top:8px"><em>Ketiga hal ini paling sering menjadi sengketa dengan supplier. Menetapkannya sejak awal melindungi kedua pihak.</em></p>
+    </div>
+
+    <h3>Pasal 9 — Data Produk untuk Katalog dan Sistem</h3>
+    <ol>
+      <li>Supplier menyerahkan data produk berupa nama produk, merek, varian, satuan, barcode, harga, dan foto produk beresolusi baik dengan latar bersih.</li>
+      <li>Supplier memberikan izin kepada Perusahaan untuk menggunakan nama merek dan foto produk tersebut pada katalog digital, media sosial, dan toko daring Perusahaan, semata-mata untuk keperluan penjualan produk Supplier.</li>
+      <li>Supplier menjamin memiliki hak atas foto dan materi yang diserahkan.</li>
+    </ol>
+
+    <h3>Pasal 10 — Kerahasiaan</h3>
+    <p>Kedua pihak menjaga kerahasiaan daftar harga, syarat dagang, dan data penjualan yang diperoleh dari kerja sama ini, dan tidak mengungkapkannya kepada pihak ketiga tanpa persetujuan tertulis, kecuali diwajibkan oleh peraturan yang berlaku.</p>
+
+    <h3>Pasal 11 — Masa Berlaku dan Pengakhiran</h3>
+    <ol>
+      <li>Kerja sama berlaku sejak kesepakatan ditandatangani dan berlangsung sampai diakhiri oleh salah satu pihak.</li>
+      <li>Pengakhiran dilakukan dengan pemberitahuan tertulis sekurang-kurangnya <span class="isian">&nbsp;</span> hari sebelumnya.</li>
+      <li>Pengakhiran tidak menghapus kewajiban yang telah timbul sebelumnya, termasuk kewajiban pembayaran dan penyelesaian barang konsinyasi.</li>
+      <li>Perusahaan dapat mengakhiri kerja sama seketika apabila Supplier terbukti memasok produk palsu atau produk yang tidak memenuhi Pasal 3.</li>
+    </ol>
+
+    <h3>Pasal 12 — Perubahan Ketentuan</h3>
+    <p>Perusahaan dapat memperbarui ketentuan ini. Perubahan diberitahukan kepada Supplier aktif dan versi terbaru selalu tersedia di halaman Kerjasama pada www.centralcats.id.</p>
+
+    <h3>Pasal 13 — Penyelesaian Perselisihan</h3>
+    <p>Perselisihan diselesaikan terlebih dahulu secara musyawarah. Apabila tidak tercapai kesepakatan, kedua pihak memilih domisili hukum pada <span class="isian">&nbsp;</span>.</p>
+
+    <div class="isi-boss">
+      <span class="tag">PERLU DIISI</span>
+      <p><strong>Domisili hukum</strong> — lazimnya Pengadilan Negeri Tangerang, mengikuti kedudukan kantor pusat Perusahaan di Kab. Tangerang. Mohon dipastikan.</p>
+    </div>
+
+    <h3>Prosedur Pengajuan Menjadi Supplier</h3>
+    <ol>
+      <li><strong>Kirim data</strong> — isi formulir pengajuan supplier di www.centralcats.id/kerjasama.html, mencantumkan nama usaha, narahubung, jenis produk, merek, dan alamat lengkap.</li>
+      <li><strong>Peninjauan</strong> — Perusahaan meninjau kesesuaian produk terhadap Pasal 2 dan Pasal 3.</li>
+      <li><strong>Kesepakatan</strong> — pembahasan harga, syarat pembayaran, dan penandatanganan kesepakatan.</li>
+      <li><strong>Mulai memasok</strong> — produk masuk katalog dan etalase Central Cat's.</li>
+    </ol>
+    <p>Pengajuan dapat pula disampaikan melalui WhatsApp 0821-1182-7798 atau surel centralcatgrooming@gmail.com.</p>
+
+    <!-- ===== TANDA TANGAN ===== -->
+    <div class="ttd">
+      <div>
+        <p>Tangerang, <span class="isian">&nbsp;</span></p>
+        <p><strong>PT. Mencoba Bertahan Hidup</strong></p>
+        <div class="ruang"></div>
+        <p class="garis"><span class="isian">&nbsp;</span><br><small>Nama &amp; Jabatan</small></p>
+      </div>
+      <div>
+        <p>&nbsp;</p>
+        <p><strong>Supplier</strong></p>
+        <div class="ruang"></div>
+        <p class="garis"><span class="isian">&nbsp;</span><br><small>Nama &amp; Jabatan</small></p>
+      </div>
+    </div>
+
+    <p class="catatan-kaki">
+      Dokumen ini diterbitkan oleh PT. Mencoba Bertahan Hidup dan berlaku untuk seluruh gerai Central Cat's.
+      Versi terbaru selalu tersedia di www.centralcats.id/kerjasama.html.
+    </p>
+
+  </div>
+</div>
+
+</body>
+</html>
