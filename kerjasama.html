@@ -105,6 +105,29 @@ header{background:var(--header-solid);height:60px;display:flex;justify-content:c
 .supplier-cta p{color:#dbe2f5;font-size:14px;line-height:1.7;max-width:460px;margin:0 auto 22px;}
 .supplier-cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
 .supplier-cta-unduh{margin-bottom:14px;}
+/* ── Formulir Pengajuan Supplier ───────────────────────────────────────── */
+.ajukan-box{max-width:680px;margin:32px auto 0;background:var(--surface-raised);border:1px solid var(--border);border-radius:18px;padding:34px 28px;box-shadow:0 10px 28px rgba(30,58,138,.08);}
+.ajukan-box h3{font-size:22px;color:var(--primary);text-align:center;margin:0 0 6px;}
+.ajukan-lead{font-size:14px;color:var(--text-soft);text-align:center;line-height:1.7;margin:0 0 24px;}
+.f-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.f-full{grid-column:1 / -1;}
+.f-field{display:flex;flex-direction:column;gap:6px;}
+.f-field label{font-size:13px;font-weight:600;color:var(--text-muted);}
+.f-field .wajib{color:#d64545;}
+.f-field input,.f-field select,.f-field textarea{width:100%;padding:11px 13px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font-size:14px;font-family:inherit;transition:border-color .2s ease;}
+.f-field input:focus,.f-field select:focus,.f-field textarea:focus{outline:none;border-color:var(--primary);}
+.f-field textarea{resize:vertical;min-height:76px;}
+.f-hint{font-size:11.5px;color:var(--text-dim);}
+/* Honeypot: disembunyikan dari mata DAN dari pembaca layar, tapi TIDAK pakai
+   display:none — sebagian bot melewati field yang display:none. */
+.f-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+.f-kirim{width:100%;margin-top:20px;padding:15px;background:var(--primary);color:#fff;border:0;border-radius:12px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;transition:background .2s ease;}
+@media(hover:hover){.f-kirim:hover:not(:disabled){background:var(--primary-hover);}}
+.f-kirim:disabled{opacity:.6;cursor:not-allowed;}
+.f-msg{margin:14px 0 0;font-size:13.5px;line-height:1.6;text-align:center;min-height:20px;}
+.f-msg.ok{color:#15803d;font-weight:600;}
+.f-msg.err{color:#d64545;font-weight:600;}
+.f-turnstile{margin-top:20px;display:flex;justify-content:center;min-height:65px;}
 .btn-supplier{display:inline-block;padding:14px 32px;background:var(--accent);color:#1e3a8a;font-weight:700;border-radius:12px;text-decoration:none;font-size:15px;transition:all .3s ease;box-shadow:0 8px 20px rgba(212,175,55,.35);}
 @media(hover:hover){.btn-supplier:hover{transform:translateY(-3px);background:#e6c75a;box-shadow:0 12px 26px rgba(212,175,55,.45);}}
 .btn-supplier:active{background:#e6c75a;transform:scale(.97);}
@@ -346,6 +369,76 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
         <a class="js-mailto btn-supplier-ghost" data-u="centralcatgrooming" data-d="gmail.com" data-subj="Penawaran Kerja Sama Supplier — Central Cat's" href="#">✉️ Email</a>
       </div>
     </div>
+
+    <!-- ── FORMULIR PENGAJUAN SUPPLIER ────────────────────────────────────
+         Situs ini statis (GitHub Pages, nol backend), jadi pengiriman ditangani
+         Supabase Edge Function `supplier-application` yang memverifikasi
+         Turnstile DI SERVER lalu mengirim email. Token captcha yang hanya
+         dibuat di browser tidak menahan apa pun. -->
+    <div class="ajukan-box" id="ajukan">
+      <h3>Formulir Pengajuan Supplier</h3>
+      <p class="ajukan-lead">Isi data di bawah ini. Tim kami meninjau dan menghubungi Anda kembali. Sebaiknya unduh dan baca Ketentuan Kerja Sama Supplier lebih dulu.</p>
+
+      <form id="formSupplier" novalidate>
+        <div class="f-grid">
+          <div class="f-field f-full">
+            <label for="s-usaha">Nama Usaha / PT <span class="wajib">*</span></label>
+            <input id="s-usaha" name="nama_usaha" type="text" maxlength="120" autocomplete="organization" required>
+          </div>
+          <div class="f-field">
+            <label for="s-kontak">Nama Narahubung <span class="wajib">*</span></label>
+            <input id="s-kontak" name="nama_kontak" type="text" maxlength="120" autocomplete="name" required>
+          </div>
+          <div class="f-field">
+            <label for="s-telp">Telepon / WhatsApp <span class="wajib">*</span></label>
+            <input id="s-telp" name="telepon" type="tel" maxlength="30" placeholder="08xxxxxxxxxx" autocomplete="tel" required>
+          </div>
+          <div class="f-field f-full">
+            <label for="s-email">Email</label>
+            <input id="s-email" name="email" type="email" maxlength="120" placeholder="nama@email.com" autocomplete="email">
+            <span class="f-hint">Diisi supaya kami bisa membalas lewat email.</span>
+          </div>
+          <div class="f-field">
+            <label for="s-jenis">Jenis Produk <span class="wajib">*</span></label>
+            <input id="s-jenis" name="jenis_produk" type="text" maxlength="200" placeholder="cth: makanan kucing, pasir, aksesoris" required>
+          </div>
+          <div class="f-field">
+            <label for="s-merek">Merek <span class="wajib">*</span></label>
+            <input id="s-merek" name="merek" type="text" maxlength="200" placeholder="cth: MerekA, MerekB" required>
+          </div>
+          <div class="f-field f-full">
+            <label for="s-alamat">Alamat Lengkap <span class="wajib">*</span></label>
+            <textarea id="s-alamat" name="alamat" maxlength="400" placeholder="Jalan, nomor, kelurahan, kecamatan, kota, provinsi, kode pos" required></textarea>
+          </div>
+          <div class="f-field f-full">
+            <label for="s-pkp">Status Perpajakan</label>
+            <select id="s-pkp" name="status_pkp">
+              <option value="">— Pilih —</option>
+              <option value="pkp">Pengusaha Kena Pajak (PKP)</option>
+              <option value="non_pkp">Bukan PKP</option>
+            </select>
+            <span class="f-hint">Menentukan perlakuan PPN pada tagihan — lihat Pasal 4 dokumen ketentuan.</span>
+          </div>
+          <div class="f-field f-full">
+            <label for="s-catatan">Catatan Tambahan</label>
+            <textarea id="s-catatan" name="catatan" maxlength="600" placeholder="Opsional"></textarea>
+          </div>
+        </div>
+
+        <!-- Honeypot: tak terlihat manusia. Terisi = bot. -->
+        <div class="f-hp" aria-hidden="true">
+          <label for="s-website">Website</label>
+          <input id="s-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="f-turnstile">
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAEkr04LoSoFDEe5P" data-language="id" data-callback="onTurnstileOk" data-expired-callback="onTurnstileExpired"></div>
+        </div>
+
+        <button type="submit" class="f-kirim" id="s-kirim">Kirim Pengajuan</button>
+        <p class="f-msg" id="s-msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
   </section>
 
   <!-- WARALABA -->
@@ -515,5 +608,87 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
 </div>
 
 <script defer src="/assets/js/main.js"></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
+<script>
+/* Formulir Pengajuan Supplier — pengiriman ke Supabase Edge Function.
+   Situs ini statis; SEMUA penjaga sesungguhnya (verifikasi Turnstile, honeypot,
+   validasi, batas panjang) ada DI SERVER. Yang di sini hanya kenyamanan
+   pemakaian — jangan pernah menganggapnya sebagai pengamanan. */
+(function () {
+  var ENDPOINT = 'https://vjjuqllkycokgpidtlmw.supabase.co/functions/v1/supplier-application';
+  var form = document.getElementById('formSupplier');
+  if (!form) return;                                   // null-safe, pakem repo
+  var tombol = document.getElementById('s-kirim');
+  var pesan  = document.getElementById('s-msg');
+  var terkirim = false;
+
+  function tulis(teks, kelas) {
+    pesan.textContent = teks;                          // textContent, BUKAN innerHTML
+    pesan.className = 'f-msg' + (kelas ? ' ' + kelas : '');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (terkirim) return;                              // cegah kirim ganda
+
+    var fd = new FormData(form);
+    var data = {};
+    fd.forEach(function (v, k) { data[k] = String(v).trim(); });
+
+    var wajib = { nama_usaha:'Nama Usaha', nama_kontak:'Nama Narahubung', telepon:'Telepon',
+                  jenis_produk:'Jenis Produk', merek:'Merek', alamat:'Alamat' };
+    for (var k in wajib) {
+      if (!data[k]) { tulis('Mohon isi ' + wajib[k] + ' dulu.', 'err');
+        var el = form.querySelector('[name="' + k + '"]'); if (el) el.focus(); return; }
+    }
+
+    /* Token diambil saat submit, bukan disimpan lebih awal: Turnstile bisa
+       memperbaruinya sendiri, dan token lama akan ditolak server. */
+    var t = form.querySelector('[name="cf-turnstile-response"]');
+    data.turnstile_token = t ? t.value : '';
+    if (!data.turnstile_token) {
+      tulis('Mohon centang "Saya bukan robot" dulu.', 'err'); return;
+    }
+
+    tombol.disabled = true;
+    tulis('Mengirim…', '');
+
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (h) {
+        if (h.ok && h.j && h.j.success) {
+          terkirim = true;
+          form.reset();
+          tulis('Terima kasih! Pengajuan Anda sudah kami terima. Tim kami akan menghubungi Anda.', 'ok');
+          tombol.textContent = 'Pengajuan Terkirim';
+          return;
+        }
+        /* Gagal WAJIB dikatakan apa adanya + jalan keluar, jangan cuma "gagal".
+           Token Turnstile hangus sekali pakai, jadi widget di-reset. */
+        tulis((h.j && h.j.error) || 'Pengiriman gagal. Coba lagi atau hubungi kami via WhatsApp.', 'err');
+        tombol.disabled = false;
+        if (window.turnstile) { try { window.turnstile.reset(); } catch (_) {} }
+      })
+      .catch(function (err) {
+        console.error('[formSupplier] gagal kirim:', err);
+        tulis('Tidak dapat terhubung. Periksa koneksi, lalu coba lagi — atau hubungi kami via WhatsApp.', 'err');
+        tombol.disabled = false;
+        if (window.turnstile) { try { window.turnstile.reset(); } catch (_) {} }
+      });
+  });
+})();
+function onTurnstileOk() {
+  var p = document.getElementById('s-msg');
+  if (p && p.classList.contains('err')) { p.textContent = ''; p.className = 'f-msg'; }
+}
+function onTurnstileExpired() {
+  var p = document.getElementById('s-msg');
+  if (p) { p.textContent = 'Verifikasi kedaluwarsa — mohon centang ulang.'; p.className = 'f-msg err'; }
+}
+</script>
 </body>
 </html>
