@@ -40,12 +40,27 @@
   }
 
   /* ---------- KOP ---------- */
-  .kop{display:flex; gap:16px; align-items:flex-start; border-bottom:3px double var(--primary); padding-bottom:12px}
-  .kop img{width:150px; height:auto; flex:0 0 auto}
-  .kop-teks{flex:1; min-width:0}
-  .kop-teks h1{margin:0 0 2px; font-size:17pt; color:var(--primary); letter-spacing:.3px}
-  .kop-teks .unit{margin:0 0 6px; font-size:10.5pt; font-weight:bold; color:var(--accent); letter-spacing:1.2px; text-transform:uppercase}
-  .kop-teks p{margin:0; font-size:9.5pt; color:var(--muted); line-height:1.45}
+  /* Kop: logo kiri, identitas kanan. Nama PT SENGAJA tidak di sini —
+     kop memakai merek dagang; badan hukum disebut di Pasal 1, kolom tanda
+     tangan, dan catatan kaki (keputusan Boss). */
+  .kop{
+    display:flex; gap:18px; align-items:center;
+    border-bottom:3px double var(--primary); padding-bottom:14px;
+  }
+  .kop img{width:128px; height:auto; flex:0 0 auto}
+  .kop-teks{flex:1; min-width:0; border-left:2px solid var(--accent); padding-left:16px}
+  .kop-teks h1{
+    margin:0; font-size:19pt; line-height:1.15; color:var(--primary);
+    letter-spacing:.6px; font-variant:small-caps;
+  }
+  .kop-teks .unit{
+    margin:3px 0 8px; font-size:9.5pt; font-weight:bold; color:var(--accent);
+    letter-spacing:2.2px; text-transform:uppercase;
+  }
+  .kop-teks address{
+    margin:0; font-style:normal; font-size:9pt; color:var(--muted); line-height:1.5;
+  }
+  .kop-teks address .pisah{color:var(--line); padding:0 5px}
 
   /* ---------- JUDUL ---------- */
   .judul{text-align:center; margin:22px 0 4px}
@@ -118,13 +133,12 @@
   <header class="kop">
     <img src="../logo/logo-horizontal.png" alt="Logo Central Cat's">
     <div class="kop-teks">
-      <h1>PT. MENCOBA BERTAHAN HIDUP</h1>
-      <p class="unit">Central Cat's — Petshop &amp; Grooming Kucing</p>
-      <p>
-        Kantor Pusat: Kp. Tobat, Desa Sentul Jaya, Kec. Balaraja,<br>
-        Kab. Tangerang, Banten 15610<br>
-        WhatsApp 0821-1182-7798 &nbsp;·&nbsp; centralcatgrooming@gmail.com &nbsp;·&nbsp; www.centralcats.id
-      </p>
+      <h1>Central Cat's</h1>
+      <p class="unit">Petshop &amp; Grooming Kucing</p>
+      <address>
+        Kantor Pusat: Kp. Tobat, Desa Sentul Jaya, Kec. Balaraja, Kab. Tangerang, Banten 15610<br>
+        WhatsApp 0821-1182-7798<span class="pisah">|</span>centralcatgrooming@gmail.com<span class="pisah">|</span>www.centralcats.id
+      </address>
     </div>
   </header>
 
