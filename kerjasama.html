@@ -407,8 +407,43 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
             <input id="s-merek" name="merek" type="text" maxlength="200" placeholder="cth: MerekA, MerekB" required>
           </div>
           <div class="f-field f-full">
-            <label for="s-alamat">Alamat Lengkap <span class="wajib">*</span></label>
-            <textarea id="s-alamat" name="alamat" maxlength="400" placeholder="Jalan, nomor, kelurahan, kecamatan, kota, provinsi, kode pos" required></textarea>
+            <label for="s-alamat">Alamat Jalan <span class="wajib">*</span></label>
+            <textarea id="s-alamat" name="alamat" maxlength="400" placeholder="Nama jalan, nomor, RT/RW, patokan" required></textarea>
+            <span class="f-hint">Cukup alamat jalannya — wilayah dipilih di bawah.</span>
+          </div>
+          <!-- Wilayah bertingkat. Daftar provinsi/kota (13 KB) diunduh saat
+               formulir mendekat ke layar; kecamatan + kode pos (213 KB) baru
+               saat kota dipilih. Lihat assets/js/alamat.js. Tiap dropdown punya
+               isian teks cadangan yang dipakai kalau datanya gagal diunduh —
+               formulir tak boleh buntu gara-gara itu. -->
+          <div class="f-field">
+            <label for="s-prov">Provinsi <span class="wajib">*</span></label>
+            <select id="s-prov" name="provinsi" data-alamat="provinsi" disabled>
+              <option value="">— Memuat… —</option>
+            </select>
+            <input id="s-prov-teks" name="provinsi" data-alamat-teks="provinsi" type="text" maxlength="60" placeholder="Ketik provinsi" hidden disabled>
+          </div>
+          <div class="f-field">
+            <label for="s-kota">Kota / Kabupaten <span class="wajib">*</span></label>
+            <select id="s-kota" name="kota" data-alamat="kota" disabled>
+              <option value="">— Pilih provinsi dulu —</option>
+            </select>
+            <input id="s-kota-teks" name="kota" data-alamat-teks="kota" type="text" maxlength="60" placeholder="Ketik kota/kabupaten" hidden disabled>
+          </div>
+          <div class="f-field">
+            <label for="s-kec">Kecamatan</label>
+            <select id="s-kec" name="kecamatan" data-alamat="kecamatan" disabled>
+              <option value="">— Pilih kota/kabupaten dulu —</option>
+            </select>
+            <input id="s-kec-teks" name="kecamatan" data-alamat-teks="kecamatan" type="text" maxlength="60" placeholder="Ketik kecamatan" hidden disabled>
+          </div>
+          <div class="f-field">
+            <label for="s-pos">Kode Pos</label>
+            <input id="s-pos" name="kode_pos" data-alamat="kode_pos" type="text" inputmode="numeric" maxlength="5" placeholder="5 digit">
+            <select id="s-pos-pilih" name="kode_pos" data-alamat="kode_pos_pilih" hidden disabled></select>
+          </div>
+          <div class="f-field f-full">
+            <span class="f-hint" data-alamat-ket hidden></span>
           </div>
           <div class="f-field f-full">
             <label for="s-pkp">Status Perpajakan</label>
@@ -608,6 +643,7 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
 </div>
 
 <script defer src="/assets/js/main.js"></script>
+<script defer src="/assets/js/alamat.js"></script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
 <script>
 /* Formulir Pengajuan Supplier — pengiriman ke Supabase Edge Function.
@@ -621,6 +657,20 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
   var tombol = document.getElementById('s-kirim');
   var pesan  = document.getElementById('s-msg');
   var terkirim = false;
+
+  /* Alamat bertingkat (assets/js/alamat.js). WAJIB ditunggu di DOMContentLoaded:
+     alamat.js dimuat dengan `defer` sehingga baru dieksekusi SESUDAH blok inline
+     ini - memanggilnya langsung di sini pasti dapat undefined. Skrip defer
+     dijamin selesai sebelum DOMContentLoaded, jadi di situ ia sudah ada. */
+  function pasangAlamat() {
+    if (window.CCAlamat) { window.CCAlamat.pasang(form); }
+    else { console.error('[formSupplier] alamat.js tidak termuat - isian wilayah tidak aktif'); }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', pasangAlamat);
+  } else {
+    pasangAlamat();
+  }
 
   function tulis(teks, kelas) {
     pesan.textContent = teks;                          // textContent, BUKAN innerHTML
@@ -636,7 +686,11 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
     fd.forEach(function (v, k) { data[k] = String(v).trim(); });
 
     var wajib = { nama_usaha:'Nama Usaha', nama_kontak:'Nama Narahubung', telepon:'Telepon',
-                  jenis_produk:'Jenis Produk', merek:'Merek', alamat:'Alamat' };
+                  jenis_produk:'Jenis Produk', merek:'Merek', alamat:'Alamat Jalan',
+                  provinsi:'Provinsi', kota:'Kota/Kabupaten' };
+    /* Kecamatan & kode pos SENGAJA tidak wajib: kecamatan bisa tak ada di daftar
+       resmi, dan kode pos sebagian kecamatan memang tidak diketahui. Memaksanya
+       hanya memancing orang mengarang. */
     for (var k in wajib) {
       if (!data[k]) { tulis('Mohon isi ' + wajib[k] + ' dulu.', 'err');
         var el = form.querySelector('[name="' + k + '"]'); if (el) el.focus(); return; }
