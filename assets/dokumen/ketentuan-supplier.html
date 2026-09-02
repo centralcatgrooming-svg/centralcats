@@ -93,6 +93,28 @@
   .isi-boss p:last-child{margin-bottom:0}
   .isian{display:inline-block; min-width:90px; border-bottom:1px dotted #999}
 
+  /* ---------- KOTAK PILIHAN (ditentukan per Supplier) ---------- */
+  /* Skema pembayaran sengaja berbentuk PILIHAN, bukan satu aturan untuk semua:
+     supplier besar lazim beli putus, supplier baru sering minta konsinyasi.
+     Yang berlaku dicentang saat kesepakatan ditandatangani. */
+  .opsi{margin:4px 0 12px; padding-left:2px}
+  .opsi .baris{display:flex; align-items:flex-start; gap:9px; margin-bottom:7px}
+  .kotak{
+    flex:0 0 auto; width:13px; height:13px; border:1.4px solid var(--ink);
+    display:inline-block; margin-top:3px;
+  }
+  .opsi .isi-opsi{flex:1; min-width:0}
+  .opsi .isi-opsi small{display:block; color:var(--muted); font-size:9.5pt; line-height:1.45}
+  .catat-pilih{
+    font-size:9.5pt; color:var(--muted); font-style:italic;
+    border-left:3px solid var(--line); padding-left:10px; margin:2px 0 14px;
+  }
+
+  /* ---------- TABEL PERTANYAAN RETUR ---------- */
+  .tanya td .yatidak{white-space:nowrap; font-size:10pt}
+  .tanya td .yatidak .kotak{vertical-align:middle; margin:0 4px 0 0}
+  .tanya td .yatidak span.sela{display:inline-block; width:14px}
+
   /* ---------- TANDA TANGAN ---------- */
   .ttd{display:flex; gap:40px; margin-top:34px; page-break-inside:avoid}
   .ttd div{flex:1; text-align:center; font-size:10.5pt}
@@ -200,11 +222,17 @@
       <li>Barang dikirim ke alamat gerai yang tercantum dalam PO, pada hari dan jam operasional gerai.</li>
       <li>Setiap pengiriman disertai surat jalan dan/atau faktur yang mencantumkan nama produk, jumlah, nomor batch, dan tanggal kedaluwarsa.</li>
       <li>Keterlambatan pengiriman wajib diberitahukan sebelum tanggal jatuh tempo pengiriman.</li>
+      <li><strong>Biaya pengiriman sampai ke gerai ditanggung oleh Supplier</strong>, kecuali disepakati
+          lain secara tertulis. Harga yang tercantum dalam daftar harga sudah termasuk biaya
+          pengiriman tersebut.</li>
+      <li>Risiko kerusakan dan kehilangan barang selama pengiriman menjadi tanggung jawab Supplier
+          sampai barang diterima dan diperiksa oleh Perusahaan.</li>
     </ol>
 
     <div class="isi-boss">
       <span class="tag">PERLU DIISI</span>
-      <p><strong>Minimum order</strong> — apakah ada nilai atau jumlah minimum per pengiriman? Dan <strong>siapa menanggung ongkos kirim</strong>: Supplier, Perusahaan, atau gratis di atas nilai tertentu?</p>
+      <p><strong>Minimum order</strong> — apakah ada nilai atau jumlah minimum per pengiriman?
+         Kosongkan bila tidak ada. <em>(Ongkos kirim sudah ditetapkan: ditanggung Supplier — lihat Pasal 5 ayat 5.)</em></p>
     </div>
 
     <h3>Pasal 6 — Penerimaan dan Pemeriksaan Barang</h3>
@@ -215,22 +243,132 @@
     </ol>
 
     <h3>Pasal 7 — Pembayaran</h3>
-    <div class="isi-boss">
-      <span class="tag">PERLU DIISI — PASAL INTI</span>
-      <p><strong>Sistem kerja sama:</strong> beli putus, konsinyasi (titip jual), atau keduanya tergantung produk?</p>
-      <p><strong>Tempo pembayaran:</strong> tunai saat terima, atau tempo <span class="isian">&nbsp;</span> hari sejak barang diterima / sejak faktur diterima?</p>
-      <p><strong>Cara pembayaran:</strong> transfer bank atas nama PT. Mencoba Bertahan Hidup — perlu ditetapkan rekening dan syarat bukti pembayarannya.</p>
-      <p style="margin-top:8px"><em>Pasal ini sengaja dikosongkan. Menuliskan angka yang belum disepakati sama dengan menerbitkan janji pembayaran yang mengikat Perusahaan.</em></p>
+    <p>Skema pembayaran ditetapkan per Supplier dan dipilih dari opsi di bawah ini pada saat
+       kesepakatan ditandatangani. Opsi yang tidak dicentang tidak berlaku.</p>
+
+    <p><strong>7.1 Sistem kerja sama</strong> — pilih salah satu:</p>
+    <div class="opsi">
+      <div class="baris"><span class="kotak"></span><div class="isi-opsi">
+        <strong>Beli putus</strong>
+        <small>Barang menjadi milik Perusahaan sejak diterima. Risiko tidak laku ada pada Perusahaan.</small>
+      </div></div>
+      <div class="baris"><span class="kotak"></span><div class="isi-opsi">
+        <strong>Konsinyasi (titip jual)</strong>
+        <small>Barang tetap milik Supplier sampai terjual. Perusahaan membayar atas barang yang terjual saja,
+               dan sisa barang dapat ditarik kembali oleh Supplier.</small>
+      </div></div>
+      <div class="baris"><span class="kotak"></span><div class="isi-opsi">
+        <strong>Campuran</strong>
+        <small>Beli putus untuk kategori produk tertentu, konsinyasi untuk kategori lainnya.
+               Rincian kategori: <span class="isian">&nbsp;</span></small>
+      </div></div>
     </div>
 
-    <h3>Pasal 8 — Retur dan Klaim</h3>
-    <div class="isi-boss">
-      <span class="tag">PERLU DIISI — PASAL INTI</span>
-      <p><strong>Barang rusak dari pabrik / cacat kemasan:</strong> boleh diretur? Batas waktunya berapa hari sejak diterima?</p>
-      <p><strong>Barang mendekati atau lewat kedaluwarsa:</strong> boleh ditukar? Berapa lama sebelum tanggal kedaluwarsa?</p>
-      <p><strong>Barang tidak laku:</strong> boleh dikembalikan atau menjadi risiko Perusahaan?</p>
-      <p style="margin-top:8px"><em>Ketiga hal ini paling sering menjadi sengketa dengan supplier. Menetapkannya sejak awal melindungi kedua pihak.</em></p>
+    <p><strong>7.2 Tempo pembayaran</strong> — pilih salah satu:</p>
+    <div class="opsi">
+      <div class="baris"><span class="kotak"></span><div class="isi-opsi">
+        <strong>Tunai saat barang diterima</strong>
+      </div></div>
+      <div class="baris"><span class="kotak"></span><div class="isi-opsi">
+        <strong>Tempo 7 (tujuh) hari</strong>
+      </div></div>
+      <div class="baris"><span class="kotak"></span><div class="isi-opsi">
+        <strong>Tempo 14 (empat belas) hari</strong>
+      </div></div>
+      <div class="baris"><span class="kotak"></span><div class="isi-opsi">
+        <strong>Tempo 30 (tiga puluh) hari</strong>
+      </div></div>
+      <div class="baris"><span class="kotak"></span><div class="isi-opsi">
+        <strong>Lainnya:</strong> <span class="isian">&nbsp;</span> hari
+      </div></div>
     </div>
+    <p class="catat-pilih">
+      Tempo dihitung sejak barang diterima dan faktur lengkap diserahkan — mana yang lebih akhir.
+      Untuk skema <strong>konsinyasi</strong>, pembayaran dihitung atas barang yang terjual dalam
+      periode <span class="isian">&nbsp;</span> dan dibayarkan mengikuti tempo yang dipilih di atas.
+    </p>
+
+    <p><strong>7.3 Cara pembayaran</strong></p>
+    <ol>
+      <li>Pembayaran dilakukan melalui transfer bank ke rekening resmi atas nama
+          <strong>PT. Mencoba Bertahan Hidup</strong>.</li>
+      <li>Nomor rekening diberitahukan secara tertulis dalam dokumen kesepakatan yang ditandatangani
+          kedua pihak, dan <strong>tidak pernah</strong> disampaikan melalui pesan singkat, media sosial,
+          atau dokumen yang diunduh dari internet.</li>
+      <li>Perusahaan tidak melayani pembayaran ke rekening pribadi atau rekening atas nama pihak lain.
+          Supplier wajib memastikan kembali kepada Perusahaan apabila menerima permintaan pembayaran
+          ke rekening yang berbeda.</li>
+      <li>Bukti transfer dikirimkan kepada Supplier sebagai tanda pembayaran telah dilakukan.</li>
+    </ol>
+
+    <h3>Pasal 8 — Retur dan Klaim</h3>
+    <p><strong>8.1</strong> Ketentuan retur ditetapkan per Supplier dengan menjawab pertanyaan berikut
+       pada saat kesepakatan ditandatangani. Keadaan yang dijawab <em>Tidak</em> berarti menjadi
+       risiko Perusahaan dan tidak dapat dikembalikan kepada Supplier.</p>
+
+    <table class="tanya">
+      <tr>
+        <th style="width:40%">Keadaan barang</th>
+        <th style="width:22%">Boleh diretur?</th>
+        <th>Batas waktu / syarat</th>
+      </tr>
+      <tr>
+        <td>Rusak atau cacat kemasan, <strong>ditemukan saat penerimaan</strong></td>
+        <td><span class="yatidak"><span class="kotak"></span>Ya<span class="sela"></span><span class="kotak"></span>Tidak</span></td>
+        <td>Ditolak seketika di tempat</td>
+      </tr>
+      <tr>
+        <td>Rusak dari pabrik, <strong>baru diketahui setelah diterima</strong></td>
+        <td><span class="yatidak"><span class="kotak"></span>Ya<span class="sela"></span><span class="kotak"></span>Tidak</span></td>
+        <td>Dalam <span class="isian">&nbsp;</span> hari sejak barang diterima</td>
+      </tr>
+      <tr>
+        <td><strong>Mendekati kedaluwarsa</strong> dan belum terjual</td>
+        <td><span class="yatidak"><span class="kotak"></span>Ya<span class="sela"></span><span class="kotak"></span>Tidak</span></td>
+        <td>Diajukan <span class="isian">&nbsp;</span> hari sebelum tanggal kedaluwarsa</td>
+      </tr>
+      <tr>
+        <td><strong>Sudah lewat kedaluwarsa</strong> di gerai</td>
+        <td><span class="yatidak"><span class="kotak"></span>Ya<span class="sela"></span><span class="kotak"></span>Tidak</span></td>
+        <td><span class="isian">&nbsp;</span></td>
+      </tr>
+      <tr>
+        <td><strong>Tidak laku</strong> / perputaran lambat</td>
+        <td><span class="yatidak"><span class="kotak"></span>Ya<span class="sela"></span><span class="kotak"></span>Tidak</span></td>
+        <td>Setelah <span class="isian">&nbsp;</span> bulan sejak diterima</td>
+      </tr>
+      <tr>
+        <td><strong>Salah kirim</strong> (jenis/jumlah tidak sesuai PO)</td>
+        <td><span class="yatidak"><span class="kotak"></span>Ya<span class="sela"></span><span class="kotak"></span>Tidak</span></td>
+        <td>Selalu menjadi tanggung jawab Supplier</td>
+      </tr>
+    </table>
+
+    <p><strong>8.2 Bentuk penyelesaian retur</strong> — pilih salah satu:</p>
+    <div class="opsi">
+      <div class="baris"><span class="kotak"></span><div class="isi-opsi">
+        <strong>Diganti barang</strong> dengan jenis dan jumlah yang sama
+      </div></div>
+      <div class="baris"><span class="kotak"></span><div class="isi-opsi">
+        <strong>Potong tagihan</strong> pada pembayaran berikutnya
+      </div></div>
+      <div class="baris"><span class="kotak"></span><div class="isi-opsi">
+        <strong>Dikembalikan dananya</strong> oleh Supplier
+      </div></div>
+    </div>
+
+    <p><strong>8.3</strong> Ongkos kirim pengembalian barang ditanggung oleh
+       <span class="yatidak"><span class="kotak"></span>Supplier<span class="sela"></span><span class="kotak"></span>Perusahaan</span>,
+       kecuali untuk barang salah kirim atau rusak dari pabrik yang selalu ditanggung Supplier.</p>
+
+    <p><strong>8.4</strong> Barang yang diretur dikembalikan dalam kemasan asli, beserta bukti
+       penerimaan barang dan keterangan alasan retur.</p>
+
+    <p class="catat-pilih">
+       Untuk skema <strong>konsinyasi</strong> (Pasal 7.1), barang yang tidak laku pada dasarnya tetap
+       milik Supplier dan dapat ditarik kembali sewaktu-waktu tanpa perlu mengikuti baris
+       &ldquo;Tidak laku&rdquo; di atas.
+    </p>
 
     <h3>Pasal 9 — Data Produk untuk Katalog dan Sistem</h3>
     <ol>
@@ -254,12 +392,19 @@
     <p>Perusahaan dapat memperbarui ketentuan ini. Perubahan diberitahukan kepada Supplier aktif dan versi terbaru selalu tersedia di halaman Kerjasama pada www.centralcats.id.</p>
 
     <h3>Pasal 13 — Penyelesaian Perselisihan</h3>
-    <p>Perselisihan diselesaikan terlebih dahulu secara musyawarah. Apabila tidak tercapai kesepakatan, kedua pihak memilih domisili hukum pada <span class="isian">&nbsp;</span>.</p>
-
-    <div class="isi-boss">
-      <span class="tag">PERLU DIISI</span>
-      <p><strong>Domisili hukum</strong> — lazimnya Pengadilan Negeri Tangerang, mengikuti kedudukan kantor pusat Perusahaan di Kab. Tangerang. Mohon dipastikan.</p>
-    </div>
+    <ol>
+      <li>Perselisihan yang timbul diselesaikan terlebih dahulu secara musyawarah untuk mufakat
+          dalam waktu yang wajar.</li>
+      <li>Apabila musyawarah tidak mencapai kesepakatan, kedua pihak sepakat memilih domisili hukum
+          yang tetap pada <strong>Pengadilan Negeri yang wilayah hukumnya meliputi kedudukan
+          Perusahaan</strong>, yaitu Pengadilan Negeri Tangerang.</li>
+      <li>Pilihan domisili ini tidak menghapus hak Perusahaan untuk mengajukan tuntutan di pengadilan
+          lain yang berwenang menurut peraturan yang berlaku.</li>
+    </ol>
+    <p class="catat-pilih">
+      Klausa ini dirumuskan berdasarkan <strong>wilayah hukum</strong>, bukan semata nama pengadilan,
+      supaya tetap sah apabila kelak terjadi pemekaran atau perubahan nama pengadilan.
+    </p>
 
     <h3>Prosedur Pengajuan Menjadi Supplier</h3>
     <ol>
