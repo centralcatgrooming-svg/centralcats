@@ -128,6 +128,21 @@ header{background:var(--header-solid);height:60px;display:flex;justify-content:c
 .f-msg.ok{color:#15803d;font-weight:600;}
 .f-msg.err{color:#d64545;font-weight:600;}
 .f-turnstile{margin-top:20px;display:flex;justify-content:center;min-height:65px;}
+/* ── Pop-up formulir ───────────────────────────────────────────────────── */
+/* Lapisan gelap + kotak formulir. `hidden` dipakai sebagai penentu tampil
+   (bukan class sendiri) supaya keadaannya cuma hidup di satu tempat. */
+.modal-ov[hidden]{display:none;}
+.modal-ov{position:fixed;inset:0;z-index:9999;background:rgba(15,23,42,.62);
+  display:flex;align-items:flex-start;justify-content:center;padding:24px 16px;
+  overflow-y:auto;-webkit-overflow-scrolling:touch;animation:modalMasuk .18s ease-out;}
+@keyframes modalMasuk{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.modal-ov{animation:none;}}
+.modal-ov .ajukan-box{margin:0 auto;position:relative;max-height:none;}
+.modal-x{position:absolute;top:12px;right:14px;width:34px;height:34px;line-height:1;
+  background:transparent;border:0;color:var(--text-soft);font-size:26px;cursor:pointer;
+  border-radius:9px;transition:background .2s ease,color .2s ease;}
+@media(hover:hover){.modal-x:hover{background:var(--border);color:var(--text);}}
+.modal-x:focus-visible{outline:2px solid var(--primary);outline-offset:2px;}
 .btn-supplier{display:inline-block;padding:14px 32px;background:var(--accent);color:#1e3a8a;font-weight:700;border-radius:12px;text-decoration:none;font-size:15px;transition:all .3s ease;box-shadow:0 8px 20px rgba(212,175,55,.35);}
 @media(hover:hover){.btn-supplier:hover{transform:translateY(-3px);background:#e6c75a;box-shadow:0 12px 26px rgba(212,175,55,.45);}}
 .btn-supplier:active{background:#e6c75a;transform:scale(.97);}
@@ -366,7 +381,9 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
       </div>
       <div class="supplier-cta-btns">
         <a href="https://wa.me/6282111827798?text=Halo%20Central%20Cat%27s%2C%20saya%20tertarik%20untuk%20menjadi%20supplier%20produk%20di%20Central%20Cat%27s.%20Boleh%20saya%20tahu%20informasi%20lebih%20lanjut%3F" target="_blank" rel="noopener" class="btn-supplier-ghost">💬 WhatsApp</a>
-        <a class="js-mailto btn-supplier-ghost" data-u="centralcatgrooming" data-d="gmail.com" data-subj="Penawaran Kerja Sama Supplier — Central Cat's" href="#">✉️ Email</a>
+        <!-- Membuka formulir sebagai pop-up, BUKAN mailto. Alamat emailnya sendiri
+             tetap tersedia (ter-obfuscate) di footer bagi yang ingin menulis manual. -->
+        <button type="button" class="btn-supplier-ghost" id="btn-ajukan" aria-haspopup="dialog">✉️ Ajukan via Email</button>
       </div>
     </div>
 
@@ -375,8 +392,10 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
          Supabase Edge Function `supplier-application` yang memverifikasi
          Turnstile DI SERVER lalu mengirim email. Token captcha yang hanya
          dibuat di browser tidak menahan apa pun. -->
-    <div class="ajukan-box" id="ajukan">
-      <h3>Formulir Pengajuan Supplier</h3>
+    <div class="modal-ov" id="modalSupplier" hidden>
+    <div class="ajukan-box" id="ajukan" role="dialog" aria-modal="true" aria-labelledby="ajukan-judul">
+      <button type="button" class="modal-x" id="s-tutup" aria-label="Tutup formulir">&times;</button>
+      <h3 id="ajukan-judul">Formulir Pengajuan Supplier</h3>
       <p class="ajukan-lead">Isi data di bawah ini. Tim kami meninjau dan menghubungi Anda kembali. Sebaiknya unduh dan baca Ketentuan Kerja Sama Supplier lebih dulu.</p>
 
       <form id="formSupplier" novalidate>
@@ -467,12 +486,13 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
         </div>
 
         <div class="f-turnstile">
-          <div class="cf-turnstile" data-sitekey="0x4AAAAAAEkr04LoSoFDEe5P" data-language="id" data-callback="onTurnstileOk" data-expired-callback="onTurnstileExpired"></div>
+          <div id="s-turnstile"></div>
         </div>
 
         <button type="submit" class="f-kirim" id="s-kirim">Kirim Pengajuan</button>
         <p class="f-msg" id="s-msg" role="status" aria-live="polite"></p>
       </form>
+    </div>
     </div>
   </section>
 
@@ -644,7 +664,11 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
 
 <script defer src="/assets/js/main.js"></script>
 <script defer src="/assets/js/alamat.js"></script>
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
+<!-- render=explicit: widget SENGAJA tidak dirender saat halaman dimuat, melainkan
+     saat pop-up formulir dibuka. Kalau dirender di muka, pemeriksaannya sudah
+     selesai jauh sebelum pengunjung melihat formulirnya, sehingga kotaknya sudah
+     berbunyi "Berhasil!" begitu dibuka - terbaca seperti captcha yang terlewat. -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&amp;onload=ccTurnstileSiap" defer></script>
 <script>
 /* Formulir Pengajuan Supplier — pengiriman ke Supabase Edge Function.
    Situs ini statis; SEMUA penjaga sesungguhnya (verifikasi Turnstile, honeypot,
@@ -652,11 +676,18 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
    pemakaian — jangan pernah menganggapnya sebagai pengamanan. */
 (function () {
   var ENDPOINT = 'https://vjjuqllkycokgpidtlmw.supabase.co/functions/v1/supplier-application';
-  var form = document.getElementById('formSupplier');
+  var SITEKEY  = '0x4AAAAAAEkr04LoSoFDEe5P';   /* publik by design */
+  var form   = document.getElementById('formSupplier');
   if (!form) return;                                   // null-safe, pakem repo
   var tombol = document.getElementById('s-kirim');
   var pesan  = document.getElementById('s-msg');
+  var modal  = document.getElementById('modalSupplier');
+  var buka   = document.getElementById('btn-ajukan');
+  var tutupB = document.getElementById('s-tutup');
+  var wadahTs = document.getElementById('s-turnstile');
   var terkirim = false;
+  var widgetId = null;
+  var pemicu = null;        /* elemen yang membuka modal, untuk kembalikan fokus */
 
   /* Alamat bertingkat (assets/js/alamat.js). WAJIB ditunggu di DOMContentLoaded:
      alamat.js dimuat dengan `defer` sehingga baru dieksekusi SESUDAH blok inline
@@ -676,6 +707,107 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
     pesan.textContent = teks;                          // textContent, BUKAN innerHTML
     pesan.className = 'f-msg' + (kelas ? ' ' + kelas : '');
   }
+
+  /* --- Turnstile: render saat dibutuhkan, segarkan tiap kali dipakai ------ */
+
+  /* Dipanggil api.js saat pustakanya siap. Kalau pengunjung sudah membuka
+     pop-up lebih dulu, widgetnya dirender sekarang juga. */
+  window.ccTurnstileSiap = function () {
+    if (modal && !modal.hidden) segarkanTurnstile();
+  };
+
+  function segarkanTurnstile() {
+    if (!window.turnstile || !wadahTs) return;
+    if (widgetId === null) {
+      widgetId = window.turnstile.render(wadahTs, {
+        sitekey: SITEKEY,
+        language: 'id',
+        callback: function () {
+          /* Bersihkan pesan galat lama begitu verifikasinya lolos. */
+          if (pesan.classList.contains('err')) tulis('', '');
+        },
+        'expired-callback': function () {
+          tulis('Verifikasi keamanan kedaluwarsa — mohon ulangi.', 'err');
+        },
+        'error-callback': function () {
+          tulis('Verifikasi keamanan gagal dimuat. Periksa koneksi lalu buka ulang formulir.', 'err');
+        }
+      });
+    } else {
+      /* Token Turnstile sekali pakai. Setiap kali formulir dipakai ulang -
+         dibuka lagi atau sesudah berhasil terkirim - tokennya WAJIB dibuat
+         baru, kalau tidak server menolaknya sebagai token bekas. */
+      window.turnstile.reset(widgetId);
+    }
+  }
+
+  function ambilToken() {
+    if (window.turnstile && widgetId !== null) {
+      try { return window.turnstile.getResponse(widgetId) || ''; } catch (e) { /* jatuh ke input */ }
+    }
+    var t = form.querySelector('[name="cf-turnstile-response"]');
+    return t ? t.value : '';
+  }
+
+  /* --- Pop-up ------------------------------------------------------------ */
+
+  function bukaModal(dariEl) {
+    if (!modal) return;
+    pemicu = dariEl || null;
+    /* Sesudah pengajuan berhasil, membuka lagi berarti mulai dari bersih. */
+    if (terkirim) {
+      terkirim = false;
+      form.reset();
+      tombol.disabled = false;
+      tombol.textContent = 'Kirim Pengajuan';
+      tulis('', '');
+    }
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';   /* kunci guliran latar */
+    segarkanTurnstile();
+    var pertama = form.querySelector('input, textarea, select');
+    if (pertama) pertama.focus();
+  }
+
+  function tutupModal() {
+    if (!modal || modal.hidden) return;
+    modal.hidden = true;
+    document.body.style.overflow = '';
+    if (pemicu && pemicu.focus) pemicu.focus();   /* fokus kembali ke pemicunya */
+  }
+
+  if (buka)   buka.addEventListener('click', function () { bukaModal(buka); });
+  if (tutupB) tutupB.addEventListener('click', tutupModal);
+
+  /* Klik pada lapisan gelap (bukan pada kotaknya) menutup pop-up. */
+  if (modal) {
+    modal.addEventListener('mousedown', function (e) { if (e.target === modal) tutupModal(); });
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') tutupModal();
+  });
+
+  /* Fokus dijaga tetap di dalam pop-up selama terbuka. */
+  if (modal) {
+    modal.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab') return;
+      var bisa = modal.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), iframe, [tabindex]:not([tabindex="-1"])');
+      var terlihat = [];
+      for (var i = 0; i < bisa.length; i++) {
+        if (bisa[i].offsetParent !== null) terlihat.push(bisa[i]);
+      }
+      if (!terlihat.length) return;
+      var awal = terlihat[0], akhir = terlihat[terlihat.length - 1];
+      if (e.shiftKey && document.activeElement === awal) { e.preventDefault(); akhir.focus(); }
+      else if (!e.shiftKey && document.activeElement === akhir) { e.preventDefault(); awal.focus(); }
+    });
+  }
+
+  /* Deep-link #ajukan tetap bekerja: ia membuka pop-up, bukan menggulir ke
+     bagian yang kini tersembunyi. */
+  if (location.hash === '#ajukan') bukaModal(buka);
+
+  /* --- Kirim ------------------------------------------------------------- */
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -698,10 +830,10 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
 
     /* Token diambil saat submit, bukan disimpan lebih awal: Turnstile bisa
        memperbaruinya sendiri, dan token lama akan ditolak server. */
-    var t = form.querySelector('[name="cf-turnstile-response"]');
-    data.turnstile_token = t ? t.value : '';
+    data.turnstile_token = ambilToken();
     if (!data.turnstile_token) {
-      tulis('Mohon centang "Saya bukan robot" dulu.', 'err'); return;
+      tulis('Verifikasi keamanan belum selesai — tunggu sebentar, lalu coba lagi.', 'err');
+      return;
     }
 
     tombol.disabled = true;
@@ -719,30 +851,23 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
           form.reset();
           tulis('Terima kasih! Pengajuan Anda sudah kami terima. Tim kami akan menghubungi Anda.', 'ok');
           tombol.textContent = 'Pengajuan Terkirim';
+          segarkanTurnstile();     /* token sudah terpakai — buat yang baru */
           return;
         }
         /* Gagal WAJIB dikatakan apa adanya + jalan keluar, jangan cuma "gagal".
            Token Turnstile hangus sekali pakai, jadi widget di-reset. */
         tulis((h.j && h.j.error) || 'Pengiriman gagal. Coba lagi atau hubungi kami via WhatsApp.', 'err');
         tombol.disabled = false;
-        if (window.turnstile) { try { window.turnstile.reset(); } catch (_) {} }
+        segarkanTurnstile();
       })
       .catch(function (err) {
         console.error('[formSupplier] gagal kirim:', err);
         tulis('Tidak dapat terhubung. Periksa koneksi, lalu coba lagi — atau hubungi kami via WhatsApp.', 'err');
         tombol.disabled = false;
-        if (window.turnstile) { try { window.turnstile.reset(); } catch (_) {} }
+        segarkanTurnstile();
       });
   });
 })();
-function onTurnstileOk() {
-  var p = document.getElementById('s-msg');
-  if (p && p.classList.contains('err')) { p.textContent = ''; p.className = 'f-msg'; }
-}
-function onTurnstileExpired() {
-  var p = document.getElementById('s-msg');
-  if (p) { p.textContent = 'Verifikasi kedaluwarsa — mohon centang ulang.'; p.className = 'f-msg err'; }
-}
 </script>
 </body>
 </html>
