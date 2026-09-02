@@ -18,10 +18,18 @@
   Simpan hasilnya sebagai assets/dokumen/ketentuan-supplier-v1.pdf, lalu
   tautkan dari CTA di kerjasama.html.
 
-  BLOK BERTANDA "PERLU DIISI" = keputusan dagang Boss. Angkanya sengaja
-  DIKOSONGKAN, bukan ditebak: tempo bayar, retur, dan minimum order mengikat
-  secara komersial, dan menebaknya berarti menerbitkan janji yang tak pernah
-  disepakati siapa pun.
+  Seluruh keputusan dagang sudah ditetapkan (2 Sep 2026): ongkir ditanggung
+  Supplier, pemberitahuan perubahan harga 30 hari, tanpa minimum pemesanan dari
+  sisi Perusahaan, domisili hukum PN Tangerang.
+
+  Titik-titik yang masih kosong (span.isian) BUKAN pekerjaan yang tertinggal -
+  itu memang diisi saat dokumen ditandatangani dengan supplier tertentu: nomor
+  dokumen, tanggal, pilihan sistem & tempo bayar (Pasal 7), jawaban retur
+  (Pasal 8), dan nama penanda tangan.
+
+  NOMOR REKENING SENGAJA TIDAK ADA DI DOKUMEN INI. Berkas ini bisa diunduh siapa
+  pun; Pasal 7.3 justru menyatakan bahwa rekening hanya diberikan lewat dokumen
+  kesepakatan bertanda tangan. Jangan menambahkannya "supaya lengkap".
 -->
 <style>
   :root{
@@ -171,7 +179,7 @@
   </div>
 
   <table class="meta">
-    <tr><td>Versi Dokumen</td><td>1.0 (draf)</td><td>Berlaku Sejak</td><td><span class="isian">&nbsp;</span></td></tr>
+    <tr><td>Versi Dokumen</td><td>1.0</td><td>Berlaku Sejak</td><td><span class="isian">&nbsp;</span></td></tr>
     <tr><td>Diterbitkan Oleh</td><td>PT. Mencoba Bertahan Hidup</td><td>Ditinjau Ulang</td><td>Setiap 12 bulan</td></tr>
   </table>
 
@@ -204,17 +212,25 @@
     </table>
     <p>Perusahaan berhak menolak produk yang tidak memenuhi ketentuan di atas pada saat penerimaan barang.</p>
 
+    <p><strong>Contoh produk (sample)</strong> — Supplier wajib menyediakan contoh produk tanpa biaya
+       untuk setiap produk yang ditawarkan, baik pada saat pengajuan awal maupun setiap kali
+       memperkenalkan produk atau varian baru. Contoh produk digunakan Perusahaan untuk menilai mutu,
+       kesesuaian kemasan, dan minat pasar, serta tidak dikembalikan. Penyediaan contoh produk tidak
+       mengikat Perusahaan untuk memesan.</p>
+
     <h3>Pasal 4 — Harga dan Daftar Harga</h3>
     <ol>
       <li>Harga yang disepakati adalah harga yang tercantum dalam daftar harga (<em>price list</em>) resmi Supplier yang berlaku pada saat pemesanan.</li>
-      <li>Perubahan harga wajib diberitahukan secara tertulis sekurang-kurangnya <span class="isian">&nbsp;</span> hari sebelum berlaku, dan tidak berlaku surut atas pesanan yang telah dikirim.</li>
+      <li><strong>Supplier wajib memberikan harga terbaik</strong> kepada Perusahaan, yaitu harga yang
+          tidak lebih tinggi daripada harga yang diberikan kepada pembeli lain dengan volume dan syarat
+          pembelian yang setara. Apabila di kemudian hari Supplier memberikan harga yang lebih rendah
+          kepada pihak lain dalam kondisi setara, Supplier wajib menyesuaikan harga kepada Perusahaan
+          terhitung sejak harga tersebut berlaku.</li>
+      <li>Perubahan harga wajib diberitahukan secara tertulis sekurang-kurangnya
+          <strong>30 (tiga puluh) hari</strong> sebelum berlaku, dan tidak berlaku surut atas pesanan
+          yang telah dikirim maupun yang sudah diterbitkan Purchase Order-nya.</li>
       <li>Harga sudah termasuk atau belum termasuk pajak sebagaimana dinyatakan tegas dalam daftar harga.</li>
     </ol>
-
-    <div class="isi-boss">
-      <span class="tag">PERLU DIISI</span>
-      <p><strong>Berapa hari pemberitahuan perubahan harga?</strong> Lazimnya 14–30 hari. Angka ini menentukan apakah Perusahaan bisa menyesuaikan harga jual sebelum harga beli naik.</p>
-    </div>
 
     <h3>Pasal 5 — Pemesanan dan Pengiriman</h3>
     <ol>
@@ -229,10 +245,18 @@
           sampai barang diterima dan diperiksa oleh Perusahaan.</li>
     </ol>
 
-    <div class="isi-boss">
-      <span class="tag">PERLU DIISI</span>
-      <p><strong>Minimum order</strong> — apakah ada nilai atau jumlah minimum per pengiriman?
-         Kosongkan bila tidak ada. <em>(Ongkos kirim sudah ditetapkan: ditanggung Supplier — lihat Pasal 5 ayat 5.)</em></p>
+    <p><strong>Minimum pemesanan</strong> — Perusahaan tidak menetapkan nilai minimum pembelian.
+       Apabila Supplier memberlakukan syarat minimum agar pesanan dapat dikirim, syarat tersebut
+       dinyatakan pada saat kesepakatan:</p>
+    <div class="opsi">
+      <div class="baris"><span class="kotak"></span><div class="isi-opsi">
+        <strong>Tidak ada minimum pemesanan</strong>
+        <small>Pesanan dikirim berapa pun jumlahnya.</small>
+      </div></div>
+      <div class="baris"><span class="kotak"></span><div class="isi-opsi">
+        <strong>Ada minimum pemesanan</strong>, sebesar Rp <span class="isian">&nbsp;</span>
+        atau <span class="isian">&nbsp;</span> unit per pengiriman
+      </div></div>
     </div>
 
     <h3>Pasal 6 — Penerimaan dan Pemeriksaan Barang</h3>
