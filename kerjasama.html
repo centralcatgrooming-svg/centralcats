@@ -392,108 +392,6 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
          Supabase Edge Function `supplier-application` yang memverifikasi
          Turnstile DI SERVER lalu mengirim email. Token captcha yang hanya
          dibuat di browser tidak menahan apa pun. -->
-    <div class="modal-ov" id="modalSupplier" hidden>
-    <div class="ajukan-box" id="ajukan" role="dialog" aria-modal="true" aria-labelledby="ajukan-judul">
-      <button type="button" class="modal-x" id="s-tutup" aria-label="Tutup formulir">&times;</button>
-      <h3 id="ajukan-judul">Formulir Pengajuan Supplier</h3>
-      <p class="ajukan-lead">Isi data di bawah ini. Tim kami meninjau dan menghubungi Anda kembali. Sebaiknya unduh dan baca Ketentuan Kerja Sama Supplier lebih dulu.</p>
-
-      <form id="formSupplier" novalidate>
-        <div class="f-grid">
-          <div class="f-field f-full">
-            <label for="s-usaha">Nama Usaha / PT <span class="wajib">*</span></label>
-            <input id="s-usaha" name="nama_usaha" type="text" maxlength="120" autocomplete="organization" required>
-          </div>
-          <div class="f-field">
-            <label for="s-kontak">Nama Narahubung <span class="wajib">*</span></label>
-            <input id="s-kontak" name="nama_kontak" type="text" maxlength="120" autocomplete="name" required>
-          </div>
-          <div class="f-field">
-            <label for="s-telp">Telepon / WhatsApp <span class="wajib">*</span></label>
-            <input id="s-telp" name="telepon" type="tel" maxlength="30" placeholder="08xxxxxxxxxx" autocomplete="tel" required>
-          </div>
-          <div class="f-field f-full">
-            <label for="s-email">Email</label>
-            <input id="s-email" name="email" type="email" maxlength="120" placeholder="nama@email.com" autocomplete="email">
-            <span class="f-hint">Diisi supaya kami bisa membalas lewat email.</span>
-          </div>
-          <div class="f-field">
-            <label for="s-jenis">Jenis Produk <span class="wajib">*</span></label>
-            <input id="s-jenis" name="jenis_produk" type="text" maxlength="200" placeholder="cth: makanan kucing, pasir, aksesoris" required>
-          </div>
-          <div class="f-field">
-            <label for="s-merek">Merek <span class="wajib">*</span></label>
-            <input id="s-merek" name="merek" type="text" maxlength="200" placeholder="cth: MerekA, MerekB" required>
-          </div>
-          <div class="f-field f-full">
-            <label for="s-alamat">Alamat Jalan <span class="wajib">*</span></label>
-            <textarea id="s-alamat" name="alamat" maxlength="400" placeholder="Nama jalan, nomor, RT/RW, patokan" required></textarea>
-            <span class="f-hint">Cukup alamat jalannya — wilayah dipilih di bawah.</span>
-          </div>
-          <!-- Wilayah bertingkat. Daftar provinsi/kota (13 KB) diunduh saat
-               formulir mendekat ke layar; kecamatan + kode pos (213 KB) baru
-               saat kota dipilih. Lihat assets/js/alamat.js. Tiap dropdown punya
-               isian teks cadangan yang dipakai kalau datanya gagal diunduh —
-               formulir tak boleh buntu gara-gara itu. -->
-          <div class="f-field">
-            <label for="s-prov">Provinsi <span class="wajib">*</span></label>
-            <select id="s-prov" name="provinsi" data-alamat="provinsi" disabled>
-              <option value="">— Memuat… —</option>
-            </select>
-            <input id="s-prov-teks" name="provinsi" data-alamat-teks="provinsi" type="text" maxlength="60" placeholder="Ketik provinsi" hidden disabled>
-          </div>
-          <div class="f-field">
-            <label for="s-kota">Kota / Kabupaten <span class="wajib">*</span></label>
-            <select id="s-kota" name="kota" data-alamat="kota" disabled>
-              <option value="">— Pilih provinsi dulu —</option>
-            </select>
-            <input id="s-kota-teks" name="kota" data-alamat-teks="kota" type="text" maxlength="60" placeholder="Ketik kota/kabupaten" hidden disabled>
-          </div>
-          <div class="f-field">
-            <label for="s-kec">Kecamatan</label>
-            <select id="s-kec" name="kecamatan" data-alamat="kecamatan" disabled>
-              <option value="">— Pilih kota/kabupaten dulu —</option>
-            </select>
-            <input id="s-kec-teks" name="kecamatan" data-alamat-teks="kecamatan" type="text" maxlength="60" placeholder="Ketik kecamatan" hidden disabled>
-          </div>
-          <div class="f-field">
-            <label for="s-pos">Kode Pos</label>
-            <input id="s-pos" name="kode_pos" data-alamat="kode_pos" type="text" inputmode="numeric" maxlength="5" placeholder="5 digit">
-            <select id="s-pos-pilih" name="kode_pos" data-alamat="kode_pos_pilih" hidden disabled></select>
-          </div>
-          <div class="f-field f-full">
-            <span class="f-hint" data-alamat-ket hidden></span>
-          </div>
-          <div class="f-field f-full">
-            <label for="s-pkp">Status Perpajakan</label>
-            <select id="s-pkp" name="status_pkp">
-              <option value="">— Pilih —</option>
-              <option value="pkp">Pengusaha Kena Pajak (PKP)</option>
-              <option value="non_pkp">Bukan PKP</option>
-            </select>
-            <span class="f-hint">Menentukan perlakuan PPN pada tagihan — lihat Pasal 4 dokumen ketentuan.</span>
-          </div>
-          <div class="f-field f-full">
-            <label for="s-catatan">Catatan Tambahan</label>
-            <textarea id="s-catatan" name="catatan" maxlength="600" placeholder="Opsional"></textarea>
-          </div>
-        </div>
-
-        <!-- Honeypot: tak terlihat manusia. Terisi = bot. -->
-        <div class="f-hp" aria-hidden="true">
-          <label for="s-website">Website</label>
-          <input id="s-website" name="website" type="text" tabindex="-1" autocomplete="off">
-        </div>
-
-        <div class="f-turnstile">
-          <div id="s-turnstile"></div>
-        </div>
-
-        <button type="submit" class="f-kirim" id="s-kirim">Kirim Pengajuan</button>
-        <p class="f-msg" id="s-msg" role="status" aria-live="polite"></p>
-      </form>
-    </div>
-    </div>
   </section>
 
   <!-- WARALABA -->
@@ -661,6 +559,116 @@ footer{background:var(--footer-bg);color:white;padding:45px 20px 18px;border-top
     </button>
   </div>
 </div>
+
+<!-- Pop-up formulir SENGAJA anak langsung <body>, di luar <section>.
+     Section pembungkusnya ber-animasi opacity (.fade-section); induk yang
+     opacity-nya < 1 membuat anak `position:fixed` ikut pudar DAN menjadi
+     containing block baru, sehingga pop-up tampil samar/salah posisi bila
+     dibuka sebelum section-nya ter-reveal. Ketahuan dari uji layar.
+     Letaknya juga harus SEBELUM blok <script> di bawah, yang mencarinya
+     lewat getElementById. -->
+    <div class="modal-ov" id="modalSupplier" hidden>
+    <div class="ajukan-box" id="ajukan" role="dialog" aria-modal="true" aria-labelledby="ajukan-judul">
+      <button type="button" class="modal-x" id="s-tutup" aria-label="Tutup formulir">&times;</button>
+      <h3 id="ajukan-judul">Formulir Pengajuan Supplier</h3>
+      <p class="ajukan-lead">Isi data di bawah ini. Tim kami meninjau dan menghubungi Anda kembali. Sebaiknya unduh dan baca Ketentuan Kerja Sama Supplier lebih dulu.</p>
+
+      <form id="formSupplier" novalidate>
+        <div class="f-grid">
+          <div class="f-field f-full">
+            <label for="s-usaha">Nama Usaha / PT <span class="wajib">*</span></label>
+            <input id="s-usaha" name="nama_usaha" type="text" maxlength="120" autocomplete="organization" required>
+          </div>
+          <div class="f-field">
+            <label for="s-kontak">Nama Narahubung <span class="wajib">*</span></label>
+            <input id="s-kontak" name="nama_kontak" type="text" maxlength="120" autocomplete="name" required>
+          </div>
+          <div class="f-field">
+            <label for="s-telp">Telepon / WhatsApp <span class="wajib">*</span></label>
+            <input id="s-telp" name="telepon" type="tel" maxlength="30" placeholder="08xxxxxxxxxx" autocomplete="tel" required>
+          </div>
+          <div class="f-field f-full">
+            <label for="s-email">Email</label>
+            <input id="s-email" name="email" type="email" maxlength="120" placeholder="nama@email.com" autocomplete="email">
+            <span class="f-hint">Diisi supaya kami bisa membalas lewat email.</span>
+          </div>
+          <div class="f-field">
+            <label for="s-jenis">Jenis Produk <span class="wajib">*</span></label>
+            <input id="s-jenis" name="jenis_produk" type="text" maxlength="200" placeholder="cth: makanan kucing, pasir, aksesoris" required>
+          </div>
+          <div class="f-field">
+            <label for="s-merek">Merek <span class="wajib">*</span></label>
+            <input id="s-merek" name="merek" type="text" maxlength="200" placeholder="cth: MerekA, MerekB" required>
+          </div>
+          <div class="f-field f-full">
+            <label for="s-alamat">Alamat Jalan <span class="wajib">*</span></label>
+            <textarea id="s-alamat" name="alamat" maxlength="400" placeholder="Nama jalan, nomor, RT/RW, patokan" required></textarea>
+            <span class="f-hint">Cukup alamat jalannya — wilayah dipilih di bawah.</span>
+          </div>
+          <!-- Wilayah bertingkat. Daftar provinsi/kota (13 KB) diunduh saat
+               formulir mendekat ke layar; kecamatan + kode pos (213 KB) baru
+               saat kota dipilih. Lihat assets/js/alamat.js. Tiap dropdown punya
+               isian teks cadangan yang dipakai kalau datanya gagal diunduh —
+               formulir tak boleh buntu gara-gara itu. -->
+          <div class="f-field">
+            <label for="s-prov">Provinsi <span class="wajib">*</span></label>
+            <select id="s-prov" name="provinsi" data-alamat="provinsi" disabled>
+              <option value="">— Memuat… —</option>
+            </select>
+            <input id="s-prov-teks" name="provinsi" data-alamat-teks="provinsi" type="text" maxlength="60" placeholder="Ketik provinsi" hidden disabled>
+          </div>
+          <div class="f-field">
+            <label for="s-kota">Kota / Kabupaten <span class="wajib">*</span></label>
+            <select id="s-kota" name="kota" data-alamat="kota" disabled>
+              <option value="">— Pilih provinsi dulu —</option>
+            </select>
+            <input id="s-kota-teks" name="kota" data-alamat-teks="kota" type="text" maxlength="60" placeholder="Ketik kota/kabupaten" hidden disabled>
+          </div>
+          <div class="f-field">
+            <label for="s-kec">Kecamatan</label>
+            <select id="s-kec" name="kecamatan" data-alamat="kecamatan" disabled>
+              <option value="">— Pilih kota/kabupaten dulu —</option>
+            </select>
+            <input id="s-kec-teks" name="kecamatan" data-alamat-teks="kecamatan" type="text" maxlength="60" placeholder="Ketik kecamatan" hidden disabled>
+          </div>
+          <div class="f-field">
+            <label for="s-pos">Kode Pos</label>
+            <input id="s-pos" name="kode_pos" data-alamat="kode_pos" type="text" inputmode="numeric" maxlength="5" placeholder="5 digit">
+            <select id="s-pos-pilih" name="kode_pos" data-alamat="kode_pos_pilih" hidden disabled></select>
+          </div>
+          <div class="f-field f-full">
+            <span class="f-hint" data-alamat-ket hidden></span>
+          </div>
+          <div class="f-field f-full">
+            <label for="s-pkp">Status Perpajakan</label>
+            <select id="s-pkp" name="status_pkp">
+              <option value="">— Pilih —</option>
+              <option value="pkp">Pengusaha Kena Pajak (PKP)</option>
+              <option value="non_pkp">Bukan PKP</option>
+            </select>
+            <span class="f-hint">Menentukan perlakuan PPN pada tagihan — lihat Pasal 4 dokumen ketentuan.</span>
+          </div>
+          <div class="f-field f-full">
+            <label for="s-catatan">Catatan Tambahan</label>
+            <textarea id="s-catatan" name="catatan" maxlength="600" placeholder="Opsional"></textarea>
+          </div>
+        </div>
+
+        <!-- Honeypot: tak terlihat manusia. Terisi = bot. -->
+        <div class="f-hp" aria-hidden="true">
+          <label for="s-website">Website</label>
+          <input id="s-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="f-turnstile">
+          <div id="s-turnstile"></div>
+        </div>
+
+        <button type="submit" class="f-kirim" id="s-kirim">Kirim Pengajuan</button>
+        <p class="f-msg" id="s-msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+    </div>
 
 <script defer src="/assets/js/main.js"></script>
 <script defer src="/assets/js/alamat.js"></script>
